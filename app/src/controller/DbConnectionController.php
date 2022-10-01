@@ -1,9 +1,10 @@
 <?php
 
-require_once("../config/const.php");
+include("./././config/const.php");
+spl_autoload_register(function ($class)
+{require("src/controller/".$class.".php");});
 
 class DbConnection {
-
     private static $user = DB_USERNAME;
     private static $pass = DB_PASSWORD;
     private static $dbName = DB_NAME;
@@ -19,10 +20,11 @@ class DbConnection {
 
         try {
             $this->dbCon = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $user, $pass);
+            echo "YAY, we have a database *_* <br>";
             return $this->dbCon;
         } catch (PDOException $err) {
-            echo "Error!: " . $err->getMessage() . "<br/>";
-            // die();
+            echo "Error: ".$err->getMessage()."<br/>";
+            return null;
         }
     }
 
