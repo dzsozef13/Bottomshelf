@@ -1,12 +1,11 @@
-<?php require_once("src/SessionController.php"); ?>
-
 <?php
+
+spl_autoload_register(function ($class)
+{include("src/controller/".$class.".php");});
+
 $session = new SessionController();
-if ($session->connect_to_db()) {
-    echo "YAY, we have a database *_*";
-} else {
-    echo "Ouch, something went wrong :c";
-}
+$session->connect_to_db();
+
 ?>
 
 <h1>Welcome to Bottomshelf</h1>

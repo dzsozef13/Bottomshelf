@@ -1,6 +1,6 @@
 <?php
 
-require_once("db/DbConnectionController.php");
+include("DbConnectionController.php");
 
 class SessionController {
     public function __construct()
@@ -9,12 +9,8 @@ class SessionController {
     }
 
     public function connect_to_db() {
-        if ($db = new DbConnection) {
-            print("DB Connection Success");
+        if ($db = new DbConnection()) {
             return $db;
-        } else {
-            print("DB Connection Failed");
-            return null;
         }
     }
 }
