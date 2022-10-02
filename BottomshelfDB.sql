@@ -72,29 +72,39 @@ CREATE TABLE UserHasBadge (
     BadgeId int NOT NULL,
     UserId int NOT NULL,
     CreatedAt timestamp,
-    CONSTRAINT PK_UserHasBadge PRIMARY KEY (BadgeId, UserId)
+    CONSTRAINT PK_UserHasBadge PRIMARY KEY (BadgeId, UserId),
+    FOREIGN KEY (UserId) REFERENCES User (UserId),
+    FOREIGN KEY (BadgeId) REFERENCES Badge (BadgeId)
 );
 CREATE TABLE UserSavedPost (
     PostId int NOT NULL,
     UserId int NOT NULL,
     CreatedAt timestamp,
-    CONSTRAINT PK_UserSavedPost PRIMARY KEY (PostId, UserId)
+    CONSTRAINT PK_UserSavedPost PRIMARY KEY (PostId, UserId),
+    FOREIGN KEY (UserId) REFERENCES User (UserId),
+    FOREIGN KEY (PostId) REFERENCES Post (PostId)
 );
 CREATE TABLE CommentHasImage (
     CommentId int NOT NULL,
     ImageId int NOT NULL,
     CreatedAt timestamp,
-    CONSTRAINT PK_CommentHasImage PRIMARY KEY (CommentId, ImageId)
+    CONSTRAINT PK_CommentHasImage PRIMARY KEY (CommentId, ImageId),
+    FOREIGN KEY (CommentId) REFERENCES Comment (CommentId),
+    FOREIGN KEY (ImageId) REFERENCES Media (ImageId)
 );
 CREATE TABLE PostHasImage (
     PostId int NOT NULL,
     ImageId int NOT NULL,
     CreatedAt timestamp,
-    CONSTRAINT PK_PostHasImage PRIMARY KEY (PostId, ImageId)
+    CONSTRAINT PK_PostHasImage PRIMARY KEY (PostId, ImageId),
+    FOREIGN KEY (PostId) REFERENCES Post (PostId),
+    FOREIGN KEY (ImageId) REFERENCES Media (ImageId)
 );
 CREATE TABLE PostHasTag (
     PostId int NOT NULL,
     TagId int NOT NULL,
     CreatedAt timestamp,
-    CONSTRAINT PK_PostHasTag PRIMARY KEY (PostId, TagId)
+    CONSTRAINT PK_PostHasTag PRIMARY KEY (PostId, TagId),
+    FOREIGN KEY (PostId) REFERENCES Post (PostId),
+    FOREIGN KEY (TagId) REFERENCES Tag (TagId)
 );
