@@ -1,28 +1,35 @@
 <?php
 
-// When constructed, imports files with passed names
+include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
+include_files(array(
+    "Console"
+));
+
+// Includes files with passed filenames
 /* Usage:
 
 include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
-$use = new Autoload(array(
-    "Filenames"
+include_files(array(
+    "Console"
 ));
 
 */
-class Autoload {
-    function __construct($dir) {
-        foreach($dir as $filename) {
-            switch ($filename) {
-                case "SessionController":
-                case "DbConnectionController":
-                case "ImageController":
-                    include $_SERVER['DOCUMENT_ROOT'].'/src/controller/'."$filename".'.php';
-                    echo "Using ".$filename."<br>";
-                    break;
-                case "Const":
-                    include $_SERVER['DOCUMENT_ROOT'].'/config/const.php';
-                    break;
-            }
+function include_files($files) {
+    foreach($files as $filename) {
+        switch ($filename) {
+            // CONTROLLER
+            case "SessionController":
+            case "DbConnectionController":
+            case "ImageController":
+                include_once $_SERVER['DOCUMENT_ROOT'].'/src/controller/'."$filename".'.php';
+                console_log("Using ".$filename."");
+                break;
+            // CONFIG
+            case "Const":
+            case "Console":
+                include_once $_SERVER['DOCUMENT_ROOT'].'/config/'."$filename".'.php';
+                console_log("Using ".$filename."");
+                break;
         }
     }
 }

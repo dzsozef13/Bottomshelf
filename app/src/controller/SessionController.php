@@ -1,8 +1,9 @@
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
-$use = new Autoload(array(
-    "DbConnectionController"
+include_files(array(
+    "DbConnectionController",
+    "Console"
 ));
 
 // spl_autoload_register(function ($class) {

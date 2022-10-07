@@ -1,8 +1,9 @@
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
-$use = new Autoload(array(
-    "Const"
+include_files(array(
+    "Const",
+    "Console"
 ));
 
 class DbConnectionController {
@@ -21,10 +22,10 @@ class DbConnectionController {
 
         try {
             $this->dbCon = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $user, $pass);
-            echo "YAY, we have a database *_* <br>";
+            console_log("YAY, we have a database *_* <br>");
             return $this->dbCon;
         } catch (PDOException $err) {
-            echo "Error: ".$err->getMessage()."<br/>";
+            console_log("Error: ".$err->getMessage()."<br/>");
             return null;
         }
     }
