@@ -1,7 +1,11 @@
 <?php
 
-spl_autoload_register(function ($class)
-{include("src/controller/".$class.".php");});
+ini_set('display_errors', 1);
+include_once 'autoload.php';
+
+$use = new Autoload(array(
+    "SessionController"
+));
 
 $session = new SessionController();
 $session->connect_to_db();

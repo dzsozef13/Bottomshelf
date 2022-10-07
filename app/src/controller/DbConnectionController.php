@@ -1,10 +1,11 @@
 <?php
 
-include("./././config/const.php");
-spl_autoload_register(function ($class)
-{require("src/controller/".$class.".php");});
+include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
+$use = new Autoload(array(
+    "Const"
+));
 
-class DbConnection {
+class DbConnectionController {
     private static $user = DB_USERNAME;
     private static $pass = DB_PASSWORD;
     private static $dbName = DB_NAME;
