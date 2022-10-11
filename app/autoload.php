@@ -17,6 +17,11 @@ include_files(array(
 function include_files($files) {
     foreach($files as $filename) {
         switch ($filename) {
+            // MODEL
+            case "Post":
+                include_once $_SERVER['DOCUMENT_ROOT'].'/src/model/'."$filename".'.php';
+                console_log("Using ".$filename."");
+                break;
             // CONTROLLER
             case "SessionController":
             case "DbConnectionController":

@@ -1,5 +1,7 @@
 <?php
 
+// Inclass code, may be deleted, only kept for reference
+
 class ImageController {
 
     protected $image;

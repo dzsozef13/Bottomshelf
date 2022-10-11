@@ -6,10 +6,6 @@ include_files(array(
     "Console"
 ));
 
-// spl_autoload_register(function ($class) {
-//     include("".$class.".php");
-// });
-
 class SessionController {
     function __construct() {
         session_start();
