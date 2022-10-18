@@ -35,6 +35,11 @@ function include_files($files) {
                 include_once $_SERVER['DOCUMENT_ROOT'].'/config/'."$filename".'.php';
                 console_log("Using ".$filename."");
                 break;
+            // ROUTER
+            case "Router":
+                include_once $_SERVER['DOCUMENT_ROOT'].'/router/'."$filename".'.php';
+                console_log("Using ".$filename."");
+                break;
         }
     }
 }

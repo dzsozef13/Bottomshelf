@@ -3,7 +3,8 @@
 include_once 'autoload.php';
 include_files(array(
     "SessionController",
-    "Console"
+    "Console",
+    "Router"
 ));
 
 $session = new SessionController();
