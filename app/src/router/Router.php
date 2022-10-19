@@ -1,5 +1,6 @@
 <?php 
 
 class Router{
-//    To be continued
+//    I want to be able to pass in a parameter and based on that send the user to the right file or call the right
+//    method like fetch etc.
 }
