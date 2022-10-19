@@ -18,6 +18,10 @@ CREATE TABLE Tag (
     TagId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     TagName varchar(128)
 );
+CREATE TABLE EntityStatus (
+    StatusId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    StatusName varchar(128)
+);
 CREATE TABLE `User` (
     UserId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Email varchar(128) NOT NULL,
@@ -28,8 +32,10 @@ CREATE TABLE `User` (
     BioDescription varchar(256),
     CountryCode varchar(3) NOT NULL,
     RoleId int NOT NULL,
+    StatusId int NOT NULL,
     FOREIGN KEY (CountryCode) REFERENCES Country (CountryCode),
-    FOREIGN KEY (RoleId) REFERENCES Role (RoleId)
+    FOREIGN KEY (RoleId) REFERENCES Role (RoleId),
+    FOREIGN KEY (StatusId) REFERENCES EntityStatus (StatusId)
 );
 CREATE TABLE Media (
     ImageId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -46,9 +52,10 @@ CREATE TABLE Post (
     CreatedAt timestamp,
     UserId int NOT NULL,
     ChildPostId int,
+    StatusId int NOT NULL,
     FOREIGN KEY (UserId) REFERENCES User (UserId), 
-    -- NOT SURE IF WILL WORK    
-    FOREIGN KEY (ChildPostId) REFERENCES Post (PostId)   
+    FOREIGN KEY (ChildPostId) REFERENCES Post (PostId),  
+    FOREIGN KEY (StatusId) REFERENCES EntityStatus (StatusId)
 );
 CREATE TABLE Reaction (
     ReactionId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -68,6 +75,7 @@ CREATE TABLE Comment (
     FOREIGN KEY (UserId) REFERENCES User (UserId),
     FOREIGN KEY (PostId) REFERENCES Post (PostId)
 );
+
 CREATE TABLE UserHasBadge (
     BadgeId int NOT NULL,
     UserId int NOT NULL,
