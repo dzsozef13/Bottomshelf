@@ -19,6 +19,7 @@ function include_files($files) {
         switch ($filename) {
             // MODEL
             case "Post":
+            case "Route":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/model/'."$filename".'.php';
                 console_log("Using ".$filename."");
                 break;
@@ -37,7 +38,7 @@ function include_files($files) {
                 break;
             // ROUTER
             case "Router":
-                include_once $_SERVER['DOCUMENT_ROOT'].'/router/'."$filename".'.php';
+                include_once $_SERVER['DOCUMENT_ROOT'].'/src/router/'."$filename".'.php';
                 console_log("Using ".$filename."");
                 break;
         }
