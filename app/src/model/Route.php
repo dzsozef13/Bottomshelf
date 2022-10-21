@@ -60,6 +60,10 @@ class Route{
     {
         return $this->path;
     }
+    public function getHandlers()
+    {
+        return $this->handler;
+    }
     public function getAttributes()
     {
         return $this->attributes;
