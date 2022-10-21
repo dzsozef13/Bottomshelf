@@ -4,16 +4,11 @@ include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
     "SessionController",
     "Console",
-    "Router",
-    "Route"
 ));
 
 $session = new SessionController();
 $session->connect_to_db();
 console_log("Ready");
-$loginRoute = new Route("login", "/src/view/Login.php", 1, ['POST']);
-
-echo $loginRoute->getMethods()[0];
 
 ?>
 
