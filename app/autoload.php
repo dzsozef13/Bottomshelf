@@ -27,6 +27,7 @@ function include_files($files) {
             case "SessionController":
             case "DbConnectionController":
             case "ImageController":
+            case "PageController":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/controller/'."$filename".'.php';
                 console_log("Using ".$filename."");
                 break;
@@ -38,6 +39,7 @@ function include_files($files) {
                 break;
             // ROUTER
             case "Router":
+            case "Routes":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/router/'."$filename".'.php';
                 console_log("Using ".$filename."");
                 break;

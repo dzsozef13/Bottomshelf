@@ -4,7 +4,7 @@ include_files(array(
     "SessionController",
     "Console",
     "Router",
-    "Route"
+    "Route",
 ));
 // you first create all possible routes
 // Match function when we need to navigate somewhere and the router has to find an existing path and compare
@@ -23,6 +23,7 @@ private $request;
  */
 public function __construct($requestParam)
 {
+    //not done
     $this->request = $requestParam;
   
 }
@@ -38,6 +39,12 @@ public static function add($route)
     //    var_dump(self::$routes['home']->getMethods()[0]);
     }
   
+}
+
+public function match($req)
+{
+//   $this->pageCnrl->renderViewOnly($req);
+  require $_SERVER['DOCUMENT_ROOT']."/src/view/" . $req . ".php";
 }
 
  /**

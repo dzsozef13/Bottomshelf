@@ -5,16 +5,16 @@ include_files(array(
     "SessionController",
     "Console",
     "Router",
+    "Routes"
 ));
 
 $session = new SessionController();
 $session->connect_to_db();
 console_log("Ready");
-Router::add(new Route("getHomePage", "/", 1, ['GET']));
-Router::add(new Route("getLoginPage", "/login", 1, ['GET']));
-Router::add(new Route("getUserById", "/user/{id}", 1, ['GET']));
+// premade routes are in Routes file
 $router = new Router("getHomePage");
+//testing
+$router->match('login') 
 ?>
 
-<h1>Welcome to Bottomshelf</h1>
-<?php var_dump($router->getAll()) ?>
+
