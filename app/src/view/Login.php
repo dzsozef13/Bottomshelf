@@ -2,13 +2,12 @@
 
 include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
-    "SessionController",
     "Console"
 ));
 
-$session = new SessionController();
-$session->connect_to_db();
-console_log("Ready");
+// $session = new SessionController();
+// $session->connect_to_db();
+// console_log("Ready");
 
 ?>
 

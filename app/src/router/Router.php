@@ -1,9 +1,7 @@
 <?php 
 include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
-    "SessionController",
     "Console",
-    "Router",
     "Route",
 ));
 // you first create all possible routes
@@ -14,7 +12,6 @@ class Router{
 // Accepts in requests
 // Breaks down the path
 // Checks method and calls the right controller
-
 private static $routes = Array();
 private $request;
 
@@ -44,7 +41,19 @@ public static function add($route)
 public function match($req)
 {
 //   $this->pageCnrl->renderViewOnly($req);
-  require $_SERVER['DOCUMENT_ROOT']."/src/view/" . $req . ".php";
+
+  include $_SERVER['DOCUMENT_ROOT']."/src/view/" . $req . ".php";
+}
+
+public function matchFromPath(string $path, string $method)
+{
+    foreach (self::$routes as $route) {
+        if (($route->getPath() == $path && $route->getMethods()[0] == $method) === false) {
+            continue;
+        }
+        return $route;
+    }
+  
 }
 
  /**
