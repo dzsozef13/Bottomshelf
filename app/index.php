@@ -5,7 +5,8 @@ include_files(array(
     "SessionController",
     "Console",
     "Router",
-    "Routes"
+    "Routes",
+    "ASD"
 ));
 
 $session = new SessionController();
@@ -15,6 +16,7 @@ console_log("Ready");
 $router = new Router("");
 //testing
 $currentRouter = $router->matchFromPath($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+echo ($_SERVER['REQUEST_URI']. $_SERVER['REQUEST_METHOD']);
 
 // is no match, go to 404
 if(isset($currentRouter)) {
@@ -23,5 +25,3 @@ if(isset($currentRouter)) {
 }
 
 ?>
-
-

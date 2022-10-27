@@ -45,6 +45,21 @@ public function match($req)
   include $_SERVER['DOCUMENT_ROOT']."/src/view/" . $req . ".php";
 }
 
+public function composeRequset(string $endpoint, array $params)
+{
+    $requestUrl = "/";
+    $requestParams = "?";
+    foreach($params as $param) {
+        $requestParams = $requestParams."?".$param;
+    }
+    $requestUrl = $requestUrl.$endpoint.$requestParams;
+    // switch ($endpoint) {
+    //     case "endpoint":
+    //         $requestUrl = $requestUrl.$endpoint.$requestParams;
+    //         break;
+    // }
+}
+
 public function matchFromPath(string $path, string $method)
 {
     foreach (self::$routes as $route) {

@@ -43,6 +43,10 @@ function include_files($files) {
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/router/'."$filename".'.php';
                 console_log("Using ".$filename."");
                 break;
+            // ROUTE NOT FOUND
+            default:
+                console_error("Tried to use non-existing module: ".$filename);
+                break;
         }
     }
 }
