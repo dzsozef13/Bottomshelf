@@ -19,6 +19,7 @@ function include_files($files) {
         switch ($filename) {
             // MODEL
             case "Post":
+            case "Route":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/model/'."$filename".'.php';
                 console_log("Using ".$filename."");
                 break;
@@ -26,6 +27,7 @@ function include_files($files) {
             case "SessionController":
             case "DbConnectionController":
             case "ImageController":
+            case "FrontEndController":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/controller/'."$filename".'.php';
                 console_log("Using ".$filename."");
                 break;
@@ -34,6 +36,16 @@ function include_files($files) {
             case "Console":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/config/'."$filename".'.php';
                 console_log("Using ".$filename."");
+                break;
+            // ROUTER
+            case "Router":
+            case "Routes":
+                include_once $_SERVER['DOCUMENT_ROOT'].'/src/router/'."$filename".'.php';
+                console_log("Using ".$filename."");
+                break;
+            // ROUTE NOT FOUND
+            default:
+                console_error("Tried to use non-existing module: ".$filename);
                 break;
         }
     }

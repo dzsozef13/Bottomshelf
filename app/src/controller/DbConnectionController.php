@@ -22,10 +22,10 @@ class DbConnectionController {
 
         try {
             $this->dbCon = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $user, $pass);
-            console_log("YAY, we have a database *_* <br>");
+            console_log("YAY, we have a database *_*");
             return $this->dbCon;
         } catch (PDOException $err) {
-            console_log("Error: ".$err->getMessage()."<br/>");
+            console_error("Failed db connection");
             return null;
         }
     }

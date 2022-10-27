@@ -15,7 +15,7 @@ class SessionController {
         if($db = new DbConnectionController()) {
             return $db;
         } else {
-            $db.destroy();
+            $db->destroy();
         }
     }
 }
