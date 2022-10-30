@@ -3,6 +3,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
     "Console",
     "Route",
+    "ViewController"
 ));
 // you first create all possible routes
 // Match function when we need to navigate somewhere and the router has to find an existing path and compare
@@ -12,17 +13,15 @@ class Router{
 // Accepts in requests
 // Breaks down the path
 // Checks method and calls the right controller
-private static $routes = Array();
+public static $routes = Array();
 private $request;
-
+private $viewCtrl;
  /**
  * @param Route
  */
-public function __construct($requestParam)
+public function __construct()
 {
-    //not done
-    $this->request = $requestParam;
-  
+    $this->viewCtrl = new ViewController();
 }
 
  /**
@@ -63,18 +62,25 @@ public function composeRequset(string $endpoint, array $params)
 public function matchFromPath(string $path, string $method)
 {
     foreach (self::$routes as $route) {
-        if (($route->getPath() == $path && $route->getMethods()[0] == $method) === false) {
+        if ($route->match($path, $method) === false) {
             continue;
+        }
+        if($route->getMethods()[0] == 'GET') {
+            $this->viewCtrl->renderViewOnly($route->getName());
         }
         return $route;
     }
-  
 }
 
  /**
  * @return Route[]
  */
-public static function getAll(){
+    public static function getAll(){
     return self::$routes;
   }
+
+
 }
+
+
+
