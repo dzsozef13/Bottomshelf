@@ -14,8 +14,7 @@ $session->connect_to_db();
 console_log("Ready");
 // premade routes are in Routes file
 $router = new Router();
-//testing
-$currentRouter = $router->matchFromPath($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+$router->matchFromPath($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 
 
 ?>
