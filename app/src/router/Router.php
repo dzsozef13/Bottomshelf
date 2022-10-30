@@ -64,12 +64,14 @@ public function matchFromPath(string $path, string $method)
     foreach (self::$routes as $route) {
         if ($route->match($path, $method) === false) {
             continue;
-        }
+        } 
         if($route->getMethods()[0] == 'GET') {
             $this->viewCtrl->renderViewOnly($route->getName());
         }
         return $route;
     }
+
+    echo 'not found 404';
 }
 
  /**
