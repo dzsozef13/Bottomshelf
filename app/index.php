@@ -6,7 +6,6 @@ include_files(array(
     "Console",
     "Router",
     "Routes",
-    "ASD"
 ));
 
 $session = new SessionController();

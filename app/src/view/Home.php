@@ -4,13 +4,14 @@ include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
     "Console",
     "Router",
-    "UserController"
+    "UserController",
+    "Post"
 ));
 
 // $session = new SessionController();
 // $session->connect_to_db();
 // console_log("Ready");
-
+$test = new Post()
 ?>
 
 <!DOCTYPE html>
@@ -28,5 +29,6 @@ include_files(array(
     <h1 class="text-3xl font-bold underline">
         Hello world!
     </h1>
+    <?php $test->create([1,2]) ?>
 </body>
 </html>

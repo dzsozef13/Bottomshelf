@@ -2,7 +2,8 @@
 
 include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
-    "Console"
+    "Console",
+    "DbConnectionController"
 ));
 
 class Post {
@@ -32,10 +33,18 @@ class Post {
 
     // CRUD OPERATIONS
     public function create(array $data) {
+        $db = new DbConnectionController();
+
+        if($db != null) {
+            var_dump($db);
+        }
+    }
+
+    public function getById(int $id) {
 
     }
 
-    public function read(int $id) {
+    public function getAll() {
 
     }
 
