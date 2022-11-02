@@ -29,10 +29,6 @@ class DbConnectionController {
         }
     }
 
-    public function getConnection() {
-        return $this->dbCon;
-    }
-
     public function destroy() {
         $this->dbCon = null;
     }

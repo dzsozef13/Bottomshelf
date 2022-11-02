@@ -33,10 +33,11 @@ class Post {
 
     // CRUD OPERATIONS
     public function create(array $data) {
-        $db = new DbConnectionController();
-
-        if($db != null) {
-            var_dump($db);
+        $conn = new DbConnectionController();
+        $query = "INSERT INTO Review (FullName, Contents) VALUES (:fullName, :contents)";
+        
+        if(isset($conn)) {
+            $handle = $conn->dbcon->prepare("SELECT * FROM Review WHERE ReviewID = $reviewID");
         }
     }
 
