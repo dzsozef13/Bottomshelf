@@ -33,16 +33,16 @@ class Post {
 
     // CRUD OPERATIONS
     public function create(array $data) {
-        $conn = new DbConnectionController();
-        $query = "INSERT INTO Review (FullName, Contents) VALUES (:fullName, :contents)";
-        
-        if(isset($conn)) {
-            $handle = $conn->dbcon->prepare("SELECT * FROM Review WHERE ReviewID = $reviewID");
-        }
+       
     }
 
     public function getById(int $id) {
+        $conn = new DbConnectionController();
+        $query = "SELECT * FROM Post (FullName, Contents) VALUES (:fullName, :contents)";
 
+        if(isset($conn)) {
+            // $handle = $conn->dbcon->prepare("SELECT * FROM Review WHERE ReviewID = $reviewID");
+        }
     }
 
     public function getAll() {
