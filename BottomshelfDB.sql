@@ -4,7 +4,7 @@ USE BottomshelfDB;
 
 CREATE TABLE Country (
     CountryCode varchar(3) NOT NULL PRIMARY KEY,
-    CountryName varchar(25)
+    CountryName varchar(64)
 );
 CREATE TABLE `Role` (
     RoleId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -12,7 +12,7 @@ CREATE TABLE `Role` (
 );
 CREATE TABLE Badge (
     BadgeId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    BadgeName varchar(10)
+    BadgeName varchar(64)
 );
 CREATE TABLE Tag (
     TagId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -26,7 +26,7 @@ CREATE TABLE `User` (
     UserId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Email varchar(128) NOT NULL,
     UserPassword varchar(128) NOT NULL,
-    Username varchar(24),
+    Username varchar(64),
     DateOfBirth date NOT NULL,
     ProfileImgUrl varchar(128),
     BioDescription varchar(256),

@@ -175,3 +175,30 @@ INSERT INTO Country (CountryCode, CountryName) VALUES
 ('YEM','Yemen'),
 ('ZMB','Zambia'),
 ('ZWE','Zimbabwe');
+
+INSERT INTO `Role` (RoleId, RoleName) VALUES (NULL,'User');
+INSERT INTO `Role` (RoleId, RoleName) VALUES (NULL,'Admin');
+
+INSERT INTO Badge (BadgeId, BadgeName) VALUES (NULL,'DummyBadge');
+INSERT INTO Badge (BadgeId, BadgeName) VALUES (NULL,'BestBadge');
+
+INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Easy');
+INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Intermediate');
+INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Hard');
+
+INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Active');
+INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Banned');
+INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Reported');
+INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Deleted');
+
+INSERT INTO `User`  (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgUrl, BioDescription, CountryCode, RoleId, StatusId) 
+VALUES (NULL,'test@lol.com', 'something123', 'ProudTester', '1999-11-11', NULL, 'I existed only to test', 'POL', 1, 1);
+
+INSERT INTO `User`  (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgUrl, BioDescription, CountryCode, RoleId, StatusId) 
+VALUES (NULL,'monkey@lol.com', 'monkeyPass', 'MonkeyFromATree', '200-01-12', NULL, 'Test Or Not To Test', 'DNK', 1, 1);
+
+
+INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, CreatedAt, UserId, ChildPostId, StatusId)
+VALUES (NULL,'First Post', 'Describing the post always', TRUE, FALSE, 1667561122, 1, NULL, 1);
+INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, CreatedAt, UserId, ChildPostId, StatusId)
+VALUES (NULL,'Another Post', 'Just a beer', TRUE, FALSE, 1667467522, 1, NULL, 1);
