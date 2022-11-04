@@ -18,6 +18,6 @@ include_files(array(
     <title>Login</title>
 </head>
 <body>
-    <h1>Login here, only for router testing purposes for now</h1>
+    <h1>Dashboard</h1>
 </body>
 </html>

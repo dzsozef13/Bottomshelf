@@ -1,12 +1,13 @@
 <?php 
-include_once 'autoload.php';
 include_files(array(
     "Console",
 ));
-// (GET) site controller for getting information per page
-//  (POST) specific controller with post 
-Router::add(new Route("home", "/", [PageController::class, 'home'], ['GET']));
-Router::add(new Route("login", "/login", [PageController::class, 'login'], ['GET']));
 
-// example post
-// Router::add(new Route("createPost", "/post/create", [PostController::class, 'createPost'], ['POST']));
+/**
+ * Router::add(new Route("Destination", "/path", [parameter=value], 'TYPE'));
+ */
+Router::add(new Route("", "view/render/home"));
+Router::add(new Route("Home", "view/render/home"));
+Router::add(new Route("Login", "view/render/login"));
+Router::add(new Route("Asd", "view/print/asd"));
+Router::add(new Route("Dashboard", "view/render/dashboard"));
