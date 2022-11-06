@@ -33,20 +33,23 @@ class Post extends BaseModel {
     // }
 
     // CRUD OPERATIONS
-    public function createPost($title, $description, $isPublic, $isSticky, $userId, $statusId) {
+      /**
+     * @param array all values needed to create a post
+     */
+    public function createPost($data) {
         try {
-			$conn = BaseModel::openDbConnetion();
+		$conn = BaseModel::openDbConnetion();
      
-			$query = "INSERT INTO Post (Title, PostDescription, IsPublic, IsSticky, UserId, StatusId) VALUES (:title, :postDescription, :isPublic, :isSticky, :userId, :statusId)";
+		$query = "INSERT INTO Post (Title, PostDescription, IsPublic, IsSticky, UserId, StatusId) VALUES (:title, :postDescription, :isPublic, :isSticky, :userId, :statusId)";
           
-			$handle = $conn->prepare($query);
+		$handle = $conn->prepare($query);
 
-            $handle->bindParam(':title', $title);
-            $handle->bindParam(':postDescription', $description);
-            $handle->bindParam(':isPublic', $isPublic);
-            $handle->bindParam(':isSticky', $isSticky);
-            $handle->bindParam(':userId', $userId);
-            $handle->bindParam(':statusId', $statusId);
+            $handle->bindValue(':title', $data['title']);
+            $handle->bindValue(':postDescription', $data['description']);
+            $handle->bindValue(':isPublic', $data['isPublic']);
+            $handle->bindValue(':isSticky', $data['isSticky']);
+            $handle->bindValue(':userId', $data['userId']);
+            $handle->bindValue(':statusId', $data['statusId']);
 
 		    $handle->execute();
 
