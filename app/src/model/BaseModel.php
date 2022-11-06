@@ -5,7 +5,7 @@ include_files(array(
     "DbConnectionController"
 ));
 
-class BaseModel {
+class CoreModel {
     protected $db;
 
     public function __construct() {

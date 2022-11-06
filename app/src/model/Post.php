@@ -4,17 +4,17 @@ include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
     "Console",
     "DbConnectionController",
-    "BaseModel"
+    "CoreModel"
 ));
 
-class Post extends BaseModel {
+class Post extends CoreModel {
 
       /**
      * @param array data all values needed to create a post
      */
     public function createPost($data) {
         try {
-		$conn = BaseModel::openDbConnetion();
+		$conn = CoreModel::openDbConnetion();
      
 		$query = "INSERT INTO Post (Title, PostDescription, IsPublic, IsSticky, UserId, StatusId) VALUES (:title, :postDescription, :isPublic, :isSticky, :userId, :statusId)";
           
@@ -33,7 +33,7 @@ class Post extends BaseModel {
 		    $handle->execute();
 
 		    //close the connection
-            BaseModel::closeDbConnection();
+                CoreModel::closeDbConnection();
             $conn = null;
 		} catch (PDOException $e) {
             echo  $e->getMessage();
@@ -48,7 +48,7 @@ class Post extends BaseModel {
     public function getByPostId($postId) {
        //Sanitize this and make sure is safe
         try {
-		$conn = BaseModel::openDbConnetion();
+		$conn = CoreModel::openDbConnetion();
      
 		$query = "SELECT * FROM Post WHERE PostId = :PostId";
           
@@ -59,7 +59,7 @@ class Post extends BaseModel {
             $result = $handle->fetch(PDO::FETCH_ASSOC);
 
 		    //close the connection
-            BaseModel::closeDbConnection();
+            CoreModel::closeDbConnection();
             $conn = null;
 
             return $result;
@@ -74,7 +74,7 @@ class Post extends BaseModel {
     public function getAll() {
       // might improve the get all functions to avoid fetching too much
         try {
-		$conn = BaseModel::openDbConnetion();
+		$conn = CoreModel::openDbConnetion();
      
 		$query = "SELECT * FROM Post ORDER BY CreatedAt";
           
@@ -84,7 +84,7 @@ class Post extends BaseModel {
             $result = $handle->fetchAll(PDO::FETCH_ASSOC);
 
 		    //close the connection
-            BaseModel::closeDbConnection();
+            CoreModel::closeDbConnection();
             $conn = null;
 
             return $result;
@@ -99,7 +99,7 @@ class Post extends BaseModel {
      */
     public function getAllByUserId($userId) {
         try {
-		$conn = BaseModel::openDbConnetion();
+		$conn = CoreModel::openDbConnetion();
      
 		$query = "SELECT * FROM Post WHERE UserId = :UserId ORDER BY CreatedAt";
           
@@ -110,7 +110,7 @@ class Post extends BaseModel {
             $result = $handle->fetchAll(PDO::FETCH_ASSOC);
 
 		    //close the connection
-            BaseModel::closeDbConnection();
+            CoreModel::closeDbConnection();
             $conn = null;
 
             return $result;
@@ -125,7 +125,7 @@ class Post extends BaseModel {
      */
     public function getAllByStatusId($statusId) {
         try {
-		$conn = BaseModel::openDbConnetion();
+		$conn = CoreModel::openDbConnetion();
      
 		$query = "SELECT * FROM Post WHERE StatusId = :StatusId ORDER BY CreatedAt";
           
@@ -136,7 +136,7 @@ class Post extends BaseModel {
             $result = $handle->fetchAll(PDO::FETCH_ASSOC);
 
 		    //close the connection
-            BaseModel::closeDbConnection();
+            CoreModel::closeDbConnection();
             $conn = null;
 
             return $result;
@@ -151,7 +151,7 @@ class Post extends BaseModel {
      */
     public function updatePost($id, $data) {
       try {
-            $conn = BaseModel::openDbConnetion();
+            $conn = CoreModel::openDbConnetion();
             $query = "UPDATE Post SET Title = :title, PostDescription = :postDescription, IsPublic = :isPublic WHERE PostId = :postId";
       
             $handle = $conn->prepare($query);
@@ -167,7 +167,7 @@ class Post extends BaseModel {
             $handle->execute();
       
             //close the connection
-            BaseModel::closeDbConnection();
+            CoreModel::closeDbConnection();
             $conn = null;
       } catch (PDOException $e) {
             print($e->getMessage());
@@ -183,7 +183,7 @@ class Post extends BaseModel {
     // in the controller the logic will be split into markAsBanned, markAsActive, markAsReported
     public function updatePostStatus($id, $statusId) {
             try {
-                  $conn = BaseModel::openDbConnetion();
+                  $conn = CoreModel::openDbConnetion();
                   $query = "UPDATE Post SET StatusId = :statusId WHERE PostId = :postId";
             
                   $handle = $conn->prepare($query);
@@ -194,7 +194,7 @@ class Post extends BaseModel {
                   $handle->execute();
             
                   //close the connection
-                  BaseModel::closeDbConnection();
+                  CoreModel::closeDbConnection();
                   $conn = null;
             } catch (PDOException $e) {
                   print($e->getMessage());

@@ -11,7 +11,7 @@ function include_files($files) {
             // MODEL
             case "Post":
             case "Route":
-            case "BaseModel":
+            case "CoreModel":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/model/'."$filename".'.php';
                 break;
             // CONTROLLER
