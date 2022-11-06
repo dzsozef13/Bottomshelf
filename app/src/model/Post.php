@@ -87,8 +87,8 @@ class Post extends BaseModel {
             $conn = null;
 
             return $result;
-		} catch (PDOException $err) {
-            print($err->getMessage());
+		} catch (PDOException $e) {
+            print($e->getMessage());
 		}
     }
 
@@ -112,8 +112,8 @@ class Post extends BaseModel {
             $conn = null;
 
             return $result;
-		} catch (PDOException $err) {
-            print($err->getMessage());
+		} catch (PDOException $e) {
+                  print($e->getMessage());
 		}
     }
 
@@ -138,8 +138,8 @@ class Post extends BaseModel {
             $conn = null;
 
             return $result;
-		} catch (PDOException $err) {
-            print($err->getMessage());
+		} catch (PDOException $e) {
+                  print($e->getMessage());
 		}
     }
 
@@ -164,8 +164,8 @@ class Post extends BaseModel {
             $conn = null;
 
             return $result;
-		} catch (PDOException $err) {
-            print($err->getMessage());
+		} catch (PDOException $e) {
+                  print($e->getMessage());
 		}
     }
 
@@ -191,21 +191,34 @@ class Post extends BaseModel {
             BaseModel::closeDbConnection();
             $conn = null;
       } catch (PDOException $e) {
-            echo  $e->getMessage();
+            print($e->getMessage());
       }
 
     }
 
-    public function markAsBanned($id) {
-
-      }
-
-      public function markAsReported($id) {
-
+    // in the controller the logic will be split into markAsBanned, markAsActive, markAsReported
+    public function updatePostStatus($id, $statusId) {
+            try {
+                  $conn = BaseModel::openDbConnetion();
+                  $query = "UPDATE Post SET StatusId = :statusId WHERE PostId = :postId";
+            
+                  $handle = $conn->prepare($query);
+            
+                  $handle->bindParam(':statusId', $statusId);
+                  $handle->bindParam(':postId', $id);
+            
+                  $handle->execute();
+            
+                  //close the connection
+                  BaseModel::closeDbConnection();
+                  $conn = null;
+            } catch (PDOException $e) {
+                  print($e->getMessage());
+            }
       }
 
     public function deletePost($id) {
-
+     
     }
 
     public function softDeletePost($id) {
