@@ -169,7 +169,10 @@ class Post extends BaseModel {
 		}
     }
 
-
+   /**
+      * @param int postId
+      * @param array updatable data
+     */
     public function updatePost($id, $data) {
       try {
             $conn = BaseModel::openDbConnetion();
@@ -196,6 +199,11 @@ class Post extends BaseModel {
 
     }
 
+
+   /**
+      * @param int postId
+      * @param int statusId
+     */
     // in the controller the logic will be split into markAsBanned, markAsActive, markAsReported
     public function updatePostStatus($id, $statusId) {
             try {
