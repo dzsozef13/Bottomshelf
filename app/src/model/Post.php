@@ -8,31 +8,7 @@ include_files(array(
 ));
 
 class Post extends BaseModel {
-    // protected $id;
-    // protected $title;
-    // protected $description;
-    // protected $tags;
-    // protected $isSticky;
-    // protected $isPublic;
-    // protected $timestamp;
-    // // protected $media;
-    // // protected $comments;
-    // // protected $reactions;
 
-    // // GET METHODS
-    // public function getId() {
-    //     return $this->id;
-    // }
-
-    // public function getTitle() {
-    //     return $this->title;
-    // }
-
-    // public function getDescription() {
-    //     return $this->description;
-    // }
-
-    // CRUD OPERATIONS
       /**
      * @param array data all values needed to create a post
      */
