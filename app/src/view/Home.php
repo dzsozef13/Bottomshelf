@@ -2,12 +2,9 @@
 include_files(array(
     "Console",
     "Router",
-    "UserController"
+    "UserController",
+    "Post"
 ));
-
-// $session = new SessionController();
-// $session->connect_to_db();
-// console_log("Ready");
 
 ?>
 
@@ -28,5 +25,7 @@ include_files(array(
     <h1 class="text-3xl font-bold underline">
         Hello world!
     </h1>
+   <a href="/createPost">test</a>
+
 </body>
 </html>

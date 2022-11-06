@@ -10,8 +10,10 @@ class SessionController {
     }
 
     public function connect_to_db() {
-        if($db = new DbConnectionController()) {
-            return $db;
+        $db = new DbConnectionController();
+
+        if(isset($db) && isset($db->dbCon) ) {
+            return $db->dbCon;
         } else {
             $db->destroy();
         }

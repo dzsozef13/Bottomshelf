@@ -10,7 +10,7 @@ class DbConnectionController {
     private static $dbName = DB_NAME;
     private static $dbHost = DB_SERVER;
 
-    public $dbCon;
+    private $dbCon;
 
     public function __construct() {
         $user = self::$user;
@@ -19,16 +19,24 @@ class DbConnectionController {
         $dbHost = self::$dbHost;
 
         try {
-            $this->dbCon = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $user, $pass);
+            $this->dbCon = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $user, $pass,array(
+				\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+				\PDO::ATTR_PERSISTENT => false
+			));
             console_log("YAY, we have a database *_*");
-            return $this->dbCon;
         } catch (PDOException $err) {
             console_error("Failed db connection");
-            return null;
+            $this->destroy();
         }
     }
 
     public function destroy() {
         $this->dbCon = null;
+        console_log("connection closed!");
     }
+
+    public function useDb() {
+       return $this->dbCon;
+    }
+
 }
