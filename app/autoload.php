@@ -17,6 +17,7 @@ function include_files($files) {
             // CONTROLLER
             case "SessionController":
             case "DbConnectionController":
+            case "PostController":
             case "UserController":
             case "ViewController":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/controller/'."$filename".'.php';

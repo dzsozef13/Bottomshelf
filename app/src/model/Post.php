@@ -8,33 +8,55 @@ include_files(array(
 ));
 
 class Post extends BaseModel {
-    protected $id;
-    protected $title;
-    protected $description;
-    protected $tags;
-    protected $isSticky;
-    protected $isPublic;
-    protected $timestamp;
-    // protected $media;
-    // protected $comments;
-    // protected $reactions;
+    // protected $id;
+    // protected $title;
+    // protected $description;
+    // protected $tags;
+    // protected $isSticky;
+    // protected $isPublic;
+    // protected $timestamp;
+    // // protected $media;
+    // // protected $comments;
+    // // protected $reactions;
 
-    // GET METHODS
-    public function getId() {
-        return $this->id;
-    }
+    // // GET METHODS
+    // public function getId() {
+    //     return $this->id;
+    // }
 
-    public function getTitle() {
-        return $this->title;
-    }
+    // public function getTitle() {
+    //     return $this->title;
+    // }
 
-    public function getDescription() {
-        return $this->description;
-    }
+    // public function getDescription() {
+    //     return $this->description;
+    // }
 
     // CRUD OPERATIONS
-    public function create(array $data) {
-       
+    public function createPost($title, $description, $isPublic, $isSticky, $userId, $statusId) {
+        try {
+			$conn = BaseModel::openDbConnetion();
+     
+			$query = "INSERT INTO Post (Title, PostDescription, IsPublic, IsSticky, UserId, StatusId) VALUES (:title, :postDescription, :isPublic, :isSticky, :userId, :statusId)";
+          
+			$handle = $conn->prepare($query);
+
+            $handle->bindParam(':title', $title);
+            $handle->bindParam(':postDescription', $description);
+            $handle->bindParam(':isPublic', $isPublic);
+            $handle->bindParam(':isSticky', $isSticky);
+            $handle->bindParam(':userId', $userId);
+            $handle->bindParam(':statusId', $statusId);
+
+		    $handle->execute();
+
+		    //close the connection
+            BaseModel::closeDbConnection();
+            $conn = null;
+		} catch (PDOException $e) {
+            echo  $e->getMessage();
+          }
+
     }
 
     /**
@@ -60,7 +82,7 @@ class Post extends BaseModel {
 
             return $result;
 		} catch (PDOException $err) {
-            console_log("Failed in Model");
+            print($err->getMessage());
 		}
     }
 
@@ -84,7 +106,7 @@ class Post extends BaseModel {
 
             return $result;
 		} catch (PDOException $err) {
-            console_log("Failed in Model");
+            print($err->getMessage());
 		}
     }
 
@@ -110,7 +132,7 @@ class Post extends BaseModel {
 
             return $result;
 		} catch (PDOException $err) {
-            console_log("Failed in Model");
+            print($err->getMessage());
 		}
     }
 
@@ -136,7 +158,7 @@ class Post extends BaseModel {
 
             return $result;
 		} catch (PDOException $err) {
-            console_log("Failed in Model");
+            print($err->getMessage());
 		}
     }
 

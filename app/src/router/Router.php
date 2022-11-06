@@ -2,7 +2,8 @@
 include_files(array(
     "Console",
     "Route",
-    "ViewController"
+    "ViewController",
+    "PostController"
 ));
 // you first create all possible routes
 // Match function when we need to navigate somewhere and the router has to find an existing path and compare

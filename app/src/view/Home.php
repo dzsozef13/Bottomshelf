@@ -6,8 +6,6 @@ include_files(array(
     "Post"
 ));
 
-$test = new Post()
-
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +25,7 @@ $test = new Post()
     <h1 class="text-3xl font-bold underline">
         Hello world!
     </h1>
-   <p> <?php var_dump($test->getAllByStatusId(3)) ?></p>
+   <a href="/createPost">test</a>
+
 </body>
 </html>

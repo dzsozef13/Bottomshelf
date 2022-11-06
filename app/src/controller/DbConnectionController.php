@@ -19,7 +19,10 @@ class DbConnectionController {
         $dbHost = self::$dbHost;
 
         try {
-            $this->dbCon = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $user, $pass);
+            $this->dbCon = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $user, $pass,array(
+				\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+				\PDO::ATTR_PERSISTENT => false
+			));
             console_log("YAY, we have a database *_*");
         } catch (PDOException $err) {
             console_error("Failed db connection");
