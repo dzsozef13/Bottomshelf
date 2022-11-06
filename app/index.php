@@ -5,15 +5,17 @@ include_files(array(
     "SessionController",
     "Console",
     "Router",
-    "Routes",
+    "Routes"
 ));
 
 $session = new SessionController();
 $session->connect_to_db();
 console_log("Ready");
-// premade routes are in Routes file
-$router = new Router();
-$router->matchFromPath($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 
+/**
+ * Router tries to serve the current URL request
+ */
+$router = new Router();
+$router->serveRequeset();
 
 ?>

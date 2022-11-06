@@ -1,6 +1,4 @@
 <?php
-
-include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
     "Console",
     "Router",
@@ -25,7 +23,9 @@ $test = new Post()
 </head>
 <body>
     <h1>Home here, only for router testing purposes for now</h1>
-    <a href="/login"><button>go to login</button></a>
+    <a href="Login"><button>login</button></a>
+    <br>
+    <a href="Dashboard"><button>dashboard</button></a>
     <h1 class="text-3xl font-bold underline">
         Hello world!
     </h1>

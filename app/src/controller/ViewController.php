@@ -1,11 +1,10 @@
 <?php 
-include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
     "Console",
     "Route",
 ));
 
-class ViewController{
+class ViewController {
 
 //   public function renderView($route){
 //     include $_SERVER['DOCUMENT_ROOT']."/src/view/" . $route->getName() . ".php";
@@ -26,11 +25,12 @@ class ViewController{
 //         return str_replace('{{content}}', $viewContent, $layoutContent);
 //     }
 
-    public function renderViewOnly($viewName)
-    {
-        // ob_start();
-        include_once $_SERVER['DOCUMENT_ROOT']."/src/view/" . $viewName . ".php";
-        // return ob_get_clean();
+    public function render($viewName) {
+        include_files(array(ucfirst($viewName)));
+    }
+
+    public function print($asd) {
+        echo $asd;
     }
 
 }

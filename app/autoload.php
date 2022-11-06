@@ -1,19 +1,10 @@
 <?php
-
-include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
     "Console"
 ));
-
-// Includes files with passed filenames
-/* Usage:
-
-include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
-include_files(array(
-    "Console"
-));
-
-*/
+/**
+ * Globally used function to inlcude files from the directory.
+ */
 function include_files($files) {
     foreach($files as $filename) {
         switch ($filename) {
@@ -21,32 +12,33 @@ function include_files($files) {
             case "Post":
             case "Route":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/model/'."$filename".'.php';
-                console_log("Using ".$filename."");
                 break;
             // CONTROLLER
             case "SessionController":
             case "DbConnectionController":
-            case "ImageController":
             case "UserController":
             case "ViewController":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/controller/'."$filename".'.php';
-                console_log("Using ".$filename."");
+                break;
+            // VIEW
+            case "Home":
+            case "Login":
+            case "Dashboard":
+                include_once $_SERVER['DOCUMENT_ROOT'].'/src/view/'."$filename".'.php';
                 break;
             // CONFIG
             case "Const":
             case "Console":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/config/'."$filename".'.php';
-                console_log("Using ".$filename."");
                 break;
             // ROUTER
             case "Router":
             case "Routes":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/router/'."$filename".'.php';
-                console_log("Using ".$filename."");
                 break;
             // ROUTE NOT FOUND
             default:
-                console_error("Tried to use non-existing module: ".$filename);
+                console_error("Tried to use undefined module: ".$filename);
                 break;
         }
     }
