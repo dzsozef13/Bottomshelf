@@ -6,9 +6,6 @@ include_files(array(
     "Post"
 ));
 
-// $session = new SessionController();
-// $session->connect_to_db();
-// console_log("Ready");
 $test = new Post()
 
 ?>
@@ -30,6 +27,6 @@ $test = new Post()
     <h1 class="text-3xl font-bold underline">
         Hello world!
     </h1>
-   <p> <?php var_dump($test->getById(1)) ?></p>
+   <p> <?php var_dump($test->getAllByStatusId(3)) ?></p>
 </body>
 </html>

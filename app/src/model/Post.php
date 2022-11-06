@@ -37,15 +37,19 @@ class Post extends BaseModel {
        
     }
 
-    public function getById(int $id) {
+    /**
+     * @param int is the id of the post you would like to fetch
+     * @return Post post with matching Id  (if none then false)
+     */
+    public function getByPostId($postId) {
        //Sanitize this and make sure is safe
         try {
 			$conn = BaseModel::openDbConnetion();
      
-			$query = "SELECT * FROM Post WHERE (:PostId)";
+			$query = "SELECT * FROM Post WHERE PostId = :PostId";
           
 			$handle = $conn->prepare($query);
-		    $handle->bindParam(':PostId', $id);
+		    $handle->bindParam(':PostId', $postId);
 		    $handle->execute();
 	
             $result = $handle->fetch(PDO::FETCH_ASSOC);
@@ -60,8 +64,80 @@ class Post extends BaseModel {
 		}
     }
 
+     /**
+     * @return Post[]  (if none then empty array [])
+     */
     public function getAll() {
+        try {
+			$conn = BaseModel::openDbConnetion();
+     
+			$query = "SELECT * FROM Post ORDER BY CreatedAt";
+          
+			$handle = $conn->prepare($query);
+		    $handle->execute();
+	
+            $result = $handle->fetchAll(PDO::FETCH_ASSOC);
 
+		    //close the connection
+            BaseModel::closeDbConnection();
+            $conn = null;
+
+            return $result;
+		} catch (PDOException $err) {
+            console_log("Failed in Model");
+		}
+    }
+
+    /**
+     * @param int 
+     * @return Post[] (if none then empty array [])
+     */
+    public function getAllByUserId($userId) {
+        try {
+			$conn = BaseModel::openDbConnetion();
+     
+			$query = "SELECT * FROM Post WHERE UserId = :UserId ORDER BY CreatedAt";
+          
+			$handle = $conn->prepare($query);
+            $handle->bindParam(':UserId', $userId);
+		    $handle->execute();
+	
+            $result = $handle->fetchAll(PDO::FETCH_ASSOC);
+
+		    //close the connection
+            BaseModel::closeDbConnection();
+            $conn = null;
+
+            return $result;
+		} catch (PDOException $err) {
+            console_log("Failed in Model");
+		}
+    }
+
+    /**
+     * @param int 
+     * @return Post[]  (if none then empty array [])
+     */
+    public function getAllByStatusId($statusId) {
+        try {
+			$conn = BaseModel::openDbConnetion();
+     
+			$query = "SELECT * FROM Post WHERE StatusId = :StatusId ORDER BY CreatedAt";
+          
+			$handle = $conn->prepare($query);
+            $handle->bindParam(':StatusId', $statusId);
+		    $handle->execute();
+	
+            $result = $handle->fetchAll(PDO::FETCH_ASSOC);
+
+		    //close the connection
+            BaseModel::closeDbConnection();
+            $conn = null;
+
+            return $result;
+		} catch (PDOException $err) {
+            console_log("Failed in Model");
+		}
     }
 
     public function update(int $id, array $data) {
