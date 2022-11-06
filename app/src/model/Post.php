@@ -34,7 +34,7 @@ class Post extends BaseModel {
 
     // CRUD OPERATIONS
       /**
-     * @param array all values needed to create a post
+     * @param array data all values needed to create a post
      */
     public function createPost($data) {
         try {
@@ -44,8 +44,11 @@ class Post extends BaseModel {
           
 		$handle = $conn->prepare($query);
 
-            $handle->bindValue(':title', $data['title']);
-            $handle->bindValue(':postDescription', $data['description']);
+            $sanitizedTitle = htmlspecialchars($data['title']);
+            $sanitizedDescription = htmlspecialchars($data['description']);
+
+            $handle->bindParam(':title', $sanitizedTitle);
+            $handle->bindParam(':postDescription', $sanitizedDescription);
             $handle->bindValue(':isPublic', $data['isPublic']);
             $handle->bindValue(':isSticky', $data['isSticky']);
             $handle->bindValue(':userId', $data['userId']);
@@ -63,19 +66,19 @@ class Post extends BaseModel {
     }
 
     /**
-     * @param int is the id of the post you would like to fetch
+     * @param int postId is the id of the post you would like to fetch
      * @return Post post with matching Id  (if none then false)
      */
     public function getByPostId($postId) {
        //Sanitize this and make sure is safe
         try {
-			$conn = BaseModel::openDbConnetion();
+		$conn = BaseModel::openDbConnetion();
      
-			$query = "SELECT * FROM Post WHERE PostId = :PostId";
+		$query = "SELECT * FROM Post WHERE PostId = :PostId";
           
-			$handle = $conn->prepare($query);
-		    $handle->bindParam(':PostId', $postId);
-		    $handle->execute();
+		$handle = $conn->prepare($query);
+		$handle->bindParam(':PostId', $postId);
+		$handle->execute();
 	
             $result = $handle->fetch(PDO::FETCH_ASSOC);
 
@@ -93,13 +96,14 @@ class Post extends BaseModel {
      * @return Post[]  (if none then empty array [])
      */
     public function getAll() {
+      // might improve the get all functions to avoid fetching too much
         try {
-			$conn = BaseModel::openDbConnetion();
+		$conn = BaseModel::openDbConnetion();
      
-			$query = "SELECT * FROM Post ORDER BY CreatedAt";
+		$query = "SELECT * FROM Post ORDER BY CreatedAt";
           
-			$handle = $conn->prepare($query);
-		    $handle->execute();
+		$handle = $conn->prepare($query);
+		$handle->execute();
 	
             $result = $handle->fetchAll(PDO::FETCH_ASSOC);
 
@@ -114,16 +118,16 @@ class Post extends BaseModel {
     }
 
     /**
-     * @param int 
+     * @param int userId
      * @return Post[] (if none then empty array [])
      */
     public function getAllByUserId($userId) {
         try {
-			$conn = BaseModel::openDbConnetion();
+		$conn = BaseModel::openDbConnetion();
      
-			$query = "SELECT * FROM Post WHERE UserId = :UserId ORDER BY CreatedAt";
+		$query = "SELECT * FROM Post WHERE UserId = :UserId ORDER BY CreatedAt";
           
-			$handle = $conn->prepare($query);
+		$handle = $conn->prepare($query);
             $handle->bindParam(':UserId', $userId);
 		    $handle->execute();
 	
@@ -140,18 +144,18 @@ class Post extends BaseModel {
     }
 
     /**
-     * @param int 
+     * @param int statusId
      * @return Post[]  (if none then empty array [])
      */
     public function getAllByStatusId($statusId) {
         try {
-			$conn = BaseModel::openDbConnetion();
+		$conn = BaseModel::openDbConnetion();
      
-			$query = "SELECT * FROM Post WHERE StatusId = :StatusId ORDER BY CreatedAt";
+		$query = "SELECT * FROM Post WHERE StatusId = :StatusId ORDER BY CreatedAt";
           
-			$handle = $conn->prepare($query);
+		$handle = $conn->prepare($query);
             $handle->bindParam(':StatusId', $statusId);
-		    $handle->execute();
+		$handle->execute();
 	
             $result = $handle->fetchAll(PDO::FETCH_ASSOC);
 
@@ -165,11 +169,46 @@ class Post extends BaseModel {
 		}
     }
 
-    public function update(int $id, array $data) {
+
+    public function updatePost($id, $data) {
+      try {
+            $conn = BaseModel::openDbConnetion();
+            $query = "UPDATE Post SET Title = :title, PostDescription = :postDescription, IsPublic = :isPublic WHERE PostId = :postId";
+      
+            $handle = $conn->prepare($query);
+      
+            $sanitizedTitle = htmlspecialchars($data['title']);
+            $sanitizedDescription = htmlspecialchars($data['description']);
+      
+            $handle->bindParam(':title', $sanitizedTitle);
+            $handle->bindParam(':postDescription', $sanitizedDescription);
+            $handle->bindValue(':isPublic', $data['isPublic']);
+            $handle->bindParam(':postId', $id);
+      
+            $handle->execute();
+      
+            //close the connection
+            BaseModel::closeDbConnection();
+            $conn = null;
+      } catch (PDOException $e) {
+            echo  $e->getMessage();
+      }
 
     }
 
-    public function delete(int $id) {
+    public function markAsBanned($id) {
+
+      }
+
+      public function markAsReported($id) {
+
+      }
+
+    public function deletePost($id) {
 
     }
+
+    public function softDeletePost($id) {
+
+}
 }
