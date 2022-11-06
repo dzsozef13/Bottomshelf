@@ -3,10 +3,11 @@
 include_once $_SERVER['DOCUMENT_ROOT']."/autoload.php";
 include_files(array(
     "Console",
-    "DbConnectionController"
+    "DbConnectionController",
+    "BaseModel"
 ));
 
-class Post {
+class Post extends BaseModel {
     protected $id;
     protected $title;
     protected $description;
@@ -37,12 +38,26 @@ class Post {
     }
 
     public function getById(int $id) {
-        $conn = new DbConnectionController();
-        $query = "SELECT * FROM Post (FullName, Contents) VALUES (:fullName, :contents)";
+       //Sanitize this and make sure is safe
+        try {
+			$conn = BaseModel::openDbConnetion();
+     
+			$query = "SELECT * FROM Post WHERE (:PostId)";
+          
+			$handle = $conn->prepare($query);
+		    $handle->bindParam(':PostId', $id);
+		    $handle->execute();
+	
+            $result = $handle->fetch(PDO::FETCH_ASSOC);
 
-        if(isset($conn)) {
-            // $handle = $conn->dbcon->prepare("SELECT * FROM Review WHERE ReviewID = $reviewID");
-        }
+		    //close the connection
+            BaseModel::closeDbConnection();
+            $conn = null;
+
+            return $result;
+		} catch (PDOException $err) {
+            console_log("Failed in Model");
+		}
     }
 
     public function getAll() {

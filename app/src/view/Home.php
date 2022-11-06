@@ -10,6 +10,7 @@ include_files(array(
 // $session->connect_to_db();
 // console_log("Ready");
 $test = new Post()
+
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +30,6 @@ $test = new Post()
     <h1 class="text-3xl font-bold underline">
         Hello world!
     </h1>
-    <?php $test->create([1,2]) ?>
+   <p> <?php var_dump($test->getById(1)) ?></p>
 </body>
 </html>

@@ -10,7 +10,7 @@ class DbConnectionController {
     private static $dbName = DB_NAME;
     private static $dbHost = DB_SERVER;
 
-    public $dbCon;
+    private $dbCon;
 
     public function __construct() {
         $user = self::$user;
@@ -23,11 +23,17 @@ class DbConnectionController {
             console_log("YAY, we have a database *_*");
         } catch (PDOException $err) {
             console_error("Failed db connection");
-             $this->destroy();
+            $this->destroy();
         }
     }
 
     public function destroy() {
         $this->dbCon = null;
+        console_log("connection closed!");
     }
+
+    public function useDb() {
+       return $this->dbCon;
+    }
+
 }
