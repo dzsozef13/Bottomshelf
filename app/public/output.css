@@ -571,11 +571,6 @@ video {
   color: rgb(144 202 156 / var(--tw-text-opacity));
 }
 
-.text-red-600 {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
-}
-
 .text-dim-white-900 {
   --tw-text-opacity: 1;
   color: rgb(216 216 216 / var(--tw-text-opacity));
@@ -585,4 +580,7 @@ video {
   text-decoration-line: underline;
 }
 
-
+// this way you can reference colors defined in tailwind config
+h2{
+  color: #D8D8D8;
+}
