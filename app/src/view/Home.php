@@ -17,16 +17,8 @@ include_files(array(
     <link href="../../public/output.css" rel="stylesheet">
     <title>Home</title>
 </head>
-<body>
-    <h1 >Home here, only for router testing purposes for now</h1>
+<body class="bg-background-black-900 text-dim-white-900">
+    <h1>Home here, only for router testing purposes for now</h1>
     <a href="Login"><button>login</button></a>
-    <br>
-    <a href="Dashboard"><button>dashboard</button></a>
-    <h1 class="text-3xl font-mono text-highlight-green-900 font-bold underline">
-        Hello world!
-    </h1>
-    <p class="text-dim-white-900">aaaaaa</p>
-   <a href="/createPost">test</a>
-    <h2>meow</h2>
 </body>
 </html>
