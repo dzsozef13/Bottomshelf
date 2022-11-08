@@ -22,7 +22,7 @@ include_files(array(
     <a href="Login"><button>login</button></a>
     <br>
     <a href="Dashboard"><button>dashboard</button></a>
-    <h1 class="text-3xl text-highlight-green-900 font-bold underline">
+    <h1 class="text-3xl font-mono text-highlight-green-900 font-bold underline">
         Hello world!
     </h1>
     <p class="text-dim-white-900">aaaaaa</p>

@@ -3,11 +3,12 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   content: ['./app/src/view/*.{html,js,php}'],
   theme: {
+    fontFamily: {
+      sans: "'Lato'",
+      mono: "'Space Mono'",
+    },
     extend: {
       colors: {
-        test: {
-          900: '#90CA9C',
-        },
         'highlight-green': {
           900: '#90CA9C',
         },
