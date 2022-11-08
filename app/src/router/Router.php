@@ -16,6 +16,8 @@ class Router {
     // Checks method and calls the right controller
     public static $routes = Array();
 
+    protected $params = [];
+
     public function __construct() {
 
     }
@@ -31,9 +33,20 @@ class Router {
      */
     public function serveRequeset() {
         $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
+        $query = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY);
+        /**
+         * Unwrap parameters from URI
+         * */ 
+        $this->setParams($this->unwrapParams($query));
+        /**
+         * Match route by name from URI
+         * Parse and set path and parameters of route
+         * Set default parameters of route
+         */
         foreach ($this->getRoutes() as $route) {
             if ($route->getName() == $path) {
                 $this->parseUri($route->getPath());
+                $this->setParams($route->getParams());
                 $this->callRouteAction();
             }
         }
@@ -43,16 +56,21 @@ class Router {
      * Breaks down route path into a controller, an action and parameters
      */
     protected function parseUri($path) {
-        list($controller, $action, $params) = explode("/", $path, 3);
+        list($controller, $action) = explode("/", $path, 3);
         if (isset($controller)) {
             $this->setController($controller);
         }
         if (isset($action)) {
             $this->setAction($action);
         }
-        if (isset($params)) {
-            $this->setParams(explode("/", $params));
-        }
+    }
+
+    /**
+     * Returns and parses passed params string to params array
+     */
+    protected function unwrapParams($params) {
+        parse_str($params, $paramsArray);
+        return $paramsArray;
     }
     
     /**
@@ -83,7 +101,8 @@ class Router {
      * Sets parameters from path
      */
     protected function setParams(array $params) {
-        $this->params = $params;
+        $currentParams = $this->params;
+        $this->params = array_merge($params, $currentParams);
     }
 
     /**

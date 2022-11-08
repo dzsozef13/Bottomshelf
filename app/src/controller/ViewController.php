@@ -25,12 +25,13 @@ class ViewController {
 //         return str_replace('{{content}}', $viewContent, $layoutContent);
 //     }
 
-    public function render($viewName) {
-        include_files(array(ucfirst($viewName)));
+    public function render($view, $value) {
+        print($value);
+        include_files(array(ucfirst($view)));
     }
 
-    public function print($asd) {
-        echo $asd;
+    public function print($message) {
+        echo $message;
     }
 
 }
