@@ -33,6 +33,7 @@ class Router {
      * Escape routing and display 404
      */
     public function escape() {
+        console_error("Page not found");
         $this->executeRoute("404");
     }
 
@@ -51,17 +52,12 @@ class Router {
         $query = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY);
         /**
          * Unwrap parameters from query
-         * @param string of parameters
          * */ 
         $this->setParams($this->unwrapParams($query));
         /**
          * Try to call route
          */
         $this->executeRoute($routeName);
-        /**
-         * If route was not found, escape
-         */
-        $this->escape();
     }
 
     /**
@@ -75,8 +71,10 @@ class Router {
                 $this->setJob($route->getPath());
                 $this->setParams($route->getParams());
                 $this->callRouteAction();
+                return;
             }
         }
+        $this->escape();
     }
 
     /**
@@ -110,9 +108,6 @@ class Router {
             console_error("Tried to set undefined controller: " . $controller);
             $this->escape();
         }
-        /**
-         * If controller was not found, escape
-         */
         $this->controller = $controller;
         console_log("Calling: " . $controller);
     }
@@ -126,9 +121,6 @@ class Router {
             console_error("Tried to call undefined function: " . $action . " of controller: " . $reflectonController . "Controller");
             $this->escape();
         }
-        /**
-         * If action was not found, escape
-         */
         $this->action = $action;
         console_log("Calling: " . $action);
     }
