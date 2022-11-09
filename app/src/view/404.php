@@ -18,12 +18,7 @@ include_files(array(
     <title>Login</title>
 </head>
 <body>
-    <h1>Login here, only for router testing purposes for now</h1>
-    <form action="LoginUser" method="post">
-        Email: <input type="text" name="email"><br>
-        Password: <input type="password" name="password"><br>
-        <input type="submit">
-    </form>
+    <h1>404 - Page not found</h1>
     <a href="Home"> Back to home </a>
 </body>
 </html>

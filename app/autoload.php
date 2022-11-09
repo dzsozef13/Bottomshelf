@@ -26,6 +26,7 @@ function include_files($files) {
             case "Home":
             case "Login":
             case "Dashboard":
+            case "404":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/view/'."$filename".'.php';
                 break;
             // CONFIG

@@ -3,7 +3,8 @@ include_files(array(
     "Console",
     "Route",
     "ViewController",
-    "PostController"
+    "PostController",
+    "UserController"
 ));
 // you first create all possible routes
 // Match function when we need to navigate somewhere and the router has to find an existing path and compare
@@ -29,23 +30,49 @@ class Router {
     }
 
     /**
-     * Compares URL to existing route names to get the request path
+     * Escape routing and display 404
+     */
+    public function escape() {
+        $this->executeRoute("404");
+    }
+
+    /**
+     * Returns defined routes in Routes.php
+     */
+    protected static function getRoutes() {
+        return self::$routes;
+    }
+
+    /**
+     * Parses URL to get requested route's name and query
      */
     public function serveRequeset() {
-        $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
+        $routeName = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
         $query = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY);
         /**
-         * Unwrap parameters from URI
+         * Unwrap parameters from query
+         * @param string of parameters
          * */ 
         $this->setParams($this->unwrapParams($query));
         /**
-         * Match route by name from URI
-         * Parse and set path and parameters of route
-         * Set default parameters of route
+         * Try to call route
          */
+        $this->executeRoute($routeName);
+        /**
+         * If route was not found, escape
+         */
+        $this->escape();
+    }
+
+    /**
+     * Match route by name
+     * Parse and set path and parameters of route
+     * Set default parameters of route
+     */
+    protected function executeRoute($routeName) {
         foreach ($this->getRoutes() as $route) {
-            if ($route->getName() == $path) {
-                $this->parseUri($route->getPath());
+            if ($route->getName() == $routeName) {
+                $this->setJob($route->getPath());
                 $this->setParams($route->getParams());
                 $this->callRouteAction();
             }
@@ -53,9 +80,10 @@ class Router {
     }
 
     /**
-     * Breaks down route path into a controller, an action and parameters
+     * Breaks down route path
+     * Looks for a controller and a function
      */
-    protected function parseUri($path) {
+    protected function setJob($path) {
         list($controller, $action) = explode("/", $path, 3);
         if (isset($controller)) {
             $this->setController($controller);
@@ -80,7 +108,11 @@ class Router {
         $controller = ucfirst($controller) . "Controller";
         if (!class_exists($controller)) {
             console_error("Tried to set undefined controller: " . $controller);
+            $this->escape();
         }
+        /**
+         * If controller was not found, escape
+         */
         $this->controller = $controller;
         console_log("Calling: " . $controller);
     }
@@ -92,7 +124,11 @@ class Router {
         $reflectonController = new ReflectionClass($this->controller);
         if (!$reflectonController->hasMethod($action)) {
             console_error("Tried to call undefined function: " . $action . " of controller: " . $reflectonController . "Controller");
+            $this->escape();
         }
+        /**
+         * If action was not found, escape
+         */
         $this->action = $action;
         console_log("Calling: " . $action);
     }
@@ -103,13 +139,6 @@ class Router {
     protected function setParams(array $params) {
         $currentParams = $this->params;
         $this->params = array_merge($params, $currentParams);
-    }
-
-    /**
-     * Returns defined routes in Routes.php
-     */
-    protected static function getRoutes() {
-        return self::$routes;
     }
     
     /**

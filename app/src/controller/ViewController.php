@@ -25,8 +25,8 @@ class ViewController {
 //         return str_replace('{{content}}', $viewContent, $layoutContent);
 //     }
 
-    public function render($view, $value) {
-        print($value);
+    public function render($view) {
+        console_log("Rendering: " . $view);
         include_files(array(ucfirst($view)));
     }
 
