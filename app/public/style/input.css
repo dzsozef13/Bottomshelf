@@ -1,8 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-// this way you can reference colors defined in tailwind config
-h2{
-color: theme('colors.dim-white.900');
-}

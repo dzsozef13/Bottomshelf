@@ -557,44 +557,16 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.bg-highlight-green-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(144 202 156 / var(--tw-bg-opacity));
-}
-
 .bg-background-black-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(21 22 23 / var(--tw-bg-opacity));
 }
 
-.font-mono {
-  font-family: 'Space Mono';
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.text-highlight-green-900 {
-  --tw-text-opacity: 1;
-  color: rgb(144 202 156 / var(--tw-text-opacity));
+.font-sans {
+  font-family: 'Lato';
 }
 
 .text-dim-white-900 {
   --tw-text-opacity: 1;
   color: rgb(216 216 216 / var(--tw-text-opacity));
-}
-
-.underline {
-  text-decoration-line: underline;
-}
-
-// this way you can reference colors defined in tailwind config
-h2{
-  color: #D8D8D8;
 }
