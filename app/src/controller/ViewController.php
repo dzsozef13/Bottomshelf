@@ -29,8 +29,13 @@ class ViewController {
 
   
 
-    public function print($asd) {
-        echo $asd;
+    // public function render($view) {
+    //     console_log("Rendering: " . $view);
+    //     include_files(array(ucfirst($view)));
+    // }
+
+    public function print($message) {
+        echo $message;
     }
 
 }

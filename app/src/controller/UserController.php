@@ -6,10 +6,15 @@ include_files(array(
 
 class UserController {
 
-    protected $username = "hello world";
-
     public function getLoggedInUser() {
-        return $this->username;
+        
+    }
+
+    public function tryLogInUser() {
+        $email = trim($_POST['email']);
+        echo "email:    " . $email . "<br>";
+	    $password = trim($_POST['password']);
+        echo "Password hash:    " . password_hash($password, PASSWORD_DEFAULT);
     }
 
 }

@@ -3,7 +3,8 @@ include_files(array(
     "Console",
     "Route",
     "ViewController",
-    "PostController"
+    "PostController",
+    "UserController"
 ));
 // you first create all possible routes
 // Match function when we need to navigate somewhere and the router has to find an existing path and compare
@@ -16,6 +17,8 @@ class Router {
     // Checks method and calls the right controller
     public static $routes = Array();
 
+    protected $params = [];
+
     public function __construct() {
 
     }
@@ -27,32 +30,73 @@ class Router {
     }
 
     /**
-     * Compares URL to existing route names to get the request path
+     * Escape routing and display 404
      */
-    public function serveRequeset() {
-        $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
-        foreach ($this->getRoutes() as $route) {
-            if ($route->getName() == $path) {
-                $this->parseUri($route->getPath());
-                $this->callRouteAction();
-            }
-        }
+    public function escape() {
+        console_error("Page not found");
+        $this->executeRoute("404");
     }
 
     /**
-     * Breaks down route path into a controller, an action and parameters
+     * Returns defined routes in Routes.php
      */
-    protected function parseUri($path) {
-        list($controller, $action, $params) = explode("/", $path, 3);
+    protected static function getRoutes() {
+        return self::$routes;
+    }
+
+    /**
+     * Parses URL to get requested route's name and query
+     */
+    public function serveRequeset() {
+        $routeName = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
+        $query = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY);
+        /**
+         * Unwrap parameters from query
+         * */ 
+        $this->setParams($this->unwrapParams($query));
+        /**
+         * Try to call route
+         */
+        $this->executeRoute($routeName);
+    }
+
+    /**
+     * Match route by name
+     * Parse and set path and parameters of route
+     * Set default parameters of route
+     */
+    protected function executeRoute($routeName) {
+        foreach ($this->getRoutes() as $route) {
+            if ($route->getName() == $routeName) {
+                $this->setJob($route->getPath());
+                $this->setParams($route->getParams());
+                $this->callRouteAction();
+                return;
+            }
+        }
+        $this->escape();
+    }
+
+    /**
+     * Breaks down route path
+     * Looks for a controller and a function
+     */
+    protected function setJob($path) {
+        list($controller, $action) = explode("/", $path, 3);
         if (isset($controller)) {
             $this->setController($controller);
         }
         if (isset($action)) {
             $this->setAction($action);
         }
-        if (isset($params)) {
-            $this->setParams(explode("/", $params));
-        }
+    }
+
+    /**
+     * Returns and parses passed params string to params array
+     */
+    protected function unwrapParams($params) {
+        parse_str($params, $paramsArray);
+        return $paramsArray;
     }
     
     /**
@@ -62,6 +106,7 @@ class Router {
         $controller = ucfirst($controller) . "Controller";
         if (!class_exists($controller)) {
             console_error("Tried to set undefined controller: " . $controller);
+            $this->escape();
         }
         $this->controller = $controller;
         console_log("Calling: " . $controller);
@@ -74,6 +119,7 @@ class Router {
         $reflectonController = new ReflectionClass($this->controller);
         if (!$reflectonController->hasMethod($action)) {
             console_error("Tried to call undefined function: " . $action . " of controller: " . $reflectonController . "Controller");
+            $this->escape();
         }
         $this->action = $action;
         console_log("Calling: " . $action);
@@ -83,14 +129,8 @@ class Router {
      * Sets parameters from path
      */
     protected function setParams(array $params) {
-        $this->params = $params;
-    }
-
-    /**
-     * Returns defined routes in Routes.php
-     */
-    protected static function getRoutes() {
-        return self::$routes;
+        $currentParams = $this->params;
+        $this->params = array_merge($params, $currentParams);
     }
     
     /**
