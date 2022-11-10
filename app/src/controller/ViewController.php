@@ -8,31 +8,25 @@ class ViewController {
 
     public $name;
 
-    public function render($viewName) {
+    public function renderView($viewName) {
         $this->name = $viewName;
-        $layoutContent = $this->layout();
-        $viewContent = $this->renderView($viewName);
+        // todo : add logic which will switch layouts depending on if the user is logged in or not
+        $layoutContent = $this->getLayoutContent("GuestLayout");
+        $viewContent = $this->getViewContent($viewName);
         echo str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
-    public function layout() {
+    public function getLayoutContent($layoutName) {
         ob_start();
-        include_once $_SERVER['DOCUMENT_ROOT']."/public/layouts/UserLayout.php";
+        include_once $_SERVER['DOCUMENT_ROOT']."/public/layouts/".$layoutName.".php";
         return ob_get_clean();
     }
 
-    public function renderView($viewName) {
+    public function getViewContent($viewName) {
         ob_start();
         include_once $_SERVER['DOCUMENT_ROOT']."/src/view/".$viewName.".php";
         return ob_get_clean();
     }
-
-  
-
-    // public function render($view) {
-    //     console_log("Rendering: " . $view);
-    //     include_files(array(ucfirst($view)));
-    // }
 
     public function print($message) {
         echo $message;
