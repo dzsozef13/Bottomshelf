@@ -6,7 +6,10 @@ include_files(array(
 
 class ViewController {
 
+    public $name;
+
     public function render($viewName) {
+        $this->name = $viewName;
         $layoutContent = $this->layout();
         $viewContent = $this->renderView($viewName);
         echo str_replace('{{content}}', $viewContent, $layoutContent);
