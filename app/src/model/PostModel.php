@@ -7,7 +7,7 @@ include_files(array(
     "CoreModel"
 ));
 
-class Post extends CoreModel {
+class PostModel extends CoreModel {
 
       /**
      * @param array data all values needed to create a post

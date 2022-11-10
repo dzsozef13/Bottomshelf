@@ -9,7 +9,8 @@ function include_files($files) {
     foreach($files as $filename) {
         switch ($filename) {
             // MODEL
-            case "Post":
+            case "PostModel":
+            case "CountryModel":
             case "Route":
             case "CoreModel":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/model/'."$filename".'.php';

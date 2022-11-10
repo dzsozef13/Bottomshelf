@@ -6,6 +6,7 @@ include_files(array(
 ));
 
 class CoreModel {
+    // Data Access Layer Model
     protected $db;
 
     public function __construct() {
