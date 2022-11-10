@@ -1,14 +1,11 @@
 <?php 
 include_files(array(
-    "CountryModel",
+    "BadgeModel",
 ));
 
-
-$test = new CountryModel;
-
-
+$test = new BadgeModel();
 
 ?>
 
 <p>Home</p>
-
+<?php var_dump($test->getById(1)) ?>

@@ -12,6 +12,7 @@ function include_files($files) {
             case "PostModel":
             case "CountryModel":
             case "Route":
+            case "BadgeModel":
             case "CoreModel":
                 include_once $_SERVER['DOCUMENT_ROOT'].'/src/model/'."$filename".'.php';
                 break;
