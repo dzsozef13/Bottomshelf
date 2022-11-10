@@ -8,6 +8,8 @@
     <title><?php echo $this->name ?></title>
 </head>
 <body class="bg-background-black-900 text-dim-white-900 font-sans">
+    <div class="container bg-slate-500" >
     {{content}}
+    </div>
 </body>
 </html>
