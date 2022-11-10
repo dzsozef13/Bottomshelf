@@ -6,28 +6,26 @@ include_files(array(
 
 class ViewController {
 
-//   public function renderView($route){
-//     include $_SERVER['DOCUMENT_ROOT']."/src/view/" . $route->getName() . ".php";
-//   }
+    public $name;
 
+    public function renderView($viewName) {
+        $this->name = $viewName;
+        // todo : add logic which will switch layouts depending on if the user is logged in or not
+        $layoutContent = $this->getLayoutContent("GuestLayout");
+        $viewContent = $this->getViewContent($viewName);
+        echo str_replace('{{content}}', $viewContent, $layoutContent);
+    }
 
-//   public function renderView($route)
-//     {
-//         $layoutName = 'homeLayout';
-//         // Add logic which decides which layout shoud be used for specific pages
-//         // if (Application::$app->controller) {
-//         //     $layoutName = Application::$app->controller->layout;
-//         // }
-//         $viewContent = $this->renderViewOnly($route);
-//         ob_start();
-//         // include_once $_SERVER['DOCUMENT_ROOT']."/src/view/layouts/".$layoutName.".php";
-//         $layoutContent = ob_get_clean();
-//         return str_replace('{{content}}', $viewContent, $layoutContent);
-//     }
+    public function getLayoutContent($layoutName) {
+        ob_start();
+        include_once $_SERVER['DOCUMENT_ROOT']."/public/layouts/".$layoutName.".php";
+        return ob_get_clean();
+    }
 
-    public function render($view) {
-        console_log("Rendering: " . $view);
-        include_files(array(ucfirst($view)));
+    public function getViewContent($viewName) {
+        ob_start();
+        include_once $_SERVER['DOCUMENT_ROOT']."/src/view/".$viewName.".php";
+        return ob_get_clean();
     }
 
     public function print($message) {

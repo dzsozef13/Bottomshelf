@@ -15,5 +15,4 @@ $session = new SessionController();
  */
 $router = new Router();
 $router->serveRequeset();
-
 ?>
