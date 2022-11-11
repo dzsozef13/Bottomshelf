@@ -5,10 +5,11 @@ include_files(array(
 /**
  * Globally used function to inlcude files from the directory.
  */
-function include_files($files) {
-    foreach($files as $filename) {
+function include_files($files)
+{
+    foreach ($files as $filename) {
         switch ($filename) {
-            // MODEL
+                // MODEL
             case "PostModel":
             case "CountryModel":
             case "Route":
@@ -16,36 +17,36 @@ function include_files($files) {
             case "About":
             case "TagModel":
             case "CoreModel":
-                include_once $_SERVER['DOCUMENT_ROOT'].'/src/model/'."$filename".'.php';
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/' . "$filename" . '.php';
                 break;
-            // CONTROLLER
+                // CONTROLLER
             case "SessionController":
             case "DbConnectionController":
             case "PostController":
             case "UserController":
             case "ViewController":
-                include_once $_SERVER['DOCUMENT_ROOT'].'/src/controller/'."$filename".'.php';
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/controller/' . "$filename" . '.php';
                 break;
-            // VIEW
+                // VIEW
             case "Home":
             case "Login":
             case "Dashboard":
             case "404":
-                include_once $_SERVER['DOCUMENT_ROOT'].'/src/view/'."$filename".'.php';
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/view/' . "$filename" . '.php';
                 break;
-            // CONFIG
+                // CONFIG
             case "Const":
             case "Console":
-                include_once $_SERVER['DOCUMENT_ROOT'].'/config/'."$filename".'.php';
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/config/' . "$filename" . '.php';
                 break;
-            // ROUTER
+                // ROUTER
             case "Router":
             case "Routes":
-                include_once $_SERVER['DOCUMENT_ROOT'].'/src/router/'."$filename".'.php';
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/router/' . "$filename" . '.php';
                 break;
-            // ROUTE NOT FOUND
+                // ROUTE NOT FOUND
             default:
-                console_error("Tried to use undefined module: ".$filename);
+                console_error("Tried to use undefined module: " . $filename);
                 break;
         }
     }
