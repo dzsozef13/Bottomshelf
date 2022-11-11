@@ -13,13 +13,11 @@ class UserController {
     }
 
     public function tryLogInUser() {
+        header("Location:" . "Home");
         $email = trim($_POST['email']);
         echo "email:    " . $email . "<br>";
 	    $password = trim($_POST['password']);
         echo "Password hash:    " . password_hash($password, PASSWORD_DEFAULT);
-
-        $router = new Router();
-        $router->executeRoute("Login");
     }
 
 }
