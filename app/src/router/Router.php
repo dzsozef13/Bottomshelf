@@ -65,7 +65,7 @@ class Router {
      * Parse and set path and parameters of route
      * Set default parameters of route
      */
-    protected function executeRoute($routeName) {
+    public function executeRoute($routeName) {
         foreach ($this->getRoutes() as $route) {
             if ($route->getName() == $routeName) {
                 $this->setJob($route->getPath());
@@ -74,6 +74,10 @@ class Router {
                 return;
             }
         }
+        /**
+         * If route was not found, escape
+         */
+        console_error("No route found with name: " . $routeName);
         $this->escape();
     }
 
