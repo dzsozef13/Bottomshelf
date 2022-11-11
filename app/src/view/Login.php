@@ -4,4 +4,3 @@
     Password: <input type="password" name="password"><br>
     <input type="submit">
 </form>
-<a href="Home"> Back to home </a>

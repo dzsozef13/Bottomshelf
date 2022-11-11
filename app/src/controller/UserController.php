@@ -3,7 +3,8 @@ include_files(array(
     "DbConnectionController",
     "Router",
     "Route",
-    "Console"
+    "Console",
+    "UserModel"
 ));
 
 class UserController {
@@ -13,11 +14,17 @@ class UserController {
     }
 
     public function tryLogInUser() {
-        header("Location:" . "Home");
-        $email = trim($_POST['email']);
-        echo "email:    " . $email . "<br>";
-	    $password = trim($_POST['password']);
-        echo "Password hash:    " . password_hash($password, PASSWORD_DEFAULT);
+        if(isset($_POST['email'], $_POST['password']) ) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $userModel = new UserModel();
+            if ($userModel->validateUser($email, $password)) {
+                $redirect = new Router("Home");
+            } else {
+                $redirect = new Router("Login");
+            }
+        }
     }
 
 }

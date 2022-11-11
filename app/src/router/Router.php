@@ -19,8 +19,10 @@ class Router {
 
     protected $params = [];
 
-    public function __construct() {
-
+    public function __construct($routeName = null) {
+        if ($routeName) {
+            $this->executeRoute($routeName);
+        }
     }
 
     public static function add(Route $route) {

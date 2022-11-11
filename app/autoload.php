@@ -17,6 +17,7 @@ function include_files($files)
             case "About":
             case "TagModel":
             case "CoreModel":
+            case "UserModel":  
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/' . "$filename" . '.php';
                 break;
                 // CONTROLLER

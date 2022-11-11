@@ -5,33 +5,41 @@ include_files(array(
     "CoreModel"
 ));
 
-class PostModel extends CoreModel {
+class UserModel extends CoreModel {
 
     /**
-     * Returns a user with the passed id
+     * Returns user with the passed email
      */
-    public function getUserById($id) {
+    public function getUserByEmail($email) {
         try {
             $conn = CoreModel::openDbConnetion();
-        
-            $query = "SELECT * FROM User WHERE UserID = :userID";
-            
+            $query = "SELECT * FROM User WHERE Email = :userEmail";
             $handle = $conn->prepare($query);
 
-            $sanitizedId = htmlspecialchars($id);
+            $sanitizedId = htmlspecialchars($email);
 
-            $handle->bindParam(':userID', $sanitizedId);
-
+            $handle->bindParam(':userEmail', $sanitizedId);
             $handle->execute();
 
-            $result = $handle->fetch(PDO::FETCH_ASSOC);
-
-            return $result;
+            $result = $handle->fetchAll();
 
             CoreModel::closeDbConnection();
             $conn = null;
+
+            return $result[0];
+
 		} catch (PDOException $e) {
             echo  $e->getMessage();
         }
     }
+
+    public function validateUser($email, $password) {
+        $user = $this->getUserByEmail($email);
+        if (password_verify($password, $user['UserPassword'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

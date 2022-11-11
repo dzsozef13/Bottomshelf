@@ -22,7 +22,7 @@
                 </li>
             </ul>
         </div>
-        <div class="w-40 h-8 flex justify-center items-center bg-highlight-green-900 rounded border-0 font-mono ">
+        <div class="w-40 h-8 flex justify-center items-center bg-highlight-green-900 rounded border-0 font-mono">
             <a href="/Login">
                 <button class="uppercase text-background-black-900 font-bold text-sm">Sign in</button>
             </a>
