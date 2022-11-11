@@ -8,6 +8,7 @@ include_files(array(
 
 class PostEntity extends Entity
 {
+    // todo: add image property when we plan how to handle images
     private $id;
     private $title;
     private $description;
