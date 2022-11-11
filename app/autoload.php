@@ -10,14 +10,18 @@ function include_files($files)
     foreach ($files as $filename) {
         switch ($filename) {
                 // MODEL
+                //DAL
+            case "Route":
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/' . "$filename" . '.php';
+                break;
+                //DAL
             case "PostModel":
             case "CountryModel":
-            case "Route":
             case "BadgeModel":
             case "About":
             case "TagModel":
             case "CoreModel":
-                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/' . "$filename" . '.php';
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/DAL/' . "$filename" . '.php';
                 break;
                 // CONTROLLER
             case "SessionController":
