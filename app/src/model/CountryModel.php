@@ -15,7 +15,6 @@ class CountryModel extends CoreModel {
      * @return Country 
      */
     public function getByCountryCode($countryCode) {
-       //Sanitize this and make sure is safe
         try {
 		$conn = CoreModel::openDbConnetion();
      
@@ -41,7 +40,6 @@ class CountryModel extends CoreModel {
      * @return Country[]  
      */
     public function getAll() {
-      // might improve the get all functions to avoid fetching too much
         try {
 		$conn = CoreModel::openDbConnetion();
      
