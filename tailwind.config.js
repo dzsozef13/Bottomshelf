@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
-  content: ['./app/src/view/*.{html,js,php}'],
+  content: ['./app/src/view/*.{html,js,php}', './app/public/layouts/*.{html,js,php}'],
   theme: {
     fontFamily: {
       sans: "'Lato'",

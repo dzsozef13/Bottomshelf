@@ -8,6 +8,7 @@ include_files(array(
 ));
 
 class PostModel extends CoreModel {
+    // Try to implement filter_var for more protection
 
       /**
      * @param array data all values needed to create a post
@@ -45,7 +46,7 @@ class PostModel extends CoreModel {
      * @param int postId is the id of the post you would like to fetch
      * @return Post post with matching Id  (if none then false)
      */
-    public function getByPostId($postId) {
+    public function getById($postId) {
        //Sanitize this and make sure is safe
         try {
 		$conn = CoreModel::openDbConnetion();

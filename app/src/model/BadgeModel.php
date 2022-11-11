@@ -7,21 +7,22 @@ include_files(array(
     "CoreModel"
 ));
 
-class CountryModel extends CoreModel {
+class BadgeModel extends CoreModel {
 
 
     /**
-     * @param string countryCode 
-     * @return Country 
+     * @param int BadgeId 
+     * @return Badge 
      */
-    public function getByCountryCode($countryCode) {
+    public function getById($badgeId) {
+       //Sanitize this and make sure is safe
         try {
 		$conn = CoreModel::openDbConnetion();
      
-		$query = "SELECT * FROM Country WHERE CountryCode = :CountryCode";
+		$query = "SELECT * FROM Badge WHERE BadgeId = :BadgeId";
           
 		$handle = $conn->prepare($query);
-		$handle->bindParam(':CountryCode', $countryCode);
+		$handle->bindParam(':BadgeId', $badgeId);
 		$handle->execute();
 	
             $result = $handle->fetch(PDO::FETCH_ASSOC);
@@ -37,13 +38,14 @@ class CountryModel extends CoreModel {
     }
 
      /**
-     * @return Country[]  
+     * @return Badge[]  
      */
     public function getAll() {
+      // might improve the get all functions to avoid fetching too much
         try {
 		$conn = CoreModel::openDbConnetion();
      
-		$query = "SELECT * FROM Country ORDER BY CountryCode";
+		$query = "SELECT * FROM Badge ORDER BY BadgeName";
           
 		$handle = $conn->prepare($query);
 		$handle->execute();

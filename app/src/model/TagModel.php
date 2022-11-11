@@ -7,21 +7,22 @@ include_files(array(
     "CoreModel"
 ));
 
-class CountryModel extends CoreModel {
+class TagModel extends CoreModel {
 
 
     /**
-     * @param string countryCode 
-     * @return Country 
+     * @param int TagId 
+     * @return Tag 
      */
-    public function getByCountryCode($countryCode) {
+    public function getById($tagId) {
+       //Sanitize this and make sure is safe
         try {
 		$conn = CoreModel::openDbConnetion();
      
-		$query = "SELECT * FROM Country WHERE CountryCode = :CountryCode";
+		$query = "SELECT * FROM Tag WHERE TagId = :TagId";
           
 		$handle = $conn->prepare($query);
-		$handle->bindParam(':CountryCode', $countryCode);
+		$handle->bindParam(':TagId', $tagId);
 		$handle->execute();
 	
             $result = $handle->fetch(PDO::FETCH_ASSOC);
@@ -37,13 +38,14 @@ class CountryModel extends CoreModel {
     }
 
      /**
-     * @return Country[]  
+     * @return Tag[]  
      */
     public function getAll() {
+      // might improve the get all functions to avoid fetching too much
         try {
 		$conn = CoreModel::openDbConnetion();
      
-		$query = "SELECT * FROM Country ORDER BY CountryCode";
+		$query = "SELECT * FROM Tag ORDER BY TagName";
           
 		$handle = $conn->prepare($query);
 		$handle->execute();
