@@ -41,32 +41,15 @@ class PostController
         }
     }
 
-    public function getAll()
-    // todo: add image property when we plan how to handle images
+    public function fetchAll()
     {
-        $postModel = new PostModel();
+        return $this->postModel->getAll();
+    }
 
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $isPublic = $_POST['isPublic'];
-        $isSticky = 1;
-        // when we have session working, change this to get the currently logged in user
-        $userId = $_POST['userId'];
-        $StatusId = 1;
-        $data = [];
-
-        if (isset($title) && isset($description) && isset($isPublic) && isset($isSticky)  && isset($userId)  && isset($StatusId)) {
-            $data = array(
-                'title' => $title,
-                'description' =>  $description,
-                'isPublic' => $isPublic,
-                'isSticky' => $isSticky,
-                'userId' =>  $userId,
-                'statusId' =>  $StatusId
-            );
-            $postModel->createPost($data);
-        } else {
-            // thow error or something
+    public function fetchById($id)
+    {
+        if (isset($id)) {
+            return $this->postModel->getById($id);
         }
     }
 }
