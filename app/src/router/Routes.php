@@ -18,4 +18,4 @@ Router::add(new Route("Dashboard", "view/renderView", array("view" => "dashboard
 Router::add(new Route("createPost", "post/createTest/"));
 Router::add(new Route("CreatePost", "post/create"));
 
-Router::add(new Route("LoginUser", "user/tryLogInUser"));
+Router::add(new Route("UserLogin", "user/tryLogInUser"));

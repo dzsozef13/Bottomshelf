@@ -6,23 +6,32 @@ include_files(array(
     "PostController",
     "UserController"
 ));
-// you first create all possible routes
-// Match function when we need to navigate somewhere and the router has to find an existing path and compare
-// when matching it consumes a URL, therefore it needs to split it and analyze it,
-// meaning, it checks what kind of method, the path, the parameters and arguments
 
 class Router {
-    // Accepts in requests
-    // Breaks down the path
-    // Checks method and calls the right controller
+    // Container for predefined routes
     public static $routes = Array();
-
+    // Router job attributes
+    protected $controller;
+    protected $action;
     protected $params = [];
 
-    public function __construct() {
-
+    /**
+     * Router can optionally be constructed with a route name to redirect
+     * $redirect = new Rotuer("RotueName);
+     * 
+     * If no route is passed, serve the request
+     */
+    public function __construct($routeName = null) {
+        if ($routeName) {
+            $this->executeRoute($routeName);
+        } else {
+            $this->serveRequeset();
+        }
     }
 
+    /**
+     * Adds predefined routes to instance
+     */
     public static function add(Route $route) {
         if(isset(self::$routes) ) {
             self::$routes[$route->getName()] = $route;
@@ -30,9 +39,9 @@ class Router {
     }
 
     /**
-     * Escape routing and display 404
+     * Escapes routing and displays 404
      */
-    public function escape() {
+    protected function escape() {
         console_error("Page not found");
         $this->executeRoute("404");
     }
@@ -47,7 +56,7 @@ class Router {
     /**
      * Parses URL to get requested route's name and query
      */
-    public function serveRequeset() {
+    protected function serveRequeset() {
         $routeName = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
         $query = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY);
         /**
@@ -74,6 +83,10 @@ class Router {
                 return;
             }
         }
+        /**
+         * If route was not found, escape
+         */
+        console_error("No route found with name: " . $routeName);
         $this->escape();
     }
 
