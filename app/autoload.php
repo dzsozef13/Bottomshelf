@@ -2,11 +2,11 @@
 include_files(array(
     "Console"
 ));
+
 /**
  * Globally used function to inlcude files from the directory.
  */
-function include_files($files)
-{
+function include_files($files) {
     foreach ($files as $filename) {
         switch ($filename) {
                 // MODEL

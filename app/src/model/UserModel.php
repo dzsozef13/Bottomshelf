@@ -8,38 +8,37 @@ include_files(array(
 class UserModel extends CoreModel {
 
     /**
-     * Returns user with the passed email
+     * Returns single user with the passed email
      */
     public function getUserByEmail($email) {
+        // Sanetize input
+        $sanitizedId = htmlspecialchars($email);
         try {
-            $conn = CoreModel::openDbConnetion();
+            // Open database connection and prepare statement
+            $conn = $this->openDbConnetion();
             $query = "SELECT * FROM User WHERE Email = :userEmail";
             $handle = $conn->prepare($query);
-
-            $sanitizedId = htmlspecialchars($email);
-
+            // Bind parameters and execute
             $handle->bindParam(':userEmail', $sanitizedId);
             $handle->execute();
-
+            // Get result
             $result = $handle->fetchAll();
-
-            CoreModel::closeDbConnection();
-            $conn = null;
-
+            // Close database connection
+            $this->closeDbConnection();
+            // Return result
             return $result[0];
-
 		} catch (PDOException $e) {
             echo  $e->getMessage();
         }
     }
 
+    /**
+     * Validates user with passed email and password
+     * Returns password is correct
+     */
     public function validateUser($email, $password) {
         $user = $this->getUserByEmail($email);
-        if (password_verify($password, $user['UserPassword'])) {
-            return true;
-        } else {
-            return false;
-        }
+        return password_verify($password, $user['UserPassword']);
     }
 
 }
