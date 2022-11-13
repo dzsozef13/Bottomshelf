@@ -112,4 +112,12 @@
     tracking-wide
     font-medium;
   }
+
+  .medium-headline {
+    @apply font-mono 
+    uppercase
+    text-2xl
+    tracking-wide
+    font-medium;
+  }
 }
