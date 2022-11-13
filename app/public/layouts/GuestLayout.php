@@ -23,7 +23,7 @@
                 </li>
             </ul>
         </div>
-        <div class="btn">
+        <div class="btn-green">
             <a href="/Login">
                 <button>Sign in</button>
             </a>

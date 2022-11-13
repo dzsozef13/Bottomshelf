@@ -63,9 +63,9 @@
       font-sans;
   }
 
-  .btn {
+  .btn-green {
     @apply w-40 
-      h-8 
+      h-10
       flex 
       justify-center 
       items-center 
@@ -80,7 +80,23 @@
       font-bold 
       text-sm;
   }
-
+  .btn-white {
+    @apply w-40 
+      h-10
+      flex 
+      justify-center 
+      items-center 
+      bg-dim-white-900 
+      rounded 
+      shadow-btn
+      shadow-highlight-green-900/20
+      border-0 
+      font-mono 
+      uppercase 
+      text-background-black-900 
+      font-bold 
+      text-sm;
+  }
   .nav {
     /* @apply mx-auto w-screen flex h-20 bg-background-black-900/75 px-8 items-center fixed top-0 left-0 right-0 z-50;*/
     @apply mx-auto 
@@ -101,6 +117,42 @@
       bg-dim-white-900 
       rounded-full;
   }
+  .icon-wrapper {
+    @apply absolute
+    right-0
+    top-0
+    w-12
+    flex
+    items-center
+    justify-center
+    text-2xl
+    text-highlight-green-900
+    h-full;
+  }
+  .input-field-wrapper {
+    @apply w-full
+    rounded-lg
+    border-2
+    border-highlight-green-900/60
+    bg-transparent
+    flex
+    relative
+    h-10;
+  }
+  .input-field {
+    @apply w-[calc(100%-3rem)]
+    border-2
+    border-none
+    bg-transparent
+    placeholder-highlight-green-900/60
+    placeholder-opacity-100
+    p-4
+    h-full;
+  }
+
+  .input-field:focus {
+    @apply outline-none;
+  }
 }
 
 @layer base {
@@ -118,7 +170,7 @@
     uppercase
     text-2xl
     tracking-wide
-    font-medium;
+    font-bold;
   }
 
   .small-headline {
