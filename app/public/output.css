@@ -640,10 +640,6 @@ video {
   display: flex;
 }
 
-.h-96{
-  height: 24rem;
-}
-
 .w-full{
   width: 100%;
 }

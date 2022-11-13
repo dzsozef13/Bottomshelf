@@ -1,20 +1,28 @@
 <?php
 include_files(array(
     "DbConnectionController",
-    "Console"
+    "Router",
+    "Route",
+    "Console",
+    "UserModel"
 ));
 
 class UserController {
 
-    public function getLoggedInUser() {
-        
-    }
-
     public function tryLogInUser() {
-        $email = trim($_POST['email']);
-        echo "email:    " . $email . "<br>";
-	    $password = trim($_POST['password']);
-        echo "Password hash:    " . password_hash($password, PASSWORD_DEFAULT);
+        if(isset($_POST['email'], $_POST['password']) ) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $userModel = new UserModel();
+            if ($userModel->validateUser($email, $password)) {
+                $redirect = new Router("Home");
+                console_log("Succesful login");
+            } else {
+                $redirect = new Router("Login");
+                console_log("Failed login");
+            }
+        }
     }
 
 }

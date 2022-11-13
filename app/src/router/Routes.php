@@ -17,4 +17,4 @@ Router::add(new Route("Dashboard", "view/renderView", array("view" => "dashboard
 //test route but i was able to call a controller to create with this! really cool
 Router::add(new Route("CreatePost", "post/create"));
 
-Router::add(new Route("LoginUser", "user/tryLogInUser"));
+Router::add(new Route("UserLogin", "user/tryLogInUser"));
