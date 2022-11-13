@@ -23,4 +23,15 @@ class FrontEndController
         // $postCtrl = new PostController();
         // var_dump($postCtrl->fetchAll());
     }
+
+    public function aboutPage()
+    {
+        $this->viewCtrl->renderView('about');
+    }
+
+
+    public function loginPage()
+    {
+        $this->viewCtrl->renderView('login');
+    }
 }

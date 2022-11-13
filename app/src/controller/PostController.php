@@ -37,7 +37,7 @@ class PostController
             );
             $this->postModel->createPost($data);
         } else {
-            // thow error or something
+            // thow an error error
         }
     }
 
