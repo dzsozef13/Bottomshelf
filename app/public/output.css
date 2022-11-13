@@ -2,9 +2,12 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-/*
-! tailwindcss v3.2.1 | MIT License | https://tailwindcss.com
-*/
+/* Let's distribute css in different files so it's easier to find things*/
+
+@layer elements {
+}
+
+/* ! tailwindcss v3.2.1 | MIT License | https://tailwindcss.com*/
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -420,6 +423,33 @@ video {
   display: none;
 }
 
+.landing-headline{
+  text-align: center;
+  font-family: 'Space Mono';
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.medium-headline{
+  font-family: 'Space Mono';
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.small-headline{
+  font-family: 'Space Mono';
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -569,10 +599,43 @@ video {
   color: rgb(216 216 216 / var(--tw-text-opacity));
 }
 
-.btn{
+.nav {
+  /* @apply mx-auto w-screen flex h-20 bg-background-black-900/75 px-8 items-center fixed top-0 left-0 right-0 z-50;*/
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
+  height: 5rem;
+  width: 100vw;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.logo{
   height: 2rem;
+  width: 2rem;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(216 216 216 / var(--tw-bg-opacity));
+}
+
+.bodyStyle{
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 22 23 / var(--tw-bg-opacity));
+  font-family: 'Lato';
+  --tw-text-opacity: 1;
+  color: rgb(216 216 216 / var(--tw-text-opacity));
+}
+
+.btn-green{
+  display: flex;
+  height: 2.5rem;
   width: 10rem;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
   border-radius: 0.25rem;
@@ -586,9 +649,40 @@ video {
   text-transform: uppercase;
   --tw-text-opacity: 1;
   color: rgb(21 22 23 / var(--tw-text-opacity));
+  --tw-shadow: 0px 16px 60px  rgba(60, 96, 94, 0.4);
+  --tw-shadow-colored: 0px 16px 60px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-color: rgb(144 202 156 / 0.2);
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
-.nav{
+.btn-white{
+  display: flex;
+  height: 2.5rem;
+  width: 10rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  border-width: 0px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(216 216 216 / var(--tw-bg-opacity));
+  font-family: 'Space Mono';
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(21 22 23 / var(--tw-text-opacity));
+  --tw-shadow: 0px 16px 60px  rgba(60, 96, 94, 0.4);
+  --tw-shadow-colored: 0px 16px 60px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-color: rgb(144 202 156 / 0.2);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.nav {
+  /* @apply mx-auto w-screen flex h-20 bg-background-black-900/75 px-8 items-center fixed top-0 left-0 right-0 z-50;*/
   position: fixed;
   top: 0px;
   left: 0px;
@@ -600,7 +694,6 @@ video {
   height: 5rem;
   width: 100vw;
   align-items: center;
-  background-color: rgb(21 22 23 / 0.75);
   padding-left: 2rem;
   padding-right: 2rem;
 }
@@ -611,6 +704,94 @@ video {
   border-radius: 9999px;
   --tw-bg-opacity: 1;
   background-color: rgb(216 216 216 / var(--tw-bg-opacity));
+}
+
+.icon-wrapper{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  display: flex;
+  height: 100%;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  --tw-text-opacity: 1;
+  color: rgb(144 202 156 / var(--tw-text-opacity));
+}
+
+.input-field-wrapper{
+  position: relative;
+  display: flex;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-color: rgb(144 202 156 / 0.6);
+  background-color: transparent;
+}
+
+.input-field{
+  height: 100%;
+  width: calc(100% - 3rem);
+  border-width: 2px;
+  border-style: none;
+  background-color: transparent;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.input-field::-moz-placeholder{
+  color: rgb(144 202 156 / 0.6);
+  --tw-placeholder-opacity: 1;
+}
+
+.input-field::placeholder{
+  color: rgb(144 202 156 / 0.6);
+  --tw-placeholder-opacity: 1;
+}
+
+.input-field:focus{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.relative{
+  position: relative;
+}
+
+.top-0{
+  top: 0px;
+}
+
+.left-0{
+  left: 0px;
+}
+
+.z-0{
+  z-index: 0;
+}
+
+.col-span-2{
+  grid-column: span 2 / span 2;
+}
+
+.col-span-6{
+  grid-column: span 6 / span 6;
+}
+
+.col-span-4{
+  grid-column: span 4 / span 4;
+}
+
+.col-span-3{
+  grid-column: span 3 / span 3;
 }
 
 .mx-4{
@@ -628,6 +809,26 @@ video {
   margin-right: auto;
 }
 
+.mt-12{
+  margin-top: 3rem;
+}
+
+.mb-2{
+  margin-bottom: 0.5rem;
+}
+
+.mt-6{
+  margin-top: 1.5rem;
+}
+
+.mb-8{
+  margin-bottom: 2rem;
+}
+
+.mb-4{
+  margin-bottom: 1rem;
+}
+
 .ml-6{
   margin-left: 1.5rem;
 }
@@ -640,32 +841,129 @@ video {
   display: flex;
 }
 
-.w-full{
-  width: 100%;
+.grid{
+  display: grid;
+}
+
+.h-\[calc\(100vh-5rem\)\]{
+  height: calc(100vh - 5rem);
+}
+
+.h-96{
+  height: 24rem;
+}
+
+.h-72{
+  height: 18rem;
+}
+
+.h-screen{
+  height: 100vh;
 }
 
 .w-screen{
   width: 100vw;
 }
 
+.w-full{
+  width: 100%;
+}
+
 .list-none{
   list-style-type: none;
+}
+
+.grid-flow-row{
+  grid-auto-flow: row;
+}
+
+.grid-cols-6{
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.items-start{
+  align-items: flex-start;
+}
+
+.items-end{
+  align-items: flex-end;
 }
 
 .items-center{
   align-items: center;
 }
 
-.bg-background-black-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(21 22 23 / var(--tw-bg-opacity));
+.justify-center{
+  justify-content: center;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.gap-4{
+  gap: 1rem;
+}
+
+.bg-\[radial-gradient\(circle_at_100\%_100\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
+  background-image: radial-gradient(circle at 100% 100%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 58%);
+}
+
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.px-1{
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.pr-8{
+  padding-right: 2rem;
+}
+
+.pb-6{
+  padding-bottom: 1.5rem;
+}
+
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .uppercase{
   text-transform: uppercase;
 }
 
-.text-dim-white-900{
-  --tw-text-opacity: 1;
-  color: rgb(216 216 216 / var(--tw-text-opacity));
+/* I find it this way a lot easier to read, change it back if it's not okay */
+
+@media (min-width: 640px){
+  .sm\:col-span-3{
+    grid-column: span 3 / span 3;
+  }
+
+  .sm\:pr-8{
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:col-span-2{
+    grid-column: span 2 / span 2;
+  }
+}
+
+@media (min-width: 1536px){
+  .\32xl\:col-span-2{
+    grid-column: span 2 / span 2;
+  }
+
+  .\32xl\:col-span-4{
+    grid-column: span 4 / span 4;
+  }
 }

@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-// Let's distribute css in different files so it's easier to find things
+/* Let's distribute css in different files so it's easier to find things*/
 @import url("elements.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// I find it this way a lot easier to read, change it back if it's not okay
+/* I find it this way a lot easier to read, change it back if it's not okay */
 
 @layer components {
   .bodyStyle {
@@ -25,6 +25,8 @@
       items-center 
       bg-highlight-green-900 
       rounded 
+      shadow-btn
+      shadow-highlight-green-900/20
       border-0 
       font-mono 
       uppercase 
@@ -52,5 +54,134 @@
       h-8 
       bg-dim-white-900 
       rounded-full;
+  }
+}
+@layer components {
+  .bodyStyle {
+    @apply bg-background-black-900
+      text-dim-white-900 
+      font-sans;
+  }
+
+  .btn-green {
+    @apply w-40 
+      h-10
+      flex 
+      justify-center 
+      items-center 
+      bg-highlight-green-900 
+      rounded 
+      shadow-btn
+      shadow-highlight-green-900/20
+      border-0 
+      font-mono 
+      uppercase 
+      text-background-black-900 
+      font-bold 
+      cursor-pointer
+      text-sm;
+  }
+
+  .btn-white {
+    @apply w-40 
+      h-10
+      cursor-pointer
+      flex 
+      justify-center 
+      items-center 
+      bg-dim-white-900 
+      rounded 
+      shadow-btn
+      shadow-highlight-green-900/20
+      border-0 
+      font-mono 
+      uppercase 
+      text-background-black-900 
+      font-bold 
+      text-sm;
+  }
+  .nav {
+    /* @apply mx-auto w-screen flex h-20 bg-background-black-900/75 px-8 items-center fixed top-0 left-0 right-0 z-50;*/
+    @apply mx-auto 
+      w-screen
+      flex 
+      h-20 
+      px-8
+      items-center 
+      fixed 
+      top-0 
+      left-0 
+      z-50
+      right-0;
+  }
+
+  .logo {
+    @apply w-8 
+      h-8 
+      bg-dim-white-900 
+      rounded-full;
+  }
+  .icon-wrapper {
+    @apply absolute
+    right-0
+    top-0
+    w-12
+    flex
+    items-center
+    justify-center
+    text-2xl
+    text-highlight-green-900
+    h-full;
+  }
+  .input-field-wrapper {
+    @apply w-full
+    rounded-lg
+    border
+    border-highlight-green-900/60
+    bg-transparent
+    flex
+    relative
+    h-10;
+  }
+  .input-field {
+    @apply w-[calc(100%-3rem)]
+    border-2
+    border-none
+    bg-transparent
+    placeholder-highlight-green-900/60
+    placeholder-opacity-100
+    p-4
+    text-sm
+    h-full;
+  }
+
+  .input-field:focus {
+    @apply outline-none;
+  }
+}
+
+@layer base {
+  .landing-headline {
+    @apply font-mono 
+    uppercase
+    text-4xl
+    text-center
+    tracking-wide
+    font-medium;
+  }
+
+  .medium-headline {
+    @apply font-mono 
+    uppercase
+    text-2xl
+    tracking-wide
+    font-bold;
+  }
+
+  .small-headline {
+    @apply font-mono 
+    text-sm
+    tracking-wide
+    font-medium;
   }
 }

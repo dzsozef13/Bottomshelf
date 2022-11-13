@@ -4,7 +4,7 @@ include_files(array(
     "ViewController",
     "PostController"
 ));
-class FrontEndController
+class PageController
 
 {
     private $viewCtrl;
@@ -33,5 +33,9 @@ class FrontEndController
     public function loginPage()
     {
         $this->viewCtrl->renderView('login');
+    }
+    public function dashboardPage()
+    {
+        $this->viewCtrl->renderView('dashboard');
     }
 }

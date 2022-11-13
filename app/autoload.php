@@ -31,7 +31,7 @@ function include_files($files)
             case "PostController":
             case "UserController":
             case "ViewController":
-            case "FrontEndController":
+            case "PageController":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/controller/' . "$filename" . '.php';
                 break;
                 // VIEW
