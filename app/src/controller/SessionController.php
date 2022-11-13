@@ -4,18 +4,19 @@ include_files(array(
     "Console"
 ));
 
-class SessionController {
-    function __construct() {
+class SessionController 
+{
+
+    function __construct() 
+    {
         session_start();
     }
 
-    public function connect_to_db() {
-        $db = new DbConnectionController();
-
-        if(isset($db) && isset($db->dbCon) ) {
-            return $db->dbCon;
-        } else {
-            $db->destroy();
-        }
+    public function startUserSession($userId, $username) 
+    {
+        $_SESSION['userId'] = $userId;
+        $_SESSION['username'] = $username;
+        console_log("Session started for: " . $username);
     }
+
 }

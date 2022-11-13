@@ -1,18 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-// Let's distribute css in different files so it's easier to find things
 @import url("elements.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// I find it this way a lot easier to read, change it back if it's not okay
-
 @layer components {
   .bodyStyle {
-    @apply bg-background-black-900
+    @apply 
+      bg-background-black-900
+      text-dim-white-900 
+      font-sans;
+  }
+
+  .input-field {
+    @apply 
+      bg-background-black-900
       text-dim-white-900 
       font-sans;
   }

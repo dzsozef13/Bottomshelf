@@ -7,10 +7,16 @@ include_files(array(
     "Routes"
 ));
 
-$session = new SessionController();
-
-/**
- * Router tries to serve the current URL request
- */
 $router = new Router();
+$session = new SessionController();
+$pageController = new PageController();
+
 ?>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/output.css" rel="stylesheet">
+    <title><?php echo $router->currentRoute ?></title>
+</head>

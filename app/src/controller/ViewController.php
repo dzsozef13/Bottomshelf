@@ -6,30 +6,27 @@ include_files(array(
 
 class ViewController {
 
-    public $name;
-
-    public function renderView($viewName) {
-        $this->name = $viewName;
+    public function renderView($viewName)
+    {
+        $layoutName = "GuestLayout";
         // todo : add logic which will switch layouts depending on if the user is logged in or not
-        $layoutContent = $this->getLayoutContent("GuestLayout");
+        $layoutContent = $this->getLayoutContent($layoutName);
         $viewContent = $this->getViewContent($viewName);
         echo str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
-    public function getLayoutContent($layoutName) {
+    public function getLayoutContent($layoutName)
+    {
         ob_start();
-        include_once $_SERVER['DOCUMENT_ROOT']."/public/layouts/".$layoutName.".php";
+        include_files(array($layoutName));
         return ob_get_clean();
     }
 
-    public function getViewContent($viewName) {
+    public function getViewContent($viewName)
+    {
         ob_start();
-        include_once $_SERVER['DOCUMENT_ROOT']."/src/view/".$viewName.".php";
+        include_files(array($viewName));
         return ob_get_clean();
-    }
-
-    public function print($message) {
-        echo $message;
     }
 
 }
