@@ -120,4 +120,11 @@
     tracking-wide
     font-medium;
   }
+
+  .small-headline {
+    @apply font-mono 
+    text-sm
+    tracking-wide
+    font-medium;
+  }
 }
