@@ -790,6 +790,10 @@ video {
   grid-column: span 4 / span 4;
 }
 
+.col-span-3{
+  grid-column: span 3 / span 3;
+}
+
 .mx-4{
   margin-left: 1rem;
   margin-right: 1rem;
@@ -937,3 +941,29 @@ video {
 }
 
 /* I find it this way a lot easier to read, change it back if it's not okay */
+
+@media (min-width: 640px){
+  .sm\:col-span-3{
+    grid-column: span 3 / span 3;
+  }
+
+  .sm\:pr-8{
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:col-span-2{
+    grid-column: span 2 / span 2;
+  }
+}
+
+@media (min-width: 1536px){
+  .\32xl\:col-span-2{
+    grid-column: span 2 / span 2;
+  }
+
+  .\32xl\:col-span-4{
+    grid-column: span 4 / span 4;
+  }
+}
