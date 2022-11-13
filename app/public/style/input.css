@@ -12,15 +12,13 @@
 
 @layer components {
   .bodyStyle {
-    @apply
-      bg-background-black-900
+    @apply bg-background-black-900
       text-dim-white-900 
       font-sans;
   }
 
   .btn {
-    @apply 
-      w-40 
+    @apply w-40 
       h-8 
       flex 
       justify-center 
@@ -36,8 +34,8 @@
   }
 
   .nav {
-    @apply
-      mx-auto 
+    /* @apply mx-auto w-screen flex h-20 bg-background-black-900/75 px-8 items-center fixed top-0 left-0 right-0 z-50;*/
+    @apply mx-auto 
       w-screen
       flex 
       h-20 
@@ -50,8 +48,7 @@
   }
 
   .logo {
-    @apply
-      w-8 
+    @apply w-8 
       h-8 
       bg-dim-white-900 
       rounded-full;

@@ -6,19 +6,24 @@ include_files(array(
 /**
  * Globally used function to inlcude files from the directory.
  */
-function include_files($files) {
+function include_files($files)
+{
     foreach ($files as $filename) {
         switch ($filename) {
                 // MODEL
+                //DAL
+            case "Route":
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/' . "$filename" . '.php';
+                break;
+                //DAL
             case "PostModel":
             case "CountryModel":
-            case "Route":
             case "BadgeModel":
             case "About":
             case "TagModel":
             case "CoreModel":
-            case "UserModel":  
-                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/' . "$filename" . '.php';
+            case "UserModel":
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/DAL/' . "$filename" . '.php';
                 break;
                 // CONTROLLER
             case "SessionController":
@@ -26,6 +31,7 @@ function include_files($files) {
             case "PostController":
             case "UserController":
             case "ViewController":
+            case "FrontEndController":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/controller/' . "$filename" . '.php';
                 break;
                 // VIEW
