@@ -44,6 +44,9 @@ class UserModel extends CoreModel {
             $handle->bindValue(':dateOfBirth', $sanitizedDateOfBirth);
             $handle->bindValue(':userPassword', $hashPassword);
 
+            /**
+             * Hardcoded for now :)
+             */
             $handle->bindValue(':countryCode', "DNK");
             $handle->bindValue(':roleId', 1);
             $handle->bindValue(':statusId', 1);

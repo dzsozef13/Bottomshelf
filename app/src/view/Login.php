@@ -25,7 +25,7 @@
         </div>
         <div class="mb-8">
             <p class="small-headline mb-4">Don't have an account?</p>
-            <a href="">
+            <a href="Signup">
                 <button class="btn-green w-full">SIGN UP</button>
             </a>
 
