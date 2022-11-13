@@ -25,7 +25,7 @@
         </div>
         <div class="btn-green">
             <a href="/Login">
-                <button>Sign in</button>
+                <button>SIGN IN</button>
             </a>
         </div>
     </div>

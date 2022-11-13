@@ -78,11 +78,14 @@
       uppercase 
       text-background-black-900 
       font-bold 
+      cursor-pointer
       text-sm;
   }
+
   .btn-white {
     @apply w-40 
       h-10
+      cursor-pointer
       flex 
       justify-center 
       items-center 
@@ -108,6 +111,7 @@
       fixed 
       top-0 
       left-0 
+      z-50
       right-0;
   }
 
@@ -132,7 +136,7 @@
   .input-field-wrapper {
     @apply w-full
     rounded-lg
-    border-2
+    border
     border-highlight-green-900/60
     bg-transparent
     flex
@@ -147,6 +151,7 @@
     placeholder-highlight-green-900/60
     placeholder-opacity-100
     p-4
+    text-sm
     h-full;
   }
 
