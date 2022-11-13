@@ -7,7 +7,7 @@ function console_log($data) {
     $output = $data;
     if (is_array($output))
         $output = implode(',', $output);
-
+    log($output);
     echo "<script>console.log('MESSAGE: " . $output . "' );</script>";
 }
 

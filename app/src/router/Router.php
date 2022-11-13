@@ -12,6 +12,7 @@ class Router
 {
     // Container for predefined routes
     public static $routes = array();
+    public $currentRoute;
     // Router job attributes
     protected $controller;
     protected $action;
@@ -26,7 +27,7 @@ class Router
     public function __construct($routeName = null)
     {
         if ($routeName) {
-            $this->executeRoute($routeName);
+            header("Location: " . $routeName);
         } else {
             $this->serveRequeset();
         }
@@ -88,6 +89,7 @@ class Router
                 $this->setJob($route->getPath());
                 $this->setParams($route->getParams());
                 $this->callRouteAction();
+                $this->currentRoute = $routeName;
                 return;
             }
         }
@@ -164,6 +166,6 @@ class Router
      */
     protected function callRouteAction()
     {
-        call_user_func_array(array(new $this->controller, $this->action), $this->params);
+        call_user_func(array(new $this->controller, $this->action), $this->params);
     }
 }

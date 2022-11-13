@@ -4,38 +4,21 @@ include_files(array(
     "ViewController",
     "PostController"
 ));
+
 class PageController
 
 {
-    private $viewCtrl;
+    protected $viewCtrl;
     public function __construct()
     {
         $this->viewCtrl = new ViewController();
     }
 
-
-    public function homePage()
+    public function load($args)
     {
-        $this->viewCtrl->renderView('home');
-        // Just a test of how we could fetch and display data on pages
-        // Find a way to map data
-
-        // $postCtrl = new PostController();
-        // var_dump($postCtrl->fetchAll());
+        if ($view = $args['view']) {
+            $this->viewCtrl->renderView($view);
+        }
     }
 
-    public function aboutPage()
-    {
-        $this->viewCtrl->renderView('about');
-    }
-
-
-    public function loginPage()
-    {
-        $this->viewCtrl->renderView('login');
-    }
-    public function dashboardPage()
-    {
-        $this->viewCtrl->renderView('dashboard');
-    }
 }
