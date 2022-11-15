@@ -1,15 +1,21 @@
-<?php 
+<?php
 include_files(array(
     "Console",
     "Route",
 ));
 
-class ViewController {
+class ViewController
+{
 
     public function renderView($viewName)
     {
-        $layoutName = "GuestLayout";
+
         // todo : add logic which will switch layouts depending on if the user is logged in or not
+        if ($viewName === "Dashboard" || $viewName === "Explore"  || $viewName === "Profile") {
+            $layoutName = "UserLayout";
+        } else {
+            $layoutName = "GuestLayout";
+        }
         $layoutContent = $this->getLayoutContent($layoutName);
         $viewContent = $this->getViewContent($viewName);
         echo str_replace('{{content}}', $viewContent, $layoutContent);
@@ -28,5 +34,4 @@ class ViewController {
         include_files(array($viewName));
         return ob_get_clean();
     }
-
 }
