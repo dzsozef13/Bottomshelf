@@ -10,5 +10,3 @@
             <div class="landing-headline ">V</div>
         </div>
     </div>
-
-    </div>

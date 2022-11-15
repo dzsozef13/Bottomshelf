@@ -9,13 +9,13 @@ class ViewController
 
     public function renderView($viewName)
     {
-
         // todo : add logic which will switch layouts depending on if the user is logged in or not
         if ($viewName === "Dashboard" || $viewName === "Explore"  || $viewName === "Profile") {
             $layoutName = "UserLayout";
         } else {
             $layoutName = "GuestLayout";
         }
+
         $layoutContent = $this->getLayoutContent($layoutName);
         $viewContent = $this->getViewContent($viewName);
         echo str_replace('{{content}}', $viewContent, $layoutContent);
