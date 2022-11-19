@@ -964,14 +964,6 @@ video {
     grid-column: span 3 / span 3;
   }
 
-  .sm\:col-span-2{
-    grid-column: span 2 / span 2;
-  }
-
-  .sm\:col-span-4{
-    grid-column: span 4 / span 4;
-  }
-
   .sm\:pr-8{
     padding-right: 2rem;
   }
@@ -984,14 +976,6 @@ video {
 
   .xl\:col-span-4{
     grid-column: span 4 / span 4;
-  }
-
-  .xl\:col-span-1{
-    grid-column: span 1 / span 1;
-  }
-
-  .xl\:col-span-5{
-    grid-column: span 5 / span 5;
   }
 }
 

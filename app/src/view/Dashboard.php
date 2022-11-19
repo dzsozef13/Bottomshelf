@@ -1,1 +1,6 @@
-<h1>Dashboard</h1>
+<?PHP
+$test = new PostModel();
+
+var_dump($test->getAll());
+?>
+<h1>dashboard</h1>

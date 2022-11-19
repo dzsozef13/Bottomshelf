@@ -13,6 +13,9 @@ module.exports = {
         'highlight-green': {
           900: '#90CA9C',
         },
+        'background-black': {
+          900: '#151617',
+        },
         'background-primary': {
           900: '#151617',
         },
