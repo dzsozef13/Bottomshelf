@@ -599,6 +599,14 @@ video {
   color: rgb(216 216 216 / var(--tw-text-opacity));
 }
 
+.input-field{
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 22 23 / var(--tw-bg-opacity));
+  font-family: 'Lato';
+  --tw-text-opacity: 1;
+  color: rgb(216 216 216 / var(--tw-text-opacity));
+}
+
 .nav {
   /* @apply mx-auto w-screen flex h-20 bg-background-black-900/75 px-8 items-center fixed top-0 left-0 right-0 z-50;*/
   position: fixed;
@@ -687,6 +695,7 @@ video {
   top: 0px;
   left: 0px;
   right: 0px;
+  z-index: 50;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -785,12 +794,12 @@ video {
   grid-column: span 6 / span 6;
 }
 
-.col-span-4{
-  grid-column: span 4 / span 4;
+.col-span-1{
+  grid-column: span 1 / span 1;
 }
 
-.col-span-3{
-  grid-column: span 3 / span 3;
+.col-span-5{
+  grid-column: span 5 / span 5;
 }
 
 .mx-4{
@@ -908,8 +917,16 @@ video {
   gap: 1rem;
 }
 
+.bg-highlight-green-900\/10{
+  background-color: rgb(144 202 156 / 0.1);
+}
+
 .bg-\[radial-gradient\(circle_at_100\%_100\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
   background-image: radial-gradient(circle at 100% 100%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 58%);
+}
+
+.p-8{
+  padding: 2rem;
 }
 
 .px-8{
@@ -920,10 +937,6 @@ video {
 .px-1{
   padding-left: 0.25rem;
   padding-right: 0.25rem;
-}
-
-.pr-8{
-  padding-right: 2rem;
 }
 
 .pb-6{
@@ -937,6 +950,11 @@ video {
 
 .uppercase{
   text-transform: uppercase;
+}
+
+.text-highlight-green-900{
+  --tw-text-opacity: 1;
+  color: rgb(144 202 156 / var(--tw-text-opacity));
 }
 
 /* I find it this way a lot easier to read, change it back if it's not okay */
@@ -955,13 +973,13 @@ video {
   .xl\:col-span-2{
     grid-column: span 2 / span 2;
   }
+
+  .xl\:col-span-4{
+    grid-column: span 4 / span 4;
+  }
 }
 
 @media (min-width: 1536px){
-  .\32xl\:col-span-2{
-    grid-column: span 2 / span 2;
-  }
-
   .\32xl\:col-span-4{
     grid-column: span 4 / span 4;
   }

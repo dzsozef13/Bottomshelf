@@ -50,6 +50,8 @@ CREATE TABLE Post (
     IsPublic boolean,
     IsSticky boolean,
     CreatedAt timestamp,
+    ReactionCount int,
+    LatestCommentId int,
     UserId int NOT NULL,
     ChildPostId int,
     StatusId int NOT NULL,

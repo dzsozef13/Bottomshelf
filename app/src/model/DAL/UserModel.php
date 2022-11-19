@@ -5,15 +5,17 @@ include_files(array(
     "CoreModel"
 ));
 
-class UserModel extends CoreModel {
+class UserModel extends CoreModel
+{
 
     /**
      * Returns success
      */
-    public function registUser($data): bool {
+    public function registUser($data): bool
+    {
         try {
             $conn = CoreModel::openDbConnetion();
-            $query = 
+            $query =
                 "INSERT INTO User (
                     Email, 
                     Username, 
@@ -29,10 +31,9 @@ class UserModel extends CoreModel {
                     :dateOfBirth, 
                     :countryCode,
                     :roleId,
-                    :statusId)"
-                ;
+                    :statusId)";
             $handle = $conn->prepare($query);
- 
+
             $sanitizedEmail = htmlspecialchars($data['email']);
             $sanitizedUsername = htmlspecialchars($data['username']);
             $sanitizedDateOfBirth = htmlspecialchars($data['birthdate']);
@@ -51,11 +52,11 @@ class UserModel extends CoreModel {
             $handle->bindValue(':roleId', 1);
             $handle->bindValue(':statusId', 1);
 
-		    $handle->execute();
-		    // Close database connection
+            $handle->execute();
+            // Close database connection
             $this->closeDbConnection();
             return true;
-		} catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo  $e->getMessage();
             return false;
         }
@@ -64,7 +65,8 @@ class UserModel extends CoreModel {
     /**
      * Returns single user with the passed email
      */
-    public function getUserByEmail($email) {
+    public function getUserByEmail($email)
+    {
         try {
             // Open database connection and prepare statement
             $conn = $this->openDbConnetion();
@@ -76,12 +78,12 @@ class UserModel extends CoreModel {
             $handle->bindParam(':userEmail', $sanitizedEmail);
             $handle->execute();
             // Get result
-            $result = $handle->fetchAll();
+            $result = $handle->fetch(PDO::FETCH_OBJ);
             // Close database connection
             $this->closeDbConnection();
             // Return result
             return $result[0];
-		} catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo  $e->getMessage();
         }
     }
@@ -89,24 +91,25 @@ class UserModel extends CoreModel {
     /**
      * Returns single user with the passed username
      */
-    public function getUserByUsername($username) {
+    public function getUserByUsername($username)
+    {
         try {
             // Open database connection and prepare statement
             $conn = $this->openDbConnetion();
             $query = "SELECT * FROM User WHERE Username = :username";
             $handle = $conn->prepare($query);
             // Sanetize input
-            $sanitizedUsername = htmlspecialchars($username);   
+            $sanitizedUsername = htmlspecialchars($username);
             // Bind parameters and execute
             $handle->bindParam(':username', $sanitizedUsername);
             $handle->execute();
             // Get result
-            $result = $handle->fetchAll();
+            $result = $handle->fetch(PDO::FETCH_OBJ);
             // Close database connection
             $this->closeDbConnection();
             // Return result
             return $result[0];
-		} catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo  $e->getMessage();
         }
     }
@@ -115,7 +118,8 @@ class UserModel extends CoreModel {
      * Validates user with passed email and password
      * Returns password is correct
      */
-    public function validateUser($email, $password) {
+    public function validateUser($email, $password)
+    {
         $user = $this->getUserByEmail($email);
         if (password_verify($password, $user['UserPassword'])) {
             return $user;
@@ -124,4 +128,36 @@ class UserModel extends CoreModel {
         }
     }
 
+    /**
+     * @return User[] 
+     */
+    public function getAll(int $statusId, int $roleId)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+
+            $query = "SELECT UserId, Email, Username, ProfileImgUrl, StatusId,CountryCode, RoleId 
+            FROM `User` 
+            WHERE StatusId = :StatusId AND RoleId = :RoleId
+            ORDER BY UserId";
+
+            $handle = $conn->prepare($query);
+            $handle->bindParam(':StatusId', $statusId);
+            $handle->bindParam(':RoleId', $roleId);
+            $handle->execute();
+
+            $result = array();
+
+            while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+                $result[] = $row;
+            }
+            //close the connection
+            CoreModel::closeDbConnection();
+            $conn = null;
+
+            return $result;
+        } catch (PDOException $e) {
+            print($e->getMessage());
+        }
+    }
 }

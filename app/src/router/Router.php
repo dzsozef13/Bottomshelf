@@ -135,7 +135,7 @@ class Router
             $this->escape();
         }
         $this->controller = $controller;
-        console_log("Calling: " . $controller);
+        // console_log("Calling: " . $controller);
     }
 
     /**
@@ -149,7 +149,7 @@ class Router
             $this->escape();
         }
         $this->action = $action;
-        console_log("Calling: " . $action);
+        // console_log("Calling: " . $action);
     }
 
     /**

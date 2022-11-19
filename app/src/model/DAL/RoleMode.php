@@ -1,30 +1,31 @@
 <?php
+
 include_files(array(
     "Console",
     "DbConnectionController",
     "CoreModel"
 ));
 
-class CountryModel extends CoreModel
+class RoleModel extends CoreModel
 {
 
 
     /**
-     * @param string countryCode 
-     * @return Country 
+     * @param int RoleId 
+     * @return Role 
      */
-    public function getByCountryCode($countryCode)
+    public function getById($roleId)
     {
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT * FROM Country WHERE CountryCode = :CountryCode";
+            $query = "SELECT * FROM `Role` WHERE RoleId = :RoleId";
 
             $handle = $conn->prepare($query);
-            $handle->bindParam(':CountryCode', $countryCode);
+            $handle->bindParam(':RoleId', $roleId);
             $handle->execute();
 
-            $result = $handle->fetch(PDO::FETCH_OBJ);
+            $result = $handle->fetch(PDO::FETCH_ASSOC);
 
             //close the connection
             CoreModel::closeDbConnection();
@@ -37,22 +38,20 @@ class CountryModel extends CoreModel
     }
 
     /**
-     * @return Country[]  
+     * @return Role[]  
      */
     public function getAll()
     {
+        // might improve the get all functions to avoid fetching too much
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT * FROM Country ORDER BY CountryCode";
+            $query = "SELECT * FROM `Role` ORDER BY RoleName";
 
             $handle = $conn->prepare($query);
             $handle->execute();
 
-            $result = array();
-            while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
-                $result[] = $row;
-            }
+            $result = $handle->fetchAll(PDO::FETCH_OBJ);
 
             //close the connection
             CoreModel::closeDbConnection();

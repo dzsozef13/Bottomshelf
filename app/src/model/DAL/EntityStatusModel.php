@@ -5,23 +5,24 @@ include_files(array(
     "CoreModel"
 ));
 
-class CountryModel extends CoreModel
+class EntityStatusModel extends CoreModel
 {
 
 
     /**
-     * @param string countryCode 
-     * @return Country 
+     * @param int EntityStatusId 
+     * @return EntityStatus 
      */
-    public function getByCountryCode($countryCode)
+    public function getById($statusId)
     {
+        //Sanitize this and make sure is safe
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT * FROM Country WHERE CountryCode = :CountryCode";
+            $query = "SELECT * FROM EntityStatus WHERE StatusId = :StatusId";
 
             $handle = $conn->prepare($query);
-            $handle->bindParam(':CountryCode', $countryCode);
+            $handle->bindParam(':StatusId', $statusId);
             $handle->execute();
 
             $result = $handle->fetch(PDO::FETCH_OBJ);
@@ -37,22 +38,19 @@ class CountryModel extends CoreModel
     }
 
     /**
-     * @return Country[]  
+     * @return EntityStatus[]  
      */
     public function getAll()
     {
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT * FROM Country ORDER BY CountryCode";
+            $query = "SELECT * FROM EntityStatus ORDER BY StatusId";
 
             $handle = $conn->prepare($query);
             $handle->execute();
 
-            $result = array();
-            while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
-                $result[] = $row;
-            }
+            $result = $handle->fetchAll(PDO::FETCH_OBJ);
 
             //close the connection
             CoreModel::closeDbConnection();

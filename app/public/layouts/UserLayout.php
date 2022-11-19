@@ -1,23 +1,36 @@
+<!-- to be finished -->
+
 <body class="bodyStyle">
-    <div class="nav">
-        <div class="w-full flex items-center">
-            <div class="logo"></div>
-            <ul class="list-none flex items-center text-m uppercase">
-                <li class="mx-4 ml-6">
-                    <a href="/Home">Home</a>
-                </li>
-                <li class="mx-2">
-                    <a href="/About">About</a>
-                </li>
-            </ul>
+    <div class="grid grid-cols-6 h-screen">
+        <div class="col-span-1 bg-highlight-green-900/10 p-8 flex flex-col justify-between">
+            <div>
+                <div class="logo"></div>
+                <ul class="mt-6 uppercase">
+                    <a href="/Dashboard">
+                        <li class="mb-4 <?php if ($_SERVER['REQUEST_URI'] === '/Dashboard') {
+                                            echo 'text-highlight-green-900';
+                                        } ?>">Dashboard</li>
+                    </a>
+                    <a href="/Explore">
+                        <li class="mb-4 <?php if ($_SERVER['REQUEST_URI'] === '/Explore') {
+                                            echo 'text-highlight-green-900';
+                                        } ?>">Explore</li>
+                    </a>
+                    <a href="/Profile">
+                        <li class="mb-4 <?php if ($_SERVER['REQUEST_URI'] === '/Profile') {
+                                            echo 'text-highlight-green-900';
+                                        } ?>">
+                            My Profile</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="w-full flex items-center">
+                <div class="logo"></div>
+                <h4 class="ml-6">Username</h4>
+            </div>
         </div>
-        <div class="btn-green">
-            <a href="/Login">
-                <button>Sign in</button>
-            </a>
+        <div class="col-span-5 mx-auto w-screen">
+            {{content}}
         </div>
-    </div>
-    <div class="mx-auto w-screen mt-20">
-        {{content}}
     </div>
 </body>
