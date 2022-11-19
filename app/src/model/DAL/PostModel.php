@@ -78,7 +78,10 @@ class PostModel extends CoreModel
             try {
                   $conn = CoreModel::openDbConnetion();
 
-                  $query = "SELECT * FROM Post ORDER BY PostId";
+                  $query = "SELECT Post.PostId, Post.Title, User.UserName
+                  FROM Post 
+                  INNER JOIN `User` ON User.UserId=Post.UserId
+                  ORDER BY PostId";
 
                   $handle = $conn->prepare($query);
                   $handle->execute();
