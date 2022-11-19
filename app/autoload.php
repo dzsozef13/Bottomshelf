@@ -17,6 +17,9 @@ function include_files($files)
                 // DAL
             case "PostModel":
             case "CountryModel":
+            case "ReactionModel":
+            case "EntityStatusModel":
+            case "RoleModel":
             case "BadgeModel":
             case "TagModel":
             case "CoreModel":

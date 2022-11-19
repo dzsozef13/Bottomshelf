@@ -41,12 +41,12 @@ class PostController
         }
     }
 
-    public function fetchAll()
+    public function fetchAll(int $statusId, bool $isPublic)
     {
-        return $this->postModel->getAll();
+        return $this->postModel->getAll($statusId, $isPublic);
     }
 
-    public function fetchById($id)
+    public function fetchById(int $id)
     {
         if (isset($id)) {
             return $this->postModel->getById($id);

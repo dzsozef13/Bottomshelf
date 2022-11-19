@@ -1,3 +1,5 @@
+<!-- to be finished -->
+
 <body class="bodyStyle">
     <div class="grid grid-cols-6 h-screen">
         <div class="col-span-1 bg-highlight-green-900/10 p-8 flex flex-col justify-between">
