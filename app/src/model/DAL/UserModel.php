@@ -131,14 +131,19 @@ class UserModel extends CoreModel
     /**
      * @return User[] 
      */
-    public function getAll()
+    public function getAll(int $statusId, int $roleId)
     {
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT UserId, Email, Username, ProfileImgUrl, StatusId,CountryCode, RoleId FROM `User` ORDER BY UserId";
+            $query = "SELECT UserId, Email, Username, ProfileImgUrl, StatusId,CountryCode, RoleId 
+            FROM `User` 
+            WHERE StatusId = :StatusId AND RoleId = :RoleId
+            ORDER BY UserId";
 
             $handle = $conn->prepare($query);
+            $handle->bindParam(':StatusId', $statusId);
+            $handle->bindParam(':RoleId', $roleId);
             $handle->execute();
 
             $result = array();

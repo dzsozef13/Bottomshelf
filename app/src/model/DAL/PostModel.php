@@ -74,7 +74,7 @@ class PostModel extends CoreModel
       /**
        * @return Post[]  (if none then empty array [])
        */
-      public function getAll(int $statusId, int $isPublic)
+      public function getAll(int $statusId, bool $isPublic)
       {
             // might improve the get all functions to avoid fetching too much
             try {
