@@ -1,31 +1,31 @@
 <?php
-
 include_files(array(
     "Console",
     "DbConnectionController",
     "CoreModel"
 ));
 
-class RoleModel extends CoreModel
+class EntityStatusModel extends CoreModel
 {
 
 
     /**
-     * @param int RoleId 
-     * @return Role 
+     * @param int EntityStatusId 
+     * @return EntityStatus 
      */
-    public function getById($roleId)
+    public function getById($statusId)
     {
+        //Sanitize this and make sure is safe
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT * FROM `Role` WHERE RoleId = :RoleId";
+            $query = "SELECT * FROM EntityStatus WHERE StatusId = :StatusId";
 
             $handle = $conn->prepare($query);
-            $handle->bindParam(':RoleId', $roleId);
+            $handle->bindParam(':StatusId', $statusId);
             $handle->execute();
 
-            $result = $handle->fetch(PDO::FETCH_ASSOC);
+            $result = $handle->fetch(PDO::FETCH_OBJ);
 
             //close the connection
             CoreModel::closeDbConnection();
@@ -38,15 +38,14 @@ class RoleModel extends CoreModel
     }
 
     /**
-     * @return Role[]  
+     * @return EntityStatus[]  
      */
     public function getAll()
     {
-        // might improve the get all functions to avoid fetching too much
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT * FROM `Role` ORDER BY RoleName";
+            $query = "SELECT * FROM EntityStatus ORDER BY StatusId";
 
             $handle = $conn->prepare($query);
             $handle->execute();
