@@ -198,7 +198,7 @@ INSERT INTO `User`  (UserId, Email,UserPassword, Username, DateOfBirth, ProfileI
 VALUES (NULL,'monkey@lol.com', 'monkeyPass', 'MonkeyFromATree', '200-01-12', NULL, 'Test Or Not To Test', 'DNK', 1, 1);
 
 
-INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, CreatedAt, UserId, ChildPostId, StatusId)
-VALUES (NULL,'First Post', 'Describing the post always', TRUE, FALSE, 1667561122, 1, NULL, 1);
-INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, CreatedAt, UserId, ChildPostId, StatusId)
-VALUES (NULL,'Another Post', 'Just a beer', TRUE, FALSE, 1667467522, 1, NULL, 1);
+INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, CreatedAt, ReactionCount, LatestCommentId, UserId, ChildPostId, StatusId)
+VALUES (NULL,'First Post', 'Describing the post always', TRUE, FALSE, 1667561122, 0, NULL, 1, NULL, 1);
+INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, CreatedAt, ReactionCount, LatestCommentId, UserId, ChildPostId, StatusId)
+VALUES (NULL,'Another Post', 'Just a beer', TRUE, FALSE, 1667467522, 0, NULL, 1, NULL, 1);
