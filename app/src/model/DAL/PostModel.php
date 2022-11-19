@@ -51,7 +51,9 @@ class PostModel extends CoreModel
             try {
                   $conn = CoreModel::openDbConnetion();
 
-                  $query = "SELECT * FROM Post WHERE PostId = :PostId";
+                  $query = "SELECT Post.PostId, Post.Title, Post.PostDescription, Post.IsPublic, Post.UserId, User.Username FROM Post 
+                  INNER JOIN `User` ON User.UserId=Post.UserId
+                  WHERE Post.PostId = :PostId";
 
                   $handle = $conn->prepare($query);
                   $handle->bindParam(':PostId', $postId);
