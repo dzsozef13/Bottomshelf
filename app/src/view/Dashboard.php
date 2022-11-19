@@ -1,6 +1,6 @@
 <?PHP
-$test = new PostModel();
+$test = new UserModel();
 
-var_dump($test->getById(1));
+var_dump($test->getAll());
 ?>
 <h1>dashboard</h1>

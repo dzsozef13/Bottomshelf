@@ -127,4 +127,32 @@ class UserModel extends CoreModel
             return null;
         }
     }
+
+    /**
+     * @return User[] 
+     */
+    public function getAll()
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+
+            $query = "SELECT UserId, Email, Username, ProfileImgUrl, StatusId,CountryCode, RoleId FROM `User` ORDER BY UserId";
+
+            $handle = $conn->prepare($query);
+            $handle->execute();
+
+            $result = array();
+
+            while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+                $result[] = $row;
+            }
+            //close the connection
+            CoreModel::closeDbConnection();
+            $conn = null;
+
+            return $result;
+        } catch (PDOException $e) {
+            print($e->getMessage());
+        }
+    }
 }
