@@ -45,7 +45,7 @@ class PostModel extends CoreModel
        * @param int postId is the id of the post you would like to fetch
        * @return Post post with matching Id  (if none then false)
        */
-      public function getById($postId)
+      public function getById(int $postId)
       {
             //Sanitize this and make sure is safe
             try {
@@ -74,19 +74,21 @@ class PostModel extends CoreModel
       /**
        * @return Post[]  (if none then empty array [])
        */
-      public function getAll()
+      public function getAll(int $statusId, int $isPublic)
       {
             // might improve the get all functions to avoid fetching too much
             try {
                   $conn = CoreModel::openDbConnetion();
-
                   $query = "SELECT Post.PostId, Post.Title, Post.ReactionCount, User.UserName, Comment.content
                   FROM Post 
                   INNER JOIN `User` ON User.UserId=Post.UserId
                   LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-                  ORDER BY PostId";
+                  WHERE Post.StatusId = :StatusId AND Post.IsPublic = :IsPublic
+                  ORDER BY Post.CreatedAt";
 
                   $handle = $conn->prepare($query);
+                  $handle->bindParam(':StatusId', $statusId);
+                  $handle->bindParam(':IsPublic', $isPublic);
                   $handle->execute();
 
                   $result = array();
@@ -108,7 +110,7 @@ class PostModel extends CoreModel
        * @param int userId
        * @return Post[] (if none then empty array [])
        */
-      public function getAllByUserId($userId)
+      public function getAllByUserId(int $userId)
       {
             try {
                   $conn = CoreModel::openDbConnetion();
@@ -132,37 +134,10 @@ class PostModel extends CoreModel
       }
 
       /**
-       * @param int statusId
-       * @return Post[]  (if none then empty array [])
-       */
-      public function getAllByStatusId($statusId)
-      {
-            try {
-                  $conn = CoreModel::openDbConnetion();
-
-                  $query = "SELECT * FROM Post WHERE StatusId = :StatusId ORDER BY CreatedAt";
-
-                  $handle = $conn->prepare($query);
-                  $handle->bindParam(':StatusId', $statusId);
-                  $handle->execute();
-
-                  $result = $handle->fetchAll(PDO::FETCH_OBJ);
-
-                  //close the connection
-                  CoreModel::closeDbConnection();
-                  $conn = null;
-
-                  return $result;
-            } catch (PDOException $e) {
-                  print($e->getMessage());
-            }
-      }
-
-      /**
        * @param int postId
        * @param array updatable data
        */
-      public function updatePost($id, $data)
+      public function updatePost(int $id, $data)
       {
             try {
                   $conn = CoreModel::openDbConnetion();
@@ -194,7 +169,7 @@ class PostModel extends CoreModel
        * @param int statusId
        */
       // in the controller the logic will be split into markAsBanned, markAsActive, markAsReported
-      public function updatePostStatus($id, $statusId)
+      public function updatePostStatus(int $id, $statusId)
       {
             try {
                   $conn = CoreModel::openDbConnetion();
