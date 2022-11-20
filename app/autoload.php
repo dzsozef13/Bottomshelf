@@ -14,6 +14,10 @@ function include_files($files)
             case "Route":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/' . "$filename" . '.php';
                 break;
+                // BE
+            case "Post":
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/BE/' . "$filename" . '.php';
+                break;
                 // DAL
             case "PostModel":
             case "CountryModel":

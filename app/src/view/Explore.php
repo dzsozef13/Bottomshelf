@@ -1,2 +1,12 @@
-<h1>Explore Page</h1>
-<p>aaaaa</p>
+<?php
+
+$postController = new PostController();
+$posts = $postController->fetchAll();
+
+foreach($posts as $post) {
+    echo "Post with id: ";
+    echo $post->getTitle();
+    echo "<br>";
+}
+
+?>
