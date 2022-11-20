@@ -43,6 +43,8 @@ class ReactionModel extends CoreModel
     /**
      * @return Reaction[]  
      */
+    // might be deleted since this would be a very heavy operation
+    // could be changed to get the most recent 
     public function getAll()
     {
         try {
