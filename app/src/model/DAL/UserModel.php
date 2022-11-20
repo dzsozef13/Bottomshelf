@@ -115,6 +115,46 @@ class UserModel extends CoreModel
     }
 
     /**
+     * Returns single user with the passed username
+     */
+    public function getUserById($id)
+    {
+        try {
+            // Open database connection and prepare statement
+            $conn = $this->openDbConnetion();
+            $query = "SELECT 
+                User.UserId,
+                User.Email, 
+                User.Username,
+                User.DateOfBirth, 
+                User.ProfileImgUrl, 
+                User.BioDescription, 
+                User.RoleId, 
+                User.StatusId, 
+                Country.CountryName, 
+                Role.RoleName, 
+                EntityStatus.StatusName
+            FROM User 
+            INNER JOIN Country ON User.CountryCode=Country.CountryCode
+            INNER JOIN `Role` ON Role.RoleId=User.RoleId
+            INNER JOIN EntityStatus ON EntityStatus.StatusId=User.StatusId
+            WHERE UserId = :userId";
+            $handle = $conn->prepare($query);
+            // Bind parameters and execute
+            $handle->bindParam(':userId', $id);
+            $handle->execute();
+            // Get result
+            $result = $handle->fetch(PDO::FETCH_OBJ);
+            // Close database connection
+            $this->closeDbConnection();
+            // Return result
+            return $result;
+        } catch (PDOException $e) {
+            echo  $e->getMessage();
+        }
+    }
+
+    /**
      * Validates user with passed email and password
      * Returns password is correct
      */

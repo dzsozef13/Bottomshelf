@@ -65,4 +65,14 @@ class UserController
             }
         }
     }
+
+    public function fetchById($userId)
+    {
+        if (isset($userId)) {
+            $userModel = new UserModel();
+            return $userModel->getUserById($userId);
+        } else {
+            return null;
+        }
+    }
 }
