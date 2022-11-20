@@ -2,6 +2,7 @@
 include_files(array(
     "Console",
     "Route",
+    "SessionController"
 ));
 
 class ViewController
@@ -9,8 +10,6 @@ class ViewController
 
     public function renderView($viewName)
     {
-        // todo : add logic which will switch layouts depending on if the user is logged in or not
-        //this condition is temporary solution
         if ($viewName === "Dashboard" || $viewName === "Explore"  || $viewName === "Profile") {
             $layoutName = "UserLayout";
         } else {
