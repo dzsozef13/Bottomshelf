@@ -76,7 +76,7 @@ class UserModel extends CoreModel
             $sanitizedEmail = htmlspecialchars($email);
             // Bind parameters and execute
             $handle->bindParam(':userEmail', $sanitizedEmail);
-            $handle->execute(); 
+            $handle->execute();
             // Get result
             $result = $handle->fetch(PDO::FETCH_OBJ);
             // Close database connection

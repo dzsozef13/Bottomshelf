@@ -4,13 +4,13 @@ include_files(array(
     "Console"
 ));
 
-class SessionController 
+class SessionController
 {
 
     /**
      * Start or continues session
      */
-    function __construct() 
+    function __construct()
     {
         session_start();
     }
@@ -26,7 +26,7 @@ class SessionController
     /**
      * Sets user data in session
      */
-    public function setUser($userId, $username) 
+    public function setUser($userId, $username)
     {
         $_SESSION['userId'] = $userId;
         $_SESSION['username'] = $username;
@@ -35,9 +35,15 @@ class SessionController
     /**
      * Returns array of user data
      */
-    public function getUser() {
-        return array(   'userId'=>$_SESSION['userId'], 
-                        'username'=>$_SESSION['username']);
+    public function getUser()
+    {
+        if (isset($_SESSION['userId'])) {
+            return  array(
+                'userId' => $_SESSION['userId'],
+                'username' => $_SESSION['username']
+            );
+        } else {
+            return null;
+        }
     }
-
 }

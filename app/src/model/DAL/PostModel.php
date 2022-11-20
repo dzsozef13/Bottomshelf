@@ -115,7 +115,12 @@ class PostModel extends CoreModel
             try {
                   $conn = CoreModel::openDbConnetion();
 
-                  $query = "SELECT * FROM Post WHERE UserId = :UserId ORDER BY CreatedAt";
+                  $query = "SELECT Post.PostId, Post.Title, Post.ReactionCount, User.UserName, Comment.content
+                  FROM Post 
+                  INNER JOIN `User` ON User.UserId=Post.UserId
+                  LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
+                  WHERE UserId = :UserId 
+                  ORDER BY CreatedAt";
 
                   $handle = $conn->prepare($query);
                   $handle->bindParam(':UserId', $userId);

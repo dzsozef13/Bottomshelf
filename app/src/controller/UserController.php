@@ -8,20 +8,20 @@ include_files(array(
     "UserModel"
 ));
 
-class UserController 
+class UserController
 {
 
-    public function tryLogInUser() 
+    public function tryLogInUser()
     {
-        if(isset($_POST['email'], $_POST['password']) ) {
+        if (isset($_POST['email'], $_POST['password'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
-    
+
             $userModel = new UserModel();
             if ($user = $userModel->validateUser($email, $password)) {
                 $session = new SessionController();
                 $session->setUser($user->UserId, $user->Username);
-                new Router("Home");
+                new Router("Dashboard");
             } else {
                 new Router("Login");
             }
@@ -31,7 +31,7 @@ class UserController
     public function tryLogOutUser()
     {
         $session = new SessionController();
-        if(isset($session->getUser()['userId'])) {
+        if (isset($session->getUser()['userId'])) {
             $session->destroy();
             new Router("Home");
         } else {
@@ -39,13 +39,15 @@ class UserController
         }
     }
 
-    public function tryRegistUser() 
+    public function tryRegistUser()
     {
-        if(isset($_POST['email'],
+        if (isset(
+            $_POST['email'],
             $_POST['username'],
             $_POST['password'],
             $_POST['repeatPassword'],
-            $_POST['birthdate'])) {
+            $_POST['birthdate']
+        )) {
 
             $userModel = new UserModel();
             if ($_POST['password'] == $_POST['repeatPassword']) {
@@ -63,5 +65,4 @@ class UserController
             }
         }
     }
-
 }

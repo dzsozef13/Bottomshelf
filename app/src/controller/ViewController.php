@@ -2,16 +2,24 @@
 include_files(array(
     "Console",
     "Route",
+    "SessionController"
 ));
 
 class ViewController
 {
 
+    protected $sessionCtrl;
+
+    public function __construct()
+    {
+        $this->sessionCtrl = new SessionController();
+    }
+
     public function renderView($viewName)
     {
-        // todo : add logic which will switch layouts depending on if the user is logged in or not
-        //this condition is temporary solution
-        if ($viewName === "Dashboard" || $viewName === "Explore"  || $viewName === "Profile") {
+
+        $user = $this->sessionCtrl->getUser();
+        if (isset($user)) {
             $layoutName = "UserLayout";
         } else {
             $layoutName = "GuestLayout";
