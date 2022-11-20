@@ -19,8 +19,8 @@ class UserController
     
             $userModel = new UserModel();
             if ($user = $userModel->validateUser($email, $password)) {
-                $userSession = new SessionController();
-                $userSession->startUserSession($user->UserId, $user->Username);
+                $session = new SessionController();
+                $session->setUser($user->UserId, $user->Username);
                 new Router("Home");
             } else {
                 new Router("Login");
@@ -28,9 +28,20 @@ class UserController
         }
     }
 
+    public function tryLogOutUser()
+    {
+        $session = new SessionController();
+        if(isset($session->getUser()['userId'])) {
+            $session->destroy();
+            new Router("Home");
+        } else {
+            console_log('No user is logged in.');
+        }
+    }
+
     public function tryRegistUser() 
     {
-        if( isset($_POST['email'],
+        if(isset($_POST['email'],
             $_POST['username'],
             $_POST['password'],
             $_POST['repeatPassword'],

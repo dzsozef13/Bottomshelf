@@ -7,16 +7,37 @@ include_files(array(
 class SessionController 
 {
 
+    /**
+     * Start or continues session
+     */
     function __construct() 
     {
         session_start();
     }
 
-    public function startUserSession($userId, $username) 
+    /**
+     * Destroys all session data
+     */
+    public function destroy()
+    {
+        session_destroy();
+    }
+
+    /**
+     * Sets user data in session
+     */
+    public function setUser($userId, $username) 
     {
         $_SESSION['userId'] = $userId;
         $_SESSION['username'] = $username;
-        console_log("Session started for: " . $username);
+    }
+
+    /**
+     * Returns array of user data
+     */
+    public function getUser() {
+        return array(   'userId'=>$_SESSION['userId'], 
+                        'username'=>$_SESSION['username']);
     }
 
 }
