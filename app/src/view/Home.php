@@ -1,9 +1,3 @@
-   <?php
-
-    $test = new CommentModel();
-
-    ?>
-
    <!-- Grid of 6 columns -->
    <div class="grid grid-cols-6 gap-4 px-8 h-[calc(100vh-5rem)] grid-flow-row">
        <!-- Landing view -->

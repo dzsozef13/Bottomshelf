@@ -99,4 +99,56 @@ class CommentModel extends CoreModel
             print($e->getMessage());
         }
     }
+
+    /**
+     * @param int commentId
+     * @param string updatable data
+     */
+    public function updateComment(int $id, $content)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+            $query = "UPDATE Comment SET Content = :Content WHERE CommentId = :CommentId";
+
+            $handle = $conn->prepare($query);
+
+            $sanitizedContent = htmlspecialchars($content);
+
+            $handle->bindParam(':Content', $sanitizedContent);
+            $handle->bindParam(':CommentId', $id);
+
+            $handle->execute();
+
+            //close the connection
+            CoreModel::closeDbConnection();
+            $conn = null;
+        } catch (PDOException $e) {
+            print($e->getMessage());
+        }
+    }
+
+
+    /**
+     * @param int commentId
+     * @param string updatable data
+     */
+    public function deleteComment(int $id)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+            $query = "DELETE FROM Comment WHERE CommentId = :CommentId";
+
+            $handle = $conn->prepare($query);
+
+            $handle->bindParam(':CommentId', $id);
+
+            $handle->execute();
+
+            //close the connection
+            CoreModel::closeDbConnection();
+            $conn = null;
+        } catch (PDOException $e) {
+            print($e->getMessage());
+        }
+    }
 }
