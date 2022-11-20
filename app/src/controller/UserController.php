@@ -20,7 +20,7 @@ class UserController
             $userModel = new UserModel();
             if ($user = $userModel->validateUser($email, $password)) {
                 $userSession = new SessionController();
-                $userSession->startUserSession($user['UserId'], $user['Username']);
+                $userSession->startUserSession($user->UserId, $user->Username);
                 new Router("Home");
             } else {
                 new Router("Login");

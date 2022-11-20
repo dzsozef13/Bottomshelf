@@ -76,15 +76,15 @@ class UserModel extends CoreModel
             $sanitizedEmail = htmlspecialchars($email);
             // Bind parameters and execute
             $handle->bindParam(':userEmail', $sanitizedEmail);
-            $handle->execute();
+            $handle->execute(); 
             // Get result
             $result = $handle->fetch(PDO::FETCH_OBJ);
             // Close database connection
             $this->closeDbConnection();
             // Return result
-            return $result[0];
+            return $result;
         } catch (PDOException $e) {
-            echo  $e->getMessage();
+            echo $e->getMessage();
         }
     }
 
@@ -108,7 +108,7 @@ class UserModel extends CoreModel
             // Close database connection
             $this->closeDbConnection();
             // Return result
-            return $result[0];
+            return $result;
         } catch (PDOException $e) {
             echo  $e->getMessage();
         }
@@ -121,7 +121,7 @@ class UserModel extends CoreModel
     public function validateUser($email, $password)
     {
         $user = $this->getUserByEmail($email);
-        if (password_verify($password, $user['UserPassword'])) {
+        if (password_verify($password, $user->UserPassword)) {
             return $user;
         } else {
             return null;
