@@ -11,10 +11,38 @@ class CommentModel extends CoreModel
 {
 
     /**
+     * @param array data all values needed to create a comment
+     */
+    public function createComment($data)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+
+            $query = "INSERT INTO Comment (Content, UserId, PostId) VALUES (:Content, :UserId, :PostId)";
+
+            $handle = $conn->prepare($query);
+
+            $sanitizedContent = htmlspecialchars($data['content']);
+
+            $handle->bindParam(':Content', $sanitizedContent);
+            $handle->bindValue(':UserId', $data['userId']);
+            $handle->bindValue(':PostId', $data['postId']);
+
+            $handle->execute();
+
+            //close the connection
+            CoreModel::closeDbConnection();
+            $conn = null;
+        } catch (PDOException $e) {
+            echo  $e->getMessage();
+        }
+    }
+
+    /**
      * @param int CommentId 
      * @return Comment 
      */
-    public function getById($commentId)
+    public function getById(int $commentId)
     {
         try {
             $conn = CoreModel::openDbConnetion();
@@ -44,7 +72,7 @@ class CommentModel extends CoreModel
     /**
      * @return Comment[]  
      */
-    public function getAllCommentsByPostId($postId)
+    public function getAllCommentsByPostId(int $postId)
     {
         try {
             $conn = CoreModel::openDbConnetion();
