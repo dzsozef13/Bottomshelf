@@ -11,6 +11,8 @@ $router = new Router();
 $session = new SessionController();
 $pageController = new PageController();
 
+console_log("Hello " . $session->getUser()['username']);
+
 ?>
 
 <head>

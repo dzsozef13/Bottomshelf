@@ -20,4 +20,5 @@ Router::add(new Route("Profile", "page/load", array("view" => "Profile")));
 Router::add(new Route("CreatePost", "post/create"));
 
 Router::add(new Route("UserLogin", "user/tryLogInUser"));
+Router::add(new Route("UserLogout", "user/tryLogOutUser"));
 Router::add(new Route("UserRegist", "user/tryRegistUser"));
