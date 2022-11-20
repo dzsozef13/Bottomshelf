@@ -8,9 +8,18 @@ include_files(array(
 class ViewController
 {
 
+    protected $sessionCtrl;
+
+    public function __construct()
+    {
+        $this->sessionCtrl = new SessionController();
+    }
+
     public function renderView($viewName)
     {
-        if ($viewName === "Dashboard" || $viewName === "Explore"  || $viewName === "Profile") {
+
+        $user = $this->sessionCtrl->getUser();
+        if (isset($user)) {
             $layoutName = "UserLayout";
         } else {
             $layoutName = "GuestLayout";
