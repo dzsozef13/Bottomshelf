@@ -1,12 +1,13 @@
 <?php
-$test = new UserController();
-$testS = new SessionController();
-$user = $testS->getUser();
+$userCtrl = new UserController();
+$sessionsCtrl = new SessionController();
+$user = $sessionsCtrl->getUser();
+$profile = null;
 if (isset($user)) {
-    var_dump($test->fetchById($user['userId']));
+    $profile = $userCtrl->fetchById($user['userId']);
 }
 
 ?>
 
-<p>Profile page</p>
-<p>wjrfnjernf</p>
+<p>Profile page of:</p>
+<h1><?php echo $profile->username ?></h1>

@@ -8,5 +8,4 @@ include_files(array(
 
 abstract class Entity
 {
-    abstract public function getId();
 }

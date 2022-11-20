@@ -27,6 +27,11 @@ function include_files($files)
             case "UserModel":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/DAL/' . "$filename" . '.php';
                 break;
+                // BE
+            case "User":
+            case "Entity":
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/BE/' . "$filename" . '.php';
+                break;
                 // CONTROLLER
             case "SessionController":
             case "DbConnectionController":

@@ -4,7 +4,8 @@ include_files(array(
     "Console"
 ));
 
-class DbConnectionController {
+class DbConnectionController
+{
     private static $user = DB_USERNAME;
     private static $pass = DB_PASSWORD;
     private static $dbName = DB_NAME;
@@ -12,17 +13,19 @@ class DbConnectionController {
 
     private $dbCon;
 
-    public function __construct() {
+    public function __construct()
+    {
         $user = self::$user;
         $pass = self::$pass;
         $dbName = self::$dbName;
         $dbHost = self::$dbHost;
 
         try {
-            $this->dbCon = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $user, $pass,array(
-				\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-				\PDO::ATTR_PERSISTENT => false
-			));
+            $this->dbCon = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $user, $pass, array(
+                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                \PDO::ATTR_PERSISTENT => false,
+                \PDO::ATTR_EMULATE_PREPARES => false
+            ));
             console_log("YAY, we have a database *_*");
         } catch (PDOException $err) {
             console_error("Failed db connection");
@@ -30,13 +33,14 @@ class DbConnectionController {
         }
     }
 
-    public function destroy() {
+    public function destroy()
+    {
         $this->dbCon = null;
         console_log("connection closed!");
     }
 
-    public function useDb() {
-       return $this->dbCon;
+    public function useDb()
+    {
+        return $this->dbCon;
     }
-
 }

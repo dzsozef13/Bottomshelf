@@ -2,7 +2,8 @@
 include_files(array(
     "Console",
     "DbConnectionController",
-    "CoreModel"
+    "CoreModel",
+    "User"
 ));
 
 class UserModel extends CoreModel
@@ -117,7 +118,7 @@ class UserModel extends CoreModel
     /**
      * Returns single user with the passed username
      */
-    public function getUserById($id)
+    public function getUserById($id): User
     {
         try {
             // Open database connection and prepare statement
@@ -131,9 +132,9 @@ class UserModel extends CoreModel
                 User.BioDescription, 
                 User.RoleId, 
                 User.StatusId, 
-                Country.CountryName, 
-                Role.RoleName, 
-                EntityStatus.StatusName
+                Country.*, 
+                Role.*, 
+                EntityStatus.*
             FROM User 
             INNER JOIN Country ON User.CountryCode=Country.CountryCode
             INNER JOIN `Role` ON Role.RoleId=User.RoleId
@@ -145,10 +146,11 @@ class UserModel extends CoreModel
             $handle->execute();
             // Get result
             $result = $handle->fetch(PDO::FETCH_OBJ);
+            $entity = new User($result->UserId, $result->Email, $result->Username, $result->DateOfBirth, $result->ProfileImgUrl, $result->BioDescription, $result->CountryCode, $result->RoleId,  $result->StatusId);
             // Close database connection
             $this->closeDbConnection();
             // Return result
-            return $result;
+            return $entity;
         } catch (PDOException $e) {
             echo  $e->getMessage();
         }
