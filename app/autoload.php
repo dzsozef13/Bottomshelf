@@ -51,10 +51,14 @@ function include_files($files)
             case "404":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/view/' . "$filename" . '.php';
                 break;
-                // Layout
+                // LAYOUT
             case "GuestLayout":
             case "UserLayout":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/public/layouts/' . "$filename" . '.php';
+                break;
+                // TEMPLATE
+            case "PostCard":
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/public/templates/' . "$filename" . '.php';
                 break;
                 // CONFIG
             case "Const":

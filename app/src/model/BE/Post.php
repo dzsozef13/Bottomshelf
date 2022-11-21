@@ -44,4 +44,15 @@ class Post
     {
         return $this->title;
     }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    // public function getImageUrl()
+    // {
+    //     return $this-$imageUrl;
+    // }
+
 }
