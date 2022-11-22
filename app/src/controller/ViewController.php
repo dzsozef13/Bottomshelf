@@ -43,4 +43,11 @@ class ViewController
         include_files(array($viewName));
         return ob_get_clean();
     }
+
+    public function getTemplateContent($templateName)
+    {
+        ob_start();
+        include_files(array($templateName));
+        return ob_get_clean();
+    }
 }

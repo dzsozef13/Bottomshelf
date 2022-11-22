@@ -29,7 +29,7 @@
                 <h4 class="ml-6">Username</h4>
             </div>
         </div>
-        <div class="col-span-5 mx-auto w-screen">
+        <div class="col-span-5">
             {{content}}
         </div>
     </div>

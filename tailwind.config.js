@@ -22,6 +22,9 @@ module.exports = {
         'background-secondary': {
           900: '#1E2021',
         },
+        'background-ternary': {
+          900: '#2F3233',
+        },
         'dim-white': {
           900: '#D8D8D8',
         },
