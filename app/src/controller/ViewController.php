@@ -19,15 +19,18 @@ class ViewController
     {
 
         $user = $this->sessionCtrl->getUser();
-        if (isset($user)) {
-            $layoutName = "UserLayout";
-        } else {
-            $layoutName = "GuestLayout";
-        }
+        $layoutName = isset($user) ? "UserLayout" : "GuestLayout";
 
         $layoutContent = $this->getLayoutContent($layoutName);
         $viewContent = $this->getViewContent($viewName);
-        echo str_replace('{{content}}', $viewContent, $layoutContent);
+
+        if (isset($user)) {
+            $toBeReplaced = array('{{content}}', '{{username}}');
+            $replacements = array($viewContent, $user['username']);
+            echo str_replace($toBeReplaced, $replacements, $layoutContent);
+        } else {
+            echo str_replace('{{content}}', $viewContent, $layoutContent);
+        }
     }
 
     public function getLayoutContent($layoutName)

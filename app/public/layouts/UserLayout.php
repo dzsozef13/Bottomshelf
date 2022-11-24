@@ -24,9 +24,11 @@
                     </a>
                 </ul>
             </div>
-            <div class="w-full flex items-center">
-                <div class="logo"></div>
-                <h4 class="ml-6">Username</h4>
+            <div class="w-full flex items-center relative">
+                <div class="logo flex justify-center items-center">
+                    <i class="las la-smile text-background-black-900 text-3xl"></i>
+                </div>
+                <h4 class="ml-4">{{username}}</h4>
             </div>
         </div>
         <div class="col-span-5">

@@ -599,46 +599,6 @@ video {
   color: rgb(216 216 216 / var(--tw-text-opacity));
 }
 
-.input-field{
-  --tw-bg-opacity: 1;
-  background-color: rgb(21 22 23 / var(--tw-bg-opacity));
-  font-family: 'Lato';
-  --tw-text-opacity: 1;
-  color: rgb(216 216 216 / var(--tw-text-opacity));
-}
-
-.nav {
-  /* @apply mx-auto w-screen flex h-20 bg-background-black-900/75 px-8 items-center fixed top-0 left-0 right-0 z-50;*/
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  height: 5rem;
-  width: 100vw;
-  align-items: center;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.logo{
-  height: 2rem;
-  width: 2rem;
-  border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: rgb(216 216 216 / var(--tw-bg-opacity));
-}
-
-.bodyStyle{
-  --tw-bg-opacity: 1;
-  background-color: rgb(21 22 23 / var(--tw-bg-opacity));
-  font-family: 'Lato';
-  --tw-text-opacity: 1;
-  color: rgb(216 216 216 / var(--tw-text-opacity));
-}
-
 .btn-green{
   display: flex;
   height: 2.5rem;
@@ -707,8 +667,8 @@ video {
 }
 
 .logo{
-  height: 2rem;
-  width: 2rem;
+  height: 2.5rem;
+  width: 2.5rem;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
   background-color: rgb(216 216 216 / var(--tw-bg-opacity));
@@ -786,8 +746,8 @@ video {
   top: -5rem;
 }
 
-.left-10{
-  left: 2.5rem;
+.left-8{
+  left: 2rem;
 }
 
 .z-0{
@@ -853,6 +813,10 @@ video {
   margin-top: 5rem;
 }
 
+.ml-4{
+  margin-left: 1rem;
+}
+
 .flex{
   display: flex;
 }
@@ -883,6 +847,10 @@ video {
 
 .h-40{
   height: 10rem;
+}
+
+.h-3\/6{
+  height: 50%;
 }
 
 .w-screen{
@@ -925,6 +893,10 @@ video {
   align-items: center;
 }
 
+.justify-start{
+  justify-content: flex-start;
+}
+
 .justify-center{
   justify-content: center;
 }
@@ -946,78 +918,17 @@ video {
   background-color: rgb(30 32 33 / var(--tw-bg-opacity));
 }
 
-.bg-background-primary-900{
+.bg-background-ternary-900{
   --tw-bg-opacity: 1;
-  background-color: rgb(21 22 23 / var(--tw-bg-opacity));
+  background-color: rgb(47 50 51 / var(--tw-bg-opacity));
 }
 
 .bg-highlight-green-900\/10{
   background-color: rgb(144 202 156 / 0.1);
 }
 
-.bg-background-ternary-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(47 50 51 / var(--tw-bg-opacity));
-}
-
 .bg-\[radial-gradient\(circle_at_100\%_100\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
   background-image: radial-gradient(circle at 100% 100%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 58%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_46\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
-  background-image: radial-gradient(circle at 50% 46%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 58%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_46\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_51\%\)\]{
-  background-image: radial-gradient(circle at 50% 46%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 51%);
-}
-
-.bg-\[radial-gradient\(circle_at_100\%_46\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_51\%\)\]{
-  background-image: radial-gradient(circle at 100% 46%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 51%);
-}
-
-.bg-\[radial-gradient\(circle_at_40\%_100\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_51\%\)\]{
-  background-image: radial-gradient(circle at 40% 100%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 51%);
-}
-
-.bg-\[radial-gradient\(circle_at_40\%_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_51\%\)\]{
-  background-image: radial-gradient(circle at 40% 0%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 51%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_51\%\)\]{
-  background-image: radial-gradient(circle at 50% 0%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 51%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_90\%\)\]{
-  background-image: radial-gradient(circle at 50% 0%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 90%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_100\%\)\]{
-  background-image: radial-gradient(circle at 50% 0%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 100%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_-10\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_100\%\)\]{
-  background-image: radial-gradient(circle at 50% -10%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 100%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_-40\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_100\%\)\]{
-  background-image: radial-gradient(circle at 50% -40%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 100%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_-50\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_100\%\)\]{
-  background-image: radial-gradient(circle at 50% -50%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 100%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_-50\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_50\%\)\]{
-  background-image: radial-gradient(circle at 50% -50%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 50%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_-50\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_80\%\)\]{
-  background-image: radial-gradient(circle at 50% -50%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 80%);
-}
-
-.bg-\[radial-gradient\(circle_at_50\%_-80\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_80\%\)\]{
-  background-image: radial-gradient(circle at 50% -80%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 80%);
 }
 
 .p-8{
@@ -1038,9 +949,27 @@ video {
   padding-bottom: 1.5rem;
 }
 
+.pl-56{
+  padding-left: 14rem;
+}
+
+.font-mono{
+  font-family: 'Space Mono';
+}
+
 .text-4xl{
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-3xl{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .uppercase{
@@ -1050,6 +979,11 @@ video {
 .text-highlight-green-900{
   --tw-text-opacity: 1;
   color: rgb(144 202 156 / var(--tw-text-opacity));
+}
+
+.text-background-black-900{
+  --tw-text-opacity: 1;
+  color: rgb(21 22 23 / var(--tw-text-opacity));
 }
 
 /* I find it this way a lot easier to read, change it back if it's not okay */

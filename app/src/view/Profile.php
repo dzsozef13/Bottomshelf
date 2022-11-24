@@ -13,8 +13,11 @@ if (isset($user)) {
     <div class="col-span-6 h-[25vh]"></div>
     <div class="col-span-6">
         <div class="bg-background-secondary-900 w-full h-40 rounded relative">
-            <div class=" w-40 h-40 bg-background-ternary-900 rounded absolute -top-20 left-10">img</div>
-            <h3><?php echo $profile->username ?></h3>
+            <div class="w-40 h-40 bg-background-ternary-900 rounded absolute -top-20 left-8">img</div>
+            <div class="w-full h-3/6 pl-56 flex justify-start items-center ">
+                <h3 class="text-4xl  font-mono ">@<?php echo $profile->username ?></h3>
+            </div>
+
         </div>
     </div>
 </div>
