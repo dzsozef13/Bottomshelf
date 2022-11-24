@@ -10,14 +10,24 @@ if (isset($user)) {
 ?>
 
 <div class="grid grid-cols-6 gap-4 px-8 w-full grid-flow-row ">
-    <div class="col-span-6 h-[25vh]"></div>
-    <div class="col-span-6">
-        <div class="bg-background-secondary-900 w-full h-40 rounded relative">
-            <div class="w-40 h-40 bg-background-ternary-900 rounded absolute -top-20 left-8">img</div>
-            <div class="w-full h-3/6 pl-56 flex justify-start items-center ">
-                <h3 class="text-4xl  font-mono ">@<?php echo $profile->username ?></h3>
+    <div class="col-span-6 2xl:h-[15vh] h-[25vh]"></div>
+    <div class="2xl:col-span-1 col-span-0"></div>
+    <div class="2xl:col-span-4 col-span-6 ">
+        <div class="profile-card">
+            <div class="profile-picture">img</div>
+            <div class="profile-username-container">
+                <h3 class="text-4xl font-mono ">
+                    <span class="text-highlight-green-900">@</span><?php echo $profile->username ?>
+                </h3>
+            </div>
+            <div class="h-auto w-full">
+                <div class="profile-description-container">
+                    <h4 class="text-xl uppercase mb-2 text-highlight-green-900 font-mono"> About me</h4>
+                    <p><?php echo $profile->bioDescription ?></p>
+                </div>
             </div>
 
         </div>
     </div>
+    <div class="2xl:col-span-1 col-span-0"></div>
 </div>

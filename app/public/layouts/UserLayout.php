@@ -22,6 +22,10 @@
                                         } ?>">
                             My Profile</li>
                     </a>
+                    <a href="">
+                        <li class="mb-4">
+                            Settings</li>
+                    </a>
                 </ul>
             </div>
             <div class="w-full flex items-center relative">
