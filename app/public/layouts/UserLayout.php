@@ -35,7 +35,7 @@
                 <h4 class="ml-4">{{username}}</h4>
             </div>
         </div>
-        <div class="col-span-5">
+        <div class="col-span-5 bg-[linear-gradient(180deg,_rgba(26,30,29,1)_0%,_rgba(24,26,26,1)_10%,_rgba(21,22,23,1)_20%)]">
             {{content}}
         </div>
     </div>

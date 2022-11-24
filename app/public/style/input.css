@@ -135,16 +135,44 @@
     @apply w-full
     h-20 
     pl-56
+    pr-8
     flex 
-    justify-start 
+    justify-between 
+    flex
+    relative
     items-center;
   }
-
   .profile-description-container {
     @apply lg:w-3/4
      w-full
     h-auto 
     p-8;
+  }
+  .badges-container {
+    @apply h-auto 
+    absolute
+    -top-4
+    right-8
+     w-32
+     flex-col;
+  }
+  .badges-wrapper {
+    @apply h-auto 
+     w-full
+     flex
+     justify-between;
+  }
+  .fake-badge {
+    @apply bg-highlight-green-900
+    flex 
+    shadow-background-black-900
+    shadow-xl	
+     h-8
+     w-8
+     flex
+     justify-center
+     items-center
+     rounded-full;
   }
 }
 
