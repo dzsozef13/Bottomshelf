@@ -33,6 +33,7 @@ function include_files($files)
             case "DbConnectionController":
             case "PostController":
             case "UserController":
+            case "MediaController":
             case "ViewController":
             case "PageController":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/controller/' . "$filename" . '.php';

@@ -5,7 +5,8 @@ include_files(array(
     "ViewController",
     "PostController",
     "UserController",
-    "PageController"
+    "PageController",
+    "MediaController"
 ));
 
 class Router
