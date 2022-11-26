@@ -44,13 +44,42 @@ class BadgeModel extends CoreModel
    */
   public function getAll()
   {
-    // might improve the get all functions to avoid fetching too much
     try {
       $conn = CoreModel::openDbConnetion();
 
       $query = "SELECT * FROM Badge ORDER BY BadgeName";
 
       $handle = $conn->prepare($query);
+      $handle->execute();
+
+      $result = $handle->fetchAll(PDO::FETCH_OBJ);
+
+      //close the connection
+      CoreModel::closeDbConnection();
+      $conn = null;
+
+      return $result;
+    } catch (PDOException $e) {
+      print($e->getMessage());
+    }
+  }
+
+  /**
+   * @return Badge[]  
+   */
+  public function getByUserId($userId)
+  {
+    try {
+      $conn = CoreModel::openDbConnetion();
+
+      $query = "SELECT Badge.*, UserHasBadge.*
+      FROM UserHasBadge
+      INNER JOIN Badge ON Badge.BadgeId=UserHasBadge.BadgeId
+      WHERE UserHasBadge.UserId = :UserId
+      ORDER BY BadgeName";
+
+      $handle = $conn->prepare($query);
+      $handle->bindParam(':UserId', $userId);
       $handle->execute();
 
       $result = $handle->fetchAll(PDO::FETCH_OBJ);
