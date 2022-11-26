@@ -16,6 +16,7 @@ function include_files($files)
                 break;
                 // BE
             case "Post":
+            case "Media":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/BE/' . "$filename" . '.php';
                 break;
                 // DAL
@@ -29,6 +30,7 @@ function include_files($files)
             case "TagModel":
             case "CoreModel":
             case "UserModel":
+            case "MediaModel":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/DAL/' . "$filename" . '.php';
                 break;
                 // CONTROLLER
@@ -38,6 +40,7 @@ function include_files($files)
             case "UserController":
             case "ViewController":
             case "PageController":
+            case "MediaController":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/controller/' . "$filename" . '.php';
                 break;
                 // VIEW

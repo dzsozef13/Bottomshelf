@@ -2,7 +2,6 @@
 
 class Post
 {
-    // todo: add image property when we plan how to handle images
     private $id;
     private $title;
     private $description;

@@ -7,6 +7,11 @@ $postController = new PostController();
 $posts = $postController->fetchAll();
 
 /**
+ * Media controller
+ */
+$mediaController = new MediaController();
+
+/**
  * Grab templates used in the view
  */
 $viewController = new ViewController();
@@ -23,13 +28,17 @@ $postCardTempalte = $viewController->getTemplateContent("PostCard")
          * Echo out the complete template
          */
         foreach($posts as $post) {
+            $media = $mediaController->fetchMediaForPost($post->getId());
+            $mediaDump = array_values($media);
             $postCard = str_replace(
                 array(
                     '{{title}}', 
-                    '{{description}}'),
+                    '{{description}}',
+                    '{{imageBlob}}'),
                 array(
                     $post->getTitle(), 
-                    $post->getDescription()), 
+                    $post->getDescription(),
+                    base64_encode($mediaDump[0]->getImage())),
                 $postCardTempalte
             );
             echo $postCard;

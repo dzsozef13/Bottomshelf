@@ -45,7 +45,7 @@ class PostModel extends CoreModel
 	/**
 	 * @param int postId is the id of the post you would like to fetch
 	 * @return Post post with matching Id  (if none then false)
-	*/
+	 */
 	public function getById(int $postId)
 	{
 		//Sanitize this and make sure is safe
@@ -81,9 +81,9 @@ class PostModel extends CoreModel
 		try {
 			$conn = CoreModel::openDbConnetion();
 			$query = 
-				"SELECT *
+				"SELECT Post.*, User.Username, Comment.Content
 				FROM Post
-				INNER JOIN `User` ON User.UserId=Post.UserId
+				LEFT JOIN `User` ON User.UserId=Post.UserId
 				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
 				WHERE Post.StatusId = :StatusId AND Post.IsPublic = :IsPublic
 				ORDER BY Post.CreatedAt";
