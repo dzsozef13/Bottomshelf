@@ -52,4 +52,11 @@ class PostController
             return $this->postModel->getById($id);
         }
     }
+
+    public function fetchByUserId(int $userId)
+    {
+        if (isset($userId)) {
+            return $this->postModel->getAllByUserId($userId);
+        }
+    }
 }

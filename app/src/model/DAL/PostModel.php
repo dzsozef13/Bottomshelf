@@ -45,7 +45,7 @@ class PostModel extends CoreModel
 	/**
 	 * @param int postId is the id of the post you would like to fetch
 	 * @return Post post with matching Id  (if none then false)
-	*/
+	 */
 	public function getById(int $postId)
 	{
 		//Sanitize this and make sure is safe
@@ -80,7 +80,7 @@ class PostModel extends CoreModel
 		// might improve the get all functions to avoid fetching too much
 		try {
 			$conn = CoreModel::openDbConnetion();
-			$query = 
+			$query =
 				"SELECT *
 				FROM Post
 				INNER JOIN `User` ON User.UserId=Post.UserId
@@ -96,15 +96,16 @@ class PostModel extends CoreModel
 			$result = array();
 			while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
 				$post = new Post(
-					$row->PostId, 
+					$row->PostId,
 					$row->Title,
 					$row->PostDescription,
 					$row->ReactionCount,
 					$row->IsSticky,
 					$row->CreatedAt,
-					$row->UserId, 
-					$row->ChildPostId, 
-					$row->StatusId);
+					$row->UserId,
+					$row->ChildPostId,
+					$row->StatusId
+				);
 				$result[] = $post;
 			}
 			//close the connection
@@ -125,20 +126,32 @@ class PostModel extends CoreModel
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();
-
 			$query = "SELECT Post.PostId, Post.Title, Post.ReactionCount, User.UserName, Comment.content
 			FROM Post 
 			INNER JOIN `User` ON User.UserId=Post.UserId
 			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-			WHERE UserId = :UserId 
-			ORDER BY CreatedAt";
+			WHERE Post.UserId = :UserId 
+			ORDER BY Post.CreatedAt";
 
 			$handle = $conn->prepare($query);
 			$handle->bindParam(':UserId', $userId);
 			$handle->execute();
 
-			$result = $handle->fetchAll(PDO::FETCH_OBJ);
-
+			$result = array();
+			while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+				$post = new Post(
+					$row->PostId,
+					$row->Title,
+					$row->PostDescription,
+					$row->ReactionCount,
+					$row->IsSticky,
+					$row->CreatedAt,
+					$row->UserId,
+					$row->ChildPostId,
+					$row->StatusId
+				);
+				$result[] = $post;
+			}
 			//close the connection
 			CoreModel::closeDbConnection();
 			$conn = null;

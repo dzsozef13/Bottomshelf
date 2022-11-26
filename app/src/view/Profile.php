@@ -1,12 +1,17 @@
 <?php
 $userCtrl = new UserController();
 $sessionsCtrl = new SessionController();
-$posts = new PostController();
+$postController = new PostController();
+
+
 $user = $sessionsCtrl->getUser();
 $profile = null;
+$posts = null;
 if (isset($user)) {
     $profile = $userCtrl->fetchById($user['userId']);
+    $posts = $postController->fetchByUserId($user['userId']);
 }
+var_dump($posts)
 ?>
 <div class="grid grid-cols-6 gap-4 px-8 w-full grid-flow-row min-h-screen">
     <div class="col-span-6 2xl:h-[15vh] h-[25vh] "></div>
