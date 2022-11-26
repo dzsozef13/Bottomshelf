@@ -1,7 +1,7 @@
 <!-- to be finished -->
 
 <body class="bodyStyle">
-    <div class="grid grid-cols-6 h-screen">
+    <div class="grid grid-cols-6 min-h-screen">
         <div class="col-span-1 bg-highlight-green-900/10 p-8 flex flex-col justify-between">
             <div>
                 <div class="logo"></div>
@@ -35,7 +35,7 @@
                 <h4 class="ml-4">{{username}}</h4>
             </div>
         </div>
-        <div class="col-span-5 bg-[linear-gradient(180deg,_rgba(26,30,29,1)_0%,_rgba(24,26,26,1)_10%,_rgba(21,22,23,1)_20%)]">
+        <div class="col-span-5 min-h-screen bg-[linear-gradient(180deg,_rgba(26,30,29,1)_0%,_rgba(24,26,26,1)_10%,_rgba(21,22,23,1)_20%)]">
             {{content}}
         </div>
     </div>
