@@ -9,22 +9,28 @@ include_files(array(
 class MediaModel extends CoreModel
 {
 
+	/**
+	 * Uploads a single Media
+	 * Returns the inserted media's ID
+	 */
     public function uploadMedia($data)
     {
         try {
 			$conn = CoreModel::openDbConnetion();
 
-			$query = "INSERT INTO Media (Image, UserId) VALUES (:image, :userId)";
+			$query = 
+				"INSERT 
+				INTO Media (Image, UserId) 
+				VALUES (:image, :userId)";
 
 			$handle = $conn->prepare($query);
 
-			$handle->bindParam(':image', $data['image']);
+			$handle->bindParam(':image', $data['media']);
 			$handle->bindValue(':userId', $data['userId']);
 
 			$handle->execute();
             $lastInsertedMediaId = $conn->lastInsertId();
 
-			//close the connection
 			CoreModel::closeDbConnection();
 			$conn = null;
 
@@ -34,6 +40,9 @@ class MediaModel extends CoreModel
 		}
     }
 
+	/**
+	 * Returns with an array of Media connected to passed post ID
+	 */
     public function getMediaForPost(int $postId)
     {
 		try {
@@ -57,7 +66,7 @@ class MediaModel extends CoreModel
 					$row->UserId);
 				$result[] = $media;
 			}
-			//close the connection
+
 			CoreModel::closeDbConnection();
 			$conn = null;
 
