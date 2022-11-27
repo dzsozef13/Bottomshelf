@@ -944,10 +944,6 @@ video {
   height: auto;
 }
 
-.h-64{
-  height: 16rem;
-}
-
 .min-h-screen{
   min-height: 100vh;
 }
@@ -970,10 +966,6 @@ video {
 
 .grid-cols-6{
   grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-
-.grid-cols-4{
-  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -1002,11 +994,6 @@ video {
 
 .gap-4{
   gap: 1rem;
-}
-
-.bg-background-secondary-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 32 33 / var(--tw-bg-opacity));
 }
 
 .bg-highlight-green-900\/10{
