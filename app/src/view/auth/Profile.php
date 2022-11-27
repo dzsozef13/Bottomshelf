@@ -8,7 +8,6 @@ $postCardTempalte = $viewController->getTemplateContent("PostCard");
 $user = $sessionsCtrl->getUser();
 $profile = null;
 $posts = null;
-
 if (isset($user)) {
     $profile = $userCtrl->fetchById($user['userId']);
     $posts = $postController->fetchByUserId($user['userId']);

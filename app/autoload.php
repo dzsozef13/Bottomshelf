@@ -50,11 +50,14 @@ function include_files($files)
             case "Login":
             case "Signup":
             case "About":
+            case "404":
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/view/' . "$filename" . '.php';
+                break;
+                // AUTH
             case "Explore":
             case "Profile":
             case "Dashboard":
-            case "404":
-                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/view/' . "$filename" . '.php';
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/view/auth/' . "$filename" . '.php';
                 break;
                 // LAYOUT
             case "GuestLayout":

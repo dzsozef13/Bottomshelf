@@ -14,11 +14,27 @@ class PageController
         $this->viewCtrl = new ViewController();
     }
 
-    public function load($args)
+    /**
+     * If the route is for logged in users only, redirect unauthorised user to login
+     */
+    public static function redirectUnauthorized(string $viewName)
     {
-        if ($view = $args['view']) {
-            $this->viewCtrl->renderView($view);
+        $currentSession = new SessionController();
+        if ($currentSession->getUser() != null) {
+            return $viewName;
+        } else {
+            header("Location: " . "Login");
         }
     }
 
+    public function load($args)
+    {
+        if ($view = $args['view']) {
+            if ($args['auth'] === true) {
+                $this->viewCtrl->renderView($this->redirectUnauthorized($view), true);
+            } else {
+                $this->viewCtrl->renderView($view, false);
+            }
+        }
+    }
 }

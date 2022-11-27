@@ -13,9 +13,9 @@ Router::add(new Route("Home", "page/load", array("view" => "Home")));
 Router::add(new Route("Login", "page/load", array("view" => "Login")));
 Router::add(new Route("Signup", "page/load", array("view" => "Signup")));
 Router::add(new Route("About", "page/load", array("view" => "About")));
-Router::add(new Route("Dashboard", "page/load", array("view" => "Dashboard")));
-Router::add(new Route("Explore", "page/load", array("view" => "Explore")));
-Router::add(new Route("Profile", "page/load", array("view" => "Profile")));
+Router::add(new Route("Dashboard", "page/load", array("view" => "Dashboard", "auth" => true)));
+Router::add(new Route("Explore", "page/load", array("view" => "Explore", "auth" => true)));
+Router::add(new Route("Profile", "page/load", array("view" => "Profile", "auth" => true)));
 //test route but i was able to call a controller to create with this! really cool
 Router::add(new Route("CreatePost", "post/create"));
 

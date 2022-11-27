@@ -10,44 +10,37 @@ class ViewController
 
     protected $sessionCtrl;
 
-    public function __construct()
+    public function renderView(string $viewName, bool $isAuthPage)
     {
-        $this->sessionCtrl = new SessionController();
-    }
-
-    public function renderView($viewName)
-    {
-
-        $user = $this->sessionCtrl->getUser();
-        $layoutName = isset($user) ? "UserLayout" : "GuestLayout";
-
-        $layoutContent = $this->getLayoutContent($layoutName);
+        $layoutContent = $this->getLayoutContent($isAuthPage === true ? "UserLayout" : "GuestLayout");
         $viewContent = $this->getViewContent($viewName);
 
-        if (isset($user)) {
+        if ($isAuthPage === true) {
+            $currentSession = new SessionController();
+
             $toBeReplaced = array('{{content}}', '{{username}}');
-            $replacements = array($viewContent, $user['username']);
+            $replacements = array($viewContent, $currentSession->getUser()['username']);
             echo str_replace($toBeReplaced, $replacements, $layoutContent);
         } else {
             echo str_replace('{{content}}', $viewContent, $layoutContent);
         }
     }
 
-    public function getLayoutContent($layoutName)
+    public function getLayoutContent(string $layoutName)
     {
         ob_start();
         include_files(array($layoutName));
         return ob_get_clean();
     }
 
-    public function getViewContent($viewName)
+    public function getViewContent(string $viewName)
     {
         ob_start();
         include_files(array($viewName));
         return ob_get_clean();
     }
 
-    public function getTemplateContent($templateName)
+    public function getTemplateContent(string $templateName)
     {
         ob_start();
         include_files(array($templateName));
