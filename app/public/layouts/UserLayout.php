@@ -26,6 +26,10 @@
                         <li class="mb-4">
                             Settings</li>
                     </a>
+                    <a href="UserLogout">
+                        <li class="mb-4">
+                            Log out</li>
+                    </a>
                 </ul>
             </div>
             <div class="w-full flex items-center relative">
