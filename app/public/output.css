@@ -667,8 +667,8 @@ video {
 }
 
 .logo{
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 38px;
+  width: 38px;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
   background-color: rgb(216 216 216 / var(--tw-bg-opacity));
@@ -865,6 +865,10 @@ video {
   grid-column: span 5 / span 5;
 }
 
+.col-span-4{
+  grid-column: span 4 / span 4;
+}
+
 .mx-4{
   margin-left: 1rem;
   margin-right: 1rem;
@@ -912,6 +916,10 @@ video {
   margin-left: 1rem;
 }
 
+.inline-block{
+  display: inline-block;
+}
+
 .flex{
   display: flex;
 }
@@ -944,6 +952,12 @@ video {
   height: auto;
 }
 
+.h-max{
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
 .min-h-screen{
   min-height: 100vh;
 }
@@ -954,6 +968,22 @@ video {
 
 .w-full{
   width: 100%;
+}
+
+.w-max{
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.min-w-max{
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+.flex-none{
+  flex: none;
 }
 
 .list-none{
@@ -996,8 +1026,30 @@ video {
   gap: 1rem;
 }
 
+.overflow-visible{
+  overflow: visible;
+}
+
+.break-words{
+  overflow-wrap: break-word;
+}
+
+.break-all{
+  word-break: break-all;
+}
+
 .bg-highlight-green-900\/10{
   background-color: rgb(144 202 156 / 0.1);
+}
+
+.bg-red-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+
+.bg-red-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
 }
 
 .bg-\[radial-gradient\(circle_at_100\%_100\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
@@ -1076,6 +1128,16 @@ video {
   }
 }
 
+@media (min-width: 1024px){
+  .lg\:col-span-1{
+    grid-column: span 1 / span 1;
+  }
+
+  .lg\:col-span-5{
+    grid-column: span 5 / span 5;
+  }
+}
+
 @media (min-width: 1280px){
   .xl\:col-span-2{
     grid-column: span 2 / span 2;
@@ -1087,12 +1149,12 @@ video {
 }
 
 @media (min-width: 1536px){
-  .\32xl\:col-span-1{
-    grid-column: span 1 / span 1;
-  }
-
   .\32xl\:col-span-4{
     grid-column: span 4 / span 4;
+  }
+
+  .\32xl\:col-span-1{
+    grid-column: span 1 / span 1;
   }
 
   .\32xl\:h-\[15vh\]{

@@ -70,8 +70,8 @@
   }
 
   .logo {
-    @apply w-10
-      h-10 
+    @apply w-[38px]
+      h-[38px]
       bg-dim-white-900 
       rounded-full;
   }
