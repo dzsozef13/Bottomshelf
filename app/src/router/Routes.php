@@ -22,3 +22,5 @@ Router::add(new Route("CreatePost", "post/create"));
 Router::add(new Route("UserLogin", "user/tryLogInUser"));
 Router::add(new Route("UserLogout", "user/tryLogOutUser"));
 Router::add(new Route("UserRegist", "user/tryRegistUser"));
+
+Router::add(new Route("MediaUpload", "media/uploadMedia"));

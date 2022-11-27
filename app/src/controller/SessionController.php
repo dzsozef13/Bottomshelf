@@ -39,7 +39,10 @@ class SessionController
      */
     public function getUser()
     {
-        if ($userId = $_SESSION['userId'] && $username = $_SESSION['username']) {
+        $userId = $_SESSION['userId'];
+        $username= $_SESSION['username'];
+        
+        if (isset($userId, $username)) {
             return  array(
                 'userId' => $userId,
                 'username' => $username

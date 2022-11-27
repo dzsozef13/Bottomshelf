@@ -22,10 +22,13 @@ class MediaModel extends CoreModel
 			$handle->bindValue(':userId', $data['userId']);
 
 			$handle->execute();
+            $lastInsertedMediaId = $conn->lastInsertId();
 
 			//close the connection
 			CoreModel::closeDbConnection();
 			$conn = null;
+
+            return $lastInsertedMediaId;
 		} catch (PDOException $e) {
 			echo  $e->getMessage();
 		}

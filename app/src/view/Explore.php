@@ -44,4 +44,13 @@ $postCardTempalte = $viewController->getTemplateContent("PostCard")
             echo $postCard;
         }
     ?>
+    <form action="MediaUpload" method="post">
+        <div class="input-field-wrapper">
+            <div class="icon-wrapper">
+                <i class="las la-at"></i>
+            </div>
+            <input placeholder="Image" class="input-field " type="file" name="image"><br>
+        </div>
+        <button class="btn-white w-full mt-6" type="submit">UPLOAD</button>
+    </form>
 </div>
