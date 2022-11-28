@@ -41,7 +41,7 @@ class PostController
         }
     }
 
-    public function fetchAll(int $statusId, bool $isPublic)
+    public function fetchAll(int $statusId = 1, bool $isPublic = true)
     {
         return $this->postModel->getAll($statusId, $isPublic);
     }

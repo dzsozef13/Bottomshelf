@@ -1,26 +1,57 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . "/autoload.php";
-include_files(array(
-    "Console",
-    "DbConnectionController",
-));
-
-class PostEntity extends Entity
+class Post
 {
-    // todo: add image property when we plan how to handle images
     private $id;
     private $title;
     private $description;
     private $isPublic;
     private $isSticky;
     private $createdAt;
-    private $userId;
+    private $authorId;
     private $childPostId;
-    private $StatusId;
+    private $statusId;
+
+    function __construct(
+        $id, 
+        $title, 
+        $description, 
+        $isPublic, 
+        $isSticky, 
+        $createdAt, 
+        $authorId, 
+        $childPostId, 
+        $statusId)
+    {
+        $this->id = $id;
+        $this->title = $title;
+        $this->description = $description;
+        $this->isPublic = $isPublic;
+        $this->isSticky = $isSticky;
+        $this->createdAt = $createdAt;
+        $this->authorId = $authorId;
+        $this->childPostId = $childPostId;
+        $this->statusId = $statusId;
+    }
 
     public function getId()
     {
         return $this->id;
     }
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    // public function getImageUrl()
+    // {
+    //     return $this-$imageUrl;
+    // }
+
 }

@@ -12,7 +12,9 @@ class SessionController
      */
     function __construct()
     {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
     }
 
     /**
@@ -37,7 +39,10 @@ class SessionController
      */
     public function getUser()
     {
-        if ($userId = $_SESSION['userId'] && $username = $_SESSION['username']) {
+        $userId = $_SESSION['userId'];
+        $username= $_SESSION['username'];
+        
+        if (isset($userId, $username)) {
             return  array(
                 'userId' => $userId,
                 'username' => $username

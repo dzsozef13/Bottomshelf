@@ -4,11 +4,17 @@ include_files(array(
 ));
 
 /**
- * Router::add(new Route("Destination", "/path", array(parameter=>value)));
+ * Initializing all routes in the app
+ * 
+ * A Route can be defined by a name, a path (contorller/action) and an array of default parameters:
+ * Router::add(new Route("RouteName", "controller/action", array(parameter=>value)));
+ * 
+ * A Route's name will be used as the action of forms and the hypertext references of <a> components
  */
-Router::add(new Route("404", "page/load", array("view" => "404")));
 
+// NAVIGATION
 Router::add(new Route("", "page/load", array("view" => "Home")));
+Router::add(new Route("404", "page/load", array("view" => "404")));
 Router::add(new Route("Home", "page/load", array("view" => "Home")));
 Router::add(new Route("Login", "page/load", array("view" => "Login")));
 Router::add(new Route("Signup", "page/load", array("view" => "Signup")));
@@ -16,9 +22,14 @@ Router::add(new Route("About", "page/load", array("view" => "About")));
 Router::add(new Route("Dashboard", "page/load", array("view" => "Dashboard")));
 Router::add(new Route("Explore", "page/load", array("view" => "Explore")));
 Router::add(new Route("Profile", "page/load", array("view" => "Profile")));
-//test route but i was able to call a controller to create with this! really cool
-Router::add(new Route("CreatePost", "post/create"));
 
+// USER
 Router::add(new Route("UserLogin", "user/tryLogInUser"));
 Router::add(new Route("UserLogout", "user/tryLogOutUser"));
 Router::add(new Route("UserRegist", "user/tryRegistUser"));
+
+// POST
+Router::add(new Route("CreatePost", "post/create"));
+
+// MEDIA
+Router::add(new Route("MediaUpload", "media/uploadMedia"));

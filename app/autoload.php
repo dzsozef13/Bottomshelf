@@ -10,9 +10,11 @@ function include_files($files)
 {
     foreach ($files as $filename) {
         switch ($filename) {
-                // MODEL
+                // BE
+            case "Post":
+            case "Media":
             case "Route":
-                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/' . "$filename" . '.php';
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/BE/' . "$filename" . '.php';
                 break;
                 // DAL
             case "PostModel":
@@ -25,6 +27,7 @@ function include_files($files)
             case "TagModel":
             case "CoreModel":
             case "UserModel":
+            case "MediaModel":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/DAL/' . "$filename" . '.php';
                 break;
                 // CONTROLLER
@@ -34,6 +37,7 @@ function include_files($files)
             case "UserController":
             case "ViewController":
             case "PageController":
+            case "MediaController":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/controller/' . "$filename" . '.php';
                 break;
                 // VIEW
@@ -47,10 +51,14 @@ function include_files($files)
             case "404":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/view/' . "$filename" . '.php';
                 break;
-                // Layout
+                // LAYOUT
             case "GuestLayout":
             case "UserLayout":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/public/layouts/' . "$filename" . '.php';
+                break;
+                // TEMPLATE
+            case "PostCard":
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/public/templates/' . "$filename" . '.php';
                 break;
                 // CONFIG
             case "Const":
