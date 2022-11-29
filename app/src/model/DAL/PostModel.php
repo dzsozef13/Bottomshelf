@@ -103,9 +103,12 @@ class PostModel extends CoreModel
 					$row->IsSticky,
 					$row->CreatedAt,
 					$row->UserId,
+					$row->Username,
+					$row->LatestComment,
 					$row->ChildPostId,
 					$row->StatusId
 				);
+
 				$result[] = $post;
 			}
 			//close the connection
@@ -147,11 +150,15 @@ class PostModel extends CoreModel
 					$row->IsSticky,
 					$row->CreatedAt,
 					$row->UserId,
+					$row->Username,
+					$row->LatestComment,
 					$row->ChildPostId,
 					$row->StatusId
 				);
+
 				$result[] = $post;
 			}
+
 			//close the connection
 			CoreModel::closeDbConnection();
 			$conn = null;

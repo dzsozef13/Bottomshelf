@@ -829,6 +829,70 @@ video {
   text-transform: uppercase;
 }
 
+.post-card-container{
+  height: 24rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 32 33 / var(--tw-bg-opacity));
+}
+
+.post-img{
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.post-card-img{
+  height: 60%;
+  width: 100%;
+}
+
+.post-card-body{
+  display: flex;
+  height: 40%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.post-card-title{
+  font-family: 'Space Mono';
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.post-card-header{
+  height: auto;
+  width: 100%;
+}
+
+.post-card-user{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.post-card-comment-wrapper{
+  margin-top: 0.5rem;
+  display: flex;
+  height: auto;
+  width: 100%;
+}
+
+.small-logo{
+  margin-right: 0.5rem;
+  display: flex;
+  height: 23px;
+  width: 23px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(216 216 216 / var(--tw-bg-opacity));
+}
+
 .absolute{
   position: absolute;
 }
@@ -855,14 +919,6 @@ video {
 
 .col-span-6{
   grid-column: span 6 / span 6;
-}
-
-.col-span-1{
-  grid-column: span 1 / span 1;
-}
-
-.col-span-5{
-  grid-column: span 5 / span 5;
 }
 
 .col-span-4{
@@ -916,10 +972,6 @@ video {
   margin-left: 1rem;
 }
 
-.inline-block{
-  display: inline-block;
-}
-
 .flex{
   display: flex;
 }
@@ -952,12 +1004,6 @@ video {
   height: auto;
 }
 
-.h-max{
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-}
-
 .min-h-screen{
   min-height: 100vh;
 }
@@ -968,18 +1014,6 @@ video {
 
 .w-full{
   width: 100%;
-}
-
-.w-max{
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-}
-
-.min-w-max{
-  min-width: -webkit-max-content;
-  min-width: -moz-max-content;
-  min-width: max-content;
 }
 
 .flex-none{
@@ -996,6 +1030,10 @@ video {
 
 .grid-cols-6{
   grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-cols-3{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -1026,12 +1064,8 @@ video {
   gap: 1rem;
 }
 
-.overflow-visible{
-  overflow: visible;
-}
-
-.break-words{
-  overflow-wrap: break-word;
+.gap-8{
+  gap: 2rem;
 }
 
 .break-all{
@@ -1040,16 +1074,6 @@ video {
 
 .bg-highlight-green-900\/10{
   background-color: rgb(144 202 156 / 0.1);
-}
-
-.bg-red-100{
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
-}
-
-.bg-red-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
 }
 
 .bg-\[radial-gradient\(circle_at_100\%_100\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
