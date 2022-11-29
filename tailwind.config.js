@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
-  content: ['./app/src/view/*.{html,js,php}',
+  content: [
+  './app/src/view/*.{html,js,php}',
   './app/src/view/auth/*.{html,js,php}',
-   './app/public/layouts/*.{html,js,php}'
-   , './app/public/templates/*.{html,js,php}'],
+  './app/public/layouts/*.{html,js,php}',
+  './app/public/templates/*.{html,js,php}'
+],
   theme: {
     
     fontFamily: {
