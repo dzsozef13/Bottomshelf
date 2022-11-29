@@ -3,254 +3,21 @@
 
 /* Let's distribute css in different files so it's easier to find things*/
 @import url("elements.css");
+@import url("postCard.css");
+@import url("inputField.css");
+@import url("profileCard.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* I find it this way a lot easier to read, change it back if it's not okay */
-
-@layer components {
+@layer base {
   .bodyStyle {
     @apply bg-background-black-900
       text-dim-white-900 
       font-sans;
   }
 
-  .btn-green {
-    @apply w-40 
-      h-10
-      flex 
-      justify-center 
-      items-center 
-      bg-highlight-green-900 
-      rounded 
-      shadow-btn
-      shadow-highlight-green-900/20
-      border-0 
-      font-mono 
-      uppercase 
-      text-background-black-900 
-      font-bold 
-      cursor-pointer
-      text-sm;
-  }
-
-  .btn-white {
-    @apply w-40 
-      h-10
-      cursor-pointer
-      flex 
-      justify-center 
-      items-center 
-      bg-dim-white-900 
-      rounded 
-      shadow-btn
-      shadow-highlight-green-900/20
-      border-0 
-      font-mono 
-      uppercase 
-      text-background-black-900 
-      font-bold 
-      text-sm;
-  }
-  .nav {
-    /* @apply mx-auto w-screen flex h-20 bg-background-black-900/75 px-8 items-center fixed top-0 left-0 right-0 z-50;*/
-    @apply mx-auto 
-      w-screen
-      flex 
-      h-20 
-      px-8
-      items-center 
-      fixed 
-      top-0 
-      left-0 
-      z-50
-      right-0;
-  }
-
-  .logo {
-    @apply w-[38px]
-      h-[38px]
-      bg-dim-white-900 
-      rounded-full;
-  }
-  .icon-wrapper {
-    @apply absolute
-    right-0
-    top-0
-    w-12
-    flex
-    items-center
-    justify-center
-    text-2xl
-    text-highlight-green-900
-    h-full;
-  }
-  .input-field-wrapper {
-    @apply w-full
-    rounded-lg
-    border
-    border-highlight-green-900/60
-    bg-transparent
-    flex
-    relative
-    h-10;
-  }
-  .input-field {
-    @apply w-[calc(100%-3rem)]
-    border-2
-    border-none
-    bg-transparent
-    placeholder-highlight-green-900/60
-    placeholder-opacity-100
-    p-4
-    text-sm
-    h-full;
-  }
-
-  .input-field:focus {
-    @apply outline-none;
-  }
-
-  .profile-card {
-    @apply bg-background-secondary-900
-      w-full
-      h-auto
-      rounded 
-      relative;
-  }
-  .profile-picture {
-    @apply w-40 
-    h-40 
-    bg-background-ternary-900 
-    rounded 
-    absolute 
-    -top-20      
-    shadow-btn
-    shadow-background-black-900
-    left-8;
-  }
-  .profile-username-container {
-    @apply w-full
-    h-20 
-    pl-56
-    pr-8
-    flex 
-    justify-between 
-    flex
-    relative
-    items-center;
-  }
-  .profile-description-container {
-    @apply lg:w-3/4
-     w-full
-    h-auto 
-    p-8;
-  }
-  .badges-container {
-    @apply h-auto 
-    absolute
-    -top-4
-    right-8
-     w-32
-     flex-col;
-  }
-  .badges-wrapper {
-    @apply h-auto 
-     w-full
-     flex
-     justify-between;
-  }
-  .fake-badge {
-    @apply bg-highlight-green-900
-    flex 
-    shadow-background-black-900
-    shadow-xl	
-     h-8
-     w-8
-     flex
-     justify-center
-     items-center
-     rounded-full;
-  }
-
-  .profile-post-options-container {
-    @apply w-full
-    h-10
-    flex;
-  }
-
-  .option-chip {
-    @apply bg-background-secondary-900
-      w-auto
-      h-full
-      rounded
-      px-4
-      flex
-      items-center
-      text-sm
-      font-mono
-      mr-4
-      uppercase;
-  }
-
-  .post-card-container {
-    @apply bg-background-secondary-900
-      w-full
-      h-96
-      rounded-lg;
-  }
-
-  .post-img {
-    @apply w-full
-    h-full
-    object-cover;
-  }
-
-  .post-card-img {
-    @apply w-full
-    h-3/5;
-  }
-
-  .post-card-body {
-    @apply w-full
-    h-2/5
-    p-2
-    flex
-    flex-col
-    justify-between;
-  }
-  .post-card-title {
-    @apply font-mono
-    text-lg;
-  }
-  .post-card-header {
-    @apply w-full
-    h-auto;
-  }
-  .post-card-user {
-    @apply text-sm;
-  }
-  .post-card-comment-wrapper {
-    @apply w-full
-    h-auto
-    mt-2
-    flex;
-  }
-  .small-logo {
-    @apply w-[23px]
-    h-[23px]
-    bg-dim-white-900 
-    rounded-full
-    flex
-    items-center
-    justify-center
-    mr-2;
-  }
-}
-
-@layer base {
   .landing-headline {
     @apply font-mono 
     uppercase
@@ -273,5 +40,110 @@
     text-sm
     tracking-wide
     font-medium;
+  }
+
+  .icon-wrapper {
+    @apply absolute
+    right-0
+    top-0
+    w-12
+    flex
+    items-center
+    justify-center
+    text-2xl
+    text-highlight-green-900
+    h-full;
+  }
+
+  .profile-post-options-container {
+    @apply w-full
+    h-10
+    flex;
+  }
+}
+
+@layer components {
+  .btn-green {
+    @apply w-40 
+      h-10
+      flex 
+      justify-center 
+      items-center 
+      bg-highlight-green-900 
+      rounded 
+      shadow-btn
+      shadow-highlight-green-900/20
+      border-0 
+      font-mono 
+      uppercase 
+      text-background-black-900 
+      font-bold 
+      cursor-pointer
+      text-sm;
+  }
+  .btn-white {
+    @apply w-40 
+      h-10
+      cursor-pointer
+      flex 
+      justify-center 
+      items-center 
+      bg-dim-white-900 
+      rounded 
+      shadow-btn
+      shadow-highlight-green-900/20
+      border-0 
+      font-mono 
+      uppercase 
+      text-background-black-900 
+      font-bold 
+      text-sm;
+  }
+  .nav {
+    @apply mx-auto 
+      w-screen
+      flex 
+      h-20 
+      px-8
+      items-center 
+      fixed 
+      top-0 
+      left-0 
+      z-50
+      right-0;
+  }
+
+  .logo {
+    @apply w-[38px]
+      h-[38px]
+      bg-dim-white-900 
+      rounded-full;
+  }
+
+  .fake-badge {
+    @apply bg-highlight-green-900
+    flex 
+    shadow-background-black-900
+    shadow-xl	
+     h-8
+     w-8
+     flex
+     justify-center
+     items-center
+     rounded-full;
+  }
+
+  .option-chip {
+    @apply bg-background-secondary-900
+      w-auto
+      h-full
+      rounded
+      px-4
+      flex
+      items-center
+      text-sm
+      font-mono
+      mr-4
+      uppercase;
   }
 }
