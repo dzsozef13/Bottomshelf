@@ -81,9 +81,9 @@ class PostModel extends CoreModel
 		try {
 			$conn = CoreModel::openDbConnetion();
 			$query =
-				"SELECT *
+				"SELECT Post.*, User.Username, Comment.Content
 				FROM Post
-				INNER JOIN `User` ON User.UserId=Post.UserId
+				LEFT JOIN `User` ON User.UserId=Post.UserId
 				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
 				WHERE Post.StatusId = :StatusId AND Post.IsPublic = :IsPublic
 				ORDER BY Post.CreatedAt";

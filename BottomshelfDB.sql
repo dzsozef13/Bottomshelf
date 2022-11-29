@@ -26,9 +26,9 @@ CREATE TABLE `User` (
     UserId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Email varchar(128) NOT NULL,
     UserPassword varchar(128) NOT NULL,
-    Username varchar(64),
+    Username varchar(64) NOT NULL,
     DateOfBirth date NOT NULL,
-    ProfileImgUrl varchar(128),
+    ProfileImgUrl longblob,
     BioDescription varchar(256),
     CountryCode varchar(3) NOT NULL,
     RoleId int NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `User` (
 );
 CREATE TABLE Media (
     ImageId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    ImageUrl varchar(128),
+    `Image` longblob NOT NULL,
     UserId int NOT NULL,
     FOREIGN KEY (UserId) REFERENCES User (UserId)
 );

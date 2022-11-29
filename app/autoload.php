@@ -10,12 +10,10 @@ function include_files($files)
 {
     foreach ($files as $filename) {
         switch ($filename) {
-                // MODEL
-            case "Route":
-                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/' . "$filename" . '.php';
-                break;
                 // BE
             case "Post":
+            case "Media":
+            case "Route":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/BE/' . "$filename" . '.php';
                 break;
                 // DAL
@@ -29,6 +27,7 @@ function include_files($files)
             case "TagModel":
             case "CoreModel":
             case "UserModel":
+            case "MediaModel":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/DAL/' . "$filename" . '.php';
                 break;
                 // BE
@@ -43,6 +42,7 @@ function include_files($files)
             case "UserController":
             case "ViewController":
             case "PageController":
+            case "MediaController":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/controller/' . "$filename" . '.php';
                 break;
                 // VIEW

@@ -2,7 +2,8 @@
 include_files(array(
     "Console",
     "ViewController",
-    "PostController"
+    "PostController",
+    "MediaController"
 ));
 
 class PageController
