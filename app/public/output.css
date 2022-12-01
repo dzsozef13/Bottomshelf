@@ -1007,12 +1007,9 @@ video {
   grid-column: span 4 / span 4;
 }
 
-.row-span-1{
-  grid-row: span 1 / span 1;
-}
-
-.row-span-6{
-  grid-row: span 6 / span 6;
+.mx-0{
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .mx-4{
@@ -1028,11 +1025,6 @@ video {
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
-}
-
-.mx-0{
-  margin-left: 0px;
-  margin-right: 0px;
 }
 
 .mt-12{
@@ -1095,20 +1087,14 @@ video {
   height: 25vh;
 }
 
-.h-auto{
-  height: auto;
-}
-
-.h-min{
-  height: -webkit-min-content;
-  height: -moz-min-content;
-  height: min-content;
-}
-
 .h-max{
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
+}
+
+.h-auto{
+  height: auto;
 }
 
 .min-h-screen{
@@ -1135,28 +1121,12 @@ video {
   grid-auto-flow: row;
 }
 
-.grid-flow-col{
-  grid-auto-flow: column;
-}
-
-.grid-flow-row-dense{
-  grid-auto-flow: row dense;
-}
-
 .grid-cols-6{
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-rows-3{
-  grid-template-rows: repeat(3, minmax(0, 1fr));
-}
-
-.grid-rows-6{
-  grid-template-rows: repeat(6, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -1191,8 +1161,8 @@ video {
   gap: 2rem;
 }
 
-.gap-2{
-  gap: 0.5rem;
+.gap-6{
+  gap: 1.5rem;
 }
 
 .break-all{
@@ -1300,25 +1270,11 @@ video {
   .xl\:col-span-4{
     grid-column: span 4 / span 4;
   }
-
-  .xl\:mx-20{
-    margin-left: 5rem;
-    margin-right: 5rem;
-  }
 }
 
 @media (min-width: 1536px){
   .\32xl\:col-span-4{
     grid-column: span 4 / span 4;
-  }
-
-  .\32xl\:col-span-1{
-    grid-column: span 1 / span 1;
-  }
-
-  .\32xl\:mx-40{
-    margin-left: 10rem;
-    margin-right: 10rem;
   }
 
   .\32xl\:mx-20{
@@ -1328,19 +1284,5 @@ video {
 
   .\32xl\:h-\[15vh\]{
     height: 15vh;
-  }
-
-  .\32xl\:gap-0{
-    gap: 0px;
-  }
-
-  .\32xl\:px-96{
-    padding-left: 24rem;
-    padding-right: 24rem;
-  }
-
-  .\32xl\:px-40{
-    padding-left: 10rem;
-    padding-right: 10rem;
   }
 }

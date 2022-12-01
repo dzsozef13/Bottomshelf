@@ -14,7 +14,7 @@ $mediaController = new MediaController();
 ?>
 
 <!-- Explore View -->
-<div class="grid grid-cols-3 gap-8 p-8 h-[calc(100vh-5rem)] test">
+<div class="grid grid-cols-3 gap-8 p-8 h-[calc(100vh-5rem)]">
     <?php
     /**
      * Loop through the posts

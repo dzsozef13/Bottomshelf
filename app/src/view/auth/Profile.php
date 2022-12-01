@@ -15,7 +15,7 @@ if (isset($user)) {
 ?>
 <div class="grid grid-cols-6 gap-4 px-8 w-full">
     <div class="col-span-6 2xl:h-[15vh] h-[25vh] "></div>
-    <div class="2xl:mx-20 mx-0 col-span-6 h-max">
+    <div class="2xl:mx-20 mx-0 col-span-6 mb-4">
         <div class="profile-card">
             <div class="profile-picture">
                 <img class="profile-img" src="<?php if ($profile->getProfileImage() !== null) {
@@ -63,32 +63,34 @@ if (isset($user)) {
             </div>
         </a>
     </div>
-    <div class="2xl:mx-20 mx-0 col-span-6">
-        <div class="no-post-banner">
-            <h3 class="headline text-lg mb-4">You have not created any posts yet...</h3>
-            <div class="btn-green">
-                <button>CREATE A POST</button>
-            </div>
-        </div>
+    <div class="2xl:mx-20 mx-0 col-span-6 mb-8">
+        <?php
+        if (empty($posts)) {
+            echo '
+                <div class="no-post-banner">
+                    <h3 class="headline text-lg ">You have not created any posts yet...</h3>
+                    <div class="btn-green">
+                        <button>CREATE A POST</button>
+                    </div>
+                </div>
+        ';
+        } else {
+            $postTemplatesArray = array();
+            foreach ($posts as $post) {
+                $media = $mediaController->fetchMediaForPost($post->getId());
+                $indexedMediaArray = array_values($media);
+                if (isset($indexedMediaArray)) {
+                    $post->setMedia($indexedMediaArray);
+                }
+                $postTemplatesArray[] = $post->getPostTemplate();
+            }
+            echo '
+            <div class="grid grid-cols-3 gap-4"> 
+                ' . implode($postTemplatesArray) . '
+            </div> 
+            ';
+        }
+        ?>
     </div>
-    <?php
-    // if (empty($posts)) {
-    //     echo '
-    //     ';
-    // }
 
-
-    ?>
-    <!-- <div class="grid grid-cols-3 gap-8 p-8 h-[calc(100vh-5rem)] test"> -->
-    <?php
-    // foreach ($posts as $post) {
-    //     $media = $mediaController->fetchMediaForPost($post->getId());
-    //     $indexedMediaArray = array_values($media);
-    //     if (isset($indexedMediaArray)) {
-    //         $post->setMedia($indexedMediaArray);
-    //     }
-    //     echo $post->getPostTemplate();
-    // }
-    ?>
-    <!-- </div> -->
 </div>
