@@ -20,7 +20,7 @@ $mediaController = new MediaController();
 ?>
 
 <!-- Explore View -->
-<div class="grid grid-cols-3 gap-8 p-8 h-[calc(100vh-5rem)]">
+<div class="grid grid-cols-3 gap-8 p-8 h-[calc(100vh-5rem)] test">
     <?php
     /**
      * Loop through the posts
@@ -31,24 +31,28 @@ $mediaController = new MediaController();
         // This will require some guarding, specially if we're planning to enable posting without images
         $media = $mediaController->fetchMediaForPost($post->getId());
         $indexedMediaArray = array_values($media);
-        $coverImageBlob = $indexedMediaArray[0]->getImage();
-
+        if (isset($indexedMediaArray[0])) {
+            $coverImageBlob = $indexedMediaArray[0]->getImage();
+        } else {
+            $coverImageBlob = null;
+        }
         // Fill the template with data
         $postCard = str_replace(
             array(
                 '{{title}}',
-                '{{description}}',
+                '{{username}}',
                 '{{imageBlob}}',
                 '{{latestComment}}'
             ),
             array(
                 $post->getTitle(),
-                $post->getDescription(),
+                $post->getAuthorName(),
                 base64_encode($coverImageBlob),
                 $post->getLatestComment(),
             ),
             $postCardTempalte
         );
+
 
         // Echo out the complete card
         echo $postCard;
