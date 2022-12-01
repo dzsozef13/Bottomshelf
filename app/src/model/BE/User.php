@@ -34,4 +34,24 @@ class User extends Entity
         $this->roleId = $roleId;
         $this->statusId = $statusId;
     }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function getDescription()
+    {
+        return $this->bioDescription;
+    }
+
+    public function getProfileImage()
+    {
+        return $this->profileImgUrl;
+    }
 }

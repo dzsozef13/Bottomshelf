@@ -13,13 +13,20 @@ if (isset($user)) {
     $posts = $postController->fetchByUserId($user['userId']);
 }
 
+
 ?>
 <div class="grid grid-cols-6 gap-4 px-8 w-full grid-flow-row min-h-screen">
     <div class="col-span-6 2xl:h-[15vh] h-[25vh] "></div>
     <div class="2xl:col-span-1 col-span-0"></div>
     <div class="2xl:col-span-4 col-span-6 ">
         <div class="profile-card">
-            <div class="profile-picture">img</div>
+            <div class="profile-picture">
+                <img class="profile-img" src="<?php if ($profile->getProfileImage() !== null) {
+                                                    echo $profile->getProfileImage();
+                                                } else {
+                                                    echo "public/asset/images/PlaceholderProfilePicture.png";
+                                                } ?>" alt="Users Profile Picture">
+            </div>
             <div class="profile-username-container">
                 <h3 class="text-4xl font-mono ">
                     <span class="text-highlight-green-900">@</span><?php echo $profile->username ?>

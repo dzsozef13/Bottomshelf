@@ -20,7 +20,7 @@ $mediaController = new MediaController();
 ?>
 
 <!-- Explore View -->
-<div class="grid grid-cols-6 px-8 h-[calc(100vh-5rem)]">
+<div class="grid grid-cols-3 gap-8 p-8 h-[calc(100vh-5rem)]">
     <?php
     /**
      * Loop through the posts
@@ -38,12 +38,14 @@ $mediaController = new MediaController();
             array(
                 '{{title}}',
                 '{{description}}',
-                '{{imageBlob}}'
+                '{{imageBlob}}',
+                '{{latestComment}}'
             ),
             array(
                 $post->getTitle(),
                 $post->getDescription(),
-                base64_encode($coverImageBlob)
+                base64_encode($coverImageBlob),
+                $post->getLatestComment(),
             ),
             $postCardTempalte
         );
