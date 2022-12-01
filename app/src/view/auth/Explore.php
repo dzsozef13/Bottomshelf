@@ -31,31 +31,12 @@ $mediaController = new MediaController();
         // This will require some guarding, specially if we're planning to enable posting without images
         $media = $mediaController->fetchMediaForPost($post->getId());
         $indexedMediaArray = array_values($media);
-        if (isset($indexedMediaArray[0])) {
-            $coverImageBlob = $indexedMediaArray[0]->getImage();
-        } else {
-            $coverImageBlob = null;
+        // If media exist, save them inside Post entity so the template could use the first one
+        if (isset($indexedMediaArray)) {
+            $post->setMedia($indexedMediaArray);
         }
-        // Fill the template with data
-        $postCard = str_replace(
-            array(
-                '{{title}}',
-                '{{username}}',
-                '{{imageBlob}}',
-                '{{latestComment}}'
-            ),
-            array(
-                $post->getTitle(),
-                $post->getAuthorName(),
-                base64_encode($coverImageBlob),
-                $post->getLatestComment(),
-            ),
-            $postCardTempalte
-        );
-
-
         // Echo out the complete card
-        echo $postCard;
+        echo $post->getPostTemplate();
     }
     ?>
 </div>
