@@ -122,6 +122,12 @@
     tracking-wide
     font-medium;
   }
+
+  .headline {
+    @apply font-mono 
+    tracking-wide
+    font-medium;
+  }
   /* div for icons */
   .icon-wrapper {
     @apply absolute
@@ -261,6 +267,18 @@
            w-full
           h-auto 
           p-8;
+  }
+  .no-post-banner {
+    @apply w-full
+    h-52
+    flex
+    items-start
+    px-8
+    justify-center
+    flex-col
+    rounded
+    bg-background-secondary-900
+    mb-8;
   }
   .badges-container {
     @apply h-auto 

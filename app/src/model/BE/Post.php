@@ -90,17 +90,15 @@ class Post
         $this->media = $mediaArray;
     }
 
-
     public function getPostTemplate(): string
     {
-        $template = '<div class="post-card-container" id="container">
+        $template = '<div class="post-card-container">
                         <!-- Post Image -->
                         ' . ($this->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
                                 <img class="post-img" src="data:image/*;charset=utf8;base64,' . base64_encode($this->getCoverImageForPost()) . '" />
                             </div>') . '
                         <!-- Post Body -->
                         <div class="post-card-body">
-                    
                             <!-- Post Header -->
                             <div class="post-card-header">
                                 <h3 class="post-card-title">' . $this->getTitle() . '</h3>

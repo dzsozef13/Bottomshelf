@@ -1,12 +1,6 @@
 <?php
 
 /**
- * Grab templates used in the view
- */
-$viewController = new ViewController();
-$postCardTempalte = $viewController->getTemplateContent("PostCard");
-
-/**
  * Fetch all posts
  */
 $postController = new PostController();

@@ -3,8 +3,8 @@ $userCtrl = new UserController();
 $sessionsCtrl = new SessionController();
 $postController = new PostController();
 $viewController = new ViewController();
+$mediaController = new MediaController();
 
-$postCardTempalte = $viewController->getTemplateContent("PostCard");
 $user = $sessionsCtrl->getUser();
 $profile = null;
 $posts = null;
@@ -12,13 +12,10 @@ if (isset($user)) {
     $profile = $userCtrl->fetchById($user['userId']);
     $posts = $postController->fetchByUserId($user['userId']);
 }
-
-
 ?>
-<div class="grid grid-cols-6 gap-4 px-8 w-full grid-flow-row min-h-screen">
+<div class="grid grid-cols-6 gap-4 px-8 w-full">
     <div class="col-span-6 2xl:h-[15vh] h-[25vh] "></div>
-    <div class="2xl:col-span-1 col-span-0"></div>
-    <div class="2xl:col-span-4 col-span-6 ">
+    <div class="2xl:mx-20 mx-0 col-span-6 h-max">
         <div class="profile-card">
             <div class="profile-picture">
                 <img class="profile-img" src="<?php if ($profile->getProfileImage() !== null) {
@@ -54,8 +51,7 @@ if (isset($user)) {
 
         </div>
     </div>
-    <div class="2xl:col-span-1 col-span-0"></div>
-    <div class="col-span-6 profile-post-options-container">
+    <div class="2xl:mx-20 mx-0 col-span-6 profile-post-options-container">
         <a href="">
             <div class="option-chip">
                 Public
@@ -67,7 +63,32 @@ if (isset($user)) {
             </div>
         </a>
     </div>
-    <div class="col-span-6">
-
+    <div class="2xl:mx-20 mx-0 col-span-6">
+        <div class="no-post-banner">
+            <h3 class="headline text-lg mb-4">You have not created any posts yet...</h3>
+            <div class="btn-green">
+                <button>CREATE A POST</button>
+            </div>
+        </div>
     </div>
+    <?php
+    // if (empty($posts)) {
+    //     echo '
+    //     ';
+    // }
+
+
+    ?>
+    <!-- <div class="grid grid-cols-3 gap-8 p-8 h-[calc(100vh-5rem)] test"> -->
+    <?php
+    // foreach ($posts as $post) {
+    //     $media = $mediaController->fetchMediaForPost($post->getId());
+    //     $indexedMediaArray = array_values($media);
+    //     if (isset($indexedMediaArray)) {
+    //         $post->setMedia($indexedMediaArray);
+    //     }
+    //     echo $post->getPostTemplate();
+    // }
+    ?>
+    <!-- </div> -->
 </div>
