@@ -3,7 +3,7 @@ include_files(array(
 	"Console",
 	"DbConnectionController",
 	"CoreModel",
-    "Media"
+	"Media"
 ));
 
 class MediaModel extends CoreModel
@@ -13,12 +13,12 @@ class MediaModel extends CoreModel
 	 * Uploads a single Media
 	 * Returns the inserted media's ID
 	 */
-    public function uploadMedia($data)
-    {
-        try {
+	public function uploadMedia($data)
+	{
+		try {
 			$conn = CoreModel::openDbConnetion();
 
-			$query = 
+			$query =
 				"INSERT 
 				INTO Media (Image, UserId) 
 				VALUES (:image, :userId)";
@@ -29,25 +29,25 @@ class MediaModel extends CoreModel
 			$handle->bindValue(':userId', $data['userId']);
 
 			$handle->execute();
-            $lastInsertedMediaId = $conn->lastInsertId();
+			$lastInsertedMediaId = $conn->lastInsertId();
 
 			CoreModel::closeDbConnection();
 			$conn = null;
 
-            return $lastInsertedMediaId;
+			return $lastInsertedMediaId;
 		} catch (PDOException $e) {
 			echo  $e->getMessage();
 		}
-    }
+	}
 
 	/**
 	 * Returns with an array of Media connected to passed post ID
 	 */
-    public function getMediaForPost(int $postId)
-    {
+	public function getMediaForPost(int $postId)
+	{
 		try {
 			$conn = CoreModel::openDbConnetion();
-			$query = 
+			$query =
 				"SELECT *
 				FROM Media
 				INNER JOIN `PostHasImage` 
@@ -61,9 +61,10 @@ class MediaModel extends CoreModel
 			$result = array();
 			while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
 				$media = new Media(
-					$row->ImageId, 
+					$row->ImageId,
 					$row->Image,
-					$row->UserId);
+					$row->UserId
+				);
 				$result[] = $media;
 			}
 
@@ -74,6 +75,5 @@ class MediaModel extends CoreModel
 		} catch (PDOException $e) {
 			print($e->getMessage());
 		}
-    }
-
+	}
 }

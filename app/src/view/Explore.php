@@ -49,6 +49,7 @@ $mediaController = new MediaController();
         );
 
         // Echo out the complete card
+        echo $postCard;
     }
     ?>
 </div>

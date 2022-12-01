@@ -22,7 +22,7 @@ class MediaController
      * Uploads the submitted media
      * Signs it with the user ID of the current session
      */
-    public function uploadMedia() 
+    public function uploadMedia()
     {
         // Expected file names
         $mediaNames = array(
@@ -36,30 +36,30 @@ class MediaController
 
         if (isset($_POST['submit'])) {
             foreach ($mediaNames as $mediaName) {
-                if (isset($_POST["submit"])) { 
-                    if (!empty($_FILES[$mediaName]["name"])) { 
+                if (isset($_POST["submit"])) {
+                    if (!empty($_FILES[$mediaName]["name"])) {
                         // Get file info 
-                        $fileName = basename($_FILES[$mediaName]["name"]); 
-                        $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
-                         
+                        $fileName = basename($_FILES[$mediaName]["name"]);
+                        $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+
                         // Allow certain file formats 
-                        $allowTypes = array('jpg','png','jpeg','gif'); 
-                        if (in_array($fileType, $allowTypes)) { 
-                            $image = $_FILES[$mediaName]['tmp_name']; 
-                            $imgContent = file_get_contents($image); 
+                        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                        if (in_array($fileType, $allowTypes)) {
+                            $image = $_FILES[$mediaName]['tmp_name'];
+                            $imgContent = file_get_contents($image);
                             echo $mediaName . " is uploaded: " . $_FILES[$mediaName]['name'];
                             // Insert into media array
                             $mediaArray[] = $imgContent;
-                        } else { 
+                        } else {
                             echo "<br>wrong format of " . $mediaName;
-                        } 
-                    } else { 
+                        }
+                    } else {
                         echo "<br>no file was submitted as " . $mediaName;
-                    } 
-                } 
+                    }
+                }
             }
         }
-    
+
         // Get the user ID from the current session
         $session = new SessionController();
         $userId = $session->getUser()['userId'];
@@ -86,5 +86,4 @@ class MediaController
             // echo var_dump($uploadedMediaIdArray);
         }
     }
-
-} 
+}
