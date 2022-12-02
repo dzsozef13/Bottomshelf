@@ -177,7 +177,7 @@
   .post-card-container {
     @apply bg-background-secondary-900
             w-full
-            h-96
+            h-80
             2xl:h-64
             overflow-hidden
             rounded-lg;
@@ -340,5 +340,22 @@
     flex
     tracking-wide
     h-auto;
+  }
+
+  .side-bar-container {
+    @apply w-full
+    flex
+    flex-col
+    h-auto;
+  }
+
+  .banner {
+    @apply w-full
+    h-auto
+    p-4
+    bg-background-secondary-900
+    rounded
+    flex
+    flex-col;
   }
 }

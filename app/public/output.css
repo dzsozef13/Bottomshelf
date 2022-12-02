@@ -820,7 +820,7 @@ video {
 /* Post Card */
 
 .post-card-container{
-  height: 24rem;
+  height: 20rem;
   width: 100%;
   overflow: hidden;
   border-radius: 0.5rem;
@@ -1049,6 +1049,24 @@ video {
   letter-spacing: 0.025em;
 }
 
+.side-bar-container{
+  display: flex;
+  height: auto;
+  width: 100%;
+  flex-direction: column;
+}
+
+.banner{
+  display: flex;
+  height: auto;
+  width: 100%;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 32 33 / var(--tw-bg-opacity));
+  padding: 1rem;
+}
+
 .absolute{
   position: absolute;
 }
@@ -1126,8 +1144,20 @@ video {
   margin-bottom: 1rem;
 }
 
+.mt-2{
+  margin-top: 0.5rem;
+}
+
+.mt-4{
+  margin-top: 1rem;
+}
+
 .mt-10{
   margin-top: 2.5rem;
+}
+
+.ml-2{
+  margin-left: 0.5rem;
 }
 
 .ml-6{
@@ -1140,10 +1170,6 @@ video {
 
 .ml-4{
   margin-left: 1rem;
-}
-
-.ml-2{
-  margin-left: 0.5rem;
 }
 
 .flex{
@@ -1281,6 +1307,16 @@ video {
   line-height: 2.5rem;
 }
 
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .text-lg{
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -1289,11 +1325,6 @@ video {
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
-}
-
-.text-xl{
-  font-size: 1.25rem;
-  line-height: 1.75rem;
 }
 
 .text-3xl{
