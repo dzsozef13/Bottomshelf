@@ -2,7 +2,8 @@
 include_files(array(
   "Console",
   "DbConnectionController",
-  "CoreModel"
+  "CoreModel",
+  "Tag"
 ));
 
 class TagModel extends CoreModel
@@ -51,8 +52,15 @@ class TagModel extends CoreModel
       $handle = $conn->prepare($query);
       $handle->execute();
 
-      $result = $handle->fetchAll(PDO::FETCH_OBJ);
+      $result = array();
+      while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+        $post = new Tag(
+          $row->TagId,
+          $row->TagName,
+        );
 
+        $result[] = $post;
+      }
       //close the connection
       CoreModel::closeDbConnection();
       $conn = null;

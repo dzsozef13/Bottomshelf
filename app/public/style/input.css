@@ -271,7 +271,6 @@
   }
   .no-post-banner {
     @apply w-full
-
     h-52
     flex
     items-start
@@ -295,5 +294,38 @@
            w-full
            flex
            justify-between;
+  }
+  .tags-container {
+    @apply h-auto
+    w-3/6
+     min-h-[5rem]
+     bg-background-secondary-900
+
+     rounded
+     shadow
+     shadow-background-black-900
+     flex
+     flex-wrap
+     gap-2
+     p-2;
+  }
+
+  .tag-chip {
+    @apply rounded
+      w-max
+      border
+      border-highlight-green-900
+      h-8
+      px-8
+      hover:bg-highlight-green-900
+      hover:text-background-black-900
+      flex
+      font-bold
+      transition
+      items-center
+      text-dim-white-900
+      text-xs
+      font-mono
+      uppercase;
   }
 }

@@ -14,6 +14,7 @@ function include_files($files)
             case "Post":
             case "Media":
             case "Route":
+            case "Tag":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/BE/' . "$filename" . '.php';
                 break;
                 // DAL
@@ -40,6 +41,7 @@ function include_files($files)
             case "DbConnectionController":
             case "PostController":
             case "UserController":
+            case "TagsController":
             case "ViewController":
             case "PageController":
             case "MediaController":

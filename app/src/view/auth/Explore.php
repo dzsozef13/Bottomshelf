@@ -11,32 +11,72 @@ $posts = $postController->fetchAll();
  */
 $mediaController = new MediaController();
 
+/**
+ * Tags controller
+ */
+$tagsController = new TagsController();
+$tags = $tagsController->fetchAll();
+$tagTemplates = array();
+foreach ($tags as $tag) {
+    $tagTemplates[] = $tag->getTagTemplate();
+}
+
+
 ?>
 
 <!-- Explore View -->
-<div class="grid grid-cols-3 gap-8 p-8 h-[calc(100vh-5rem)]">
-    <?php
-    /**
-     * Loop through the posts
-     * Replace placeholders with data from each post
-     * Echo out the complete template
-     */
-    foreach ($posts as $post) {
-        // This will require some guarding, specially if we're planning to enable posting without images
-        $media = $mediaController->fetchMediaForPost($post->getId());
-        $indexedMediaArray = array_values($media);
-        // If media exist, save them inside Post entity so the template could use the first one
-        if (isset($indexedMediaArray)) {
-            $post->setMedia($indexedMediaArray);
+<div class="grid grid-cols-6 gap-4 px-8 my-8 w-full">
+    <div class="col-span-6 ">
+        <div class="tags-container">
+            <?php echo implode($tagTemplates)
+            ?>
+        </div>
+        <!-- tags -->
+    </div>
+    <div class="col-span-2 h-auto">
+        <!-- search -->
+        <div class="input-field-wrapper">
+            <div class="icon-wrapper">
+                <i class="las la-search"></i>
+            </div>
+            <input type="text" placeholder="Search..." class="input-field">
+        </div>
+    </div>
+    <div class="col-span-6 mt-10">
+        <?php
+        if (empty($posts)) {
+            echo '
+                <div class="no-post-banner">
+                    <h3 class="headline text-lg ">No posts found...</h3>
+                </div>
+        ';
+        } else {
+            /**
+             * Loop through the posts
+             * Replace placeholders with data from each post
+             * Echo out the complete template
+             */
+            $postTemplatesArray = array();
+            foreach ($posts as $post) {
+                $media = $mediaController->fetchMediaForPost($post->getId());
+                $indexedMediaArray = array_values($media);
+                if (isset($indexedMediaArray)) {
+                    $post->setMedia($indexedMediaArray);
+                }
+                $postTemplatesArray[] = $post->getPostTemplate();
+            }
+            echo '
+            <div class="grid 2xl:grid-cols-5 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"> 
+                ' . implode($postTemplatesArray) . '
+            </div> 
+            ';
         }
-        // Echo out the complete card
-        echo $post->getPostTemplate();
-    }
-    ?>
+        ?>
+    </div>
 </div>
 
 <!-- Test File Upload Form -->
-<form action="MediaUpload" method="post" enctype="multipart/form-data">
+<!-- <form action="MediaUpload" method="post" enctype="multipart/form-data">
     <div class="input-field-wrapper">
         <div class="icon-wrapper">
             <i class="las la-at"></i>
@@ -46,4 +86,4 @@ $mediaController = new MediaController();
         <input placeholder="Image" class="input-field " type="file" name="media3"><br>
     </div>
     <button class="btn-white w-full mt-6" type="submit" name="submit">UPLOAD</button>
-</form>
+</form> -->

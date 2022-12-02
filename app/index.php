@@ -5,7 +5,7 @@ include_files(array(
     "Console",
     "Router",
     "Routes",
-
+    "TagsController",
 ));
 
 $router = new Router();
