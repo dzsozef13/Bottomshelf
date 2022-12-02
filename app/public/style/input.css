@@ -328,4 +328,17 @@
       font-mono
       uppercase;
   }
+
+  .sort-dropdown-container {
+    @apply w-full
+    h-auto
+    mb-4
+    flex;
+  }
+  .dropdown {
+    @apply w-max
+    flex
+    tracking-wide
+    h-auto;
+  }
 }

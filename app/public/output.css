@@ -1033,6 +1033,22 @@ video {
   color: rgb(21 22 23 / var(--tw-text-opacity));
 }
 
+.sort-dropdown-container{
+  margin-bottom: 1rem;
+  display: flex;
+  height: auto;
+  width: 100%;
+}
+
+.dropdown{
+  display: flex;
+  height: auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  letter-spacing: 0.025em;
+}
+
 .absolute{
   position: absolute;
 }
@@ -1124,6 +1140,10 @@ video {
 
 .ml-4{
   margin-left: 1rem;
+}
+
+.ml-2{
+  margin-left: 0.5rem;
 }
 
 .flex{

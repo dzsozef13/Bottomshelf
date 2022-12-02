@@ -43,6 +43,13 @@ foreach ($tags as $tag) {
         </div>
     </div>
     <div class="col-span-6 mt-10">
+        <div class="sort-dropdown-container">
+            <!-- update this to an actual dropdown at some point -->
+            <div class="dropdown">
+                <h6>Sort by:</h6>
+                <p class="text-highlight-green-900 ml-2">Newest</p>
+            </div>
+        </div>
         <?php
         if (empty($posts)) {
             echo '
