@@ -85,7 +85,7 @@ if (isset($user)) {
                 $postTemplatesArray[] = $post->getPostTemplate();
             }
             echo '
-            <div class="grid grid-cols-3 gap-4"> 
+            <div class="grid 2xl:grid-cols-5 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"> 
                 ' . implode($postTemplatesArray) . '
             </div> 
             ';

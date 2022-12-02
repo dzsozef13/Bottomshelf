@@ -178,6 +178,7 @@
     @apply bg-background-secondary-900
             w-full
             h-96
+            2xl:h-64
             overflow-hidden
             rounded-lg;
   }
@@ -270,6 +271,7 @@
   }
   .no-post-banner {
     @apply w-full
+
     h-52
     flex
     items-start
