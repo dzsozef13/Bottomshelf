@@ -30,7 +30,15 @@ class PageController
 
     public function load($args)
     {
-        if ($view = $args['view']) {
+        if (isset($args['view'])) {
+            // Configure view in session
+            if (isset($args['filter'])) {
+                $exploreFilter = $args['filter'];
+                $session = new SessionController();
+                $session->setExploreFilter($exploreFilter);
+            }
+            // Render view
+            $view = $args['view'];
             if ($args['auth'] === true) {
                 $this->viewCtrl->renderView($this->redirectUnauthorized($view), true);
             } else {

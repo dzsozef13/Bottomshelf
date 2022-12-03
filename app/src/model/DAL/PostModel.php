@@ -104,7 +104,7 @@ class PostModel extends CoreModel
 					$row->CreatedAt,
 					$row->UserId,
 					$row->Username,
-					$row->LatestComment,
+					$row->LatestCommentId,
 					$row->ChildPostId,
 					$row->StatusId
 				);
