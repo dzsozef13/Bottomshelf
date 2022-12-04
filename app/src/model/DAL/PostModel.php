@@ -60,13 +60,26 @@ class PostModel extends CoreModel
 			$handle->bindParam(':PostId', $postId);
 			$handle->execute();
 
-			$result = $handle->fetch(PDO::FETCH_OBJ);
+			$row = $handle->fetch(PDO::FETCH_OBJ);
+			$post = new Post(
+				$row->PostId,
+				$row->Title,
+				$row->PostDescription,
+				$row->ReactionCount,
+				$row->IsSticky,
+				$row->CreatedAt,
+				$row->UserId,
+				$row->Username,
+				$row->LatestCommentId,
+				$row->ChildPostId,
+				$row->StatusId
+			);
 
 			//close the connection
 			CoreModel::closeDbConnection();
 			$conn = null;
 
-			return $result;
+			return $post;
 		} catch (PDOException $e) {
 			print($e->getMessage());
 		}

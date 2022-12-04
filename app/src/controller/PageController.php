@@ -37,6 +37,11 @@ class PageController
                 $session = new SessionController();
                 $session->setExploreFilter($exploreFilter);
             }
+            if (isset($args['selected'])) {
+                $postId = $args['selected'];
+                $session = new SessionController();
+                $session->setSelectedPostId($postId);
+            }
             // Render view
             $view = $args['view'];
             if ($args['auth'] === true) {

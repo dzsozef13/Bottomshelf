@@ -186,10 +186,9 @@
     @apply w-full
           h-3/5;
   }
-  .post-img {
+  .img {
     @apply w-full
           h-full     
-          bg-red-300
           object-cover;
   }
   .post-card-body {
@@ -246,11 +245,6 @@
           shadow-btn
           shadow-background-black-900
           left-8;
-  }
-  .profile-img {
-    @apply w-full
-    h-full     
-    object-contain;
   }
   .profile-username-container {
     @apply w-full
@@ -351,5 +345,21 @@
     rounded
     flex
     flex-col;
+  }
+
+  .post-preview-container {
+    @apply w-full
+    h-auto
+    min-h-[50vh]
+    p-4
+    bg-background-secondary-900
+    rounded
+    flex
+    flex-col;
+  }
+  .post-preview-img-container {
+    @apply w-3/6
+    h-[50vh]
+    bg-green-900;
   }
 }

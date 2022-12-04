@@ -18,11 +18,11 @@ if (isset($user)) {
     <div class="2xl:mx-20 mx-0 col-span-6 mb-4">
         <div class="profile-card">
             <div class="profile-picture">
-                <img class="profile-img" src="<?php if ($profile->getProfileImage() !== null) {
-                                                    echo $profile->getProfileImage();
-                                                } else {
-                                                    echo "public/asset/images/PlaceholderProfilePicture.png";
-                                                } ?>" alt="Users Profile Picture">
+                <img class="img" src="<?php if ($profile->getProfileImage() !== null) {
+                                            echo $profile->getProfileImage();
+                                        } else {
+                                            echo "public/asset/images/PlaceholderProfilePicture.png";
+                                        } ?>" alt="Users Profile Picture">
             </div>
             <div class="profile-username-container">
                 <h3 class="text-4xl font-mono ">

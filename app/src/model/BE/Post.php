@@ -92,10 +92,11 @@ class Post
 
     public function getPostTemplate(): string
     {
-        $template = '<div class="post-card-container">
+        $template = '<a href="/PostPreview?selected=' .  $this->getId() . '">
+                    <div class="post-card-container">
                         <!-- Post Image -->
                         ' . ($this->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
-                                <img class="post-img" src="data:image/*;charset=utf8;base64,' . base64_encode($this->getCoverImageForPost()) . '" />
+                                <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($this->getCoverImageForPost()) . '" />
                             </div>') . '
                         <!-- Post Body -->
                         <div class="post-card-body">
@@ -118,13 +119,7 @@ class Post
                                 🌸 ✅ 👀
                             </div>
                         </div>
-                    </div>';
+                    </div></a>';
         return $template;
     }
-
-    // public function getImageUrl()
-    // {
-    //     return $this-$imageUrl;
-    // }
-
 }

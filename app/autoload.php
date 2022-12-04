@@ -58,6 +58,7 @@ function include_files($files)
                 // AUTH
             case "Explore":
             case "Profile":
+            case "PostPreview":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/view/auth/' . "$filename" . '.php';
                 break;
                 // LAYOUT

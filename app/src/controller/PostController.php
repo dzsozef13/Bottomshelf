@@ -15,13 +15,11 @@ class PostController
     }
 
     public function create()
-    // todo: add image property when we plan how to handle images
     {
         $title = $_POST['title'];
         $description = $_POST['description'];
         $isPublic = $_POST['isPublic'];
         $isSticky = 1;
-        // when we have session working, change this to get the currently logged in user
         $userId = $_POST['userId'];
         $StatusId = 1;
         $data = [];
@@ -46,7 +44,7 @@ class PostController
         return $this->postModel->getAll($statusId, $isPublic);
     }
 
-    public function fetchById(int $id)
+    public function fetchById(int $id): Post
     {
         if (isset($id)) {
             return $this->postModel->getById($id);
