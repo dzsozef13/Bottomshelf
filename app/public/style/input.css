@@ -352,14 +352,24 @@
     h-auto
     min-h-[50vh]
     p-4
-    bg-background-secondary-900
+    bg-background-secondary-900 
     rounded
-    flex
-    flex-col;
+    flex;
   }
   .post-preview-img-container {
-    @apply w-3/6
-    h-[50vh]
-    bg-green-900;
+    @apply w-2/4 
+    aspect-square     
+    shadow-btn
+    shadow-background-black-900
+    bg-green-900
+    overflow-hidden
+    rounded;
+  }
+  .post-preview-content {
+    @apply w-2/4
+    h-auto
+    flex
+    flex-col
+    p-4;
   }
 }

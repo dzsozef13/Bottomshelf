@@ -66,6 +66,12 @@ class Post
         return $this->latestComment;
     }
 
+    public function getCreatedAt()
+    {
+        $createdAtDate = DateTime::createFromFormat('Y-m-d H:i:s', $this->createdAt);
+        return $createdAtDate->format('d/m/Y');
+    }
+
     public function getAllMedia()
     {
         return $this->media;
@@ -103,7 +109,7 @@ class Post
                             <!-- Post Header -->
                             <div class="post-card-header">
                                 <h3 class="post-card-title">' . $this->getTitle() . '</h3>
-                                <p class="post-card-user">by @' . $this->getAuthorName() . '</p>
+                                <p class="post-card-user">by @<span class="text-highlight-green-900">' . $this->getAuthorName() . '</span></p>
                             </div>
                             <!-- Post Comment -->
                               ' . ($this->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
