@@ -82,7 +82,11 @@ foreach ($tags as $tag) {
                 </p>
             </div>
             <div class="banner mt-4">
-                notifications
+                <h3 class="small-headline mb-4">Use tags to filter posts!</h3>
+                <div class="tags-container">
+                    <?php echo implode($tagTemplates)
+                    ?>
+                </div>
             </div>
         </div>
 
