@@ -19,7 +19,6 @@ Router::add(new Route("Home", "page/load", array("view" => "Home")));
 Router::add(new Route("Login", "page/load", array("view" => "Login")));
 Router::add(new Route("Signup", "page/load", array("view" => "Signup")));
 Router::add(new Route("About", "page/load", array("view" => "About")));
-Router::add(new Route("Dashboard", "page/load", array("view" => "Dashboard", "auth" => true)));
 Router::add(new Route("Explore", "page/load", array("view" => "Explore", "auth" => true)));
 Router::add(new Route("Profile", "page/load", array("view" => "Profile", "auth" => true)));
 

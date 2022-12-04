@@ -6,11 +6,6 @@
             <div class="h-auto w-full">
                 <div class="logo"></div>
                 <ul class="mt-6 uppercase">
-                    <a href="/Dashboard">
-                        <li class="mb-4 <?php if ($_SERVER['REQUEST_URI'] === '/Dashboard') {
-                                            echo 'text-highlight-green-900';
-                                        } ?>">Dashboard</li>
-                    </a>
                     <a href="/Explore">
                         <li class="mb-4 <?php if ($_SERVER['REQUEST_URI'] === '/Explore') {
                                             echo 'text-highlight-green-900';

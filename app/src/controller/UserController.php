@@ -21,7 +21,7 @@ class UserController
             if ($user = $userModel->validateUser($email, $password)) {
                 $session = new SessionController();
                 $session->setUser($user->UserId, $user->Username);
-                new Router("Dashboard");
+                new Router("Explore");
             } else {
                 new Router("Login");
             }

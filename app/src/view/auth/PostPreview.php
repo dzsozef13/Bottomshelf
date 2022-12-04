@@ -24,7 +24,6 @@ foreach ($posts as $post) {
 
 ?>
 
-<!-- Dashboard View -->
 <div class="grid grid-cols-6 gap-4 px-8 my-8 w-full">
     <div class="col-span-4">
 
