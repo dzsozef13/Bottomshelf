@@ -58,4 +58,13 @@ class Comment
     {
         return $this->createdAt;
     }
+
+    public function getCommentTemplate(): string
+    {
+        $template = '
+            <div>
+        
+        ';
+        return $template;
+    }
 }

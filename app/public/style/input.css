@@ -351,9 +351,6 @@
     @apply w-full
     h-auto
     min-h-[50vh]
-    p-4
-    bg-background-secondary-900 
-    rounded
     flex;
   }
   .post-preview-img-container {
@@ -363,13 +360,52 @@
     shadow-background-black-900
     bg-green-900
     overflow-hidden
+    mr-8
     rounded;
   }
   .post-preview-content {
     @apply w-2/4
     h-auto
+    p-8
+    bg-background-secondary-900 
+    rounded
+    flex
+    flex-col;
+  }
+
+  .comment-container {
+    @apply w-full
+    h-auto
+    rounded
+    min-h-[3rem]
+    bg-background-ternary-900
+    flex
+    items-start
+    p-2;
+  }
+
+  .comment-picture-container {
+    @apply w-8
+    h-8
+    bg-highlight-green-900
+    overflow-hidden
+    rounded;
+  }
+
+  .comment-body-container {
+    @apply w-[calc(100%-3rem)]
+    h-full
     flex
     flex-col
-    p-4;
+    ml-4;
+  }
+
+  .comment-headline {
+    @apply w-full
+    h-auto
+    mb-1
+    text-sm 
+    flex
+    justify-between;
   }
 }
