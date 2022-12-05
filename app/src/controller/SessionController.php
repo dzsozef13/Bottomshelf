@@ -107,4 +107,11 @@ class SessionController
         return $_SESSION['searchTag'] ?? null;
     }
 
+    public function setUploadedMediaIdArray($mediaIDs) {
+        $_SESSION['uploadedMediaIdArray'] = $mediaIDs;
+    }
+    public function getUploadedMediaIdArray() {
+        return $_SESSION['uploadedMediaIdArray'];
+    }
+
 }

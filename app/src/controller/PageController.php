@@ -37,6 +37,11 @@ class PageController
                 $session = new SessionController();
                 $session->setExploreFilter($exploreFilter);
             }
+            if (isset($args['filter'])) {
+                $exploreFilter = $args['filter'];
+                $session = new SessionController();
+                $session->setExploreFilter($exploreFilter);
+            }
             // Render view
             $view = $args['view'];
             if ($args['auth'] === true) {

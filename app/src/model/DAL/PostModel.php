@@ -33,8 +33,29 @@ class PostModel extends CoreModel
 			$handle->bindValue(':statusId', $data['statusId']);
 
 			$handle->execute();
+			$lastInsertedPostId = $conn->lastInsertId();
 
-			//close the connection
+			return $lastInsertedPostId;
+		} catch (PDOException $e) {
+			echo  $e->getMessage();
+		}
+	}
+
+	public function connectPostWithMedia(int $postId, $mediaId) {
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$query =
+				"INSERT 
+				INTO PostHasImage (PostId, ImageId) 
+				VALUES (:postId, :mediaId)";
+
+			$handle = $conn->prepare($query);
+
+			$handle->bindParam(':postId', $postId);
+			$handle->bindValue(':mediaId', $mediaId);
+
+			$handle->execute();
+
 			CoreModel::closeDbConnection();
 			$conn = null;
 		} catch (PDOException $e) {
