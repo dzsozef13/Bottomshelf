@@ -1,26 +1,36 @@
 <?php
 
 /**
- * Fetch all posts
+ * Setup controllers used in view
  */
+$sessionController = new SessionController();
 $postController = new PostController();
-$posts = $postController->fetchAll();
-
-/**
- * Media controller
- */
 $mediaController = new MediaController();
+$tagsController = new TagsController();
 
 /**
- * Tags controller
+ * Fetch posts
  */
-$tagsController = new TagsController();
+$filter = $sessionController->getExploreFilter();
+switch ($filter) {
+    case 'trending':
+        console_log('trending');
+        $posts = $postController->fetchAll();
+    break;
+    default:
+        console_log('all');
+        $posts = $postController->fetchAll();
+    break;
+}
+
+/**
+ * Fetch tags
+ */
 $tags = $tagsController->fetchAll();
 $tagTemplates = array();
 foreach ($tags as $tag) {
     $tagTemplates[] = $tag->getTagTemplate();
 }
-
 
 ?>
 
