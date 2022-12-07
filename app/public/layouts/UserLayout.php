@@ -1,6 +1,6 @@
 <!-- to be finished -->
 
-<body class="bodyStyle">
+<body class="bodyStyle" id="body">
     <div class="grid grid-cols-6 min-h-screen">
         <div class="col-span-2 lg:col-span-1 bg-highlight-green-900/10 p-8 flex flex-col justify-between">
             <div class="h-auto w-full">

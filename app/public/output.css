@@ -1175,6 +1175,12 @@ video {
   justify-content: flex-start;
 }
 
+.edit-comment{
+  display: none;
+  height: auto;
+  width: 100%;
+}
+
 .absolute{
   position: absolute;
 }
@@ -1268,6 +1274,10 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.ml-2{
+  margin-left: 0.5rem;
+}
+
 .ml-6{
   margin-left: 1.5rem;
 }
@@ -1278,10 +1288,6 @@ video {
 
 .ml-4{
   margin-left: 1rem;
-}
-
-.ml-2{
-  margin-left: 0.5rem;
 }
 
 .flex{

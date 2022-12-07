@@ -73,9 +73,10 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                 </div>
                 <button class="btn-white-no-shadow  w-full mt-4 mb-4" type="submit">Add Comment</button>
             </form>
-            <?php
-            foreach ($comments as $comment) {
-                echo ' <div class="comment-container last:mb-0">
+            <div id="test">
+                <?php
+                foreach ($comments as $comment) {
+                    echo ' <div class="comment-container last:mb-0"  id="' . ($comment->getId()) . '" >
                     <div class="comment-picture-container">
                         <img class="img" src="' . ($comment->getUserPicture() !== null ? 'data:image/*;charset=utf8;base64,' . base64_encode($comment->getUserPicture()) : 'public/asset/images/PlaceholderProfilePicture.png') . '" alt="">
                     </div>
@@ -86,14 +87,13 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                                     <h6 class="headline text-highlight-green-900">' . $comment->getUsername() . '</h6>
                                 </a>
                                 ' . ($comment->getUserId() == $sessionController->getUser()['userId'] ? '
-                            
-                                        <a href="UpdateComment?commentId=' . $comment->getId() . '">
-                                            <button class="ml-2"> 
+                                       
+                                            <button class="editCommentBtn ml-2"> 
                                                 <div class="btn-icon">
-                                                <i class="las la-edit"></i>
+                                                    <i class="las la-edit"></i>
                                                 </div> 
                                             </button>
-                                        </a>
+                                        
                                         <a href="DeleteComment?commentId=' . $comment->getId() . '">
                                             <button class="ml-2"> 
                                                 <div class="btn-icon">
@@ -101,15 +101,24 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                                                 </div> 
                                             </button>
                                         </a>' : "") .
-                    '
+                        '
                             </div>
                             <p class="text-xs text-dim-white-900/40">' . $comment->getCreatedAt() . '</p>
                         </div>
+                        <form action="UpdateComment" method="post" class="edit-comment">
+                            <div class="text-area-wrapper">
+                                <div class="icon-wrapper-text-area">
+                                    <i class="las la-comment"></i>
+                                </div>
+                                <textarea placeholder="Comment here.." name="comment" maxlength="1024" class="input-field  min-h-[4rem]">' . $comment->getContent() . '</textarea>
+                            </div>
+                            <button class="btn-white-no-shadow  w-full mt-4 mb-4" type="submit">Edit Comment</button>
+                        </form>
                         <p class="text-xs">' . $comment->getContent() . '</p>
                     </div>
                 </div>';
-            }
-            ?>
+                }
+                ?></div>
         </div>
     </div>
 </div>

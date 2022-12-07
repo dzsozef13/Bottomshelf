@@ -461,4 +461,10 @@
     justify-start
     items-center;
   }
+
+  .edit-comment {
+    @apply w-full
+    h-auto
+    hidden;
+  }
 }
