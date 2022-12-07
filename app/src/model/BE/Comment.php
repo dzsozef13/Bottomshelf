@@ -70,7 +70,7 @@ class Comment
             </div>
             <div class="comment-body-container">
                 <div class="comment-headline">
-                    <a href="Profile?id=' . $this->getUserId() . '">
+                    <a href="Profile?user=' . $this->getUserId() . '">
                          <h6 class="headline text-highlight-green-900">' . $this->getUsername() . '</h6>
                     </a>
                     <p class="text-xs text-dim-white-900/40">' . $this->getCreatedAt() . '</p>

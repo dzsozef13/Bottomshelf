@@ -131,10 +131,10 @@ class SessionController
      */
     public function setUserProfileId($userId)
     {
-        $_SESSION['selected'] = $userId;
+        $_SESSION['user'] = $userId;
     }
     public function getUserProfileId()
     {
-        return $_SESSION['selected'] ?? null;
+        return $_SESSION['user'] ?? null;
     }
 }

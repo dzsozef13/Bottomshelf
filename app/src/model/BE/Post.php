@@ -61,6 +61,11 @@ class Post
         return $this->authorName;
     }
 
+    public function getAuthorId()
+    {
+        return $this->authorId;
+    }
+
     public function getLatestComment()
     {
         return $this->latestComment;

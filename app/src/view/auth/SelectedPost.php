@@ -55,7 +55,8 @@ $comments = $commentController->fetchAllByPostId($post->getId());
         <div class="post-preview-content">
             <h2 class="medium-headline"><?php echo $post->getTitle() ?></h2>
             <p class="text-sm font-mono">
-                by @<span class="text-highlight-green-900"><?php echo $post->getAuthorName() ?></span>
+                <a href="Profile?user=<?php echo $post->getAuthorId() ?>">
+                    by @<span class="text-highlight-green-900"><?php echo $post->getAuthorName() ?></span> </a>
                 <span class="text-dim-white-900/60"><?php echo $post->getCreatedAt() ?></span>
             </p>
             <h4 class="mt-4 ">

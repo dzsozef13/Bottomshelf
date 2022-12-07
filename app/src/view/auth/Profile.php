@@ -5,12 +5,12 @@ $postController = new PostController();
 $viewController = new ViewController();
 $mediaController = new MediaController();
 
-$user = $sessionsCtrl->getUser();
+$user = $sessionsCtrl->getUserProfileId() === null ? $sessionsCtrl->getUser()['userId'] : $sessionsCtrl->getUserProfileId();
 $profile = null;
 $posts = null;
 if (isset($user)) {
-    $profile = $userCtrl->fetchById($user['userId']);
-    $posts = $postController->fetchByUserId($user['userId']);
+    $profile = $userCtrl->fetchById($user);
+    $posts = $postController->fetchByUserId($user);
 }
 ?>
 <div class="grid grid-cols-6 gap-4 px-8 w-full">
