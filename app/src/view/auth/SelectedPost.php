@@ -73,10 +73,10 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                 </div>
                 <button class="btn-white-no-shadow  w-full mt-4 mb-4" type="submit">Add Comment</button>
             </form>
-            <div id="test">
+            <div id="allComments">
                 <?php
                 foreach ($comments as $comment) {
-                    echo ' <div class="comment-container last:mb-0"  id="' . ($comment->getId()) . '" >
+                    echo ' <div class="comment-container last:mb-0"" >
                     <div class="comment-picture-container">
                         <img class="img" src="' . ($comment->getUserPicture() !== null ? 'data:image/*;charset=utf8;base64,' . base64_encode($comment->getUserPicture()) : 'public/asset/images/PlaceholderProfilePicture.png') . '" alt="">
                     </div>
@@ -87,13 +87,11 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                                     <h6 class="headline text-highlight-green-900">' . $comment->getUsername() . '</h6>
                                 </a>
                                 ' . ($comment->getUserId() == $sessionController->getUser()['userId'] ? '
-                                       
                                             <button class="editCommentBtn ml-2"> 
                                                 <div class="btn-icon">
                                                     <i class="las la-edit"></i>
                                                 </div> 
                                             </button>
-                                        
                                         <a href="DeleteComment?commentId=' . $comment->getId() . '">
                                             <button class="ml-2"> 
                                                 <div class="btn-icon">
@@ -105,7 +103,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                             </div>
                             <p class="text-xs text-dim-white-900/40">' . $comment->getCreatedAt() . '</p>
                         </div>
-                        <form action="UpdateComment" method="post" class="edit-comment">
+                        <form action="UpdateComment?commentId= ' . $comment->getId() . '" method="post" class="edit-comment">
                             <div class="text-area-wrapper">
                                 <div class="icon-wrapper-text-area">
                                     <i class="las la-comment"></i>

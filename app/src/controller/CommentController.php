@@ -35,6 +35,20 @@ class CommentController
         return $commentModel->getAllCommentsByPostId($postId);
     }
 
+    public function update()
+    {
+        $commentModel = new CommentModel();
+        $sessionController = new SessionController();
+
+        $postId = $sessionController->getSelectedPostId();
+        $content = $_POST['comment'];
+
+        if (isset($_GET['commentId'])) {
+            $commentModel->updateComment($_GET['commentId'], $content);
+        }
+        new Router('SelectedPost?id=' . $postId);
+    }
+
     public function delete()
     {
         $commentModel = new CommentModel();
