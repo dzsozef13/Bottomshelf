@@ -29,6 +29,14 @@
             </div>
             <div class="w-full flex items-center relative break-all h-auto ">
                 <div class="logo flex-none flex justify-center items-center">
+                    <i class="las la-plus text-background-black-900 text-3xl"></i>
+                </div>
+                <a href="/Upload" class="w-full h-auto">
+                    <h4 class="ml-4 ">Create</h4>
+                </a>
+            </div>
+            <div class="w-full flex items-center relative break-all h-auto ">
+                <div class="logo flex-none flex justify-center items-center">
                     <i class="las la-smile text-background-black-900 text-3xl"></i>
                 </div>
                 <a href="/Profile" class="w-full h-auto">

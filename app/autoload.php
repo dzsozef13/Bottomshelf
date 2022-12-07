@@ -58,6 +58,9 @@ function include_files($files)
             case "Explore":
             case "Profile":
             case "PostPreview":
+            case "Dashboard":
+            case "Upload":
+            case "Create":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/view/auth/' . "$filename" . '.php';
                 break;
                 // LAYOUT

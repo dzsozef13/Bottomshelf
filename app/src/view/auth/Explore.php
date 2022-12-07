@@ -92,16 +92,3 @@ foreach ($tags as $tag) {
 
     </div>
 </div>
-
-<!-- Test File Upload Form -->
-<!-- <form action="MediaUpload" method="post" enctype="multipart/form-data">
-    <div class="input-field-wrapper">
-        <div class="icon-wrapper">
-            <i class="las la-at"></i>
-        </div>
-        <input placeholder="Image" class="input-field " type="file" name="media1"><br>
-        <input placeholder="Image" class="input-field " type="file" name="media2"><br>
-        <input placeholder="Image" class="input-field " type="file" name="media3"><br>
-    </div>
-    <button class="btn-white w-full mt-6" type="submit" name="submit">UPLOAD</button>
-</form> -->

@@ -22,6 +22,8 @@ Router::add(new Route("About", "page/load", array("view" => "About")));
 Router::add(new Route("Explore", "page/load", array("view" => "Explore", "auth" => true)));
 Router::add(new Route("Profile", "page/load", array("view" => "Profile", "auth" => true)));
 Router::add(new Route("PostPreview", "page/load", array("view" => "PostPreview", "auth" => true)));
+Router::add(new Route("Upload", "page/load", array("view" => "Upload", "auth" => true)));
+Router::add(new Route("Create", "page/load", array("view" => "Create", "auth" => true)));
 
 // USER
 Router::add(new Route("UserLogin", "user/tryLogInUser"));

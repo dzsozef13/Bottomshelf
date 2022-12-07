@@ -84,6 +84,21 @@ class MediaController
 
             // TODO: Call a route and pass the IDs to proceed with posting
             // echo var_dump($uploadedMediaIdArray);
+
+            // Redirect to Create view with media IDs
+
+            // $mediaIndex = 1;
+            // $routeParamsString = '?';
+            // foreach ($uploadedMediaIdArray as $uploadedMediaId) {
+            //     $routeParamsString = $routeParamsString . 'media' . $mediaIndex . '=' . $uploadedMediaId . '&';
+            //     $mediaIndex ++;
+            // }
+            // $redirect = new Router("Create" . substr($routeParamsString, 0, -1));
+
+            // Set uploaded media IDs in the session
+            $sessionController = new SessionController();
+            $sessionController->setUploadedMediaIdArray($uploadedMediaIdArray);
+            $redirect = new Router("Create");
         }
     }
 }

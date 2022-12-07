@@ -18,9 +18,10 @@ class PostController
     {
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $isPublic = $_POST['isPublic'];
+        $isPublic = $_POST['isPublic'] ?? 1;
         $isSticky = 1;
-        $userId = $_POST['userId'];
+        $sessionController = new SessionController();
+        $userId = $sessionController->getUser()['userId'];
         $StatusId = 1;
         $data = [];
 
@@ -33,7 +34,12 @@ class PostController
                 'userId' =>  $userId,
                 'statusId' =>  $StatusId
             );
-            $this->postModel->createPost($data);
+            $postId = $this->postModel->createPost($data);
+
+            $uploadedMediaIdArray = $sessionController->getUploadedMediaIdArray();
+            foreach ($uploadedMediaIdArray as $uploadedMediaId) {
+                $this->postModel->connectPostWithMedia($postId, $uploadedMediaId);
+            }
         } else {
             // thow an error error
         }
