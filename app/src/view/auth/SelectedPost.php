@@ -35,7 +35,7 @@ $indexedMediaArray = array_values($media);
 if (isset($indexedMediaArray)) {
     $post->setMedia($indexedMediaArray);
 }
-
+$selectedImage = !empty($indexedMediaArray) ? $indexedMediaArray[0] : null;
 /**
  * Fetch all comments for the post
  */
@@ -43,13 +43,25 @@ if (isset($indexedMediaArray)) {
 $comments = $commentController->fetchAllByPostId($post->getId());
 ?>
 
-<div class="grid grid-cols-6 px-16 my-8 w-full gap-4">
+<div class="grid grid-cols-6 px-8 my-8 w-full gap-4">
+    <!-- Images Column -->
     <div class="col-span-3">
         <div class="post-preview-img-container">
-            <img class="img" src="data:image/*;charset=utf8;base64,<?php echo base64_encode($indexedMediaArray[0]->getImage()) ?>" alt="">
+            <img class="img" src="data:image/*;charset=utf8;base64,<?php echo base64_encode($selectedImage->getImage()) ?>" alt="">
+        </div>
+        <div class="post-small-images-container">
+            <?php
+            foreach ($indexedMediaArray as $image) {
+                echo '<div class="post-small-images">
+                    <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($image->getImage()) . '" alt="">
+                </div>';
+            }
+            ?>
         </div>
     </div>
+    <!-- Post Content Column -->
     <div class="col-span-3">
+        <!-- Container for post information -->
         <div class="post-preview-content">
             <h2 class="medium-headline"><?php echo $post->getTitle() ?></h2>
             <p class="text-sm font-mono">
@@ -61,7 +73,10 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                 <?php echo $post->getDescription() ?>
             </h4>
         </div>
+
+        <!-- Comment Section -->
         <div class="post-preview-content">
+            <!-- Comment Creation -->
             <form action="AddComment" method="post">
                 <div class="text-area-wrapper">
                     <div class="icon-wrapper-text-area">
@@ -69,8 +84,9 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                     </div>
                     <textarea placeholder="Comment here.." name="comment" maxlength="1024" class="input-field  min-h-[4rem]"></textarea>
                 </div>
-                <button class="btn-white-no-shadow  w-full mt-4 mb-4" type="submit">Add Comment</button>
+                <button class="btn-white-no-shadow w-full mt-4 mb-4" type="submit">Add Comment</button>
             </form>
+            <!-- Comment display + deletion, editing logic -->
             <div id="allComments">
                 <?php
                 foreach ($comments as $comment) {

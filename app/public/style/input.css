@@ -483,4 +483,20 @@
     h-auto
     hidden;
   }
+  .post-small-images {
+    @apply w-1/3
+    h-max
+    aspect-square     
+    shadow-btn
+    shadow-background-black-900
+    overflow-hidden
+    rounded;
+  }
+  .post-small-images-container {
+    @apply w-full
+    flex
+    h-max
+    mt-4
+    gap-4;
+  }
 }

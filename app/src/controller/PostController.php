@@ -18,7 +18,7 @@ class PostController
     {
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $isPublic = $_POST['isPublic'] ?? 1;
+        $isPublic = $_POST['isPublic'] ? 1 : 0;
         $isSticky = 1;
         $sessionController = new SessionController();
         $userId = $sessionController->getUser()['userId'];
