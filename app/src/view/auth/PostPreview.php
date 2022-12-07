@@ -60,25 +60,20 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                 <h4 class="mt-4 mb-8">
                     <?php echo $post->getDescription() ?>
                 </h4>
-                <div class="comment-container">
-                    <div class="comment-picture-container"></div>
-                    <div class="comment-body-container">
-                        <div class="comment-headline">
-                            <h6 class="headline">Peter Griffin</h6>
-                            <p class="text-xs text-dim-white-900/40">20/04/2020</p>
-                        </div>
-                        <p class="text-xs"> Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? </p>
-                    </div>
-                </div>
+                <form action="AddComment" method="post">
+                    <input type="text" placeholder="comment" lass="input-field" name="comment">
+                    <button class="btn-white w-full mt-6" type="submit">Add Comment</button>
+                </form>
+                <?php
+                $commentTemplates = array();
+                foreach ($comments as $comment) {
+                    $commentTemplates[] = $comment->getCommentTemplate();
+                }
+                echo implode($commentTemplates);
+
+                ?>
             </div>
-            <?php
-            // $commentTemplates = array();
-            // foreach ($comments as $comment) {
-            //     $commentTemplates[] = $comment->getCommentTemplate();
-            // }
-            // echo implode($commentTemplates);
-            // 
-            ?>
+
 
         </div>
     </div>

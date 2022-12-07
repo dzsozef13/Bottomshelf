@@ -89,22 +89,26 @@ class CommentModel extends CoreModel
             $handle->bindParam(':PostId', $postId);
             $handle->execute();
 
-            $row = $handle->fetch(PDO::FETCH_OBJ);
-            $comment = new Comment(
-                $row->CommentId,
-                $row->Content,
-                $row->UserId,
-                $row->PostId,
-                $row->CreatedAt,
-                $row->Username,
-                $row->ProfileImgUrl,
-            );
+
+            $result = array();
+            while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+                $comment = new Comment(
+                    $row->CommentId,
+                    $row->Content,
+                    $row->UserId,
+                    $row->PostId,
+                    $row->CreatedAt,
+                    $row->Username,
+                    $row->ProfileImgUrl,
+                );
+                $result[] = $comment;
+            }
 
             //close the connection
             CoreModel::closeDbConnection();
             $conn = null;
 
-            return $comment;
+            return $result;
         } catch (PDOException $e) {
             print($e->getMessage());
         }

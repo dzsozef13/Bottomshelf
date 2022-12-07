@@ -51,18 +51,30 @@ class Comment
 
     public function getUserPicture()
     {
-        return $this->authorName;
+        return $this->authorPicture;
     }
 
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        $createdAtDate = DateTime::createFromFormat('Y-m-d H:i:s', $this->createdAt);
+        return $createdAtDate->format('d/m/Y');
     }
 
     public function getCommentTemplate(): string
     {
         $template = '
-            <div>
+        <div class="comment-container">
+            <div class="comment-picture-container">
+                <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($this->getUserPicture()) . '" alt="">
+            </div>
+            <div class="comment-body-container">
+                <div class="comment-headline">
+                    <h6 class="headline">' . $this->getUsername() . '</h6>
+                    <p class="text-xs text-dim-white-900/40">' . $this->getCreatedAt() . '</p>
+                </div>
+                <p class="text-xs">' . $this->getContent() . '</p>
+            </div>
+        </div>
         
         ';
         return $template;

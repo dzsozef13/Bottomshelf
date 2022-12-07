@@ -33,5 +33,8 @@ Router::add(new Route("UserRegist", "user/tryRegistUser"));
 // POST
 Router::add(new Route("CreatePost", "post/create"));
 
+// COMMENT
+Router::add(new Route("AddComment", "comment/create"));
+
 // MEDIA
 Router::add(new Route("MediaUpload", "media/uploadMedia"));

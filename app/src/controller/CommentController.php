@@ -8,30 +8,26 @@ include_files(array(
 class CommentController
 {
 
-    // public function create()
-    // {
-    //     $title = $_POST['title'];
-    //     $description = $_POST['description'];
-    //     $isPublic = $_POST['isPublic'];
-    //     $isSticky = 1;
-    //     $userId = $_POST['userId'];
-    //     $StatusId = 1;
-    //     $data = [];
+    public function create()
+    {
 
-    //     if (isset($title) && isset($description) && isset($isPublic) && isset($isSticky)  && isset($userId)  && isset($StatusId)) {
-    //         $data = array(
-    //             'title' => $title,
-    //             'description' =>  $description,
-    //             'isPublic' => $isPublic,
-    //             'isSticky' => $isSticky,
-    //             'userId' =>  $userId,
-    //             'statusId' =>  $StatusId
-    //         );
-    //         $this->postModel->createPost($data);
-    //     } else {
-    //         // thow an error error
-    //     }
-    // }
+        $commentModel = new CommentModel();
+        $sessionController = new SessionController();
+
+        $content = $_POST['comment'];
+        $userId = $sessionController->getUser()['userId'];
+        $postId = $sessionController->getSelectedPostId();
+
+        if (isset($content) && isset($postId) && isset($userId)) {
+            $data = array(
+                'content' => $content,
+                'userId' =>  $userId,
+                'postId' => $postId
+            );
+            $commentModel->createComment($data);
+        }
+        new Router('PostPreview?id=' . $postId);
+    }
 
     public function fetchAllByPostId(int $postId)
     {
