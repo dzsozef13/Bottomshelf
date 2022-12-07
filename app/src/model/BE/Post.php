@@ -98,7 +98,7 @@ class Post
 
     public function getPostTemplate(): string
     {
-        $template = '<a href="/PostPreview?selected=' .  $this->getId() . '">
+        $template = '<a href="/SelectedPost?selected=' .  $this->getId() . '">
                     <div class="post-card-container">
                         <!-- Post Image -->
                         ' . ($this->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
@@ -125,7 +125,8 @@ class Post
                                 🌸 ✅ 👀
                             </div>
                         </div>
-                    </div></a>';
+                    </div>
+                    </a>';
         return $template;
     }
 }

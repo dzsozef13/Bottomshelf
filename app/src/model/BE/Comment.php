@@ -39,7 +39,7 @@ class Comment
         return $this->content;
     }
 
-    public function gettUserId()
+    public function getUserId()
     {
         return $this->authorId;
     }
@@ -62,6 +62,7 @@ class Comment
 
     public function getCommentTemplate(): string
     {
+
         $template = '
         <div class="comment-container last:mb-0">
             <div class="comment-picture-container">
@@ -69,7 +70,9 @@ class Comment
             </div>
             <div class="comment-body-container">
                 <div class="comment-headline">
-                    <h6 class="headline text-highlight-green-900">' . $this->getUsername() . '</h6>
+                    <a href="Profile?id=' . $this->getUserId() . '">
+                         <h6 class="headline text-highlight-green-900">' . $this->getUsername() . '</h6>
+                    </a>
                     <p class="text-xs text-dim-white-900/40">' . $this->getCreatedAt() . '</p>
                 </div>
                 <p class="text-xs">' . $this->getContent() . '</p>

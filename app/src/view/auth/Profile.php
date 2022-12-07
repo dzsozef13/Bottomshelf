@@ -68,7 +68,7 @@ if (isset($user)) {
         if (empty($posts)) {
             echo '
                 <div class="no-post-banner">
-                    <h3 class="headline text-lg ">You have not created any posts yet...</h3>
+                    <h3 class="headline text-lg mb-6">You have not created any posts yet...</h3>
                     <div class="btn-green">
                         <button>CREATE A POST</button>
                     </div>

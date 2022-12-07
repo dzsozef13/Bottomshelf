@@ -49,6 +49,22 @@
       font-bold 
       text-sm;
   }
+  .btn-white-no-shadow {
+    @apply w-40 
+      h-10
+      cursor-pointer
+      flex 
+      justify-center 
+      items-center 
+      bg-dim-white-900 
+      rounded 
+      border-0 
+      font-mono 
+      uppercase 
+      text-background-black-900 
+      font-bold 
+      text-sm;
+  }
   /* nav */
   .nav {
     @apply mx-auto 
@@ -372,30 +388,24 @@
     flex-col;
   }
 
-  .post-preview-container {
-    @apply w-full
-    h-auto
-    min-h-[50vh]
-    flex;
-  }
   .post-preview-img-container {
-    @apply w-2/4 
+    @apply w-full
     h-max
     aspect-square     
     shadow-btn
     shadow-background-black-900
-    bg-green-900
     overflow-hidden
     mr-8
     rounded;
   }
 
   .post-preview-content {
-    @apply w-2/4
+    @apply w-full
     h-auto
     p-6
     bg-background-secondary-900 
     rounded
+    mb-6
     flex
     flex-col;
   }

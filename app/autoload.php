@@ -57,7 +57,7 @@ function include_files($files)
                 // AUTH
             case "Explore":
             case "Profile":
-            case "PostPreview":
+            case "SelectedPost":
             case "Dashboard":
             case "Upload":
             case "Create":

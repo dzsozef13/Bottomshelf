@@ -123,4 +123,18 @@ class SessionController
     {
         return $_SESSION['uploadedMediaIdArray'];
     }
+
+    /**
+     * Set - Get other user profile
+     * 
+     * Use to fetch information to use other user's profile
+     */
+    public function setUserProfileId($userId)
+    {
+        $_SESSION['selected'] = $userId;
+    }
+    public function getUserProfileId()
+    {
+        return $_SESSION['selected'] ?? null;
+    }
 }
