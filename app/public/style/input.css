@@ -366,7 +366,7 @@
   .post-preview-content {
     @apply w-2/4
     h-auto
-    p-8
+    p-6
     bg-background-secondary-900 
     rounded
     flex
