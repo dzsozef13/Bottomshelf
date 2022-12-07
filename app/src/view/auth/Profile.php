@@ -5,13 +5,21 @@ $postController = new PostController();
 $viewController = new ViewController();
 $mediaController = new MediaController();
 
-$user = $sessionsCtrl->getUserProfileId() === null ? $sessionsCtrl->getUser()['userId'] : $sessionsCtrl->getUserProfileId();
+$userIdParam = $sessionsCtrl->getUserProfileId();
+$loggedInUserId = $sessionsCtrl->getUser()['userId'];
 $profile = null;
 $posts = null;
-if (isset($user)) {
-    $profile = $userCtrl->fetchById($user);
-    $posts = $postController->fetchByUserId($user);
+
+if (isset($loggedInUserId)) {
+    if (isset($userIdParam)) {
+        $profile = $userCtrl->fetchById($userIdParam);
+        $posts = $postController->fetchByUserId($userIdParam);
+    } else {
+        $profile = $userCtrl->fetchById($loggedInUserId);
+        $posts = $postController->fetchByUserId($loggedInUserId);
+    }
 }
+
 ?>
 <div class="grid grid-cols-6 gap-4 px-8 w-full">
     <div class="col-span-6 2xl:h-[15vh] h-[25vh] "></div>
@@ -82,7 +90,35 @@ if (isset($user)) {
                 if (isset($indexedMediaArray)) {
                     $post->setMedia($indexedMediaArray);
                 }
-                $postTemplatesArray[] = $post->getPostTemplate();
+                $postTemplatesArray[] =  '<a href="/SelectedPost?selected=' .  $post->getId() . '">
+                            <div class="post-card-container">
+                                <!-- Post Image -->
+                                ' . ($post->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
+                                        <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($post->getCoverImageForPost()) . '" />
+                                    </div>') . '
+                                <!-- Post Body -->
+                                <div class="post-card-body">
+                                    <!-- Post Header -->
+                                    <div class="post-card-header">
+                                        <h3 class="post-card-title">' . $post->getTitle() . '</h3>
+                                        <p class="post-card-user">by @<span class="text-highlight-green-900">' . $post->getAuthorName() . '</span></p>
+                                    </div>
+                                    <!-- Post Comment -->
+                                        ' . ($post->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
+                                        <div class="small-logo">
+                                            <i class="las la-smile text-background-black-900 text-xl"></i>
+                                        </div>
+                                        <div class="post-card-comment">
+                                        ' . $post->getLatestComment() . '
+                                        </div>
+                                    </div>') . '
+                                    <!-- Post Reactions -->
+                                    <div class="post-card-reactions-wrapper">
+                                        🌸 ✅ 👀
+                                    </div>
+                                </div>
+                            </div>
+                            </a>';
             }
             echo '
             <div class="grid 2xl:grid-cols-5 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"> 

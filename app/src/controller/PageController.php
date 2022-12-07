@@ -42,11 +42,16 @@ class PageController
                 $session = new SessionController();
                 $session->setSelectedPostId($postId);
             }
-            if (isset($args['user'])) {
-                $userId = $args['user'];
+            if ($args['view'] == 'Profile') {
                 $session = new SessionController();
-                $session->setUserProfileId($userId);
+                if (isset($args['user'])) {
+                    $userId = $args['user'];
+                    $session->setUserProfileId($userId);
+                } else {
+                    $session->setUserProfileId(null);
+                }
             }
+
             // Render view
             $view = $args['view'];
             if ($args['auth'] === true) {

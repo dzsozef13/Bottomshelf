@@ -74,12 +74,22 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                 <button class="btn-white-no-shadow  w-full mt-4 mb-4" type="submit">Add Comment</button>
             </form>
             <?php
-            $commentTemplates = array();
             foreach ($comments as $comment) {
-                $commentTemplates[] = $comment->getCommentTemplate();
+                echo ' <div class="comment-container last:mb-0">
+                    <div class="comment-picture-container">
+                        <img class="img" src="' . ($comment->getUserPicture() !== null ? 'data:image/*;charset=utf8;base64,' . base64_encode($comment->getUserPicture()) : 'public/asset/images/PlaceholderProfilePicture.png') . '" alt="">
+                    </div>
+                    <div class="comment-body-container">
+                        <div class="comment-headline">
+                            <a href="Profile?user=' . $comment->getUserId() . '">
+                                    <h6 class="headline text-highlight-green-900">' . $comment->getUsername() . '</h6>
+                            </a>
+                            <p class="text-xs text-dim-white-900/40">' . $comment->getCreatedAt() . '</p>
+                        </div>
+                        <p class="text-xs">' . $comment->getContent() . '</p>
+                    </div>
+                </div>';
             }
-            echo implode($commentTemplates);
-
             ?>
         </div>
     </div>
