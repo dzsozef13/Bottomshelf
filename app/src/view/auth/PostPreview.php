@@ -61,7 +61,12 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                     <?php echo $post->getDescription() ?>
                 </h4>
                 <form action="AddComment" method="post">
-                    <input type="text" placeholder="comment" lass="input-field" name="comment">
+                    <div class="text-area-wrapper">
+                        <div class="icon-wrapper-text-area">
+                            <i class="las la-comment"></i>
+                        </div>
+                        <textarea placeholder="Comment here.." name="comment" maxlength="1024" class="input-field  min-h-[4rem]"></textarea>
+                    </div>
                     <button class="btn-white w-full mt-6" type="submit">Add Comment</button>
                 </form>
                 <?php

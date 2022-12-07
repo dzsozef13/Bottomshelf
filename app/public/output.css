@@ -770,6 +770,21 @@ video {
   color: rgb(144 202 156 / var(--tw-text-opacity));
 }
 
+.icon-wrapper-text-area{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  display: flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  --tw-text-opacity: 1;
+  color: rgb(144 202 156 / var(--tw-text-opacity));
+}
+
 /* profile page classes */
 
 .profile-post-options-container{
@@ -784,6 +799,17 @@ video {
   position: relative;
   display: flex;
   height: 2.5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-color: rgb(144 202 156 / 0.6);
+  background-color: transparent;
+}
+
+.text-area-wrapper{
+  position: relative;
+  display: flex;
+  min-height: 4rem;
   width: 100%;
   border-radius: 0.5rem;
   border-width: 1px;
@@ -1043,6 +1069,9 @@ video {
 .post-preview-img-container{
   margin-right: 2rem;
   aspect-ratio: 1 / 1;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   width: 50%;
   overflow: hidden;
   border-radius: 0.25rem;
@@ -1067,6 +1096,7 @@ video {
 }
 
 .comment-container{
+  margin-bottom: 1rem;
   display: flex;
   height: auto;
   min-height: 3rem;
@@ -1083,8 +1113,6 @@ video {
   width: 2rem;
   overflow: hidden;
   border-radius: 0.25rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(144 202 156 / var(--tw-bg-opacity));
 }
 
 .comment-body-container{
@@ -1234,6 +1262,10 @@ video {
   height: auto;
 }
 
+.min-h-\[4rem\]{
+  min-height: 4rem;
+}
+
 .min-h-screen{
   min-height: 100vh;
 }
@@ -1357,11 +1389,6 @@ video {
   line-height: 1.25rem;
 }
 
-.text-xs{
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1370,6 +1397,11 @@ video {
 .text-3xl{
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .uppercase{
@@ -1385,17 +1417,21 @@ video {
   color: rgb(216 216 216 / 0.6);
 }
 
-.text-dim-white-900\/40{
-  color: rgb(216 216 216 / 0.4);
-}
-
 .text-background-black-900{
   --tw-text-opacity: 1;
   color: rgb(21 22 23 / var(--tw-text-opacity));
 }
 
+.text-dim-white-900\/40{
+  color: rgb(216 216 216 / 0.4);
+}
+
 .filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.last\:mb-0:last-child{
+  margin-bottom: 0px;
 }
 
 @media (min-width: 640px){
