@@ -34,4 +34,17 @@ class CommentController
         $commentModel = new CommentModel();
         return $commentModel->getAllCommentsByPostId($postId);
     }
+
+    public function delete()
+    {
+        $commentModel = new CommentModel();
+        $sessionController = new SessionController();
+
+        $postId = $sessionController->getSelectedPostId();
+
+        if (isset($_GET['commentId'])) {
+            $commentModel->deleteComment($_GET['commentId']);
+        }
+        new Router('SelectedPost?id=' . $postId);
+    }
 }

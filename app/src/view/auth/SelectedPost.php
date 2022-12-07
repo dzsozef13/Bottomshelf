@@ -81,9 +81,28 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                     </div>
                     <div class="comment-body-container">
                         <div class="comment-headline">
-                            <a href="Profile?user=' . $comment->getUserId() . '">
+                            <div class="comment-username">
+                                <a href="Profile?user=' . $comment->getUserId() . '">
                                     <h6 class="headline text-highlight-green-900">' . $comment->getUsername() . '</h6>
-                            </a>
+                                </a>
+                                ' . ($comment->getUserId() == $sessionController->getUser()['userId'] ? '
+                            
+                                        <a href="UpdateComment?commentId=' . $comment->getId() . '">
+                                            <button class="ml-2"> 
+                                                <div class="btn-icon">
+                                                <i class="las la-edit"></i>
+                                                </div> 
+                                            </button>
+                                        </a>
+                                        <a href="DeleteComment?commentId=' . $comment->getId() . '">
+                                            <button class="ml-2"> 
+                                                <div class="btn-icon">
+                                                    <i class="las la-trash"></i>
+                                                </div> 
+                                            </button>
+                                        </a>' : "") .
+                    '
+                            </div>
                             <p class="text-xs text-dim-white-900/40">' . $comment->getCreatedAt() . '</p>
                         </div>
                         <p class="text-xs">' . $comment->getContent() . '</p>

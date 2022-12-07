@@ -157,7 +157,16 @@
     text-highlight-green-900
     h-full;
   }
-
+  .btn-icon {
+    @apply w-4 h-4
+    flex
+    items-center
+    justify-center
+    text-lg
+    text-dim-white-900
+    transition
+    hover:text-highlight-green-900;
+  }
   .icon-wrapper-text-area {
     @apply absolute
     right-0
@@ -444,5 +453,12 @@
     text-sm 
     flex
     justify-between;
+  }
+  .comment-username {
+    @apply w-auto
+    h-auto
+    flex
+    justify-start
+    items-center;
   }
 }

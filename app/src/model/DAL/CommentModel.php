@@ -83,7 +83,7 @@ class CommentModel extends CoreModel
             INNER JOIN `User` ON User.UserId=Comment.UserId
             INNER JOIN Post ON Post.PostId=Comment.PostId
             WHERE Comment.PostId = :PostId
-            ORDER BY CreatedAt";
+            ORDER BY CreatedAt DESC";
 
             $handle = $conn->prepare($query);
             $handle->bindParam(':PostId', $postId);
