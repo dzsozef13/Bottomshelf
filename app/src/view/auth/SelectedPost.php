@@ -41,8 +41,6 @@ if (isset($indexedMediaArray)) {
  */
 
 $comments = $commentController->fetchAllByPostId($post->getId());
-
-
 ?>
 
 <div class="grid grid-cols-6 px-16 my-8 w-full gap-4">
@@ -103,16 +101,16 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                             </div>
                             <p class="text-xs text-dim-white-900/40">' . $comment->getCreatedAt() . '</p>
                         </div>
-                        <form action="UpdateComment?commentId= ' . $comment->getId() . '" method="post" class="edit-comment">
+                        <form action="UpdateComment?commentId= ' . $comment->getId() . '" method="post" class="edit-comment pt-2 pr-4">
                             <div class="text-area-wrapper">
                                 <div class="icon-wrapper-text-area">
                                     <i class="las la-comment"></i>
                                 </div>
                                 <textarea placeholder="Comment here.." name="comment" maxlength="1024" class="input-field  min-h-[4rem]">' . $comment->getContent() . '</textarea>
                             </div>
-                            <button class="btn-white-no-shadow  w-full mt-4 mb-4" type="submit">Edit Comment</button>
+                            <button class="btn-green-no-shadow w-full mt-4 " type="submit">Edit Comment</button>
                         </form>
-                        <p class="text-xs">' . $comment->getContent() . '</p>
+                        <p class="text-xs comment-content">' . $comment->getContent() . '</p>
                     </div>
                 </div>';
                 }
