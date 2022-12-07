@@ -100,38 +100,4 @@ class Post
     {
         $this->media = $mediaArray;
     }
-
-    public function getPostTemplate(): string
-    {
-        $template = '<a href="/SelectedPost?selected=' .  $this->getId() . '">
-                    <div class="post-card-container">
-                        <!-- Post Image -->
-                        ' . ($this->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
-                                <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($this->getCoverImageForPost()) . '" />
-                            </div>') . '
-                        <!-- Post Body -->
-                        <div class="post-card-body">
-                            <!-- Post Header -->
-                            <div class="post-card-header">
-                                <h3 class="post-card-title">' . $this->getTitle() . '</h3>
-                                <p class="post-card-user">by @<span class="text-highlight-green-900">' . $this->getAuthorName() . '</span></p>
-                            </div>
-                            <!-- Post Comment -->
-                              ' . ($this->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
-                                <div class="small-logo">
-                                    <i class="las la-smile text-background-black-900 text-xl"></i>
-                                </div>
-                                <div class="post-card-comment">
-                                ' . $this->getLatestComment() . '
-                                </div>
-                            </div>') . '
-                            <!-- Post Reactions -->
-                            <div class="post-card-reactions-wrapper">
-                                🌸 ✅ 👀
-                            </div>
-                        </div>
-                    </div>
-                    </a>';
-        return $template;
-    }
 }

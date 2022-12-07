@@ -90,7 +90,8 @@ if (isset($loggedInUserId)) {
                 if (isset($indexedMediaArray)) {
                     $post->setMedia($indexedMediaArray);
                 }
-                $postTemplatesArray[] =  '<a href="/SelectedPost?selected=' .  $post->getId() . '">
+                $postTemplatesArray[] =  '
+                        <a href="/SelectedPost?selected=' .  $post->getId() . '">
                             <div class="post-card-container">
                                 <!-- Post Image -->
                                 ' . ($post->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
@@ -118,7 +119,7 @@ if (isset($loggedInUserId)) {
                                     </div>
                                 </div>
                             </div>
-                            </a>';
+                        </a>';
             }
             echo '
             <div class="grid 2xl:grid-cols-5 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"> 

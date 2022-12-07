@@ -20,7 +20,9 @@ Router::add(new Route("Login", "page/load", array("view" => "Login")));
 Router::add(new Route("Signup", "page/load", array("view" => "Signup")));
 Router::add(new Route("About", "page/load", array("view" => "About")));
 Router::add(new Route("Explore", "page/load", array("view" => "Explore", "auth" => true)));
+
 Router::add(new Route("Profile", "page/load", array("view" => "Profile", "auth" => true)));
+
 Router::add(new Route("SelectedPost", "page/load", array("view" => "SelectedPost", "auth" => true)));
 Router::add(new Route("Upload", "page/load", array("view" => "Upload", "auth" => true)));
 Router::add(new Route("Create", "page/load", array("view" => "Create", "auth" => true)));
