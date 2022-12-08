@@ -13,12 +13,14 @@ class Post
     private $latestComment;
     private $childPostId;
     private $statusId;
+    private $reactionCount;
     private $media;
 
     function __construct(
         $id,
         $title,
         $description,
+        $reactionCount,
         $isPublic,
         $isSticky,
         $createdAt,
@@ -31,6 +33,7 @@ class Post
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
+        $this->reactionCount = $reactionCount;
         $this->isPublic = $isPublic;
         $this->isSticky = $isSticky;
         $this->createdAt = $createdAt;
@@ -65,6 +68,12 @@ class Post
     {
         return $this->authorId;
     }
+
+    public function getIsPublic()
+    {
+        return $this->isPublic;
+    }
+
 
     public function getLatestComment()
     {

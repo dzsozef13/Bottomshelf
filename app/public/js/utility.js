@@ -38,4 +38,16 @@ $(document).ready(function(e) {
        $('#big-img').attr( "src", newImgValue)
     });
 
+    // Show public posts
+    $("#public").click(function(event) {
+         $('.public').show()
+         $('.private').hide()
+    });
+
+    // Show private posts
+     $("#private").click(function(event) {
+         $('.private').show()
+         $('.public').hide()
+      });
+
 });

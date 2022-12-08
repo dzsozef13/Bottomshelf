@@ -60,16 +60,12 @@ if (isset($loggedInUserId)) {
         </div>
     </div>
     <div class="2xl:mx-20 mx-0 col-span-6 profile-post-options-container">
-        <a href="">
-            <div class="option-chip">
-                Public
-            </div>
-        </a>
-        <a href="">
-            <div class="option-chip">
-                Private
-            </div>
-        </a>
+        <div class="option-chip" id="public">
+            Public
+        </div>
+        <div class="option-chip" id="private">
+            Private
+        </div>
     </div>
     <div class="2xl:mx-20 mx-0 col-span-6 mb-8">
         <?php
@@ -91,7 +87,7 @@ if (isset($loggedInUserId)) {
                     $post->setMedia($indexedMediaArray);
                 }
                 $postTemplatesArray[] =  '
-                        <a href="/SelectedPost?selected=' .  $post->getId() . '">
+                        <a class="' . ($post->getIsPublic() ? "public" : "private") .  '" href="/SelectedPost?selected=' .  $post->getId() . '">
                             <div class="post-card-container">
                                 <!-- Post Image -->
                                 ' . ($post->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
