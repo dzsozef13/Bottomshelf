@@ -202,4 +202,34 @@ class UserModel extends CoreModel
             print($e->getMessage());
         }
     }
+
+    /**
+     * @param int userId
+     * @param array updatable data
+     */
+    public function updateUser(int $id, $data)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+            $query = "UPDATE `User` SET Username = :Username, BioDescription = :BioDescription, CountryCode = :CountryCode WHERE UserId = :UserId";
+
+            $handle = $conn->prepare($query);
+
+            $sanitizedTitle = htmlspecialchars($data['username']);
+            $sanitizedDescription = htmlspecialchars($data['description']);
+
+            $handle->bindParam(':Username', $sanitizedTitle);
+            $handle->bindParam(':BioDescription', $sanitizedDescription);
+            $handle->bindValue(':CountryCode', $data['countryCode']);
+            $handle->bindParam(':UserId', $id);
+
+            $handle->execute();
+
+            //close the connection
+            CoreModel::closeDbConnection();
+            $conn = null;
+        } catch (PDOException $e) {
+            print($e->getMessage());
+        }
+    }
 }

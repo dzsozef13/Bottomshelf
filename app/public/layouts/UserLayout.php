@@ -19,7 +19,7 @@
                                         } ?>">
                             My Profile</li>
                     </a>
-                    <a href="">
+                    <a href="/Settings">
                         <li class="mb-4">
                             Settings</li>
                     </a>

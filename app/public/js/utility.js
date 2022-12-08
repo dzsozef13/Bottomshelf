@@ -35,7 +35,7 @@ $(document).ready(function(e) {
      // Replace image on click in selected post page
      $(".small-img").click(function(event) {
         var newImgValue = event.target.src
-       $('#big-img').attr( "src", newImgValue)
+       $('#big-img').attr("src", newImgValue)
     });
 
     // Show public posts
@@ -49,5 +49,20 @@ $(document).ready(function(e) {
          $('.private').show("fast")
          $('.public').hide("fast")
       });
+
+    // Toggle open dropdown
+    $("#dropdown-container").click(function(event) {
+        if($('#dropdown:visible').length) {
+            $('#dropdown').hide();
+        } else {
+            $('#dropdown').show();        
+        }
+    }); 
+
+    // Toggle open dropdown
+    $(".dropdown-button", $('#dropdown')).click(function(event) {
+        $('#dropdown-container').attr("value", event.target.textContent)
+        $('#dropdown').hide();
+    }); 
 
 });

@@ -75,4 +75,22 @@ class UserController
             return null;
         }
     }
+
+    public function updateUser()
+    {
+        $userModel = new UserModel();
+        $sessionController = new SessionController();
+        $userId = $sessionController->getUser['userId'];
+        $data = array(
+            "username" => $_POST['username'],
+            "description" => $_POST['description'],
+            "countryCode" => $_POST['countryCode'],
+        );
+
+        if (isset($userId)) {
+            $userModel->updateUser($userId, $data);
+        }
+
+        new Router('Settings');
+    }
 }
