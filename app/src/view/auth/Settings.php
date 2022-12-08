@@ -33,27 +33,25 @@ foreach ($countries as $country) {
     <div class="2xl:mx-20 mx-0 col-span-6 mb-4">
         <div class="banner-settings">
             <h3 class="medium-headline w-full">User Information</h3>
-            <form action="" class="w-2/4 h-auto flex flex-col">
-                <p class="headline">Current profile picture:</p>
-                <div class="settings-preview-img ">
+            <form action="" class="w-2/4 h-auto flex flex-col pr-4" id="profile-img-upload">
+                <p class="headline mb-4 mt-2">Current profile picture:</p>
+                <div class="settings-preview-img">
                     <img class="img" src="<?php if ($profile->getProfileImage() !== null) {
                                                 echo $profile->getProfileImage();
                                             } else {
                                                 echo "public/asset/images/PlaceholderProfilePicture.png";
                                             } ?>" alt="Users Profile Picture">
                 </div>
-                <div class="input-field-wrapper mt-6 mb-4">
+                <!-- Image upload field -->
+                <div class="input-field-wrapper cursor-pointer flex items-center px-4 upload-btn mt-6 mb-4">
                     <div class="icon-wrapper">
                         <i class="las la-file-upload"></i>
                     </div>
-                    <label class="w-full h-full flex items-center px-4  cursor-pointer text-sm text-highlight-green-900">
-                        <input type="file" class="hidden" />
-                        Profile Picture
-                    </label>
-
+                    <p id="input-text" class="m-0 p-0 text-sm">Upload profile picture...</p>
                 </div>
+                <input type="file" id="html-upload-btn" class="hidden" />
             </form>
-            <form action="UpdateUser" method="post" class="w-2/4 h-auto flex flex-col">
+            <form action="UpdateUser" method="post" class="w-2/4 h-auto flex flex-col pl-4">
                 <div class="input-field-wrapper mt-6 mb-4">
                     <div class="icon-wrapper">
                         <i class="las la-user"></i>

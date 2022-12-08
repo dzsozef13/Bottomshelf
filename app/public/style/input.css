@@ -596,8 +596,8 @@
   }
 
   .settings-preview-img {
-    @apply w-36
-    h-36
+    @apply w-44
+    h-44
     aspect-square     
     overflow-hidden
     rounded;
