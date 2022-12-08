@@ -37,12 +37,25 @@ foreach ($tags as $tag) {
 <!-- Explore View -->
 <div class="grid grid-cols-6 gap-4 px-8 my-8 w-full">
     <div class="col-span-4">
-        <div class="input-field-wrapper mb-4">
-            <div class="icon-wrapper">
-                <i class="las la-search"></i>
+        <form action="" method="post" class="flex justify-between h-auto flex-wrap">
+            <div class="banner mb-4">
+                <h3 class="small-headline mb-4">Select tags to improve the search!</h3>
+                <div class="tags-container">
+                    <?php echo implode($tagTemplates)
+                    ?>
+                </div>
             </div>
-            <input type="text" placeholder="Search..." class="input-field">
-        </div>
+            <div class="rounded-lg border border-highlight-green-900/60 bg-transparent flex relative h-10 w-9/12">
+                <div class="icon-wrapper">
+                    <i class="las la-search"></i>
+                </div>
+                <input type="text" placeholder="Search posts by a phrase..." class="input-field">
+            </div>
+            <button type="submit" class="btn-green-no-shadow w-3/12">
+                SEARCH
+            </button>
+        </form>
+
         <?php if (empty($posts)) {
             echo '
                 <div class="no-post-banner">
@@ -110,13 +123,7 @@ foreach ($tags as $tag) {
                     you had in mind. If you dont feel inspired, go to Explore page…
                 </p>
             </div>
-            <div class="banner mt-4">
-                <h3 class="small-headline mb-4">Use tags to filter posts!</h3>
-                <div class="tags-container">
-                    <?php echo implode($tagTemplates)
-                    ?>
-                </div>
-            </div>
+
         </div>
 
     </div>

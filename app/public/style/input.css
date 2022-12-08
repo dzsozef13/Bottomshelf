@@ -374,7 +374,7 @@
   .tags-container {
     @apply h-auto
     w-full
-     min-h-[5rem]
+     min-h-[3rem]
      flex
      flex-wrap
      gap-2;
