@@ -143,10 +143,12 @@ class SessionController
      * 
      * Use to display error or other messages from the system in view
      */
-    public function setSystemMessage($message) {
+    public function setSystemMessage($message)
+    {
         $_SESSION['systemMessage'] = $message;
     }
-    public function getSystemMessage() {
+    public function getSystemMessage()
+    {
         return $_SESSION['systemMessage'] ?? null;
         $_SESSION['systemMessage'] = null;
     }

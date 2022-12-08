@@ -96,7 +96,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                     <div class="comment-body-container">
                         <div class="comment-headline">
                             <div class="comment-username">
-                                <a href="Profile?user=' . $comment->getUserId() . '">
+                                <a href="Profile?selectedUser=' . $comment->getUserId() . '">
                                     <h6 class="headline text-highlight-green-900">' . $comment->getUsername() . '</h6>
                                 </a>
                                 ' . ($comment->getUserId() == $sessionController->getUser()['userId'] ? '
