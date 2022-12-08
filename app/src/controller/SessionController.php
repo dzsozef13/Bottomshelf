@@ -114,4 +114,17 @@ class SessionController
         return $_SESSION['uploadedMediaIdArray'];
     }
 
+    /**
+     * Set - Get system message
+     * 
+     * Use to display error or other messages from the system in view
+     */
+    public function setSystemMessage($message) {
+        $_SESSION['systemMessage'] = $message;
+    }
+    public function getSystemMessage() {
+        return $_SESSION['systemMessage'] ?? null;
+        $_SESSION['systemMessage'] = null;
+    }
+
 }

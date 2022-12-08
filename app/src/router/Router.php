@@ -24,10 +24,10 @@ class Router
      * 
      * If no route is passed, serve the request
      */
-    public function __construct($routeName = null)
+    public function __construct($route = null)
     {
-        if ($routeName) {
-            header("Location: " . $routeName);
+        if ($route) {
+            header("Location: " . $route);
         } else {
             $this->serveRequeset();
         }

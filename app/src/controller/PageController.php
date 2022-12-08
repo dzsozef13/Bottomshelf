@@ -31,17 +31,8 @@ class PageController
     public function load($args)
     {
         if (isset($args['view'])) {
-            // Configure view in session
-            if (isset($args['filter'])) {
-                $exploreFilter = $args['filter'];
-                $session = new SessionController();
-                $session->setExploreFilter($exploreFilter);
-            }
-            if (isset($args['filter'])) {
-                $exploreFilter = $args['filter'];
-                $session = new SessionController();
-                $session->setExploreFilter($exploreFilter);
-            }
+            // Configure session values
+            $this->configureSession();
             // Render view
             $view = $args['view'];
             if ($args['auth'] === true) {
@@ -49,6 +40,21 @@ class PageController
             } else {
                 $this->viewCtrl->renderView($view, false);
             }
+        }
+    }
+
+    /**
+     * Looks for parameters passed from router to set values for the view about to be rendered
+     */
+    public function configureSession() {
+        $session = new SessionController();
+        if (isset($args['filter'])) {
+            $exploreFilter = $args['filter'];
+            $session->setExploreFilter($exploreFilter);
+        }
+        if (isset($args['systemMessage'])) {
+            $systemMessage = $args['systemMessage'];
+            $session->setSystemMessage($systemMessage);
         }
     }
 }
