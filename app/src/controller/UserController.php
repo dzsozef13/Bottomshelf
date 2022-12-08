@@ -21,7 +21,7 @@ class UserController
             if ($user = $userModel->validateUser($email, $password)) {
                 $session = new SessionController();
                 $session->setUser($user->UserId, $user->Username);
-                new Router("Explore");
+                new Router("Dashboard");
             } else {
                 new Router("Login");
             }
@@ -74,32 +74,5 @@ class UserController
         } else {
             return null;
         }
-    }
-
-    public function updateUser()
-    {
-        $userModel = new UserModel();
-        $sessionController = new SessionController();
-        $countriesController = new CountryController();
-
-        $userId = $sessionController->getUser()['userId'];
-        $countries = $countriesController->fetchAll();
-
-        $countryCode = null;
-        foreach ($countries as $country) {
-            if ($country->getCountryName() === $_POST['countryName']) {
-                $countryCode = $country->getCountryCode();
-            }
-        }
-        $data = array(
-            "username" => $_POST['username'],
-            "description" => $_POST['description'],
-            "countryCode" => $countryCode,
-        );
-        if (isset($userId)) {
-            $userModel->updateUser($userId, $data);
-        }
-
-        new Router('Settings');
     }
 }

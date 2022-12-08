@@ -40,8 +40,8 @@ class SessionController
     public function getUser()
     {
         $userId = $_SESSION['userId'];
-        $username = $_SESSION['username'];
-
+        $username= $_SESSION['username'];
+        
         if (isset($userId, $username)) {
             return  array(
                 'userId' => $userId,
@@ -64,26 +64,22 @@ class SessionController
      * 
      * Use to fetch a single post in selected post view
      */
-    public function setSelectedPostId($postId)
-    {
+    public function setSelectedPostId($postId) {
         $_SESSION['selected'] = $postId;
     }
-    public function getSelectedPostId()
-    {
+    public function getSelectedPostId() {
         return $_SESSION['selected'] ?? null;
     }
 
     /**
      * Set - Get explore filter
      * 
-     * Use to fetch a specific collection posts in explore view
+     * Use to fetch a specidic collection posts in explore view
      */
-    public function setExploreFilter($filter)
-    {
+    public function setExploreFilter($filter) {
         $_SESSION['filter'] = $filter;
     }
-    public function getExploreFilter()
-    {
+    public function getExploreFilter() {
         return $_SESSION['filter'] ?? null;
     }
 
@@ -92,12 +88,10 @@ class SessionController
      * 
      * Use to fetch posts containing the key in explore view
      */
-    public function setExploreSearchKey($key)
-    {
+    public function setExploreSearchKey($key) {
         $_SESSION['searchKey'] = $key;
     }
-    public function getExploreSearchKey()
-    {
+    public function getExploreSearchKey() {
         return $_SESSION['searchKey'] ?? null;
     }
 
@@ -106,21 +100,17 @@ class SessionController
      * 
      * Use to fetch a collection of tagged posts in explore view
      */
-    public function setExploreSearchTag($tag)
-    {
+    public function setExploreSearchTag($tag) {
         $_SESSION['searchTag'] = $tag;
     }
-    public function getExploreSearchTag()
-    {
+    public function getExploreSearchTag() {
         return $_SESSION['searchTag'] ?? null;
     }
 
-    public function setUploadedMediaIdArray($mediaIDs)
-    {
+    public function setUploadedMediaIdArray($mediaIDs) {
         $_SESSION['uploadedMediaIdArray'] = $mediaIDs;
     }
-    public function getUploadedMediaIdArray()
-    {
+    public function getUploadedMediaIdArray() {
         return $_SESSION['uploadedMediaIdArray'];
     }
 

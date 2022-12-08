@@ -45,11 +45,6 @@ class User extends Entity
         return $this->username;
     }
 
-    public function getCountryCode()
-    {
-        return $this->countryCode;
-    }
-
     public function getDescription()
     {
         return $this->bioDescription;

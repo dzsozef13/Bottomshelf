@@ -11,13 +11,9 @@ function include_files($files)
     foreach ($files as $filename) {
         switch ($filename) {
                 // BE
-            case "User":
-            case "Entity":
             case "Post":
             case "Media":
             case "Route":
-            case "Country":
-            case "Comment":
             case "Tag":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/BE/' . "$filename" . '.php';
                 break;
@@ -35,6 +31,11 @@ function include_files($files)
             case "MediaModel":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/DAL/' . "$filename" . '.php';
                 break;
+                // BE
+            case "User":
+            case "Entity":
+                include_once $_SERVER['DOCUMENT_ROOT'] . '/src/model/BE/' . "$filename" . '.php';
+                break;
                 // CONTROLLER
             case "SessionController":
             case "DbConnectionController":
@@ -42,9 +43,7 @@ function include_files($files)
             case "UserController":
             case "TagsController":
             case "ViewController":
-            case "CountryController":
             case "PageController":
-            case "CommentController":
             case "MediaController":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/controller/' . "$filename" . '.php';
                 break;
@@ -58,9 +57,7 @@ function include_files($files)
                 break;
                 // AUTH
             case "Explore":
-            case "Settings":
             case "Profile":
-            case "SelectedPost":
             case "Dashboard":
             case "Upload":
             case "Create":

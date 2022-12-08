@@ -2,8 +2,7 @@
 include_files(array(
     "Console",
     "DbConnectionController",
-    "CoreModel",
-    "Country"
+    "CoreModel"
 ));
 
 class CountryModel extends CoreModel
@@ -52,11 +51,7 @@ class CountryModel extends CoreModel
 
             $result = array();
             while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
-                $country = new Country(
-                    $row->CountryCode,
-                    $row->CountryName,
-                );
-                $result[] = $country;
+                $result[] = $row;
             }
 
             //close the connection

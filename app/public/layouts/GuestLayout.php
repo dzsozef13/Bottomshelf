@@ -1,4 +1,4 @@
-<body class="bodyStyle" id="body">
+<body class="bodyStyle">
     <div class="nav">
         <div class="w-full flex items-center">
             <div class="logo"></div>

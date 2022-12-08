@@ -4,8 +4,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/autoload.php";
 include_files(array(
     "Console",
     "DbConnectionController",
-    "CoreModel",
-    "Comment"
+    "CoreModel"
 ));
 
 class CommentModel extends CoreModel
@@ -78,31 +77,18 @@ class CommentModel extends CoreModel
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT Comment.*, User.Username, User.ProfileImgUrl, Post.Title
+            $query = "SELECT Comment.*, User.Username, Post.Title
             FROM Comment 
             INNER JOIN `User` ON User.UserId=Comment.UserId
             INNER JOIN Post ON Post.PostId=Comment.PostId
             WHERE Comment.PostId = :PostId
-            ORDER BY CreatedAt DESC";
+            ORDER BY CreatedAt";
 
             $handle = $conn->prepare($query);
             $handle->bindParam(':PostId', $postId);
             $handle->execute();
 
-
-            $result = array();
-            while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
-                $comment = new Comment(
-                    $row->CommentId,
-                    $row->Content,
-                    $row->UserId,
-                    $row->PostId,
-                    $row->CreatedAt,
-                    $row->Username,
-                    $row->ProfileImgUrl,
-                );
-                $result[] = $comment;
-            }
+            $result = $handle->fetchAll(PDO::FETCH_OBJ);
 
             //close the connection
             CoreModel::closeDbConnection();
