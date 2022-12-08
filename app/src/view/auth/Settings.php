@@ -61,8 +61,9 @@ foreach ($countries as $country) {
                     </div>
                 </div>
 
-                <button class="btn-white w-full mt-6" type="submit">UPDATE</button>
+                <button class="btn-white w-full mt-6" type="submit">UPDATE USER INFORMATION</button>
             </form>
+
         </div>
     </div>
 </div>
