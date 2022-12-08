@@ -93,13 +93,15 @@ class Post
 
     public function getCoverImageForPost()
     {
-        $firstImage = $this->getAllMedia()[0];
-        if (isset($firstImage)) {
-            $firstImgBlob = $firstImage->getImage();
-        } else {
-            $firstImgBlob = null;
+        if (isset($this->getAllMedia()[0])) {
+            $firstImage = $this->getAllMedia()[0];
+            if (isset($firstImage)) {
+                $firstImgBlob = $firstImage->getImage();
+            } else {
+                $firstImgBlob = null;
+            }
+            return $firstImgBlob;
         }
-        return $firstImgBlob;
     }
 
     /** 
