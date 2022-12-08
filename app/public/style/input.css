@@ -143,7 +143,29 @@
       text-sm
       font-mono
       mr-4
+      transition
       uppercase;
+  }
+  .option-chip-checked {
+    @apply bg-highlight-green-900
+      w-auto
+      h-full
+      rounded
+      px-4
+      flex
+      items-center
+      text-sm
+      text-background-black-900
+      font-mono
+      transition
+      mr-4
+      uppercase;
+  }
+  .radio {
+    @apply m-0
+    bg-transparent
+    w-full 
+    h-full;
   }
 
   /* text headlines */

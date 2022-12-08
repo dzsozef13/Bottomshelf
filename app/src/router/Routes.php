@@ -31,6 +31,7 @@ Router::add(new Route("Create", "page/load", array("view" => "Create", "auth" =>
 Router::add(new Route("UserLogin", "user/tryLogInUser"));
 Router::add(new Route("UserLogout", "user/tryLogOutUser"));
 Router::add(new Route("UserRegist", "user/tryRegistUser"));
+Router::add(new Route("UpdateUser", "user/updateUser"));
 
 // POST
 Router::add(new Route("CreatePost", "post/create"));

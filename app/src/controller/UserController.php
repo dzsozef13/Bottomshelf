@@ -80,13 +80,22 @@ class UserController
     {
         $userModel = new UserModel();
         $sessionController = new SessionController();
-        $userId = $sessionController->getUser['userId'];
+        $countriesController = new CountryController();
+
+        $userId = $sessionController->getUser()['userId'];
+        $countries = $countriesController->fetchAll();
+
+        $countryCode = null;
+        foreach ($countries as $country) {
+            if ($country->getCountryName() === $_POST['countryName']) {
+                $countryCode = $country->getCountryCode();
+            }
+        }
         $data = array(
             "username" => $_POST['username'],
             "description" => $_POST['description'],
-            "countryCode" => $_POST['countryCode'],
+            "countryCode" => $countryCode,
         );
-
         if (isset($userId)) {
             $userModel->updateUser($userId, $data);
         }

@@ -60,6 +60,9 @@ if (isset($loggedInUserId)) {
         </div>
     </div>
     <div class="2xl:mx-20 mx-0 col-span-6 profile-post-options-container">
+        <div class="option-chip" id="all">
+            All
+        </div>
         <div class="option-chip" id="public">
             Public
         </div>
