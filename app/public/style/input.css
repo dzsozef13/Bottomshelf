@@ -373,8 +373,8 @@
   }
   .tags-container {
     @apply h-auto
-    w-full
-     min-h-[3rem]
+      w-full
+     h-max
      flex
      flex-wrap
      gap-2;

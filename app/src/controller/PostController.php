@@ -63,4 +63,14 @@ class PostController
             return $this->postModel->getAllByUserId($userId);
         }
     }
+
+    public function searchPosts()
+    {
+        $phrase = $_POST['phrase'];
+
+        if (isset($phrase)) {
+            return $this->postModel->searchPosts($phrase);
+        }
+        new Router('Explore');
+    }
 }

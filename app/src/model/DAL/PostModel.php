@@ -41,7 +41,8 @@ class PostModel extends CoreModel
 		}
 	}
 
-	public function connectPostWithMedia(int $postId, $mediaId) {
+	public function connectPostWithMedia(int $postId, $mediaId)
+	{
 		try {
 			$conn = CoreModel::openDbConnetion();
 			$query =
@@ -120,7 +121,7 @@ class PostModel extends CoreModel
 				LEFT JOIN `User` ON User.UserId=Post.UserId
 				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
 				WHERE Post.StatusId = :StatusId AND Post.IsPublic = :IsPublic
-				ORDER BY Post.CreatedAt";
+				ORDER BY Post.CreatedAt DESC";
 
 			$handle = $conn->prepare($query);
 			$handle->bindParam(':StatusId', $statusId);
@@ -168,10 +169,59 @@ class PostModel extends CoreModel
 			INNER JOIN `User` ON User.UserId=Post.UserId
 			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
 			WHERE Post.UserId = :UserId 
-			ORDER BY Post.CreatedAt";
+			ORDER BY Post.CreatedAt DESC";
 
 			$handle = $conn->prepare($query);
 			$handle->bindParam(':UserId', $userId);
+			$handle->execute();
+
+			$result = array();
+			while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+				$post = new Post(
+					$row->PostId,
+					$row->Title,
+					$row->PostDescription,
+					$row->ReactionCount,
+					$row->IsSticky,
+					$row->CreatedAt,
+					$row->UserId,
+					$row->Username,
+					$row->LatestComment,
+					$row->ChildPostId,
+					$row->StatusId
+				);
+
+				$result[] = $post;
+			}
+
+			//close the connection
+			CoreModel::closeDbConnection();
+			$conn = null;
+
+			return $result;
+		} catch (PDOException $e) {
+			print($e->getMessage());
+		}
+	}
+
+	/**
+	 * @return Post[] (if none then empty array [])
+	 */
+	public function searchPosts(string $phrase)
+	{
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$query = "SELECT Post.*, User.Username, Comment.content
+			FROM Post 
+			INNER JOIN `User` ON User.UserId=Post.UserId
+			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
+			WHERE Post.Title LIKE :Phrase 
+			ORDER BY Post.CreatedAt DESC";
+
+			$sanitizedPhrase = "%" . htmlspecialchars($phrase) . "%";
+
+			$handle = $conn->prepare($query);
+			$handle->bindParam(':Phrase', $sanitizedPhrase);
 			$handle->execute();
 
 			$result = array();
