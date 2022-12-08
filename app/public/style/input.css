@@ -457,7 +457,8 @@
     p-4
     bg-background-secondary-900
     rounded
-    flex;
+    flex
+    flex-wrap;
   }
 
   .post-preview-img-container {
@@ -592,5 +593,13 @@
     font-mono
     py-2
     px-4;
+  }
+
+  .settings-preview-img {
+    @apply w-36
+    h-36
+    aspect-square     
+    overflow-hidden
+    rounded;
   }
 }

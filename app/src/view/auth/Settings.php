@@ -17,7 +17,9 @@ $countryController = new CountryController();
 $userId = $sessionController->getUser()['userId'];
 $profile = $userController->fetchById($userId);
 $countries = $countryController->fetchAll();
+
 $preselectedCountry = null;
+
 foreach ($countries as $country) {
     if ($country->getCountryCode() === $profile->getCountryCode()) {
         $preselectedCountry = $country->getCountryName();
@@ -29,8 +31,18 @@ foreach ($countries as $country) {
     <div class="col-span-6 2xl:h-[15vh] h-[25vh] ">
     </div>
     <div class="2xl:mx-20 mx-0 col-span-6 mb-4">
-        <div class="banner">
-            <h3 class="medium-headline">User Information</h3>
+        <div class="banner-settings">
+            <h3 class="medium-headline w-full">User Information</h3>
+            <form action="" class="w-2/4 h-auto flex flex-col">
+                <p class="headline">Current profile picture:</p>
+                <div class="settings-preview-img ">
+                    <img class="img" src="<?php if ($profile->getProfileImage() !== null) {
+                                                echo $profile->getProfileImage();
+                                            } else {
+                                                echo "public/asset/images/PlaceholderProfilePicture.png";
+                                            } ?>" alt="Users Profile Picture">
+                </div>
+            </form>
             <form action="UpdateUser" method="post" class="w-2/4 h-auto flex flex-col">
                 <div class="input-field-wrapper mt-6 mb-4">
                     <div class="icon-wrapper">

@@ -1191,6 +1191,7 @@ video {
   display: flex;
   height: auto;
   width: 100%;
+  flex-wrap: wrap;
   border-radius: 0.25rem;
   --tw-bg-opacity: 1;
   background-color: rgb(30 32 33 / var(--tw-bg-opacity));
@@ -1370,6 +1371,14 @@ video {
 .dropdown-button:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(47 50 51 / var(--tw-bg-opacity));
+}
+
+.settings-preview-img{
+  aspect-ratio: 1 / 1;
+  height: 9rem;
+  width: 9rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
 }
 
 .visible{
