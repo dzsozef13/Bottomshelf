@@ -508,6 +508,11 @@
     shadow-btn
     shadow-background-black-900
     overflow-hidden
+    transition
+    hover:-translate-y-1 
+    hover:scale-100
+    ease-in-out
+    duration-300
     rounded;
   }
   .post-small-images-container {

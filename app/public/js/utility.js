@@ -31,4 +31,11 @@ $(document).ready(function(e) {
             $('.user-sidebar').show("slow");
         }
     });
+
+     // Replace image on click in selected post page
+     $(".small-img").click(function(event) {
+        var newImgValue = event.target.src
+       $('#big-img').attr( "src", newImgValue)
+    });
+
 });

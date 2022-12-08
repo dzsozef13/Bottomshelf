@@ -47,13 +47,13 @@ $comments = $commentController->fetchAllByPostId($post->getId());
     <!-- Images Column -->
     <div class=" col-span-6 sm:col-span-3 px-6 sm:px-0">
         <div class="post-preview-img-container">
-            <img class="img" src="data:image/*;charset=utf8;base64,<?php echo base64_encode($selectedImage->getImage()) ?>" alt="">
+            <img class="img" id="big-img" src="data:image/*;charset=utf8;base64,<?php echo base64_encode($selectedImage->getImage()) ?>" alt="">
         </div>
         <div class="post-small-images-container">
             <?php
             foreach ($indexedMediaArray as $image) {
                 echo '<div class="post-small-images">
-                    <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($image->getImage()) . '" alt="">
+                    <img class="img small-img" src="data:image/*;charset=utf8;base64,' . base64_encode($image->getImage()) . '" alt="">
                 </div>';
             }
             ?>
