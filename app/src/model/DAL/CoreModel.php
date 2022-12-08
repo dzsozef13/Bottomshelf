@@ -15,7 +15,7 @@ class CoreModel {
      * Opens database connection
      */
     public function openDbConnetion() {
-        if($this->db->useDb() !== null) {
+        if($this->db->useDb() != null) {
            return $this->db->useDb();
         }
     }
