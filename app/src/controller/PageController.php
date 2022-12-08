@@ -29,7 +29,7 @@ class PageController
     }
 
     public function load($args)
-    {// Configure view in session
+    { // Configure view in session
         if (isset($args['filter'])) {
             $exploreFilter = $args['filter'];
             $session = new SessionController();
@@ -54,7 +54,7 @@ class PageController
             $this->configureSession();
             // Render view
             $view = $args['view'];
-            if ($args['auth'] === true) {
+            if (isset($args['auth']) && $args['auth'] === true) {
                 $this->viewCtrl->renderView($this->redirectUnauthorized($view), true);
             } else {
                 $this->viewCtrl->renderView($view, false);
@@ -65,7 +65,8 @@ class PageController
     /**
      * Looks for parameters passed from router to set values for the view about to be rendered
      */
-    public function configureSession() {
+    public function configureSession()
+    {
         $session = new SessionController();
         if (isset($args['filter'])) {
             $exploreFilter = $args['filter'];

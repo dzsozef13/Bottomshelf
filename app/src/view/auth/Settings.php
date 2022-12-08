@@ -42,6 +42,16 @@ foreach ($countries as $country) {
                                                 echo "public/asset/images/PlaceholderProfilePicture.png";
                                             } ?>" alt="Users Profile Picture">
                 </div>
+                <div class="input-field-wrapper mt-6 mb-4">
+                    <div class="icon-wrapper">
+                        <i class="las la-file-upload"></i>
+                    </div>
+                    <label class="w-full h-full flex items-center px-4  cursor-pointer text-sm text-highlight-green-900">
+                        <input type="file" class="hidden" />
+                        Profile Picture
+                    </label>
+
+                </div>
             </form>
             <form action="UpdateUser" method="post" class="w-2/4 h-auto flex flex-col">
                 <div class="input-field-wrapper mt-6 mb-4">
