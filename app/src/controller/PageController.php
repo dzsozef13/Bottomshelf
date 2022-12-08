@@ -29,7 +29,26 @@ class PageController
     }
 
     public function load($args)
-    {
+    {// Configure view in session
+        if (isset($args['filter'])) {
+            $exploreFilter = $args['filter'];
+            $session = new SessionController();
+            $session->setExploreFilter($exploreFilter);
+        }
+        if (isset($args['selected'])) {
+            $postId = $args['selected'];
+            $session = new SessionController();
+            $session->setSelectedPostId($postId);
+        }
+        if ($args['view'] == 'Profile') {
+            $session = new SessionController();
+            if (isset($args['user'])) {
+                $userId = $args['user'];
+                $session->setUserProfileId($userId);
+            } else {
+                $session->setUserProfileId(null);
+            }
+        }
         if (isset($args['view'])) {
             // Configure session values
             $this->configureSession();

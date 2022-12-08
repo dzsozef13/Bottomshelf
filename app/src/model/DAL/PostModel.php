@@ -88,7 +88,7 @@ class PostModel extends CoreModel
 				$row->Title,
 				$row->PostDescription,
 				$row->ReactionCount,
-				$row->isPublic,
+				$row->IsPublic,
 				$row->IsSticky,
 				$row->CreatedAt,
 				$row->UserId,
@@ -136,7 +136,7 @@ class PostModel extends CoreModel
 					$row->Title,
 					$row->PostDescription,
 					$row->ReactionCount,
-					$row->isPublic,
+					$row->IsPublic,
 					$row->IsSticky,
 					$row->CreatedAt,
 					$row->UserId,
@@ -189,7 +189,7 @@ class PostModel extends CoreModel
 					$row->CreatedAt,
 					$row->UserId,
 					$row->Username,
-					$row->LatestComment,
+					$row->LatestCommentId,
 					$row->ChildPostId,
 					$row->StatusId
 				);
@@ -234,12 +234,12 @@ class PostModel extends CoreModel
 					$row->Title,
 					$row->PostDescription,
 					$row->ReactionCount,
-					$row->isPublic,
+					$row->IsPublic,
 					$row->IsSticky,
 					$row->CreatedAt,
 					$row->UserId,
 					$row->Username,
-					$row->LatestComment,
+					$row->LatestCommentId,
 					$row->ChildPostId,
 					$row->StatusId
 				);

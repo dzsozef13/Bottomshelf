@@ -125,6 +125,20 @@ class SessionController
     }
 
     /**
+     * Set - Get other user profile
+     * 
+     * Use to fetch information to use other user's profile
+     */
+    public function setUserProfileId($userId)
+    {
+        $_SESSION['user'] = $userId;
+    }
+    public function getUserProfileId()
+    {
+        return $_SESSION['user'] ?? null;
+    }
+
+    /**
      * Set - Get system message
      * 
      * Use to display error or other messages from the system in view
@@ -136,5 +150,4 @@ class SessionController
         return $_SESSION['systemMessage'] ?? null;
         $_SESSION['systemMessage'] = null;
     }
-
 }
