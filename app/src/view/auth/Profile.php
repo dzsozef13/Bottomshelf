@@ -90,7 +90,7 @@ if (isset($loggedInUserId)) {
                     $post->setMedia($indexedMediaArray);
                 }
                 $postTemplatesArray[] =  '
-                        <a class="' . ($post->getIsPublic() ? "public" : "private") .  '" href="/SelectedPost?selected=' .  $post->getId() . '">
+                        <a class="' . ($post->getIsPublic() ? "public" : "private") .  '" href="/SelectedPost?selectedPost=' .  $post->getId() . '">
                             <div class="post-card-container">
                                 <!-- Post Image -->
                                 ' . ($post->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
