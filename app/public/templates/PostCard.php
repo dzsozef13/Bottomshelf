@@ -1,7 +1,7 @@
 <div class="post-card-container" id="container">
     <!-- Post Image -->
     <div class="post-card-img">
-        <img class="post-img" src="data:image/*;charset=utf8;base64,{{imageBlob}}" />
+        <img class="img" src="data:image/*;charset=utf8;base64,{{imageBlob}}" />
     </div>
     <!-- Post Body -->
     <div class="post-card-body">

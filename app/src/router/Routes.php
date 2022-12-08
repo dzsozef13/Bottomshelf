@@ -19,9 +19,11 @@ Router::add(new Route("Home", "page/load", array("view" => "Home")));
 Router::add(new Route("Login", "page/load", array("view" => "Login")));
 Router::add(new Route("Signup", "page/load", array("view" => "Signup")));
 Router::add(new Route("About", "page/load", array("view" => "About")));
-Router::add(new Route("Dashboard", "page/load", array("view" => "Dashboard", "auth" => true)));
+// AUTH
 Router::add(new Route("Explore", "page/load", array("view" => "Explore", "auth" => true)));
 Router::add(new Route("Profile", "page/load", array("view" => "Profile", "auth" => true)));
+Router::add(new Route("SelectedPost", "page/load", array("view" => "SelectedPost", "auth" => true)));
+Router::add(new Route("Settings", "page/load", array("view" => "Settings", "auth" => true)));
 Router::add(new Route("Upload", "page/load", array("view" => "Upload", "auth" => true)));
 Router::add(new Route("Create", "page/load", array("view" => "Create", "auth" => true)));
 
@@ -29,9 +31,16 @@ Router::add(new Route("Create", "page/load", array("view" => "Create", "auth" =>
 Router::add(new Route("UserLogin", "user/tryLogInUser"));
 Router::add(new Route("UserLogout", "user/tryLogOutUser"));
 Router::add(new Route("UserRegist", "user/tryRegistUser"));
+Router::add(new Route("UpdateUser", "user/updateUser"));
 
 // POST
 Router::add(new Route("CreatePost", "post/create"));
+Router::add(new Route("FilterPost", "post/searchPosts"));
+
+// COMMENT
+Router::add(new Route("AddComment", "comment/create"));
+Router::add(new Route("DeleteComment", "comment/delete"));
+Router::add(new Route("UpdateComment", "comment/update"));
 
 // MEDIA
 Router::add(new Route("MediaUpload", "media/uploadMedia"));

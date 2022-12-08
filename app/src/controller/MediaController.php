@@ -33,7 +33,6 @@ class MediaController
 
         // Collect all posted media in an array
         $mediaArray = array();
-
         if (isset($_POST['submit'])) {
             foreach ($mediaNames as $mediaName) {
                 if (!empty($_FILES[$mediaName]["name"])) {
