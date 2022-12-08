@@ -43,9 +43,9 @@ $selectedImage = !empty($indexedMediaArray) ? $indexedMediaArray[0] : null;
 $comments = $commentController->fetchAllByPostId($post->getId());
 ?>
 
-<div class="grid grid-cols-6 px-8 my-8 w-full gap-4">
+<div class="grid grid-cols-6 px-2 my-4 sm:px-8 sm:my-8 w-full gap-4">
     <!-- Images Column -->
-    <div class="col-span-3">
+    <div class=" col-span-6 sm:col-span-3 px-6 sm:px-0">
         <div class="post-preview-img-container">
             <img class="img" src="data:image/*;charset=utf8;base64,<?php echo base64_encode($selectedImage->getImage()) ?>" alt="">
         </div>
@@ -60,7 +60,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
         </div>
     </div>
     <!-- Post Content Column -->
-    <div class="col-span-3">
+    <div class=" col-span-6 sm:col-span-3">
         <!-- Container for post information -->
         <div class="post-preview-content">
             <h2 class="medium-headline"><?php echo $post->getTitle() ?></h2>
@@ -73,7 +73,6 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                 <?php echo $post->getDescription() ?>
             </h4>
         </div>
-
         <!-- Comment Section -->
         <div class="post-preview-content">
             <!-- Comment Creation -->

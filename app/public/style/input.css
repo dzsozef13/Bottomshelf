@@ -102,7 +102,23 @@
       bg-dim-white-900 
       rounded-full;
   }
-
+  .user-sidebar {
+    @apply bg-background-black-900
+    p-4
+    hidden
+    w-full
+    h-max
+    z-10
+    top-0
+    flex-col 
+    justify-between
+    fixed
+    sm:h-full
+    sm:bg-highlight-green-900/10 
+    sm:p-8 
+    sm:relative
+    sm:flex;
+  }
   .fake-badge {
     @apply bg-highlight-green-900
     flex 
@@ -427,10 +443,12 @@
   .post-preview-content {
     @apply w-full
     h-auto
-    p-6
+    sm:p-6
+    p-4
     bg-background-secondary-900 
     rounded
-    mb-6
+    sm:mb-6
+    mb-4
     flex
     flex-col;
   }
