@@ -16,11 +16,11 @@ switch ($filter) {
     case 'trending':
         console_log('trending');
         $posts = $postController->fetchAll();
-        break;
+    break;
     default:
         console_log('all');
         $posts = $postController->fetchAll();
-        break;
+    break;
 }
 
 /**
@@ -36,27 +36,32 @@ foreach ($tags as $tag) {
 
 <!-- Explore View -->
 <div class="grid grid-cols-6 gap-4 px-8 my-8 w-full">
-    <div class="col-span-4">
-        <form action="FilterPost" method="post" class="flex justify-between h-auto flex-wrap">
-            <div class="banner mb-4">
-                <h3 class="small-headline mb-4">Select tags to improve the search!</h3>
-                <div class="tags-container">
-                    <?php echo implode($tagTemplates)
-                    ?>
-                </div>
+    <div class="col-span-6 ">
+        <div class="tags-container">
+            <?php echo implode($tagTemplates)
+            ?>
+        </div>
+        <!-- tags -->
+    </div>
+    <div class="col-span-2 h-auto">
+        <!-- search -->
+        <div class="input-field-wrapper">
+            <div class="icon-wrapper">
+                <i class="las la-search"></i>
             </div>
-            <div class="rounded-lg border border-highlight-green-900/60 bg-transparent flex relative h-10 w-[73%]">
-                <div class="icon-wrapper">
-                    <i class="las la-search"></i>
-                </div>
-                <input type="text" name="phrase" placeholder="Search posts by a phrase..." class="input-field">
+            <input type="text" placeholder="Search..." class="input-field">
+        </div>
+    </div>
+    <div class="col-span-6 mt-10">
+        <div class="sort-dropdown-container">
+            <!-- update this to an actual dropdown at some point -->
+            <div class="dropdown">
+                <h6>Sort by:</h6>
+                <p class="text-highlight-green-900 ml-2">Newest</p>
             </div>
-            <button type="submit" class="btn-green-no-shadow w-[25%]">
-                SEARCH
-            </button>
-        </form>
-
-        <?php if (empty($posts)) {
+        </div>
+        <?php
+        if (empty($posts)) {
             echo '
                 <div class="no-post-banner">
                     <h3 class="headline text-lg ">No posts found...</h3>
@@ -75,56 +80,14 @@ foreach ($tags as $tag) {
                 if (isset($indexedMediaArray)) {
                     $post->setMedia($indexedMediaArray);
                 }
-                $postTemplatesArray[] =  '
-                                    <a href="/SelectedPost?selected=' .  $post->getId() . '">
-                                        <div class="post-card-container">
-                                            <!-- Post Image -->
-                                            ' . ($post->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
-                                                    <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($post->getCoverImageForPost()) . '" />
-                                                </div>') . '
-                                            <!-- Post Body -->
-                                            <div class="post-card-body">
-                                                <!-- Post Header -->
-                                                <div class="post-card-header">
-                                                    <h3 class="post-card-title">' . $post->getTitle() . '</h3>
-                                                    <p class="post-card-user">by @<span class="text-highlight-green-900">' . $post->getAuthorName() . '</span></p>
-                                                </div>
-                                                <!-- Post Comment -->
-                                                    ' . ($post->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
-                                                    <div class="small-logo">
-                                                        <i class="las la-smile text-background-black-900 text-xl"></i>
-                                                    </div>
-                                                    <div class="post-card-comment">
-                                                    ' . $post->getLatestComment() . '
-                                                    </div>
-                                                </div>') . '
-                                                <!-- Post Reactions -->
-                                                <div class="post-card-reactions-wrapper">
-                                                    🌸 ✅ 👀
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>';
+                $postTemplatesArray[] = $post->getPostTemplate();
             }
             echo '
             <div class="grid 2xl:grid-cols-5 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"> 
                 ' . implode($postTemplatesArray) . '
             </div> 
             ';
-        } ?>
-    </div>
-    <div class="col-span-2">
-        <div class="side-bar-container">
-            <div class="banner">
-                <!-- temporary dummy text untill we introduce information info which the admin can edit -->
-                <h2 class="headline text-xl text-highlight-green-900">Welcome to Bottom Shelf!</h2>
-                <p class="text-sm mt-2">Explore new recipe ideas by browsing the community’s submissions.
-                    Through tags and our search system, you can find exactly the drink
-                    you had in mind. If you dont feel inspired, go to Explore page…
-                </p>
-            </div>
-
-        </div>
-
+        }
+        ?>
     </div>
 </div>
