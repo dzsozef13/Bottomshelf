@@ -18,21 +18,21 @@ class PostController
     {
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $isPublic = $_POST['isPublic'] ? 1 : 0;
+        $isPublic = 1;
         $isSticky = 1;
         $sessionController = new SessionController();
         $userId = $sessionController->getUser()['userId'];
-        $StatusId = 1;
+        $statusId = 1;
         $data = [];
 
-        if (isset($title) && isset($description) && isset($isPublic) && isset($isSticky)  && isset($userId)  && isset($StatusId)) {
+        if (isset($title) && isset($description) && isset($isPublic) && isset($isSticky)  && isset($userId)  && isset($statusId)) {
             $data = array(
                 'title' => $title,
                 'description' =>  $description,
                 'isPublic' => $isPublic,
                 'isSticky' => $isSticky,
                 'userId' =>  $userId,
-                'statusId' =>  $StatusId
+                'statusId' =>  $statusId
             );
             $postId = $this->postModel->createPost($data);
 
@@ -40,6 +40,9 @@ class PostController
             foreach ($uploadedMediaIdArray as $uploadedMediaId) {
                 $this->postModel->connectPostWithMedia($postId, $uploadedMediaId);
             }
+
+            // Redirect to profile
+            $redirect = new Router("Profile");
         } else {
             // thow an error error
         }

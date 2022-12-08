@@ -121,12 +121,12 @@ class PostModel extends CoreModel
 				FROM Post
 				LEFT JOIN `User` ON User.UserId=Post.UserId
 				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-				WHERE Post.StatusId = :StatusId AND Post.IsPublic = :IsPublic
+				WHERE Post.StatusId = :statusId AND Post.IsPublic = :isPublic
 				ORDER BY Post.CreatedAt DESC";
 
 			$handle = $conn->prepare($query);
-			$handle->bindParam(':StatusId', $statusId);
-			$handle->bindParam(':IsPublic', $isPublic);
+			$handle->bindParam(':statusId', $statusId);
+			$handle->bindParam(':isPublic', $isPublic);
 			$handle->execute();
 
 			$result = array();
