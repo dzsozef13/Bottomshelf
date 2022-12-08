@@ -40,14 +40,14 @@ $(document).ready(function(e) {
 
     // Show public posts
     $("#public").click(function(event) {
-         $('.public').show()
-         $('.private').hide()
+         $('.public').show("fast")
+         $('.private').hide("fast")
     });
 
     // Show private posts
      $("#private").click(function(event) {
-         $('.private').show()
-         $('.public').hide()
+         $('.private').show("fast")
+         $('.public').hide("fast")
       });
 
 });
