@@ -66,11 +66,11 @@ class SessionController
      */
     public function setSelectedPostId($postId)
     {
-        $_SESSION['selected'] = $postId;
+        $_SESSION['selectedPost'] = $postId;
     }
     public function getSelectedPostId()
     {
-        return $_SESSION['selected'] ?? null;
+        return $_SESSION['selectedPost'] ?? null;
     }
 
     /**
@@ -131,11 +131,11 @@ class SessionController
      */
     public function setUserProfileId($userId)
     {
-        $_SESSION['user'] = $userId;
+        $_SESSION['selectedUser'] = $userId;
     }
     public function getUserProfileId()
     {
-        return $_SESSION['user'] ?? null;
+        return $_SESSION['selectedUser'] ?? null;
     }
 
     /**

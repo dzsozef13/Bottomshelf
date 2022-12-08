@@ -29,33 +29,36 @@ class PageController
     }
 
     public function load($args)
-    { // Configure view in session
+    {
+        // Configure view in session
+        $session = new SessionController();
         if (isset($args['filter'])) {
             $exploreFilter = $args['filter'];
-            $session = new SessionController();
             $session->setExploreFilter($exploreFilter);
         }
-        if (isset($args['selected'])) {
-            $postId = $args['selected'];
-            $session = new SessionController();
+        if (isset($args['selectedPost'])) {
+            $postId = $args['selectedPost'];
             $session->setSelectedPostId($postId);
         }
-        if ($args['view'] == 'Profile') {
-            $session = new SessionController();
-            if (isset($args['user'])) {
-                $userId = $args['user'];
-                $session->setUserProfileId($userId);
-            } else {
-                $session->setUserProfileId(null);
-            }
+        if (isset($args['selectedUser'])) {
+            $userId = $args['selectedUser'];
+            $session->setUserProfileId($userId);
+        }
+        if (isset($args['systemMessage'])) {
+            $systemMessage = $args['systemMessage'];
+            $session->setSystemMessage($systemMessage);
         }
         if (isset($args['view'])) {
             // Configure session values
             $this->configureSession();
             // Render view
             $view = $args['view'];
-            if (isset($args['auth']) && $args['auth'] === true) {
-                $this->viewCtrl->renderView($this->redirectUnauthorized($view), true);
+            if (isset($args['auth'])) {
+                if ($args['auth'] === true) {
+                    $this->viewCtrl->renderView($this->redirectUnauthorized($view), true);
+                } else {
+                    $this->viewCtrl->renderView($view, false);
+                }
             } else {
                 $this->viewCtrl->renderView($view, false);
             }
@@ -67,14 +70,6 @@ class PageController
      */
     public function configureSession()
     {
-        $session = new SessionController();
-        if (isset($args['filter'])) {
-            $exploreFilter = $args['filter'];
-            $session->setExploreFilter($exploreFilter);
-        }
-        if (isset($args['systemMessage'])) {
-            $systemMessage = $args['systemMessage'];
-            $session->setSystemMessage($systemMessage);
-        }
+        // TODO: make this work
     }
 }

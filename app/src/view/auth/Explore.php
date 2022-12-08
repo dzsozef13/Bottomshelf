@@ -76,7 +76,7 @@ foreach ($tags as $tag) {
                     $post->setMedia($indexedMediaArray);
                 }
                 $postTemplatesArray[] =  '
-                                    <a href="/SelectedPost?selected=' .  $post->getId() . '">
+                                    <a href="/SelectedPost?selectedPost=' .  $post->getId() . '">
                                         <div class="post-card-container">
                                             <!-- Post Image -->
                                             ' . ($post->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
