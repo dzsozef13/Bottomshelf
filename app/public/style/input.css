@@ -110,14 +110,14 @@
     h-max
     z-10
     top-0
-    flex-col 
-    justify-between
     fixed
     sm:h-full
     sm:bg-highlight-green-900/10 
     sm:p-8 
     sm:relative
-    sm:flex;
+    sm:flex
+    sm:flex-col 
+    sm:justify-between;
   }
   .fake-badge {
     @apply bg-highlight-green-900

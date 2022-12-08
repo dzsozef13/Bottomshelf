@@ -24,21 +24,14 @@
                             Settings</li>
                     </a>
                     <a href="UserLogout">
-                        <li class="mb-0 sm:mb-4">
+                        <li class="mb-4 sm:mb-4">
                             Log out</li>
                     </a>
-                    <a href="/Upload" class="w-full h-auto hidden sm:flex">
+                    <a href="/Upload" class="w-full h-auto flex items-center">
+                        <i class="las la-plus-circle text-highlight-green-900 text-2xl mr-2"></i>
                         <h4 class="">Create</h4>
                     </a>
                 </ul>
-            </div>
-            <div class="w-full items-center relative break-all h-auto mt-10 sm:mt-0 hidden lg:flex">
-                <div class="logo flex-none flex justify-center items-center">
-                    <i class="las la-smile text-background-black-900 text-3xl"></i>
-                </div>
-                <a href="/Profile" class="w-full h-auto">
-                    <h4 class="ml-4 ">{{username}}</h4>
-                </a>
             </div>
         </div>
         <div class="col-span-6 sm:col-span-5 min-h-screen bg-[linear-gradient(180deg,_rgba(26,30,29,1)_0%,_rgba(24,26,26,1)_10%,_rgba(21,22,23,1)_20%)]">
