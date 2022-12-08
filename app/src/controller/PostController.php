@@ -15,13 +15,11 @@ class PostController
     }
 
     public function create()
-    // todo: add image property when we plan how to handle images
     {
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $isPublic = $_POST['isPublic'] ?? 1;
+        $isPublic = $_POST['isPublic'] ? 1 : 0;
         $isSticky = 1;
-        // when we have session working, change this to get the currently logged in user
         $sessionController = new SessionController();
         $userId = $sessionController->getUser()['userId'];
         $StatusId = 1;
@@ -52,7 +50,7 @@ class PostController
         return $this->postModel->getAll($statusId, $isPublic);
     }
 
-    public function fetchById(int $id)
+    public function fetchById(int $id): Post
     {
         if (isset($id)) {
             return $this->postModel->getById($id);
@@ -64,5 +62,15 @@ class PostController
         if (isset($userId)) {
             return $this->postModel->getAllByUserId($userId);
         }
+    }
+
+    public function searchPosts()
+    {
+        $phrase = $_POST['phrase'];
+
+        if (isset($phrase)) {
+            return $this->postModel->searchPosts($phrase);
+        }
+        new Router('Explore');
     }
 }

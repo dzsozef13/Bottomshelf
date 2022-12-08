@@ -13,12 +13,14 @@ class Post
     private $latestComment;
     private $childPostId;
     private $statusId;
+    private $reactionCount;
     private $media;
 
     function __construct(
         $id,
         $title,
         $description,
+        $reactionCount,
         $isPublic,
         $isSticky,
         $createdAt,
@@ -31,6 +33,7 @@ class Post
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
+        $this->reactionCount = $reactionCount;
         $this->isPublic = $isPublic;
         $this->isSticky = $isSticky;
         $this->createdAt = $createdAt;
@@ -61,9 +64,26 @@ class Post
         return $this->authorName;
     }
 
+    public function getAuthorId()
+    {
+        return $this->authorId;
+    }
+
+    public function getIsPublic()
+    {
+        return $this->isPublic;
+    }
+
+
     public function getLatestComment()
     {
         return $this->latestComment;
+    }
+
+    public function getCreatedAt()
+    {
+        $createdAtDate = DateTime::createFromFormat('Y-m-d H:i:s', $this->createdAt);
+        return $createdAtDate->format('d/m/Y');
     }
 
     public function getAllMedia()
@@ -91,42 +111,4 @@ class Post
     {
         $this->media = $mediaArray;
     }
-
-    public function getPostTemplate(): string
-    {
-        $template = '<div class="post-card-container">
-                        <!-- Post Image -->
-                        ' . ($this->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
-                                <img class="post-img" src="data:image/*;charset=utf8;base64,' . base64_encode($this->getCoverImageForPost()) . '" />
-                            </div>') . '
-                        <!-- Post Body -->
-                        <div class="post-card-body">
-                            <!-- Post Header -->
-                            <div class="post-card-header">
-                                <h3 class="post-card-title">' . $this->getTitle() . '</h3>
-                                <p class="post-card-user">by @' . $this->getAuthorName() . '</p>
-                            </div>
-                            <!-- Post Comment -->
-                              ' . ($this->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
-                                <div class="small-logo">
-                                    <i class="las la-smile text-background-black-900 text-xl"></i>
-                                </div>
-                                <div class="post-card-comment">
-                                ' . $this->getLatestComment() . '
-                                </div>
-                            </div>') . '
-                            <!-- Post Reactions -->
-                            <div class="post-card-reactions-wrapper">
-                                🌸 ✅ 👀
-                            </div>
-                        </div>
-                    </div>';
-        return $template;
-    }
-
-    // public function getImageUrl()
-    // {
-    //     return $this-$imageUrl;
-    // }
-
 }
