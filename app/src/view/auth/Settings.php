@@ -17,7 +17,7 @@ $countryController = new CountryController();
 $userId = $sessionController->getUser()['userId'];
 $profile = $userController->fetchById($userId);
 $countries = $countryController->fetchAll();
-
+$isAdmin = $profile->isAdmin();
 $preselectedCountry = null;
 
 foreach ($countries as $country) {
@@ -92,8 +92,13 @@ foreach ($countries as $country) {
                 <button class="btn-white w-full mt-6" name="submit" type="submit">UPDATE USER INFORMATION</button>
             </form>
         </div>
-        <div class="banner-settings w-2/4">
-            <h3 class="medium-headline w-full mb-4">Settings</h3>
-        </div>
+        <?php
+        if ($isAdmin) {
+            echo ' <div class="banner-settings w-2/4">
+                <h3 class="medium-headline w-full mb-4">Settings</h3>
+            </div>';
+        }
+        ?>
+
     </div>
 </div>

@@ -16,6 +16,7 @@ function include_files($files)
             case "Post":
             case "Media":
             case "Route":
+            case "System":
             case "Country":
             case "Comment":
             case "Tag":
@@ -26,6 +27,7 @@ function include_files($files)
             case "CountryModel":
             case "CommentModel":
             case "ReactionModel":
+            case "SystemModel":
             case "EntityStatusModel":
             case "RoleModel":
             case "BadgeModel":
@@ -42,6 +44,7 @@ function include_files($files)
             case "UserController":
             case "TagsController":
             case "ViewController":
+            case "SystemController":
             case "CountryController":
             case "PageController":
             case "CommentController":

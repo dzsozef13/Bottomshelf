@@ -55,6 +55,15 @@ class User extends Entity
         return $this->bioDescription;
     }
 
+    public function isAdmin()
+    {
+        if ($this->statusId == 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getProfileImage()
     {
         return $this->profileImgBlob;
