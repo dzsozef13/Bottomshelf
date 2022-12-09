@@ -111,16 +111,44 @@ $(document).ready(function(e) {
         $('#dropdown').hide();
     }); 
 
-     // When clicking the new upload file button it triggers the visually hidden html input
+     // Settings page - When clicking the new upload file button it triggers the visually hidden html input
     $('.upload-btn', $('#profile-img-upload')).click(function() {
-        console.log('a')
         $('#html-upload-btn').click();
     });
 
-    // When uploading a profile picture, it will display the files name
+    // Settings page - When uploading a picture, it will display the files name
     $('#html-upload-btn').change(function(event) {
-      
-       $('#input-text').text(event.currentTarget.files[0].name)
+        $('#input-text').text(event.currentTarget.files[0].name)
     });
+
+    // Create page 1 - When clicking the new upload file button it triggers the visually hidden html input
+    $('#upload-btn-1', $('#settings-img-upload')).click(function() {
+        $('#input-btn-1').click();
+    });
+
+    // Create page 1 - When uploading a picture, it will display the files name
+    $('#input-btn-1').change(function(event) {
+        $('#input-text-1').text(event.currentTarget.files[0].name)
+    });
+
+    // Create page 2 - When clicking the new upload file button it triggers the visually hidden html input
+    $('#upload-btn-2', $('#settings-img-upload')).click(function() {
+        $('#input-btn-2').click();
+    });
+
+   // Create page 2 - When uploading a picture, it will display the files name
+   $('#input-btn-2').change(function(event) {
+        $('#input-text-2').text(event.currentTarget.files[0].name)
+   });
+
+    // Create page 2 - When clicking the new upload file button it triggers the visually hidden html input
+    $('#upload-btn-3', $('#settings-img-upload')).click(function() {
+        $('#input-btn-3').click();
+    });
+
+   // Create page 2 - When uploading a picture, it will display the files name
+   $('#input-btn-3').change(function(event) {
+        $('#input-text-3').text(event.currentTarget.files[0].name)
+   });
 });
 

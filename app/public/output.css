@@ -1642,6 +1642,10 @@ video {
   width: 80%;
 }
 
+.w-2\/4{
+  width: 50%;
+}
+
 .flex-none{
   flex: none;
 }
@@ -1724,11 +1728,6 @@ video {
 
 .bg-transparent{
   background-color: transparent;
-}
-
-.bg-red-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
 }
 
 .bg-\[radial-gradient\(circle_at_100\%_100\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
@@ -1873,6 +1872,10 @@ video {
     grid-column: span 5 / span 5;
   }
 
+  .sm\:col-span-4{
+    grid-column: span 4 / span 4;
+  }
+
   .sm\:my-8{
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -1924,6 +1927,10 @@ video {
 
   .xl\:col-span-4{
     grid-column: span 4 / span 4;
+  }
+
+  .xl\:col-span-3{
+    grid-column: span 3 / span 3;
   }
 
   .xl\:grid-cols-3{
