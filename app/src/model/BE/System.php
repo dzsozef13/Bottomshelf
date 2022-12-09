@@ -27,4 +27,9 @@ class System
         $this->address = $address;
         $this->usersCount = $usersCount;
     }
+
+    public function getDescription()
+    {
+        return $this->serviceDescription;
+    }
 }

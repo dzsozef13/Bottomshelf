@@ -2,7 +2,8 @@
 include_files(array(
     "Console",
     "DbConnectionController",
-    "CoreModel"
+    "CoreModel",
+    "System"
 ));
 
 class SystemModel extends CoreModel
@@ -13,13 +14,13 @@ class SystemModel extends CoreModel
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT * FROM `System` WHERE SystemId = :SystemId";
+            $query = "SELECT * FROM `System` WHERE Id = :SystemId";
 
             $handle = $conn->prepare($query);
             $handle->bindParam(':SystemId', $systemId);
             $handle->execute();
 
-            $result = $handle->fetch(PDO::FETCH_ASSOC);
+            $result = $handle->fetch(PDO::FETCH_OBJ);
             $system = new System(
                 $result->Id,
                 $result->ServiceDescription,
