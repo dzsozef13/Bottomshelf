@@ -32,11 +32,21 @@ class PageController
     {
         // Configure view in session
         $session = new SessionController();
+
+        // Explore Filter
         if (isset($args['filter'])) {
             $exploreFilter = $args['filter']; 
-            $session->setExploreFilter($exploreFilter);
+            $session->setFilter($exploreFilter);
         } else {
-            $session->setExploreFilter(null);
+            $session->setFilter(null);
+        }
+
+        // Explore Search
+        if (isset($args['searchPhrase'])) {
+            $searchPhrase = $args['searchPhrase'];
+            $session->setSearchPhrase($searchPhrase);
+        } else {
+            $session->setSearchPhrase(null);
         }
 
         // Selected Post

@@ -67,13 +67,8 @@ class PostController
         }
     }
 
-    public function searchPosts()
+    public function fetchByPhrase()
     {
-        $phrase = $_POST['phrase'];
-
-        if (isset($phrase)) {
-            return $this->postModel->searchPosts($phrase);
-        }
-        new Router('Explore');
+        
     }
 }

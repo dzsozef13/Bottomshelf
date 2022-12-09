@@ -214,7 +214,7 @@ class PostModel extends CoreModel
 	/**
 	 * @return Post[] (if none then empty array [])
 	 */
-	public function searchPosts(string $phrase)
+	public function getAllByPhrase(string $phrase)
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();

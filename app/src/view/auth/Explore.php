@@ -11,7 +11,7 @@ $tagsController = new TagsController();
 /**
  * Fetch posts
  */
-$filter = $sessionController->getExploreFilter();
+$filter = $sessionController->getFilter();
 switch ($filter) {
     case 'trending':
         console_log('trending');
@@ -21,6 +21,11 @@ switch ($filter) {
         console_log('all');
         $posts = $postController->fetchAll();
         break;
+}
+
+$searchPhrase = $sessionController->getSearchPhrase();
+if ($searchPhrase != null) {
+    $posts = $postController->fetchByPhrase($searchPhrase);
 }
 
 /**
@@ -37,7 +42,10 @@ foreach ($tags as $tag) {
 <!-- Explore View -->
 <div class="grid grid-cols-6 gap-4 px-8 my-8 w-full">
     <div class="col-span-4">
-        <form action="FilterPost" method="post" class="flex justify-between h-auto flex-wrap">
+
+        <!-- Search Field -->
+
+        <form action="SearchPost" method="post" class="flex justify-between h-auto flex-wrap">
             <div class="banner mb-4">
                 <h3 class="small-headline mb-4">Select tags to improve the search!</h3>
                 <div class="tags-container">
@@ -55,6 +63,8 @@ foreach ($tags as $tag) {
                 SEARCH
             </button>
         </form>
+
+        <!-- Posts section -->
 
         <?php if (empty($posts)) {
             echo '

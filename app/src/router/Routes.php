@@ -35,7 +35,7 @@ Router::add(new Route("UpdateUser", "user/updateUser"));
 
 // POST
 Router::add(new Route("CreatePost", "post/create"));
-Router::add(new Route("FilterPost", "post/searchPosts"));
+Router::add(new Route("SearchPost", "page/load", array("view" => "Explore", "searchPhrase" => $_POST['phrase'], "auth" => true)));
 
 // COMMENT
 Router::add(new Route("AddComment", "comment/create"));
