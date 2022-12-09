@@ -125,7 +125,10 @@ $system = $systemController->fetchById(1);
             <div class="banner">
                 <?php echo $system->getDescription() ?>
             </div>
-
+            <div class="banner mt-4">
+                <p class="headline mb-2">Guidelines</p>
+                <?php echo $system->getRules() ?>
+            </div>
         </div>
 
     </div>

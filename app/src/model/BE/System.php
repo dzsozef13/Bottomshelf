@@ -32,4 +32,21 @@ class System
     {
         return $this->serviceDescription;
     }
+
+    public function getRules()
+    {
+        return $this->rules;
+    }
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+    public function getEmail()
+    {
+        return $this->systemEmail;
+    }
+    public function getAddress()
+    {
+        return $this->address;
+    }
 }

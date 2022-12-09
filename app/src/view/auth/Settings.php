@@ -12,12 +12,16 @@ $userController = new UserController();
  * Country controller
  */
 $countryController = new CountryController();
-
+/**
+ * System controller
+ */
+$systemController = new SystemController();
 
 $userId = $sessionController->getUser()['userId'];
 $profile = $userController->fetchById($userId);
 $countries = $countryController->fetchAll();
 $isAdmin = $profile->isAdmin();
+$system = $systemController->fetchById(1);
 $preselectedCountry = null;
 
 foreach ($countries as $country) {
@@ -30,8 +34,8 @@ foreach ($countries as $country) {
 <div class="grid grid-cols-6 gap-4 px-8 w-full">
     <div class="col-span-6 2xl:h-[5vh] h-[5vh] ">
     </div>
-    <div class="2xl:mx-20 mx-0 col-span-6 mb-4 flex gap-4">
-        <div class=" banner-settings w-2/4">
+    <div class="2xl:mx-20 mx-0 col-span-3 mb-4 flex  flex-col  gap-4">
+        <div class=" banner-settings w-full">
             <h3 class="medium-headline w-full mb-4">User Information</h3>
             <!-- Form for profile picture -->
             <form action="ChangeProfilePicture" enctype="multipart/form-data" method="post" class="w-full h-auto flex-wrap flex  mb-0" id="profile-img-upload">
@@ -92,6 +96,27 @@ foreach ($countries as $country) {
                 <button class="btn-white w-full mt-6" name="submit" type="submit">UPDATE USER INFORMATION</button>
             </form>
         </div>
+    </div>
+    <div class="2xl:mx-20 mx-0 col-span-3 mb-4 flex flex-col gap-4">
+        <div class="banner-settings w-full h-max">
+            <h3 class="medium-headline w-full mb-2">Bottomshelf</h3>
+            <div class="w-full flex flex-wrap mb-2">
+                <p class="headline mr-2">We are based in:</p>
+                <p class="text-highlight-green-900"><?php echo $system->getAddress() ?></p>
+            </div>
+            <div class="w-full flex flex-wrap">
+                <p class="headline mr-2 mb-2 w-full">Feel free to contact us through:</p>
+                <div class="flex w-full mb-4 items-center">
+                    <i class="las la-at mr-2  text-2xl"></i>
+                    <p class="text-highlight-green-900"><?php echo $system->getEmail() ?></p>
+                </div>
+                <div class="flex w-full items-center">
+                    <i class="las la-phone-volume mr-2 text-2xl"></i>
+                    <p class="text-highlight-green-900"><?php echo $system->getPhoneNumber() ?></p>
+                </div>
+            </div>
+
+        </div>
         <?php
         if ($isAdmin) {
             echo ' <div class="banner-settings w-2/4">
@@ -99,6 +124,5 @@ foreach ($countries as $country) {
             </div>';
         }
         ?>
-
     </div>
 </div>
