@@ -30,10 +30,6 @@ class MediaModel extends CoreModel
 
 			$handle->execute();
 			$lastInsertedMediaId = $conn->lastInsertId();
-
-			CoreModel::closeDbConnection();
-			$conn = null;
-
 			return $lastInsertedMediaId;
 		} catch (PDOException $e) {
 			echo  $e->getMessage();
@@ -67,10 +63,6 @@ class MediaModel extends CoreModel
 				);
 				$result[] = $media;
 			}
-
-			CoreModel::closeDbConnection();
-			$conn = null;
-
 			return $result;
 		} catch (PDOException $e) {
 			print($e->getMessage());

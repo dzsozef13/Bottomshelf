@@ -26,7 +26,6 @@ class DbConnectionController
                 \PDO::ATTR_PERSISTENT => false,
                 \PDO::ATTR_EMULATE_PREPARES => false
             ));
-            console_log("YAY, we have a database *_*");
         } catch (PDOException $err) {
             console_error("Failed db connection");
             $this->destroy();

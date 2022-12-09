@@ -67,8 +67,10 @@ class PostController
         }
     }
 
-    public function fetchByPhrase()
+    public function fetchByPhrase($phrase)
     {
-        
+        if (isset($phrase)) {
+            return $this->postModel->getAllByPhrase($phrase);
+        }
     }
 }
