@@ -105,27 +105,49 @@ class SystemModel extends CoreModel
         }
     }
 
-    public function updateSystem(int $systemId, $data)
+    public function updateSystemContact(int $systemId, $data)
     {
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "UPDATE `System` SET (ServiceDescription = :ServiceDescription, Rules = :Rules, PhoneNumber = :PhoneNumber, SystemEmail = :SystemEmail, `Address` = :Address) WHERE Id = :Id)";
+            $query = "UPDATE `System`
+            SET PhoneNumber = :PhoneNumber, SystemEmail = :SystemEmail, `Address` = :Address
+            WHERE Id = :Id";
 
             $handle = $conn->prepare($query);
 
-            $sanitizedDescription = htmlspecialchars($data['systemDescription']);
-            $sanitizedRules = htmlspecialchars($data['rules']);
             $sanitizedPhoneNumber = htmlspecialchars($data['phoneNumber']);
             $sanitizedEmail = htmlspecialchars($data['email']);
             $sanitizedAddress = htmlspecialchars($data['address']);
 
             $handle->bindParam(':Id', $systemId);
-            $handle->bindParam(':ServiceDescription', $sanitizedDescription);
-            $handle->bindParam(':Rules', $sanitizedRules);
             $handle->bindParam(':PhoneNumber', $sanitizedPhoneNumber);
             $handle->bindParam(':SystemEmail', $sanitizedEmail);
             $handle->bindParam(':Address', $sanitizedAddress);
+
+            $handle->execute();
+            $lastInsertedPostId = $conn->lastInsertId();
+            return $lastInsertedPostId;
+        } catch (PDOException $e) {
+            echo  $e->getMessage();
+        }
+    }
+
+    public function updateSystemDescriptionAndRules(int $systemId, $data)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+
+            $query = "UPDATE `System` SET (ServiceDescription = :ServiceDescription, Rules = :Rules) WHERE Id = :Id)";
+
+            $handle = $conn->prepare($query);
+
+            $sanitizedDescription = htmlspecialchars($data['systemDescription']);
+            $sanitizedRules = htmlspecialchars($data['rules']);
+
+            $handle->bindParam(':Id', $systemId);
+            $handle->bindParam(':ServiceDescription', $sanitizedDescription);
+            $handle->bindParam(':Rules', $sanitizedRules);
 
             $handle->execute();
             $lastInsertedPostId = $conn->lastInsertId();
