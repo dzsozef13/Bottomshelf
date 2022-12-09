@@ -35,6 +35,10 @@ class PostModel extends CoreModel
 			$handle->execute();
 			$lastInsertedPostId = $conn->lastInsertId();
 
+			//close the connection
+            CoreModel::closeDbConnection();
+            $conn = null;
+
 			return $lastInsertedPostId;
 		} catch (PDOException $e) {
 			echo  $e->getMessage();

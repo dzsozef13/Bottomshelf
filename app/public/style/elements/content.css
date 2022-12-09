@@ -1,0 +1,368 @@
+@layer components {
+
+/* Body */
+.bodyStyle {
+  @apply 
+    bg-background-black-900
+    text-dim-white-900 
+    font-sans
+  ;
+}
+
+/* Image */
+.img {
+  @apply 
+    w-full
+    h-full     
+    object-cover
+  ;
+}
+
+/* Headline */
+.landing-headline {
+  @apply
+    font-mono 
+    uppercase
+    text-4xl
+    text-center
+    tracking-wide
+    font-medium
+  ;
+}
+
+.medium-headline {
+  @apply 
+    font-mono 
+    uppercase
+    text-2xl
+    tracking-wide
+    font-bold
+  ;
+}
+
+.small-headline {
+  @apply 
+    font-mono 
+    text-sm
+    tracking-wide
+    font-medium
+  ;
+}
+
+.headline {
+  @apply 
+    font-mono 
+    tracking-wide
+    font-medium
+  ;
+}
+
+/* Message */
+.message-container {
+  @apply
+    h-min
+  ;
+}
+
+.system-message {
+  @apply 
+    font-mono 
+    text-sm
+    tracking-wide
+    font-medium
+  ;
+}
+
+.error-message {
+  @apply 
+    font-mono 
+    text-sm
+    tracking-wide
+    font-medium
+    text-highlight-green-900
+  ;
+}
+
+/* Miscelanous */
+.logo {
+  @apply 
+    w-[38px]
+    h-[38px]
+    bg-dim-white-900 
+    rounded-full
+  ;
+}
+
+.small-logo {
+  @apply 
+    w-[23px]
+    h-[23px]
+    bg-dim-white-900 
+    rounded-full
+    flex
+    items-center
+    justify-center
+    mr-2
+  ;
+}
+
+
+.fake-badge {
+  @apply 
+    bg-highlight-green-900
+    flex 
+    shadow-background-black-900
+    shadow-xl	
+    h-8
+    w-8
+    flex
+    justify-center
+    items-center
+    rounded-full
+  ;
+}
+
+.option-chip {
+  @apply 
+    bg-background-secondary-900
+    w-auto
+    h-full
+    rounded
+    px-4
+    flex
+    items-center
+    text-sm
+    font-mono
+    mr-4
+    transition
+    uppercase
+  ;
+}
+
+.option-chip-checked {
+  @apply 
+    bg-highlight-green-900
+    w-auto
+    h-full
+    rounded
+    px-4
+    flex
+    items-center
+    text-sm
+    text-background-black-900
+    font-mono
+    transition
+    mr-4
+    uppercase
+  ;
+}
+
+.radio {
+  @apply
+    m-0
+    bg-transparent
+    w-full 
+    h-full
+  ;
+}
+
+/* Icon */
+.icon-wrapper {
+  @apply 
+    absolute
+    right-0
+    top-0
+    w-12
+    flex
+    items-center
+    justify-center
+    text-2xl
+    text-highlight-green-900
+    h-full
+  ;
+}
+
+.btn-icon {
+  @apply 
+    w-4 
+    h-4
+    flex
+    items-center
+    justify-center
+    text-lg
+    text-dim-white-900
+    transition
+    hover:text-highlight-green-900
+  ;
+}
+
+.icon-wrapper-text-area {
+  @apply 
+    absolute
+    right-0
+    top-0
+    w-12
+    flex
+    items-center
+    justify-center
+    text-2xl
+    text-highlight-green-900
+    h-12
+  ;
+}
+
+.no-post-banner {
+  @apply 
+    w-full
+    h-52
+    flex
+    items-start
+    px-8
+    justify-center
+    flex-col
+    rounded
+    bg-background-secondary-900
+    mb-8
+  ;
+}
+
+/* Badge */
+.badges-container {
+  @apply 
+    h-auto 
+    absolute
+    -top-4
+    right-8
+    w-32
+    flex-col
+  ;
+}
+
+.badges-wrapper {
+  @apply 
+    h-auto 
+    w-full
+    flex
+    justify-between
+  ;
+}
+
+/* Tag */
+.tags-container {
+  @apply 
+    h-auto
+    w-full
+    h-max
+    flex
+    flex-wrap
+    gap-2
+  ;
+}
+
+.tag-chip {
+  @apply 
+    rounded
+    w-max
+    border
+    border-highlight-green-900
+    h-8
+    px-8
+    hover:bg-highlight-green-900
+    hover:text-background-black-900
+    flex
+    font-bold
+    transition
+    items-center
+    text-dim-white-900
+    text-xs
+    font-mono
+    uppercase
+  ;
+}
+
+.banner {
+  @apply 
+    w-full
+    h-auto
+    p-4
+    bg-background-secondary-900
+    rounded
+    flex
+    flex-col
+  ;
+}
+
+.banner-settings {
+  @apply 
+    w-full
+    h-auto
+    p-4
+    bg-background-secondary-900
+    rounded
+    flex
+  ;
+}
+
+/* Comment */
+.comment-container {
+  @apply 
+    w-full
+    h-auto
+    rounded
+    min-h-[3rem]
+    bg-background-ternary-900
+    flex
+    items-start
+    mb-4
+    p-2
+  ;
+}
+
+.comment-picture-container {
+  @apply 
+    w-8
+    h-8
+    overflow-hidden
+    rounded
+  ;
+}
+
+.comment-body-container {
+  @apply 
+    w-[calc(100%-3rem)]
+    h-full
+    flex
+    flex-col
+    ml-4
+  ;
+}
+
+.comment-headline {
+  @apply 
+    w-full
+    h-auto
+    mb-1
+    text-sm 
+    flex
+    justify-between
+  ;
+}
+.comment-username {
+  @apply 
+    w-auto
+    h-auto
+    flex
+    justify-start
+    items-center
+  ;
+}
+
+.edit-comment {
+  @apply
+    w-full
+    h-auto
+    hidden
+  ;
+}
+
+}

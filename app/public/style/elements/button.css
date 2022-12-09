@@ -1,0 +1,84 @@
+@layer components {
+    
+/* Buttons */
+.btn-green {
+  @apply 
+    w-40 
+    h-10
+    flex 
+    justify-center 
+    items-center 
+    bg-highlight-green-900 
+    rounded 
+    shadow-btn
+    shadow-highlight-green-900/20
+    border-0 
+    font-mono
+    uppercase 
+    text-background-black-900 
+    font-bold 
+    cursor-pointer
+    text-sm
+  ;
+}
+
+.btn-white {
+  @apply 
+    w-40 
+    h-10
+    cursor-pointer
+    flex 
+    justify-center 
+    items-center 
+    bg-dim-white-900 
+    rounded 
+    shadow-btn
+    shadow-highlight-green-900/20
+    border-0 
+    font-mono 
+    uppercase 
+    text-background-black-900 
+    font-bold 
+    text-sm
+  ;
+}
+
+.btn-white-no-shadow {
+  @apply 
+    w-40 
+    h-10
+    cursor-pointer
+    flex 
+    justify-center 
+    items-center 
+    bg-dim-white-900 
+    rounded 
+    border-0 
+    font-mono 
+    uppercase 
+    text-background-black-900 
+    font-bold 
+    text-sm
+  ;
+}
+
+.btn-green-no-shadow {
+  @apply 
+    w-40 
+    h-10
+    flex 
+    justify-center 
+    items-center 
+    bg-highlight-green-900 
+    rounded 
+    border-0 
+    font-mono 
+    uppercase 
+    text-background-black-900 
+    font-bold 
+    cursor-pointer
+    text-sm
+  ;
+}
+
+}

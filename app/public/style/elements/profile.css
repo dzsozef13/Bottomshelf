@@ -1,0 +1,60 @@
+@layer components {
+
+/* Profile Card */
+.profile-card {
+  @apply 
+    bg-background-secondary-900
+    w-full
+    h-auto
+    rounded 
+    relative
+  ;
+}
+
+.profile-picture {
+  @apply 
+    w-40 
+    h-40 
+    bg-red-900 
+    rounded 
+    absolute 
+    -top-20     
+    overflow-hidden 
+    shadow-btn
+    shadow-background-black-900
+    left-8
+  ;
+}
+
+.profile-username-container {
+  @apply 
+    w-full
+    h-20 
+    pl-56
+    pr-8
+    flex 
+    justify-between 
+    flex
+    relative
+    items-center
+  ;
+}
+
+.profile-description-container {
+  @apply 
+    lg:w-3/4
+    w-full
+    h-auto 
+    p-8
+  ;
+}
+
+.profile-post-options-container {
+  @apply 
+    w-full
+    h-10
+    flex
+  ;
+}
+
+}

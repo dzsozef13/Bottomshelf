@@ -8,8 +8,6 @@ $postController = new PostController();
 $mediaController = new MediaController();
 $tagsController = new TagsController();
 
-echo $sessionController->getSystemMessage();
-
 ?>
 
 <div class="grid grid-cols-6 px-8 h-[calc(100vh-5rem)]">
@@ -23,7 +21,7 @@ echo $sessionController->getSystemMessage();
             </div>
             <form action="MediaUpload" method="post" enctype="multipart/form-data">
                 <div class="input-field-wrapper">
-                    <input placeholder="Image" class="input-field " type="file" name="media1" accept="image/png, image/gif, image/jpeg"><br>
+                    <input placeholder="Image" class="input-field " type="file" name="media1"><br>
                 </div>
                 <div class="input-field-wrapper mt-6">
                     <input placeholder="Image" class="input-field " type="file" name="media2" accept="image/png, image/gif, image/jpeg"><br>
@@ -32,6 +30,16 @@ echo $sessionController->getSystemMessage();
                     <input placeholder="Image" class="input-field " type="file" name="media3" accept="image/png, image/gif, image/jpeg"><br>
                 </div>
                 <button class="btn-white w-full mt-6" type="submit" name="submit">CONTINUE</button>
+
+                <?php 
+                    if ($sessionController->getSystemMessage() != null) {
+                        echo 
+                            '<div class="message-container mt-6">
+                                <p class="error-message">' . $sessionController->getSystemMessage() . '</p>
+                            </div>';
+                    }
+                ?> 
+
             </form>
         </div>
     </div>

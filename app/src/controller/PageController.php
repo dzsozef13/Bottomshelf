@@ -35,19 +35,35 @@ class PageController
         if (isset($args['filter'])) {
             $exploreFilter = $args['filter'];
             $session->setExploreFilter($exploreFilter);
+        } else {
+            $session->setExploreFilter(null);
         }
+
+        // Selected Post
         if (isset($args['selectedPost'])) {
             $postId = $args['selectedPost'];
             $session->setSelectedPostId($postId);
+        } else {
+            $session->setSelectedPostId(null);
         }
+
+        // Selected User
         if (isset($args['selectedUser'])) {
             $userId = $args['selectedUser'];
             $session->setUserProfileId($userId);
+        } else {
+            $session->setUserProfileId(null);
         }
+
+        // System message
         if (isset($args['systemMessage'])) {
             $systemMessage = $args['systemMessage'];
             $session->setSystemMessage($systemMessage);
+        } else {
+            $session->setSystemMessage(null);
         }
+
+        // View
         if (isset($args['view'])) {
             // Configure session values
             $this->configureSession();
