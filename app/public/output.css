@@ -1688,6 +1688,10 @@ video {
   align-items: center;
 }
 
+.justify-end{
+  justify-content: flex-end;
+}
+
 .justify-center{
   justify-content: center;
 }
@@ -1763,6 +1767,14 @@ video {
 
 .pr-4{
   padding-right: 1rem;
+}
+
+.pl-4{
+  padding-left: 1rem;
+}
+
+.pl-8{
+  padding-left: 2rem;
 }
 
 .font-mono{

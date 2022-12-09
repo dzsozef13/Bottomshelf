@@ -32,9 +32,9 @@ foreach ($countries as $country) {
     </div>
     <div class="2xl:mx-20 mx-0 col-span-6 mb-4">
         <div class="banner-settings w-2/4">
-            <h3 class="medium-headline w-full mb-6">User Information</h3>
+            <h3 class="medium-headline w-full mb-4">User Information</h3>
             <!-- Form for profile picture -->
-            <form action="ChangeProfilePicture" enctype="multipart/form-data" method="post" class="w-full h-auto flex pr-4 mb-0" id="profile-img-upload">
+            <form action="ChangeProfilePicture" enctype="multipart/form-data" method="post" class="w-full h-auto flex-wrap flex  mb-0" id="profile-img-upload">
                 <!-- Image preview -->
                 <div class="settings-preview-img">
                     <img class="img" src="<?php if ($profile->getProfileImage() !== null) {
@@ -44,8 +44,8 @@ foreach ($countries as $country) {
                                             } ?>" alt="Users Profile Picture">
                 </div>
                 <!-- Image upload field -->
-                <div class="w-4/5 flex flex-col h-auto ml-4 justify-center">
-                    <p class="headline">Change profile picture!</p>
+                <div class="w-4/5 flex flex-col h-auto justify-end pl-4">
+                    <p class="headline">Profile picture</p>
                     <div class="input-field-wrapper cursor-pointer flex items-center px-4 upload-btn mt-2">
                         <div class="icon-wrapper">
                             <i class="las la-file-upload"></i>
@@ -54,12 +54,13 @@ foreach ($countries as $country) {
                     </div>
                     <input type="file" id="html-upload-btn" class="hidden" name="profileImg" />
                 </div>
-                <button class="btn-white w-full mt-6" name="submit" type="submit">UPDATE PICTURE</button>
+                <button class="btn-white-no-shadow w-full mt-4" name="submit" type="submit">UPDATE PICTURE</button>
             </form>
             <!-- Form with text fields -->
             <form action="UpdateUser" method="post" class="w-full h-auto flex flex-col mb-0">
+                <p class="headline mt-6 mb-2">Account Details</p>
                 <!-- Username -->
-                <div class="input-field-wrapper mt-6 mb-4">
+                <div class="input-field-wrapper mb-4">
                     <div class="icon-wrapper">
                         <i class="las la-user"></i>
                     </div>
