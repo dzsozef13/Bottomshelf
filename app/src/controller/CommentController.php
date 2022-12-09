@@ -26,7 +26,7 @@ class CommentController
             );
             $commentModel->createComment($data);
         }
-        new Router('SelectedPost?selectedPostg=' . $postId);
+        new Router('SelectedPost?selectedPost=' . $postId);
     }
 
     public function fetchAllByPostId(int $postId)

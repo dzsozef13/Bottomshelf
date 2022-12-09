@@ -14,7 +14,7 @@ class User extends Entity
     // private $userPassword;
     public string $username;
     public string $dateOfBirth;
-    public ?string $profileImgUrl;
+    public ?string $profileImgBlob;
     public ?string $bioDescription;
     // add properties with full objects of these below when you create their entites
     public ?string $countryCode;
@@ -22,13 +22,13 @@ class User extends Entity
     public int $statusId;
 
 
-    public function __construct(int $id, string $email, string $username, string $dateOfBirth, ?string $profileImgUrl, ?string $bioDescription, string $countryCode, int $roleId, int $statusId)
+    public function __construct(int $id, string $email, string $username, string $dateOfBirth, ?string $profileImgBlob, ?string $bioDescription, string $countryCode, int $roleId, int $statusId)
     {
         $this->id = $id;
         $this->email = $email;
         $this->username = $username;
         $this->dateOfBirth = $dateOfBirth;
-        $this->profileImgUrl = $profileImgUrl;
+        $this->profileImgBlob = $profileImgBlob;
         $this->bioDescription = $bioDescription;
         $this->countryCode = $countryCode;
         $this->roleId = $roleId;
@@ -57,6 +57,6 @@ class User extends Entity
 
     public function getProfileImage()
     {
-        return $this->profileImgUrl;
+        return $this->profileImgBlob;
     }
 }

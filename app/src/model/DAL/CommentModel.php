@@ -78,7 +78,7 @@ class CommentModel extends CoreModel
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT Comment.*, User.Username, User.ProfileImgUrl, Post.Title
+            $query = "SELECT Comment.*, User.Username, User.profileImgBlob, Post.Title
             FROM Comment 
             INNER JOIN `User` ON User.UserId=Comment.UserId
             INNER JOIN Post ON Post.PostId=Comment.PostId
@@ -99,7 +99,7 @@ class CommentModel extends CoreModel
                     $row->PostId,
                     $row->CreatedAt,
                     $row->Username,
-                    $row->ProfileImgUrl,
+                    $row->profileImgBlob,
                 );
                 $result[] = $comment;
             }

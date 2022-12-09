@@ -1544,10 +1544,6 @@ video {
   margin-bottom: 0px;
 }
 
-.ml-4{
-  margin-left: 1rem;
-}
-
 .ml-6{
   margin-left: 1.5rem;
 }
@@ -1771,10 +1767,6 @@ video {
 
 .pl-4{
   padding-left: 1rem;
-}
-
-.pl-8{
-  padding-left: 2rem;
 }
 
 .font-mono{

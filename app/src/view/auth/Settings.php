@@ -30,8 +30,8 @@ foreach ($countries as $country) {
 <div class="grid grid-cols-6 gap-4 px-8 w-full">
     <div class="col-span-6 2xl:h-[5vh] h-[5vh] ">
     </div>
-    <div class="2xl:mx-20 mx-0 col-span-6 mb-4">
-        <div class="banner-settings w-2/4">
+    <div class="2xl:mx-20 mx-0 col-span-6 mb-4 flex gap-4">
+        <div class=" banner-settings w-2/4">
             <h3 class="medium-headline w-full mb-4">User Information</h3>
             <!-- Form for profile picture -->
             <form action="ChangeProfilePicture" enctype="multipart/form-data" method="post" class="w-full h-auto flex-wrap flex  mb-0" id="profile-img-upload">
@@ -91,6 +91,9 @@ foreach ($countries as $country) {
                 </div>
                 <button class="btn-white w-full mt-6" name="submit" type="submit">UPDATE USER INFORMATION</button>
             </form>
+        </div>
+        <div class="banner-settings w-2/4">
+            <h3 class="medium-headline w-full mb-4">Settings</h3>
         </div>
     </div>
 </div>
