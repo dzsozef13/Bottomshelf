@@ -37,6 +37,7 @@ class PostController
             $postId = $this->postModel->createPost($data);
 
             $uploadedMediaIdArray = $sessionController->getUploadedMediaIdArray();
+
             foreach ($uploadedMediaIdArray as $uploadedMediaId) {
                 $this->postModel->connectPostWithMedia($postId, $uploadedMediaId);
             }

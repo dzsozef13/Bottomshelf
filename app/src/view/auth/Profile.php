@@ -7,11 +7,12 @@ $mediaController = new MediaController();
 
 $userIdParam = $sessionsCtrl->getUserProfileId();
 $loggedInUserId = $sessionsCtrl->getUser()['userId'];
+
 $profile = null;
 $posts = null;
 
 if (isset($loggedInUserId)) {
-    if (isset($userIdParam)) {
+    if (isset($userIdParam) && isset($_GET['selectedUser'])) {
         $profile = $userCtrl->fetchById($userIdParam);
         $posts = $postController->fetchByUserId($userIdParam);
     } else {
