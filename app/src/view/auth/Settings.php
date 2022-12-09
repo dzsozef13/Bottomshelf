@@ -38,7 +38,7 @@ foreach ($countries as $country) {
                 <!-- Image preview -->
                 <div class="settings-preview-img">
                     <img class="img" src="<?php if ($profile->getProfileImage() !== null) {
-                                                echo $profile->getProfileImage();
+                                                echo 'data:image/*;charset=utf8;base64,' . base64_encode($profile->getProfileImage());
                                             } else {
                                                 echo "public/asset/images/PlaceholderProfilePicture.png";
                                             } ?>" alt="Users Profile Picture">
