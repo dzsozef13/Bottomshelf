@@ -1,0 +1,50 @@
+@layer components {
+
+/* Input Fields */
+.input-field-wrapper {
+  @apply 
+    w-full
+    rounded-lg
+    border
+    border-highlight-green-900/60
+    bg-transparent
+    flex
+    relative
+    h-10
+  ;
+}
+
+.text-area-wrapper {
+  @apply 
+    w-full
+    rounded-lg
+    border
+    border-highlight-green-900/60
+    bg-transparent
+    flex
+    relative
+    min-h-[4rem]
+  ;
+}
+
+.input-field {
+  @apply 
+    w-[calc(100%-3rem)]
+    border-2
+    border-none
+    bg-transparent
+    placeholder-highlight-green-900/60
+    placeholder-opacity-100
+    p-4
+    text-sm
+    h-full
+  ;
+}
+
+.input-field:focus {
+  @apply 
+    outline-none
+  ;
+}
+
+}

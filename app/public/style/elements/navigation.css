@@ -1,0 +1,115 @@
+@layer components {
+
+/* Navigation */
+.nav {
+  @apply 
+    mx-auto 
+    w-screen
+    flex 
+    h-20 
+    px-8
+    items-center 
+    fixed 
+    top-0 
+    left-0 
+    z-50
+    right-0
+  ;
+}
+
+/* Dropdown */
+.dropdown-field-wrapper {
+  @apply 
+    w-full
+    rounded-lg
+    border
+    border-highlight-green-900/60
+    bg-background-secondary-900
+    flex
+    relative
+    h-10
+    z-10
+    mt-6
+  ;
+}
+
+.dropdown {
+  @apply
+    w-full
+    h-auto
+    flex
+    flex-col
+    bg-background-secondary-900
+    border
+    border-highlight-green-900/60
+    top-12
+    h-max
+    max-h-[20rem]
+    rounded
+    overflow-scroll
+    mb-40
+  ;
+}
+
+.dropdown-button {
+  @apply 
+    w-full
+    flex
+    items-center
+    cursor-pointer
+    bg-transparent
+    hover:bg-background-ternary-900
+    font-mono
+    py-2
+    px-4
+  ;
+}
+
+.sort-dropdown-container {
+  @apply
+    w-full
+    h-auto
+    mb-4
+    flex
+  ;
+}
+.dropdown {
+  @apply 
+    w-max
+    flex
+    tracking-wide
+    h-auto
+  ;
+}
+
+/* Sidebar */ 
+.side-bar-container {
+  @apply 
+    w-full
+    flex
+    flex-col
+    h-auto
+  ;
+}
+
+.user-sidebar {
+  @apply 
+    bg-background-black-900
+    p-4
+    hidden
+    w-full
+    h-max
+    z-10
+    top-0
+    fixed
+    sm:h-full
+    sm:bg-highlight-green-900/10 
+    sm:p-8 
+    sm:relative
+    sm:flex
+    sm:flex-col 
+    sm:justify-between
+  ;
+}
+
+}

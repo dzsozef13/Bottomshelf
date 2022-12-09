@@ -148,6 +148,5 @@ class SessionController
     }
     public function getSystemMessage() {
         return $_SESSION['systemMessage'] ?? null;
-        $_SESSION['systemMessage'] = null;
     }
 }
