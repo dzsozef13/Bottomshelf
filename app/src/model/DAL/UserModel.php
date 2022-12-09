@@ -232,4 +232,29 @@ class UserModel extends CoreModel
             print($e->getMessage());
         }
     }
+
+    /**
+     * @param int userId
+     * @param array updatable data
+     */
+    public function uploadProfilePicture($data)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+            $query = "UPDATE `User` SET ProfileImgUrl = :ProfileImgUrl WHERE UserId = :UserId";
+
+            $handle = $conn->prepare($query);
+
+            $handle->bindParam(':ProfileImgUrl', $data['media']);
+            $handle->bindValue(':UserId', $data['userId']);
+
+            $handle->execute();
+
+            //close the connection
+            CoreModel::closeDbConnection();
+            $conn = null;
+        } catch (PDOException $e) {
+            print($e->getMessage());
+        }
+    }
 }

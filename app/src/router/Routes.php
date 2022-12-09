@@ -32,6 +32,7 @@ Router::add(new Route("UserLogin", "user/tryLogInUser"));
 Router::add(new Route("UserLogout", "user/tryLogOutUser"));
 Router::add(new Route("UserRegist", "user/tryRegistUser"));
 Router::add(new Route("UpdateUser", "user/updateUser"));
+Router::add(new Route("ChangeProfilePicture", "user/addProfilePicture"));
 
 // POST
 Router::add(new Route("CreatePost", "post/create"));

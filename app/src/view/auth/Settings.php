@@ -34,7 +34,7 @@ foreach ($countries as $country) {
         <div class="banner-settings w-2/4">
             <h3 class="medium-headline w-full mb-6">User Information</h3>
             <!-- Form for profile picture -->
-            <form action="" class="w-full h-auto flex pr-4 mb-0" id="profile-img-upload">
+            <form action="ChangeProfilePicture" enctype="multipart/form-data" method="post" class="w-full h-auto flex pr-4 mb-0" id="profile-img-upload">
                 <!-- Image preview -->
                 <div class="settings-preview-img">
                     <img class="img" src="<?php if ($profile->getProfileImage() !== null) {
@@ -52,8 +52,9 @@ foreach ($countries as $country) {
                         </div>
                         <p id="input-text" class="m-0 p-0 text-sm">Upload image...</p>
                     </div>
-                    <input type="file" id="html-upload-btn" class="hidden" />
+                    <input type="file" id="html-upload-btn" class="hidden" name="profileImg" />
                 </div>
+                <button class="btn-white w-full mt-6" name="submit" type="submit">UPDATE PICTURE</button>
             </form>
             <!-- Form with text fields -->
             <form action="UpdateUser" method="post" class="w-full h-auto flex flex-col mb-0">
@@ -87,7 +88,7 @@ foreach ($countries as $country) {
                         ?>
                     </div>
                 </div>
-                <button class="btn-white w-full mt-6" type="submit">UPDATE USER INFORMATION</button>
+                <button class="btn-white w-full mt-6" name="submit" type="submit">UPDATE USER INFORMATION</button>
             </form>
         </div>
     </div>
