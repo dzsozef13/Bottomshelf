@@ -34,11 +34,6 @@ class PostModel extends CoreModel
 
 			$handle->execute();
 			$lastInsertedPostId = $conn->lastInsertId();
-
-			//close the connection
-            CoreModel::closeDbConnection();
-            $conn = null;
-
 			return $lastInsertedPostId;
 		} catch (PDOException $e) {
 			echo  $e->getMessage();
@@ -60,9 +55,6 @@ class PostModel extends CoreModel
 			$handle->bindValue(':mediaId', $mediaId);
 
 			$handle->execute();
-
-			CoreModel::closeDbConnection();
-			$conn = null;
 		} catch (PDOException $e) {
 			echo  $e->getMessage();
 		}
@@ -101,11 +93,6 @@ class PostModel extends CoreModel
 				$row->ChildPostId,
 				$row->StatusId
 			);
-
-			//close the connection
-			CoreModel::closeDbConnection();
-			$conn = null;
-
 			return $post;
 		} catch (PDOException $e) {
 			print($e->getMessage());
@@ -152,10 +139,6 @@ class PostModel extends CoreModel
 
 				$result[] = $post;
 			}
-			//close the connection
-			CoreModel::closeDbConnection();
-			$conn = null;
-
 			return $result;
 		} catch (PDOException $e) {
 			print($e->getMessage());
@@ -200,66 +183,12 @@ class PostModel extends CoreModel
 
 				$result[] = $post;
 			}
-
-			//close the connection
-			CoreModel::closeDbConnection();
-			$conn = null;
-
 			return $result;
 		} catch (PDOException $e) {
 			print($e->getMessage());
 		}
 	}
 
-	/**
-	 * @return Post[] (if none then empty array [])
-	 */
-	public function searchPosts(string $phrase)
-	{
-		try {
-			$conn = CoreModel::openDbConnetion();
-			$query = "SELECT Post.*, User.Username, Comment.content
-			FROM Post 
-			INNER JOIN `User` ON User.UserId=Post.UserId
-			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-			WHERE Post.Title LIKE :Phrase 
-			ORDER BY Post.CreatedAt DESC";
-
-			$sanitizedPhrase = "%" . htmlspecialchars($phrase) . "%";
-
-			$handle = $conn->prepare($query);
-			$handle->bindParam(':Phrase', $sanitizedPhrase);
-			$handle->execute();
-
-			$result = array();
-			while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
-				$post = new Post(
-					$row->PostId,
-					$row->Title,
-					$row->PostDescription,
-					$row->ReactionCount,
-					$row->IsPublic,
-					$row->IsSticky,
-					$row->CreatedAt,
-					$row->UserId,
-					$row->Username,
-					$row->LatestCommentId,
-					$row->ChildPostId,
-					$row->StatusId
-				);
-
-				$result[] = $post;
-			}
-
-			//close the connection
-			CoreModel::closeDbConnection();
-			$conn = null;
-
-			return $result;
-		} catch (PDOException $e) {
-			print($e->getMessage());
-		}
-	}
 
 	/**
 	 * @param int postId
@@ -282,10 +211,6 @@ class PostModel extends CoreModel
 			$handle->bindParam(':postId', $id);
 
 			$handle->execute();
-
-			//close the connection
-			CoreModel::closeDbConnection();
-			$conn = null;
 		} catch (PDOException $e) {
 			print($e->getMessage());
 		}
@@ -309,10 +234,6 @@ class PostModel extends CoreModel
 			$handle->bindParam(':postId', $id);
 
 			$handle->execute();
-
-			//close the connection
-			CoreModel::closeDbConnection();
-			$conn = null;
 		} catch (PDOException $e) {
 			print($e->getMessage());
 		}
