@@ -39,7 +39,7 @@ $uploadedMediaIdArray = $sessionController->getUploadedMediaIdArray();
                     <div class="icon-wrapper">
                         <i class="las la-unlock-alt"></i>
                     </div>
-                    <input placeholder="Public" checked="checked" class="cursor-pointer peer opacity-0 absolute h-full w-full" type="checkbox" name="isPublic">
+                    <input placeholder="Public" checked="true" class="cursor-pointer peer opacity-0 absolute h-full w-full" type="checkbox" name="isPublic">
                     <div class="checkbox peer-checked:after:content-['✓'] peer-checked:text-highlight-green-900 flex items-center justify-center"></div>
                     <p class="text-xs ml-2 text-highlight-green-900">Is Public</p>
                 </div>
