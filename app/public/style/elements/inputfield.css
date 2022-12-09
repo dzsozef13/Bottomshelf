@@ -37,4 +37,13 @@
   .input-field:focus {
     @apply outline-none;
   }
+
+  .checkbox {
+    @apply w-5 
+      h-5 
+      bg-transparent
+      border
+      rounded
+      border-highlight-green-900;
+  }
 }

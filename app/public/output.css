@@ -1028,6 +1028,16 @@ video {
   outline-offset: 2px;
 }
 
+.checkbox{
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(144 202 156 / var(--tw-border-opacity));
+  background-color: transparent;
+}
+
 /* Buttons */
 
 .btn-green{
@@ -1588,6 +1598,10 @@ video {
   height: 100vh;
 }
 
+.h-full{
+  height: 100%;
+}
+
 .h-auto{
   height: auto;
 }
@@ -1608,10 +1622,6 @@ video {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-}
-
-.h-full{
-  height: 100%;
 }
 
 .min-h-\[4rem\]{
@@ -1640,10 +1650,6 @@ video {
 
 .w-4\/5{
   width: 80%;
-}
-
-.w-2\/4{
-  width: 50%;
 }
 
 .flex-none{
@@ -1752,6 +1758,16 @@ video {
   padding-right: 0.25rem;
 }
 
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-2{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .px-2{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1760,11 +1776,6 @@ video {
 .px-6{
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.px-4{
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .pb-6{
@@ -1839,12 +1850,40 @@ video {
   color: rgb(216 216 216 / 0.4);
 }
 
+.text-highlight-green-900\/40{
+  color: rgb(144 202 156 / 0.4);
+}
+
+.opacity-0{
+  opacity: 0;
+}
+
 .filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .last\:mb-0:last-child{
   margin-bottom: 0px;
+}
+
+.peer:checked ~ .peer-checked\:bg-red-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
+}
+
+.peer:checked ~ .peer-checked\:text-highlight-green-900{
+  --tw-text-opacity: 1;
+  color: rgb(144 202 156 / var(--tw-text-opacity));
+}
+
+.peer:checked ~ .peer-checked\:after\:content-\[\'\*\'\]::after{
+  --tw-content: '*';
+  content: var(--tw-content);
+}
+
+.peer:checked ~ .peer-checked\:after\:content-\[\'\2713\'\]::after{
+  --tw-content: '✓';
+  content: var(--tw-content);
 }
 
 @media (min-width: 640px){
@@ -1870,10 +1909,6 @@ video {
 
   .sm\:col-span-5{
     grid-column: span 5 / span 5;
-  }
-
-  .sm\:col-span-4{
-    grid-column: span 4 / span 4;
   }
 
   .sm\:my-8{
