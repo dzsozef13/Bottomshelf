@@ -20,7 +20,9 @@
                             My Profile</li>
                     </a>
                     <a href="/Settings">
-                        <li class="mb-4">
+                        <li class="mb-4 <?php if ($_SERVER['REQUEST_URI'] === '/Settings') {
+                                            echo 'text-highlight-green-900';
+                                        } ?>">
                             Settings</li>
                     </a>
                     <a href="UserLogout">

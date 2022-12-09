@@ -11,12 +11,10 @@ class User extends Entity
 {
     public int $id;
     public string $email;
-    // private $userPassword;
     public string $username;
     public string $dateOfBirth;
     public ?string $profileImgBlob;
     public ?string $bioDescription;
-    // add properties with full objects of these below when you create their entites
     public ?string $countryCode;
     public int $roleId;
     public int $statusId;
@@ -57,7 +55,7 @@ class User extends Entity
 
     public function isAdmin()
     {
-        if ($this->statusId == 2) {
+        if ($this->roleId == 2) {
             return true;
         } else {
             return false;
