@@ -45,7 +45,7 @@ class MediaController
                     if (in_array($fileType, $allowTypes)) {
                         $image = $_FILES[$mediaName]['tmp_name'];
                         $imgContent = file_get_contents($image);
-                        console_log($mediaName . " is uploaded: " . $_FILES[$mediaName]['name']); 
+                        console_log($mediaName . " is uploaded: " . $_FILES[$mediaName]['name']);
                         // Insert into media array
                         $mediaArray[] = $imgContent;
                     } else {
@@ -95,5 +95,5 @@ class MediaController
             $redirect = new Router("Login?systemMessage=" . $errorMessage);
             return;
         }
-    } 
+    }
 }

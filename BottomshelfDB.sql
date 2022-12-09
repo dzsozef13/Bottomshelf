@@ -2,6 +2,15 @@ DROP DATABASE IF EXISTS BottomshelfDB;
 CREATE DATABASE BottomshelfDB;
 USE BottomshelfDB;
 
+CREATE TABLE `System` (
+    Id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    ServiceDescription varchar(10000),
+    Rules varchar(10000),
+    PhoneNumber varchar(32) NOT NULL,
+    SystemEmail varchar(128) NOT NULL,
+    `Address` varchar(512) NOT NULL,
+    UsersCount int
+);
 CREATE TABLE Country (
     CountryCode varchar(3) NOT NULL PRIMARY KEY,
     CountryName varchar(64)
@@ -28,7 +37,7 @@ CREATE TABLE `User` (
     UserPassword varchar(128) NOT NULL,
     Username varchar(64) NOT NULL,
     DateOfBirth date NOT NULL,
-    ProfileImgUrl longblob,
+    ProfileImgBlob longblob,
     BioDescription varchar(256),
     CountryCode varchar(3) NOT NULL,
     RoleId int NOT NULL,
@@ -55,7 +64,7 @@ CREATE TABLE Post (
     UserId int NOT NULL,
     ChildPostId int,
     StatusId int NOT NULL,
-    FOREIGN KEY (UserId) REFERENCES User (UserId), 
+    FOREIGN KEY (UserId) REFERENCES `User` (UserId), 
     FOREIGN KEY (ChildPostId) REFERENCES Post (PostId),  
     FOREIGN KEY (StatusId) REFERENCES EntityStatus (StatusId)
 );

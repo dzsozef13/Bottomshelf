@@ -7,11 +7,12 @@ $mediaController = new MediaController();
 
 $userIdParam = $sessionsCtrl->getUserProfileId();
 $loggedInUserId = $sessionsCtrl->getUser()['userId'];
+
 $profile = null;
 $posts = null;
 
 if (isset($loggedInUserId)) {
-    if (isset($userIdParam)) {
+    if (isset($userIdParam) && isset($_GET['selectedUser'])) {
         $profile = $userCtrl->fetchById($userIdParam);
         $posts = $postController->fetchByUserId($userIdParam);
     } else {
@@ -27,7 +28,7 @@ if (isset($loggedInUserId)) {
         <div class="profile-card">
             <div class="profile-picture">
                 <img class="img" src="<?php if ($profile->getProfileImage() !== null) {
-                                            echo $profile->getProfileImage();
+                                            echo 'data:image/*;charset=utf8;base64,' . base64_encode($profile->getProfileImage());
                                         } else {
                                             echo "public/asset/images/PlaceholderProfilePicture.png";
                                         } ?>" alt="Users Profile Picture">
@@ -70,6 +71,7 @@ if (isset($loggedInUserId)) {
             Private
         </div>
     </div>
+
     <div class="2xl:mx-20 mx-0 col-span-6 mb-8">
         <?php
         if (empty($posts)) {
@@ -77,7 +79,9 @@ if (isset($loggedInUserId)) {
                 <div class="no-post-banner">
                     <h3 class="headline text-lg mb-6">You have not created any posts yet...</h3>
                     <div class="btn-green">
-                        <button>CREATE A POST</button>
+                        <a href="/Upload">
+                            <button>CREATE A POST</button>
+                        </a>
                     </div>
                 </div>
         ';

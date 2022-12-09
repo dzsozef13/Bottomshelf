@@ -33,7 +33,7 @@ class PageController
         // Configure view in session
         $session = new SessionController();
         if (isset($args['filter'])) {
-            $exploreFilter = $args['filter']; 
+            $exploreFilter = $args['filter'];
             $session->setExploreFilter($exploreFilter);
         } else {
             $session->setExploreFilter(null);
@@ -84,7 +84,8 @@ class PageController
     /**
      * Looks for parameters passed from router to set values for the view about to be rendered
      */
-    public function configureSession() {
+    public function configureSession()
+    {
         // TODO: make this work
     }
 }

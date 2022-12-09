@@ -102,4 +102,55 @@ class UserController
 
         new Router('Settings');
     }
+
+
+    public function addProfilePicture()
+    {
+        $userModel = new UserModel();
+        $sessionController = new SessionController();
+
+        $userId = $sessionController->getUser()['userId'];
+
+        $profilePicture = null;
+
+        if (isset($_POST['submit'])) {
+            if (isset($_FILES['profileImg']["name"])) {
+                // Get file info 
+                $fileName = basename($_FILES['profileImg']["name"]);
+                $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+
+                // Allow certain file formats 
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                if (in_array($fileType, $allowTypes)) {
+                    $image = $_FILES['profileImg']['tmp_name'];
+                    $profilePicture = file_get_contents($image);
+                } else {
+                    // Redirect to Upload with message "Wrong format"
+                    $errorMessage = "Failed to upload file becase of unsupported format.";
+                    $redirect = new Router("Settings?systemMessage=" . $errorMessage);
+                    return;
+                }
+            }
+        } else {
+            // Redirect to Upload with message "Wrong format"
+            $errorMessage = "Failed to upload file, it might be damaged or too large.";
+            $redirect = new Router("Settings?systemMessage=" . $errorMessage);
+            return;
+        }
+
+
+        if (isset($userId, $profilePicture)) {
+            $data = array(
+                "userId" => $userId,
+                "media" => $profilePicture
+            );
+            $userModel->uploadProfilePicture($data);
+            $redirect = new Router("Settings");
+        } else {
+            // Redirect to Upload with message "Wrong format"
+            $errorMessage = "Oops, something went wrong. Please log in and try again.";
+            $redirect = new Router("Settings?systemMessage=" . $errorMessage);
+            return;
+        }
+    }
 }

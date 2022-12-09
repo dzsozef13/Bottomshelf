@@ -176,6 +176,8 @@ INSERT INTO Country (CountryCode, CountryName) VALUES
 ('ZMB','Zambia'),
 ('ZWE','Zimbabwe');
 
+INSERT INTO `System` (ServiceDescription, Rules, PhoneNumber, SystemEmail, `Address`) VALUES ('Welcome to Bottom Shelf! Explore new recipe ideas by browsing the communitys submissions. Through tags and our search system, you can find exactly the drink you had in mind. If you dont feel inspired, go to Explore page… ', '1.Dont lie, dont steal, 2.be a good neighbor, 3.live laugh live', '00 00 00 00', 'bottomshelf@dummyEmail.com', 'Denmark Esbjerh 6700' );
+
 INSERT INTO `Role` (RoleId, RoleName) VALUES (NULL,'User');
 INSERT INTO `Role` (RoleId, RoleName) VALUES (NULL,'Admin');
 
@@ -191,14 +193,14 @@ INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Banned');
 INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Reported');
 INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Deleted');
 
-INSERT INTO `User`  (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgUrl, BioDescription, CountryCode, RoleId, StatusId) 
+INSERT INTO `User` (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgBlob, BioDescription, CountryCode, RoleId, StatusId) 
 VALUES (NULL,'test@lol.com', 'something123', 'ProudTester', '1999-11-11', NULL, 'I existed only to test', 'POL', 1, 1);
 
-INSERT INTO `User`  (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgUrl, BioDescription, CountryCode, RoleId, StatusId) 
+INSERT INTO `User` (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgBlob, BioDescription, CountryCode, RoleId, StatusId) 
 VALUES (NULL,'monkey@lol.com', 'monkeyPass', 'MonkeyFromATree', '200-01-12', NULL, 'Test Or Not To Test', 'DNK', 1, 1);
 
 
-INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, CreatedAt, ReactionCount, LatestCommentId, UserId, ChildPostId, StatusId)
-VALUES (NULL,'First Post', 'Describing the post always', TRUE, FALSE, 1667561122, 0, NULL, 1, NULL, 1);
-INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, CreatedAt, ReactionCount, LatestCommentId, UserId, ChildPostId, StatusId)
-VALUES (NULL,'Another Post', 'Just a beer', TRUE, FALSE, 0, 1667467522, NULL, 1, NULL, 1);
+INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, ReactionCount, LatestCommentId, UserId, ChildPostId, StatusId)
+VALUES (NULL,'First Post', 'Describing the post always', TRUE, FALSE, 0, NULL, 1, NULL, 1);
+INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, ReactionCount, LatestCommentId, UserId, ChildPostId, StatusId)
+VALUES (NULL,'Another Post', 'Just a beer', TRUE, FALSE, 0, NULL, 1, NULL, 1);

@@ -7,6 +7,7 @@ $sessionController = new SessionController();
 $postController = new PostController();
 $mediaController = new MediaController();
 $tagsController = new TagsController();
+$systemController = new SystemController();
 
 /**
  * Fetch posts
@@ -31,6 +32,12 @@ $tagTemplates = array();
 foreach ($tags as $tag) {
     $tagTemplates[] = $tag->getTagTemplate();
 }
+
+/**
+ * Fetch System information
+ */
+
+$system = $systemController->fetchById(1);
 
 ?>
 
@@ -116,14 +123,12 @@ foreach ($tags as $tag) {
     <div class="col-span-2">
         <div class="side-bar-container">
             <div class="banner">
-                <!-- temporary dummy text untill we introduce information info which the admin can edit -->
-                <h2 class="headline text-xl text-highlight-green-900">Welcome to Bottom Shelf!</h2>
-                <p class="text-sm mt-2">Explore new recipe ideas by browsing the community’s submissions.
-                    Through tags and our search system, you can find exactly the drink
-                    you had in mind. If you dont feel inspired, go to Explore page…
-                </p>
+                <?php echo $system->getDescription() ?>
             </div>
-
+            <div class="banner mt-4">
+                <p class="headline mb-2">Guidelines</p>
+                <?php echo $system->getRules() ?>
+            </div>
         </div>
 
     </div>

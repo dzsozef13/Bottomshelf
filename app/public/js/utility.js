@@ -111,4 +111,16 @@ $(document).ready(function(e) {
         $('#dropdown').hide();
     }); 
 
+     // When clicking the new upload file button it triggers the visually hidden html input
+    $('.upload-btn', $('#profile-img-upload')).click(function() {
+        console.log('a')
+        $('#html-upload-btn').click();
+    });
+
+    // When uploading a profile picture, it will display the files name
+    $('#html-upload-btn').change(function(event) {
+      
+       $('#input-text').text(event.currentTarget.files[0].name)
+    });
 });
+

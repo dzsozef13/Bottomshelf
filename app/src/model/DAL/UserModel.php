@@ -128,7 +128,7 @@ class UserModel extends CoreModel
                 User.Email, 
                 User.Username,
                 User.DateOfBirth, 
-                User.ProfileImgUrl, 
+                User.profileImgBlob, 
                 User.BioDescription, 
                 User.RoleId, 
                 User.StatusId, 
@@ -146,7 +146,7 @@ class UserModel extends CoreModel
             $handle->execute();
             // Get result
             $result = $handle->fetch(PDO::FETCH_OBJ);
-            $entity = new User($result->UserId, $result->Email, $result->Username, $result->DateOfBirth, $result->ProfileImgUrl, $result->BioDescription, $result->CountryCode, $result->RoleId,  $result->StatusId);
+            $entity = new User($result->UserId, $result->Email, $result->Username, $result->DateOfBirth, $result->profileImgBlob, $result->BioDescription, $result->CountryCode, $result->RoleId,  $result->StatusId);
             // Close database connection
             $this->closeDbConnection();
             // Return result
@@ -178,7 +178,7 @@ class UserModel extends CoreModel
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT UserId, Email, Username, ProfileImgUrl, StatusId,CountryCode, RoleId 
+            $query = "SELECT UserId, Email, Username, profileImgBlob, StatusId,CountryCode, RoleId 
             FROM `User` 
             WHERE StatusId = :StatusId AND RoleId = :RoleId
             ORDER BY UserId";
@@ -222,6 +222,31 @@ class UserModel extends CoreModel
             $handle->bindParam(':BioDescription', $sanitizedDescription);
             $handle->bindValue(':CountryCode', $data['countryCode']);
             $handle->bindParam(':UserId', $id);
+
+            $handle->execute();
+
+            //close the connection
+            CoreModel::closeDbConnection();
+            $conn = null;
+        } catch (PDOException $e) {
+            print($e->getMessage());
+        }
+    }
+
+    /**
+     * @param int userId
+     * @param array updatable data
+     */
+    public function uploadProfilePicture($data)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+            $query = "UPDATE `User` SET profileImgBlob = :profileImgBlob WHERE UserId = :UserId";
+
+            $handle = $conn->prepare($query);
+
+            $handle->bindParam(':profileImgBlob', $data['media']);
+            $handle->bindValue(':UserId', $data['userId']);
 
             $handle->execute();
 

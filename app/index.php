@@ -8,6 +8,7 @@ include_files(array(
     "TagsController",
     "CommentController",
     "CountryController",
+    "SystemController",
 ));
 
 $router = new Router();

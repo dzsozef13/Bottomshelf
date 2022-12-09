@@ -37,6 +37,7 @@ class PostController
             $postId = $this->postModel->createPost($data);
 
             $uploadedMediaIdArray = $sessionController->getUploadedMediaIdArray();
+
             foreach ($uploadedMediaIdArray as $uploadedMediaId) {
                 $this->postModel->connectPostWithMedia($postId, $uploadedMediaId);
             }
@@ -67,13 +68,13 @@ class PostController
         }
     }
 
-    public function searchPosts()
-    {
-        $phrase = $_POST['phrase'];
+    // public function searchPosts()
+    // {
+    //     $phrase = $_POST['phrase'];
 
-        if (isset($phrase)) {
-            return $this->postModel->searchPosts($phrase);
-        }
-        new Router('Explore');
-    }
+    //     if (isset($phrase)) {
+    //         return $this->postModel->searchPosts($phrase);
+    //     }
+    //     new Router('Explore');
+    // }
 }
