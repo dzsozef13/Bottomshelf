@@ -26,7 +26,7 @@ class CommentController
             );
             $commentModel->createComment($data);
         }
-        new Router('SelectedPost?id=' . $postId);
+        new Router('SelectedPost?selectedPost=' . $postId);
     }
 
     public function fetchAllByPostId(int $postId)
@@ -46,7 +46,7 @@ class CommentController
         if (isset($_GET['commentId'])) {
             $commentModel->updateComment($_GET['commentId'], $content);
         }
-        new Router('SelectedPost?id=' . $postId);
+        new Router('SelectedPost?selectedPost=' . $postId);
     }
 
     public function delete()
@@ -59,6 +59,6 @@ class CommentController
         if (isset($_GET['commentId'])) {
             $commentModel->deleteComment($_GET['commentId']);
         }
-        new Router('SelectedPost?id=' . $postId);
+        new Router('SelectedPost?selectedPost=' . $postId);
     }
 }
