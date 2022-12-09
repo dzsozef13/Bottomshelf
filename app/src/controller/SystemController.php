@@ -31,6 +31,7 @@ class SystemController
         );
 
         if (!empty($data)) {
+            // system id hardcoded to 1 for now
             $systemModel->updateSystemContact(1, $data);
         }
 
@@ -39,7 +40,18 @@ class SystemController
 
     function UpdateDescriptionRules()
     {
-        // $systemModel = new SystemModel();
-        // return $systemModel->getById($id);
+        $systemModel = new SystemModel();
+
+        $data = array(
+            "systemDescription" =>  $_POST['systemDescription'],
+            "rules" =>  $_POST['rules'],
+        );
+
+        if (!empty($data)) {
+            // system id hardcoded to 1 for now
+            $systemModel->updateSystemDescriptionAndRules(1, $data);
+        }
+
+        new Router('Settings');
     }
 }

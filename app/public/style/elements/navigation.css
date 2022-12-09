@@ -1,9 +1,7 @@
 @layer components {
-
-/* Navigation */
-.nav {
-  @apply 
-    mx-auto 
+  /* Navigation */
+  .nav {
+    @apply mx-auto 
     w-screen
     flex 
     h-20 
@@ -13,14 +11,12 @@
     top-0 
     left-0 
     z-50
-    right-0
-  ;
-}
+    right-0;
+  }
 
-/* Dropdown */
-.dropdown-field-wrapper {
-  @apply 
-    w-full
+  /* Dropdown */
+  .dropdown-field-wrapper {
+    @apply w-full
     rounded-lg
     border
     border-highlight-green-900/60
@@ -29,13 +25,11 @@
     relative
     h-10
     z-10
-    mt-6
-  ;
-}
+    mt-6;
+  }
 
-.dropdown {
-  @apply
-    w-full
+  .dropdown {
+    @apply w-full
     h-auto
     flex
     flex-col
@@ -47,13 +41,11 @@
     max-h-[20rem]
     rounded
     overflow-scroll
-    mb-40
-  ;
-}
+    mb-40;
+  }
 
-.dropdown-button {
-  @apply 
-    w-full
+  .dropdown-button {
+    @apply w-full
     flex
     items-center
     cursor-pointer
@@ -61,45 +53,37 @@
     hover:bg-background-ternary-900
     font-mono
     py-2
-    px-4
-  ;
-}
+    px-4;
+  }
 
-.sort-dropdown-container {
-  @apply
-    w-full
+  .sort-dropdown-container {
+    @apply w-full
     h-auto
     mb-4
-    flex
-  ;
-}
-.dropdown {
-  @apply 
-    w-max
+    flex;
+  }
+  .dropdown {
+    @apply w-max
     flex
     tracking-wide
-    h-auto
-  ;
-}
+    h-auto;
+  }
 
-/* Sidebar */ 
-.side-bar-container {
-  @apply 
-    w-full
+  /* Sidebar */
+  .side-bar-container {
+    @apply w-full
     flex
     flex-col
-    h-auto
-  ;
-}
+    h-auto;
+  }
 
-.user-sidebar {
-  @apply 
-    bg-background-black-900
+  .user-sidebar {
+    @apply bg-background-black-900
     p-4
     hidden
     w-full
     h-max
-    z-10
+    z-50
     top-0
     fixed
     sm:h-full
@@ -108,8 +92,6 @@
     sm:relative
     sm:flex
     sm:flex-col 
-    sm:justify-between
-  ;
-}
-
+    sm:justify-between;
+  }
 }

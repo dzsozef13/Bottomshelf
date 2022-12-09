@@ -138,7 +138,7 @@ class SystemModel extends CoreModel
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "UPDATE `System` SET (ServiceDescription = :ServiceDescription, Rules = :Rules) WHERE Id = :Id)";
+            $query = "UPDATE `System` SET ServiceDescription = :ServiceDescription, Rules = :Rules WHERE Id = :Id";
 
             $handle = $conn->prepare($query);
 

@@ -34,7 +34,7 @@ foreach ($countries as $country) {
 <div class="grid grid-cols-6 gap-8 px-8 w-full">
     <div class="col-span-6 2xl:h-[5vh] h-[5vh] ">
     </div>
-    <div class="2xl:mx-20 mx-0 col-span-3 flex flex-col gap-4">
+    <div class="2xl:mx-20 mx-0 col-span-6 md:col-span-3 flex flex-col gap-4">
         <div class="banner-settings w-full">
             <h3 class="medium-headline w-full mb-4"><?php if ($isAdmin) {
                                                         echo '<span class="text-highlight-green-900">Admin </span>';
@@ -101,7 +101,7 @@ foreach ($countries as $country) {
             </form>
         </div>
     </div>
-    <div class="2xl:mx-20 mx-0 col-span-3 flex flex-col gap-8">
+    <div class="2xl:mx-20 mx-0 col-span-6 md:col-span-3 flex flex-col gap-8">
         <div class="banner-settings w-full h-max">
             <h3 class="medium-headline w-full mb-2">Bottomshelf</h3>
             <div class="w-full flex flex-wrap mb-2">

@@ -1395,7 +1395,7 @@ video {
 .user-sidebar{
   position: fixed;
   top: 0px;
-  z-index: 10;
+  z-index: 50;
   display: none;
   height: -webkit-max-content;
   height: -moz-max-content;
@@ -1468,10 +1468,6 @@ video {
 
 .col-span-4{
   grid-column: span 4 / span 4;
-}
-
-.col-span-3{
-  grid-column: span 3 / span 3;
 }
 
 .m-0{
@@ -1902,6 +1898,10 @@ video {
 }
 
 @media (min-width: 768px){
+  .md\:col-span-3{
+    grid-column: span 3 / span 3;
+  }
+
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
