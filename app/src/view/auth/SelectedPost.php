@@ -65,7 +65,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
         <div class="post-preview-content">
             <h2 class="medium-headline"><?php echo $post->getTitle() ?></h2>
             <p class="text-sm font-mono">
-                <a href="Profile?user=<?php echo $post->getAuthorId() ?>">
+                <a href="Profile?selectedUser=<?php echo $post->getAuthorId() ?>">
                     by @<span class="text-highlight-green-900"><?php echo $post->getAuthorName() ?></span> </a>
                 <span class="text-dim-white-900/60"><?php echo $post->getCreatedAt() ?></span>
             </p>
@@ -96,7 +96,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                     <div class="comment-body-container">
                         <div class="comment-headline">
                             <div class="comment-username">
-                                <a href="Profile?user=' . $comment->getUserId() . '">
+                                <a href="Profile?selectedUser=' . $comment->getUserId() . '">
                                     <h6 class="headline text-highlight-green-900">' . $comment->getUsername() . '</h6>
                                 </a>
                                 ' . ($comment->getUserId() == $sessionController->getUser()['userId'] ? '
