@@ -40,11 +40,12 @@ Router::add(new Route("UpdateDescriptionRules", "system/UpdateDescriptionRules")
 
 // POST
 Router::add(new Route("CreatePost", "post/create"));
+Router::add(new Route("DeletePost", "post/deletePost"));
 Router::add(new Route("FilterPost", "post/searchPosts"));
 
 // COMMENT
 Router::add(new Route("AddComment", "comment/create"));
-Router::add(new Route("DeleteComment", "comment/delete"));
+Router::add(new Route("DeleteComment", "comment/deleteByCommentId"));
 Router::add(new Route("UpdateComment", "comment/update"));
 
 // MEDIA

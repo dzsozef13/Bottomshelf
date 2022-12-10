@@ -32,10 +32,21 @@ $post = $postController->fetchById($postId);
  */
 $media = $mediaController->fetchMediaForPost($post->getId());
 $indexedMediaArray = array_values($media);
+$smallImages = array();
 if (isset($indexedMediaArray)) {
     $post->setMedia($indexedMediaArray);
+
+    foreach ($indexedMediaArray as $image) {
+        $smallImages[] = '<div class="post-small-images">
+            <img class="img small-img" src="data:image/*;charset=utf8;base64,' . base64_encode($image->getImage()) . '" alt="">
+        </div>';
+    }
 }
 $selectedImage = !empty($indexedMediaArray) ? $indexedMediaArray[0] : null;
+
+
+
+
 /**
  * Fetch all comments for the post
  */
@@ -45,22 +56,23 @@ $comments = $commentController->fetchAllByPostId($post->getId());
 
 <div class="grid grid-cols-6 px-2 my-4 sm:px-8 sm:my-8 w-full gap-4">
     <!-- Images Column -->
-    <div class=" col-span-6 sm:col-span-3 px-6 sm:px-0">
-        <div class="post-preview-img-container">
-            <img class="img" id="big-img" src="data:image/*;charset=utf8;base64,<?php echo base64_encode($selectedImage->getImage()) ?>" alt="">
+    <?php if (!empty($indexedMediaArray)) {
+        echo '
+        <div class=" col-span-6 sm:col-span-3 px-6 sm:px-0">
+            <div class="post-preview-img-container">
+                <img class="img" id="big-img" src="data:image/*;charset=utf8;base64,' . base64_encode($selectedImage->getImage()) . '" alt="">
+            </div>
+            <div class="post-small-images-container">
+                ' .
+            implode($smallImages)
+            . '
+            </div>
         </div>
-        <div class="post-small-images-container">
-            <?php
-            foreach ($indexedMediaArray as $image) {
-                echo '<div class="post-small-images">
-                    <img class="img small-img" src="data:image/*;charset=utf8;base64,' . base64_encode($image->getImage()) . '" alt="">
-                </div>';
-            }
-            ?>
-        </div>
-    </div>
+        ';
+    } else {
+    } ?>
     <!-- Post Content Column -->
-    <div class=" col-span-6 sm:col-span-3">
+    <div class="col-span-6 sm:col-span-3">
         <!-- Container for post information -->
         <div class="post-preview-content">
             <h2 class="medium-headline"><?php echo $post->getTitle() ?></h2>
@@ -69,6 +81,9 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                     by @<span class="text-highlight-green-900"><?php echo $post->getAuthorName() ?></span> </a>
                 <span class="text-dim-white-900/60"><?php echo $post->getCreatedAt() ?></span>
             </p>
+            <a href="/DeletePost">
+                <button>test</button>
+            </a>
             <h4 class="mt-4 ">
                 <?php echo $post->getDescription() ?>
             </h4>

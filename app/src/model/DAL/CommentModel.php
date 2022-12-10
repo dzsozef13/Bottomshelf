@@ -144,9 +144,8 @@ class CommentModel extends CoreModel
 
     /**
      * @param int commentId
-     * @param string updatable data
      */
-    public function deleteComment(int $id)
+    public function deleteCommentByCommentId(int $commentId)
     {
         try {
             $conn = CoreModel::openDbConnetion();
@@ -154,7 +153,30 @@ class CommentModel extends CoreModel
 
             $handle = $conn->prepare($query);
 
-            $handle->bindParam(':CommentId', $id);
+            $handle->bindParam(':CommentId', $commentId);
+
+            $handle->execute();
+
+            //close the connection
+            CoreModel::closeDbConnection();
+            $conn = null;
+        } catch (PDOException $e) {
+            print($e->getMessage());
+        }
+    }
+
+    /**
+     * @param int postId
+     */
+    public function deleteCommentsByPostId(int $postId)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+            $query = "DELETE FROM Comment WHERE PostId = :PostId";
+
+            $handle = $conn->prepare($query);
+
+            $handle->bindParam(':PostId', $postId);
 
             $handle->execute();
 

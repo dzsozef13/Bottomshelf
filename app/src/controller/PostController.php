@@ -7,15 +7,10 @@ include_files(array(
 
 class PostController
 {
-    private $postModel;
-
-    public function __construct()
-    {
-        $this->postModel = new PostModel;
-    }
 
     public function create()
     {
+        $postModel = new PostModel;
         $title = $_POST['title'];
         $description = $_POST['description'];
         $isPublic = isset($_POST['isPublic']) ? 1 : 0;
@@ -33,12 +28,12 @@ class PostController
                 'userId' =>  $userId,
                 'statusId' =>  $statusId
             );
-            $postId = $this->postModel->createPost($data);
+            $postId = $postModel->createPost($data);
 
             $uploadedMediaIdArray = $sessionController->getUploadedMediaIdArray();
 
             foreach ($uploadedMediaIdArray as $uploadedMediaId) {
-                $this->postModel->connectPostWithMedia($postId, $uploadedMediaId);
+                $postModel->connectPostWithMedia($postId, $uploadedMediaId);
             }
 
             // Redirect to profile
@@ -50,20 +45,39 @@ class PostController
 
     public function fetchAll(int $statusId = 1, bool $isPublic = true)
     {
-        return $this->postModel->getAll($statusId, $isPublic);
+        $postModel = new PostModel;
+        return $postModel->getAll($statusId, $isPublic);
     }
 
     public function fetchById(int $id): Post
     {
+        $postModel = new PostModel;
         if (isset($id)) {
-            return $this->postModel->getById($id);
+            return $postModel->getById($id);
         }
     }
 
     public function fetchByUserId(int $userId)
     {
+        $postModel = new PostModel;
         if (isset($userId)) {
-            return $this->postModel->getAllByUserId($userId);
+            return $postModel->getAllByUserId($userId);
+        }
+    }
+
+    public function deletePost()
+    {
+        $postModel = new PostModel;
+        $sessionController = new SessionController();
+        $postId = $sessionController->getSelectedPostId();
+        $commentController = new CommentController();
+        // $mediaController = new CommentController();
+        // tags and reactions controller to be added
+
+        if (isset($postId)) {
+            $postModel->deletePost($postId);
+            $commentController->deleteByPostId($postId);
+            $redirect = new Router("Profile");
         }
     }
 

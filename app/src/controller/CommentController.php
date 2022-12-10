@@ -49,7 +49,7 @@ class CommentController
         new Router('SelectedPost?selectedPost=' . $postId);
     }
 
-    public function delete()
+    public function deleteByCommentId()
     {
         $commentModel = new CommentModel();
         $sessionController = new SessionController();
@@ -57,8 +57,19 @@ class CommentController
         $postId = $sessionController->getSelectedPostId();
 
         if (isset($_GET['commentId'])) {
-            $commentModel->deleteComment($_GET['commentId']);
+            $commentModel->deleteCommentByCommentId($_GET['commentId']);
         }
         new Router('SelectedPost?selectedPost=' . $postId);
+    }
+
+    public function deleteByPostId(int $postId)
+    {
+        $commentModel = new CommentModel();
+        $sessionController = new SessionController();
+
+
+        if (isset($postId)) {
+            $commentModel->deleteCommentsByPostId($postId);
+        }
     }
 }

@@ -241,9 +241,21 @@ class PostModel extends CoreModel
 
 	public function deletePost($id)
 	{
-	}
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$query = "DELETE FROM Post WHERE PostId = :PostId";
 
-	public function softDeletePost($id)
-	{
+			$handle = $conn->prepare($query);
+
+			$handle->bindParam(':PostId', $id);
+
+			$handle->execute();
+
+			//close the connection
+			CoreModel::closeDbConnection();
+			$conn = null;
+		} catch (PDOException $e) {
+			print($e->getMessage());
+		}
 	}
 }
