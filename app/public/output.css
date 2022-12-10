@@ -1877,10 +1877,6 @@ video {
   padding-left: 1rem;
 }
 
-.pb-4{
-  padding-bottom: 1rem;
-}
-
 .font-mono{
   font-family: 'Space Mono';
 }
@@ -1935,11 +1931,6 @@ video {
 
 .text-dim-white-900\/40{
   color: rgb(216 216 216 / 0.4);
-}
-
-.text-dim-white-900{
-  --tw-text-opacity: 1;
-  color: rgb(216 216 216 / var(--tw-text-opacity));
 }
 
 .opacity-0{
