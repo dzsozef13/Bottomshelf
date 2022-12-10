@@ -71,16 +71,15 @@ class PostController
         $sessionController = new SessionController();
         $postId = $sessionController->getSelectedPostId();
 
-        if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['isPublic'])) {
+        if (isset($_POST['title']) && isset($_POST['description']) && isset($postId)) {
             $data = array(
                 "title" => $_POST['title'],
                 "description" => $_POST['description'],
-                "isPublic" => $_POST['isPublic'] ? 1 : 0,
+                "isPublic" => isset($_POST['isPublic']) ? 1 : 0,
             );
-
             $postModel->updatePost($postId, $data);
         }
-        // new Router('SelectedPost?selectedPost=' . $postId);
+        new Router('SelectedPost?selectedPost=' . $postId);
     }
 
     public function deletePost()

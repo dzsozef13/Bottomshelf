@@ -194,7 +194,7 @@ class PostModel extends CoreModel
 	 * @param int postId
 	 * @param array updatable data
 	 */
-	public function updatePost(int $id, $data)
+	public function updatePost($id, $data)
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();

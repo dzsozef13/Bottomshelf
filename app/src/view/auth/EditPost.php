@@ -12,7 +12,6 @@ $post = $postController->fetchById($postId);
 
 $media = $mediaController->fetchMediaForPost($post->getId());
 $indexedMediaArray = array_values($media);
-
 ?>
 
 <div class="grid grid-cols-6 px-8">
@@ -40,7 +39,9 @@ $indexedMediaArray = array_values($media);
                     <div class="icon-wrapper">
                         <i class="las la-unlock-alt"></i>
                     </div>
-                    <input placeholder="Public" checked="<?php echo $post->getIsPublic() == 1 ? true : false ?>" class="cursor-pointer peer opacity-0 absolute h-full w-full" type="checkbox" name="isPublic">
+                    <input placeholder="Public" <?php if ($post->getIsPublic() == 1) {
+                                                    echo 'checked';
+                                                }  ?> class="cursor-pointer peer opacity-0 absolute h-full w-full" type="checkbox" name="isPublic">
                     <div class="checkbox peer-checked:after:content-['✓'] peer-checked:text-highlight-green-900 flex items-center justify-center"></div>
                     <p class="text-xs ml-2 text-highlight-green-900">Is Public</p>
                 </div>
