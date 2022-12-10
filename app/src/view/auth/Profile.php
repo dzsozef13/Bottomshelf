@@ -21,7 +21,7 @@ if (isset($loggedInUserId)) {
     }
 }
 
-if ($profile->getStatusId() !== null  && $sessionsCtrl->getUser()['roleId'] == 2) {
+if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 && isset($_GET['selectedUser'])) {
     if ($profile->getStatusId() == 1) {
         $buttons =   '<a href="/BanUser">
                     <button class="btn-outlined mr-4">BAN USER</button>
@@ -61,7 +61,7 @@ if ($profile->getStatusId() !== null  && $sessionsCtrl->getUser()['roleId'] == 2
 
         <div class="profile-card">
             <?php
-            if ($sessionsCtrl->getUser()['roleId'] == 2) {
+            if ($sessionsCtrl->getUser()['roleId'] == 2 & isset($_GET['selectedUser'])) {
                 echo '
                 <div class="absolute -top-[4rem] left-56 w-max h-auto flex items-center">
                 ' . $buttons  . '
@@ -79,7 +79,9 @@ if ($profile->getStatusId() !== null  && $sessionsCtrl->getUser()['roleId'] == 2
             <div class="profile-username-container">
                 <h3 class="text-4xl font-mono ">
                     <span class="text-highlight-green-900">@</span><?php echo $profile->username ?><br>
-                    <span class="text-xs">User status: <?php echo $profile->getStatus() ?></span>
+                    <?php if ($sessionsCtrl->getUser()['roleId'] == 2 && isset($_GET['selectedUser'])) {
+                        echo '<span class="text-xs">User status: ' .  $profile->getStatus() . '</span>';
+                    } ?>
                 </h3>
                 <div class="badges-container">
                     <div class="badges-wrapper">
