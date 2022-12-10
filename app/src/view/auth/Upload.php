@@ -45,7 +45,6 @@ $tagsController = new TagsController();
                 <input type="file" id="input-btn-3" class="hidden" name="media3" accept="image/png, image/gif, image/jpeg" />
 
                 <button class="btn-white w-full mt-6" type="submit" name="submit">CONTINUE</button>
-
                 <?php
                 if ($sessionController->getSystemMessage() != null) {
                     echo

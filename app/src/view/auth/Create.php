@@ -15,10 +15,10 @@ foreach ($uploadedMediaIdArray as $imageId) {
 }
 ?>
 
-<div class="grid grid-cols-6 px-8 h-[calc(100vh-5rem)]">
+<div class="grid grid-cols-6 px-8">
     <div class="w-screen h-screen absolute top-0 left-0 z-0 bg-[radial-gradient(circle_at_100%_100%,_rgba(144,202,156,0.111)_0%,_rgba(144,202,156,0.0)_58%)]">
     </div>
-    <div class="col-span-6 xl:col-span-3 flex flex-col justify-between sm:pr-8 relative z-1">
+    <div class="col-span-6 lg:col-span-3 flex flex-col justify-between sm:pr-8 relative z-1">
         <div class="mt-12">
             <div class="pb-6">
                 <h3 class="medium-headline mb-2">The secret recipe...</h3>
@@ -29,13 +29,13 @@ foreach ($uploadedMediaIdArray as $imageId) {
                     <div class="icon-wrapper">
                         <i class="las la-signature"></i>
                     </div>
-                    <input placeholder="Title" class="input-field " type="text" name="title">
+                    <input required placeholder="Title" class="input-field " type="text" name="title">
                 </div>
                 <div class="text-area-wrapper mb-4">
                     <div class="icon-wrapper-text-area">
                         <i class="las la-comment"></i>
                     </div>
-                    <textarea placeholder="Description.." name="description" maxlength="256" class="input-field  min-h-[4rem]"></textarea>
+                    <textarea required placeholder="Description.." name="description" maxlength="256" class="input-field  min-h-[4rem]"></textarea>
                 </div>
                 <div class="input-field-wrapper items-center px-2">
                     <div class="icon-wrapper">
@@ -47,10 +47,14 @@ foreach ($uploadedMediaIdArray as $imageId) {
                 </div>
                 <button class="btn-white w-full mt-6 " type="submit">SHARE</button>
             </form>
+            <!-- Possibily add a clean up if they cancel or an alert -->
+            <a href="/Explore">
+                <button class="btn-outlined w-full mt-4">CANCEL</button>
+            </a>
         </div>
     </div>
-    <div class="col-span-6 xl:col-span-3">
-        <h3 class="medium-headline mb-2 mt-12">Uploaded pictures</h3>
+    <div class="col-span-6 lg:col-span-3">
+        <h3 class="medium-headline mb-2 mt-0 lg:mt-12">Uploaded pictures</h3>
         <div class="post-small-images-container">
             <?php
             foreach ($indexedMediaArray as $image) {

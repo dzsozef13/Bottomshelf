@@ -1,9 +1,7 @@
 @layer components {
-    
-/* Buttons */
-.btn-green {
-  @apply 
-    w-40 
+  /* Buttons */
+  .btn-green {
+    @apply w-40 
     h-10
     flex 
     justify-center 
@@ -16,15 +14,16 @@
     font-mono
     uppercase 
     text-background-black-900 
+    transition
+    hover:-translate-y-1 
+    hover:scale-100
     font-bold 
     cursor-pointer
-    text-sm
-  ;
-}
+    text-sm;
+  }
 
-.btn-white {
-  @apply 
-    w-40 
+  .btn-white {
+    @apply w-40 
     h-10
     cursor-pointer
     flex 
@@ -38,14 +37,15 @@
     font-mono 
     uppercase 
     text-background-black-900 
+    transition
+    hover:-translate-y-1 
+    hover:scale-100
     font-bold 
-    text-sm
-  ;
-}
+    text-sm;
+  }
 
-.btn-white-no-shadow {
-  @apply 
-    w-40 
+  .btn-white-no-shadow {
+    @apply w-40 
     h-10
     cursor-pointer
     flex 
@@ -57,14 +57,15 @@
     font-mono 
     uppercase 
     text-background-black-900 
+    transition
+    hover:-translate-y-1 
+    hover:scale-100
     font-bold 
-    text-sm
-  ;
-}
+    text-sm;
+  }
 
-.btn-green-no-shadow {
-  @apply 
-    w-40 
+  .btn-green-no-shadow {
+    @apply w-40 
     h-10
     flex 
     justify-center 
@@ -77,8 +78,29 @@
     text-background-black-900 
     font-bold 
     cursor-pointer
-    text-sm
-  ;
-}
+    transition
+    hover:-translate-y-1 
+    hover:scale-100
+    text-sm;
+  }
 
+  .btn-outlined {
+    @apply w-40 
+    h-10
+    flex 
+    justify-center 
+    items-center 
+    border
+    border-highlight-green-900 
+    rounded 
+    font-mono 
+    uppercase 
+    text-highlight-green-900  
+    font-bold 
+    cursor-pointer
+    transition
+    hover:-translate-y-1 
+    hover:scale-100
+    text-sm;
+  }
 }
