@@ -72,7 +72,7 @@ class PostModel extends CoreModel
 
 			$query = "SELECT Post.*, User.Username FROM Post 
 			INNER JOIN `User` ON User.UserId=Post.UserId
-			WHERE Post.PostId = :PostId AND Post.StatusId = 1";
+			WHERE Post.PostId = :PostId AND Post.StatusId = 1 AND User.StatusId = 1";
 
 			$handle = $conn->prepare($query);
 			$handle->bindParam(':PostId', $postId);
@@ -112,7 +112,7 @@ class PostModel extends CoreModel
 				FROM Post
 				LEFT JOIN `User` ON User.UserId=Post.UserId
 				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-				WHERE Post.StatusId = :statusId AND Post.IsPublic = :isPublic
+				WHERE Post.StatusId = :statusId AND Post.IsPublic = :isPublic AND User.StatusId = 1
 				ORDER BY Post.CreatedAt DESC";
 
 			$handle = $conn->prepare($query);
@@ -157,7 +157,7 @@ class PostModel extends CoreModel
 			FROM Post 
 			INNER JOIN `User` ON User.UserId=Post.UserId
 			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-			WHERE Post.UserId = :UserId AND Post.StatusId = 1
+			WHERE Post.UserId = :UserId AND Post.StatusId = 1 AND User.StatusId = 1
 			ORDER BY Post.CreatedAt DESC";
 
 			$handle = $conn->prepare($query);
