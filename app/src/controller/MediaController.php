@@ -19,6 +19,17 @@ class MediaController
     }
 
     /**
+     * Fetches all media by ID
+     */
+    public function fetchMediaById(int $imageId)
+    {
+        $mediaModel = new MediaModel();
+        if (isset($imageId)) {
+            return $mediaModel->getMediaById($imageId);
+        }
+    }
+
+    /**
      * Uploads the submitted media
      * Signs it with the user ID of the current session
      */

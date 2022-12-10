@@ -77,4 +77,32 @@ class MediaModel extends CoreModel
 		}
 	}
 
+	public function getMediaById(int $imageId)
+	{
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$query =
+				"SELECT *
+				FROM Media
+				WHERE Media.ImageId = :ImageId";
+
+			$handle = $conn->prepare($query);
+			$handle->bindParam(':ImageId', $imageId);
+			$handle->execute();
+
+			$row = $handle->fetch(PDO::FETCH_OBJ);
+			$media = new Media(
+				$row->ImageId,
+				$row->Image,
+				$row->UserId
+			);
+
+			CoreModel::closeDbConnection();
+			$conn = null;
+
+			return $media;
+		} catch (PDOException $e) {
+			print($e->getMessage());
+		}
+	}
 }

@@ -9,9 +9,11 @@ $mediaController = new MediaController();
 $tagsController = new TagsController();
 
 $uploadedMediaIdArray = $sessionController->getUploadedMediaIdArray();
-
+$indexedMediaArray = array();
+foreach ($uploadedMediaIdArray as $imageId) {
+    $indexedMediaArray[] = $mediaController->fetchMediaById($imageId);
+}
 ?>
-
 
 <div class="grid grid-cols-6 px-8 h-[calc(100vh-5rem)]">
     <div class="w-screen h-screen absolute top-0 left-0 z-0 bg-[radial-gradient(circle_at_100%_100%,_rgba(144,202,156,0.111)_0%,_rgba(144,202,156,0.0)_58%)]">
@@ -47,5 +49,16 @@ $uploadedMediaIdArray = $sessionController->getUploadedMediaIdArray();
             </form>
         </div>
     </div>
-    <div class="col-span-6 sm:col-span-3 2xl:col-span-4 "></div>
+    <div class="col-span-6 xl:col-span-3">
+        <h3 class="medium-headline mb-2 mt-12">Uploaded pictures</h3>
+        <div class="post-small-images-container">
+            <?php
+            foreach ($indexedMediaArray as $image) {
+                echo '<div class="post-small-images">
+                    <img class="img small-img" src="data:image/*;charset=utf8;base64,' . base64_encode($image->getImage()) . '" alt="">
+                </div>';
+            }
+            ?>
+        </div>
+    </div>
 </div>
