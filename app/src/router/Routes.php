@@ -18,7 +18,6 @@ Router::add(new Route("404", "page/load", array("view" => "404")));
 Router::add(new Route("Home", "page/load", array("view" => "Home")));
 Router::add(new Route("Login", "page/load", array("view" => "Login")));
 Router::add(new Route("Signup", "page/load", array("view" => "Signup")));
-Router::add(new Route("About", "page/load", array("view" => "About")));
 
 // AUTH
 Router::add(new Route("Explore", "page/load", array("view" => "Explore", "auth" => true)));

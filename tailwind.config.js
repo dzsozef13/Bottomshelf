@@ -15,6 +15,9 @@ module.exports = {
       sans: "'Lato'",
       mono: "'Space Mono'",
     },
+    dropShadow: {
+      'md': '0px 0px 20px rgba(144, 202, 156, 0.5)',
+    },
     extend: {
       colors: {
         'highlight-green': {

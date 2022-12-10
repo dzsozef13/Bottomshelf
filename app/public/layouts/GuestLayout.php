@@ -6,9 +6,6 @@
                 <li class="mx-4 ml-6">
                     <a href="/Home">Home</a>
                 </li>
-                <li class="mx-2">
-                    <a href="/About">About</a>
-                </li>
             </ul>
         </div>
         <div class="btn-green">
