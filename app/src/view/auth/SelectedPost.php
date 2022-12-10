@@ -21,6 +21,8 @@ $postController = new PostController();
 
 $commentController = new CommentController();
 
+
+$userId = $sessionController->getUser()['userId'];
 /**
  * Get Post id from the session and fetch the Post
  */
@@ -81,12 +83,23 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                     by @<span class="text-highlight-green-900"><?php echo $post->getAuthorName() ?></span> </a>
                 <span class="text-dim-white-900/60"><?php echo $post->getCreatedAt() ?></span>
             </p>
-            <a href="/DeletePost">
-                <button>test</button>
-            </a>
             <h4 class="mt-4 ">
                 <?php echo $post->getDescription() ?>
             </h4>
+            <?php
+            if ($userId == $post->getAuthorId()) {
+                echo '
+                <div class="w-full flex justify-end">
+                    <a href="/DeletePost">
+                        <button class="btn-white-no-shadow mr-4 mt-4">EDIT POST</button>
+                    </a>
+                    <a href="/DeletePost">
+                        <button class="btn-outlined mt-4">DELETE POST</button>
+                    </a>
+                </div>
+                ';
+            }
+            ?>
         </div>
         <!-- Comment Section -->
         <div class="post-preview-content">

@@ -38,8 +38,6 @@ foreach ($countries as $country) {
         <div class="banner-settings w-full">
             <h3 class="medium-headline w-full mb-4"><?php if ($isAdmin) {
                                                         echo '<span class="text-highlight-green-900">Admin </span>';
-                                                    } else {
-                                                        echo '';
                                                     } ?>User Information</h3>
             <!-- Form for profile picture -->
             <form action="ChangeProfilePicture" enctype="multipart/form-data" method="post" class="w-full h-auto flex-wrap flex  mb-0" id="profile-img-upload">

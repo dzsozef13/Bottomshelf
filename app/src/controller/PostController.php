@@ -78,7 +78,7 @@ class PostController
 
         if (isset($postId)) {
             $postModel->deletePost($postId);
-            // $redirect = new Router("Profile");
+            $redirect = new Router("Profile");
         }
     }
 
