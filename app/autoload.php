@@ -64,6 +64,7 @@ function include_files($files)
             case "Settings":
             case "Profile":
             case "SelectedPost":
+            case "EditPost":
             case "Dashboard":
             case "Upload":
             case "Create":

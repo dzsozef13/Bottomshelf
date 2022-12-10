@@ -26,6 +26,8 @@ Router::add(new Route("SelectedPost", "page/load", array("view" => "SelectedPost
 Router::add(new Route("Settings", "page/load", array("view" => "Settings", "auth" => true)));
 Router::add(new Route("Upload", "page/load", array("view" => "Upload", "auth" => true)));
 Router::add(new Route("Create", "page/load", array("view" => "Create", "auth" => true)));
+Router::add(new Route("EditPost", "page/load", array("view" => "EditPost", "auth" => true)));
+
 
 // USER
 Router::add(new Route("UserLogin", "user/tryLogInUser"));

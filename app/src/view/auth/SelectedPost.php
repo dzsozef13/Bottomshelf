@@ -91,10 +91,10 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                 echo '
                 <div class="w-full flex justify-end">
                     <a href="/DeletePost">
-                        <button class="btn-white-no-shadow mr-4 mt-4">EDIT POST</button>
+                        <button class="btn-white-no-shadow mr-4 mt-4">DELETE POST</button>
                     </a>
-                    <a href="/DeletePost">
-                        <button class="btn-outlined mt-4">DELETE POST</button>
+                    <a href="/EditPost?selectedPost=' . $post->getId() . '">
+                        <button class="btn-outlined mt-4">EDIT POST</button>
                     </a>
                 </div>
                 ';
