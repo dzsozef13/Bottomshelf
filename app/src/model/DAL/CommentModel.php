@@ -164,26 +164,4 @@ class CommentModel extends CoreModel
             print($e->getMessage());
         }
     }
-
-    /**
-     * @param int postId
-     */
-    public function deleteCommentsByPostId(int $postId)
-    {
-        try {
-            $conn = CoreModel::openDbConnetion();
-            $query = "DELETE FROM Comment WHERE PostId = :PostId";
-
-            $handle = $conn->prepare($query);
-
-            $handle->bindParam(':PostId', $postId);
-
-            $handle->execute();
-
-            //close the connection
-            CoreModel::closeDbConnection();
-        } catch (PDOException $e) {
-            print($e->getMessage());
-        }
-    }
 }

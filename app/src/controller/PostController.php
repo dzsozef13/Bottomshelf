@@ -70,21 +70,15 @@ class PostController
         // Post model to delete the post
         $postModel = new PostModel;
 
-        // Controllers to delete other related entities to the post
         $sessionController = new SessionController();
-        $commentController = new CommentController();
-        $mediaController = new CommentController();
         // tags and reactions controller to be added
 
         // Post id from session
         $postId = $sessionController->getSelectedPostId();
 
         if (isset($postId)) {
-            $commentController->deleteByPostId($postId);
             $postModel->deletePost($postId);
-            // Make sure that things get deleted only if post deletion succeeds
-
-            $redirect = new Router("Profile");
+            // $redirect = new Router("Profile");
         }
     }
 

@@ -61,14 +61,4 @@ class CommentController
         }
         new Router('SelectedPost?selectedPost=' . $postId);
     }
-
-    public function deleteByPostId(int $postId)
-    {
-        $commentModel = new CommentModel();
-        $sessionController = new SessionController();
-
-        if (isset($postId)) {
-            $commentModel->deleteCommentsByPostId($postId);
-        }
-    }
 }

@@ -243,17 +243,30 @@ class PostModel extends CoreModel
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();
-			$query = "DELETE FROM Post WHERE PostId = :PostId";
+			$query1 = "DELETE FROM Post WHERE PostId = :PostId;";
+			$query2 = "DELETE FROM Comment WHERE PostId = :PostId";
+			$query3 = "DELETE FROM PostHasImage WHERE PostId = :PostId";
+			//Delete tags and reactions too
 
-			$handle = $conn->prepare($query);
+			$conn->beginTransaction();
 
-			$handle->bindParam(':PostId', $id);
+			$handle2 = $conn->prepare($query2);
+			$handle2->bindParam(':PostId', $id);
+			$handle2->execute();
 
-			$handle->execute();
+			$handle3 = $conn->prepare($query3);
+			$handle3->bindParam(':PostId', $id);
+			$handle3->execute();
 
+			$handle1 = $conn->prepare($query1);
+			$handle1->bindParam(':PostId', $id);
+			$handle1->execute();
+
+			$conn->commit();
 			//close the connection
 			CoreModel::closeDbConnection();
 		} catch (PDOException $e) {
+			$conn->rollback();
 			print($e->getMessage());
 		}
 	}
