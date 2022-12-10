@@ -237,6 +237,52 @@ class PostModel extends CoreModel
 	}
 
 	/**
+	 * @return Post[] (if none then empty array [])
+	 */
+	public function getAllByTag(string $tag)
+	{
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$query = "SELECT Post.*, User.Username, Comment.content
+			FROM Post 
+			INNER JOIN `User` ON User.UserId=Post.UserId
+			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
+			INNER JOIN PostHasTag ON PostHasTag.PostId=Post.PostId
+			WHERE PostHasTag.TagId=:Tag
+			ORDER BY Post.CreatedAt DESC";
+
+			$sanitizedTag = htmlspecialchars($tag);
+
+			$handle = $conn->prepare($query);
+			$handle->bindParam(':Tag', $sanitizedTag);
+			$handle->execute();
+
+			$result = array();
+			while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+				$post = new Post(
+					$row->PostId,
+					$row->Title,
+					$row->PostDescription,
+					$row->ReactionCount,
+					$row->IsPublic,
+					$row->IsSticky,
+					$row->CreatedAt,
+					$row->UserId,
+					$row->Username,
+					$row->LatestCommentId,
+					$row->ChildPostId,
+					$row->StatusId
+				);
+
+				$result[] = $post;
+			}
+			return $result;
+		} catch (PDOException $e) {
+			print($e->getMessage());
+		}
+	}
+
+	/**
 	 * @param int postId
 	 * @param array updatable data
 	 */

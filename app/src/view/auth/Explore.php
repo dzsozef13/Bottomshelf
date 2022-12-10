@@ -14,14 +14,11 @@ $tagsController = new TagsController();
 
 // Check for applied filter
 $filter = $sessionController->getFilter();
+$sessionController->setFilter(null);
 if ($filter != null) {
     switch ($filter) {
         case 'trending':
             console_log('trending');
-            $posts = $postController->fetchAll();
-            break;
-        default:
-            console_log('all');
             $posts = $postController->fetchAll();
             break;
     }
@@ -31,7 +28,16 @@ if ($filter != null) {
 $searchPhrase = $sessionController->getSearchPhrase();
 if ($searchPhrase != null) {
     $posts = $postController->fetchByPhrase($searchPhrase);
-} else {
+    $sessionController->setSearchPhrase(null);
+}
+// Check for applied search tag
+$searchTag = $sessionController->getSearchTag();
+if ($searchTag != null) {
+    $posts = $postController->fetchByTag($searchTag);
+    $sessionController->setSearchTag(null);
+}
+// Fetch all posts
+if ($filter == null && $searchPhrase == null && $searchTag == null) {
     $posts = $postController->fetchAll();
 }
 

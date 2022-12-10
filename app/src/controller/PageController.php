@@ -42,11 +42,19 @@ class PageController
         }
 
         // Explore Search
+        // - By Phrase
         if (isset($args['searchPhrase'])) {
             $searchPhrase = $args['searchPhrase'];
             $session->setSearchPhrase($searchPhrase);
         } else {
             $session->setSearchPhrase(null);
+        }
+        // - By Tag
+        if (isset($args['searchTag'])) {
+            $searchTag = $args['searchTag'];
+            $session->setSearchTag($searchTag);
+        } else {
+            $session->getSearchTag(null);
         }
 
         // Selected Post

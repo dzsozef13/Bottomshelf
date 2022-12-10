@@ -25,9 +25,9 @@ class Tag
 
     public function getTagTemplate(): string
     {
-        $template = '<div class="tag-chip">
+        $template = '<a class="tag-chip" href="Explore?searchTag=' . $this->getId() . '">
                             ' . $this->getTagName() . '
-                        </div>';
+                        </a>';
         return $template;
     }
 }

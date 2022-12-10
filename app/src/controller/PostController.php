@@ -73,4 +73,10 @@ class PostController
             return $this->postModel->getAllByPhrase($phrase);
         }
     }
+
+    public function fetchByTag($tag) {
+        if (isset($tag)) {
+            return $this->postModel->getAllByTag($tag);
+        }
+    }
 }
