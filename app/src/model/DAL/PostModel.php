@@ -113,7 +113,7 @@ class PostModel extends CoreModel
 				LEFT JOIN `User` ON User.UserId=Post.UserId
 				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
 				WHERE Post.StatusId = :statusId AND Post.IsPublic = :isPublic AND User.StatusId = 1
-				ORDER BY Post.CreatedAt DESC";
+				ORDER BY Post.IsSticky DESC, Post.CreatedAt DESC";
 
 			$handle = $conn->prepare($query);
 			$handle->bindParam(':statusId', $statusId);
@@ -157,7 +157,7 @@ class PostModel extends CoreModel
 				FROM Post
 				LEFT JOIN `User` ON User.UserId=Post.UserId
 				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-				WHERE  User.StatusId = 1
+				WHERE User.StatusId = 1 AND Post.StatusId = 1
 				ORDER BY Post.Title DESC";
 
 			$handle = $conn->prepare($query);
@@ -287,6 +287,22 @@ class PostModel extends CoreModel
 		try {
 			$conn = CoreModel::openDbConnetion();
 			$query = "UPDATE Post SET IsSticky = 1 WHERE PostId = :PostId";
+
+			$handle = $conn->prepare($query);
+
+			$handle->bindParam(':PostId', $id);
+
+			$handle->execute();
+		} catch (PDOException $e) {
+			print($e->getMessage());
+		}
+	}
+
+	public function markAsNotSticky(int $id)
+	{
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$query = "UPDATE Post SET IsSticky = 0 WHERE PostId = :PostId";
 
 			$handle = $conn->prepare($query);
 

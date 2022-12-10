@@ -59,6 +59,15 @@ class Post
         return $this->description;
     }
 
+    public function getIsSticky()
+    {
+        if ($this->isSticky == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getAuthorName()
     {
         return $this->authorName;

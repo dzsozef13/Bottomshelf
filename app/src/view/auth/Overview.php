@@ -27,7 +27,7 @@ $users = $userController->fetchAll();
 ?>
 
 <!-- Explore View -->
-<div class="grid grid-cols-6 gap-4 px-8 my-8 w-full">
+<div class="grid grid-cols-6 gap-8 px-8 my-8 w-full">
     <div class="col-span-3">
         <h3 class="medium-headline mb-4">All Posts</h3>
         <div class="w-full h-max" id="posts">

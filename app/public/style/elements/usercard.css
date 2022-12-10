@@ -3,8 +3,8 @@
   .user-card-container {
     @apply bg-background-secondary-900
         w-full
-        h-80
-        2xl:h-64
+        h-64
+        2xl:h-52
         overflow-hidden
         flex
         flex-col
@@ -27,6 +27,7 @@
     rounded-full
     overflow-hidden
     aspect-square
+    max-w-[110px]
     w-3/4;
   }
 
@@ -50,6 +51,9 @@
   }
 
   .user-card-email {
+    @apply text-sm;
+  }
+  .user-card-status {
     @apply text-sm;
   }
 }

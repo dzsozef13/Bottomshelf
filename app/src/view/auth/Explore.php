@@ -84,7 +84,8 @@ $system = $systemController->fetchById(1);
                 }
                 $postTemplatesArray[] =  '
                                     <a href="/SelectedPost?selectedPost=' .  $post->getId() . '">
-                                        <div class="post-card-container">
+                                        <div class="post-card-container ' . ($post->getIsSticky() ? "sticky" : "") . ' ">
+                                            ' . ($post->getIsSticky() ? '<div class="post-card-sticky"><i class="las la-fire"></i></div>' : '') . '
                                             <!-- Post Image -->
                                             ' . ($post->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
                                                     <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($post->getCoverImageForPost()) . '" />

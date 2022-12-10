@@ -88,6 +88,32 @@ class PostController
         new Router('SelectedPost?selectedPost=' . $postId);
     }
 
+    public function markAsSticky()
+    {
+        $postModel = new PostModel;
+        $sessionController = new SessionController();
+        $postId = $sessionController->getSelectedPostId();
+
+        if (isset($postId)) {
+            $postModel->markAsSticky($postId);
+        }
+
+        new Router('SelectedPost?selectedPost=' . $postId);
+    }
+
+    public function markAsNotSticky()
+    {
+        $postModel = new PostModel;
+        $sessionController = new SessionController();
+        $postId = $sessionController->getSelectedPostId();
+
+        if (isset($postId)) {
+            $postModel->markAsNotSticky($postId);
+        }
+
+        new Router('SelectedPost?selectedPost=' . $postId);
+    }
+
     /**
      * Soft delete post
      */

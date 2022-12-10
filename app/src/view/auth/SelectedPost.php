@@ -92,7 +92,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                 <?php echo $post->getDescription() ?>
             </h4>
             <?php
-            if ($userId == $post->getAuthorId()) {
+            if ($userId == $post->getAuthorId() || $sessionController->getUser()['roleId'] == 2) {
                 echo '
                 <div class="w-full flex justify-end flex-wrap">
                             <a class="w-full md:w-2/4 md:pr-3" href="/EditPost?selectedPost=' . $post->getId() . '">
@@ -101,6 +101,23 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                         <a class="w-full md:w-2/4 md:pl-2" href="/DeletePost">
                              <button class="w-full btn-outlined mt-4">DELETE POST</button>
                         </a>
+                        ' .
+                    ($sessionController->getUser()['roleId'] == 2 && $post->getIsSticky() == false ? '
+                        <a class="w-full" href="/MakeSticky">
+                             <button class="w-full btn-green-no-shadow mt-4">MAKE STICKY</button>
+                         </a>'
+                        : '')
+                    .
+                    '
+                    '
+                    .
+                    ($sessionController->getUser()['roleId'] == 2 && $post->getIsSticky() == true ? '
+                        <a class="w-full" href="/MakeNotSticky">
+                             <button class="w-full btn-outlined mt-4">MAKE NOT STICKY</button>
+                         </a>'
+                        : '')
+
+                    . '
                 </div>
                 ';
             }

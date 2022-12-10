@@ -50,6 +50,8 @@ Router::add(new Route("CreatePost", "post/create"));
 Router::add(new Route("EditPostInformation", "post/update"));
 Router::add(new Route("DeletePost", "post/markAsDeleted"));
 Router::add(new Route("FilterPost", "post/searchPosts"));
+Router::add(new Route("MakeSticky", "post/markAsSticky"));
+Router::add(new Route("MakeNotSticky", "post/markAsNotSticky"));
 
 // COMMENT
 Router::add(new Route("AddComment", "comment/create"));
