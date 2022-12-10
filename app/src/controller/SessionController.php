@@ -40,16 +40,20 @@ class SessionController
      */
     public function getUser()
     {
-        $userId = $_SESSION['userId'];
-        $username = $_SESSION['username'];
-        $roleId = $_SESSION['roleId'];
+        if (isset($_SESSION['userId']) && isset($_SESSION['username']) && isset($_SESSION['roleId'])) {
+            $userId = $_SESSION['userId'];
+            $username = $_SESSION['username'];
+            $roleId = $_SESSION['roleId'];
 
-        if (isset($userId, $username)) {
-            return  array(
-                'userId' => $userId,
-                'username' => $username,
-                'roleId' => $roleId
-            );
+            if (isset($userId, $username)) {
+                return  array(
+                    'userId' => $userId,
+                    'username' => $username,
+                    'roleId' => $roleId
+                );
+            } else {
+                return null;
+            }
         } else {
             return null;
         }

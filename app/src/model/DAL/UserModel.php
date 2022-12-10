@@ -163,7 +163,7 @@ class UserModel extends CoreModel
     public function validateUser($email, $password)
     {
         $user = $this->getUserByEmail($email);
-        if (password_verify($password, $user->UserPassword)) {
+        if (password_verify($password, $user->UserPassword) && $user->StatusId == 1) {
             return $user;
         } else {
             return null;
