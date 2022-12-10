@@ -253,7 +253,6 @@ class PostModel extends CoreModel
 
 			//close the connection
 			CoreModel::closeDbConnection();
-			$conn = null;
 		} catch (PDOException $e) {
 			print($e->getMessage());
 		}

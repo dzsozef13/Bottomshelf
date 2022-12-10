@@ -67,7 +67,6 @@ class CommentController
         $commentModel = new CommentModel();
         $sessionController = new SessionController();
 
-
         if (isset($postId)) {
             $commentModel->deleteCommentsByPostId($postId);
         }
