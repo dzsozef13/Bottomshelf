@@ -72,7 +72,7 @@ class PostModel extends CoreModel
 
 			$query = "SELECT Post.*, User.Username FROM Post 
 			INNER JOIN `User` ON User.UserId=Post.UserId
-			WHERE Post.PostId = :PostId";
+			WHERE Post.PostId = :PostId AND Post.StatusId = 1";
 
 			$handle = $conn->prepare($query);
 			$handle->bindParam(':PostId', $postId);
@@ -157,7 +157,7 @@ class PostModel extends CoreModel
 			FROM Post 
 			INNER JOIN `User` ON User.UserId=Post.UserId
 			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-			WHERE Post.UserId = :UserId 
+			WHERE Post.UserId = :UserId AND Post.StatusId = 1
 			ORDER BY Post.CreatedAt DESC";
 
 			$handle = $conn->prepare($query);
@@ -239,6 +239,10 @@ class PostModel extends CoreModel
 		}
 	}
 
+
+	/**
+	 * Hard delete post
+	 */
 	public function deletePost($id)
 	{
 		try {

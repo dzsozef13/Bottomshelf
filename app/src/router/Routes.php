@@ -43,7 +43,7 @@ Router::add(new Route("UpdateDescriptionRules", "system/UpdateDescriptionRules")
 // POST
 Router::add(new Route("CreatePost", "post/create"));
 Router::add(new Route("EditPostInformation", "post/update"));
-Router::add(new Route("DeletePost", "post/deletePost"));
+Router::add(new Route("DeletePost", "post/markAsDeleted"));
 Router::add(new Route("FilterPost", "post/searchPosts"));
 
 // COMMENT

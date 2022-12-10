@@ -9,7 +9,9 @@ $mediaController = new MediaController();
 
 $postId = $sessionController->getSelectedPostId();
 $post = $postController->fetchById($postId);
-
+if ($post->getId() == null) {
+    new Router('Explore');
+}
 $media = $mediaController->fetchMediaForPost($post->getId());
 $indexedMediaArray = array_values($media);
 ?>

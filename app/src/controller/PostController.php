@@ -82,6 +82,25 @@ class PostController
         new Router('SelectedPost?selectedPost=' . $postId);
     }
 
+    /**
+     * Soft delete post
+     */
+    public function markAsDeleted()
+    {
+        $postModel = new PostModel;
+        $sessionController = new SessionController();
+        $postId = $sessionController->getSelectedPostId();
+
+        if (isset($postId)) {
+            $postModel->updatePostStatus($postId, 4);
+        }
+
+        new Router('Profile');
+    }
+
+    /**
+     * Hard delete post
+     */
     public function deletePost()
     {
         // Post model to delete the post

@@ -28,7 +28,12 @@ $userId = $sessionController->getUser()['userId'];
  */
 $postId = $sessionController->getSelectedPostId();
 $post = $postController->fetchById($postId);
-
+/**
+ * If the post is fetched, but its id is null, it means it was marked as deleted
+ */
+if ($post->getId() == null) {
+    new Router('Explore');
+}
 /**
  * Fetch all media for the post
  */
@@ -89,13 +94,13 @@ $comments = $commentController->fetchAllByPostId($post->getId());
             <?php
             if ($userId == $post->getAuthorId()) {
                 echo '
-                <div class="w-full flex justify-end">
-                    <a href="/DeletePost">
-                        <button class="btn-white-no-shadow mr-4 mt-4">DELETE POST</button>
-                    </a>
-                    <a href="/EditPost?selectedPost=' . $post->getId() . '">
-                        <button class="btn-outlined mt-4">EDIT POST</button>
-                    </a>
+                <div class="w-full flex justify-end flex-wrap">
+                            <a class="w-full md:w-2/4 md:pr-3" href="/EditPost?selectedPost=' . $post->getId() . '">
+                                <button class="w-full btn-white-no-shadow mt-4 mr-4 ">EDIT POST</button>
+                            </a>
+                        <a class="w-full md:w-2/4 md:pl-2" href="/DeletePost">
+                             <button class="w-full btn-outlined mt-4">DELETE POST</button>
+                        </a>
                 </div>
                 ';
             }

@@ -1736,6 +1736,10 @@ video {
   width: 25%;
 }
 
+.w-2\/4{
+  width: 50%;
+}
+
 .w-4\/5{
   width: 80%;
 }
@@ -1877,6 +1881,18 @@ video {
   padding-left: 1rem;
 }
 
+.pr-3{
+  padding-right: 0.75rem;
+}
+
+.pl-3{
+  padding-left: 0.75rem;
+}
+
+.pl-2{
+  padding-left: 0.5rem;
+}
+
 .font-mono{
   font-family: 'Space Mono';
 }
@@ -2014,8 +2030,20 @@ video {
     grid-column: span 3 / span 3;
   }
 
+  .md\:w-2\/4{
+    width: 50%;
+  }
+
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:pr-3{
+    padding-right: 0.75rem;
+  }
+
+  .md\:pl-2{
+    padding-left: 0.5rem;
   }
 
   .md\:text-base{
