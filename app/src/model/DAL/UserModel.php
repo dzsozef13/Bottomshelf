@@ -173,25 +173,32 @@ class UserModel extends CoreModel
     /**
      * @return User[] 
      */
-    public function getAll(int $statusId, int $roleId)
+    public function getAll()
     {
         try {
             $conn = CoreModel::openDbConnetion();
 
-            $query = "SELECT UserId, Email, Username, profileImgBlob, StatusId,CountryCode, RoleId 
+            $query = "SELECT *
             FROM `User` 
-            WHERE StatusId = :StatusId AND RoleId = :RoleId
             ORDER BY UserId";
 
             $handle = $conn->prepare($query);
-            $handle->bindParam(':StatusId', $statusId);
-            $handle->bindParam(':RoleId', $roleId);
             $handle->execute();
 
             $result = array();
-
             while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
-                $result[] = $row;
+                $user =  new User(
+                    $row->UserId,
+                    $row->Email,
+                    $row->Username,
+                    $row->DateOfBirth,
+                    $row->ProfileImgBlob,
+                    $row->BioDescription,
+                    $row->CountryCode,
+                    $row->RoleId,
+                    $row->StatusId
+                );
+                $result[] = $user;
             }
             //close the connection
             CoreModel::closeDbConnection();

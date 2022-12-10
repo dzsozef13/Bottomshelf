@@ -66,6 +66,7 @@ function include_files($files)
             case "SelectedPost":
             case "EditPost":
             case "Dashboard":
+            case "Overview":
             case "Upload":
             case "Create":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/view/auth/' . "$filename" . '.php';

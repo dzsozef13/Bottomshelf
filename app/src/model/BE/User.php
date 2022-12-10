@@ -13,7 +13,7 @@ class User extends Entity
     public string $email;
     public string $username;
     public string $dateOfBirth;
-    public ?string $profileImgBlob;
+    public $profileImgBlob;
     public ?string $bioDescription;
     public ?string $countryCode;
     public int $roleId;
@@ -26,7 +26,9 @@ class User extends Entity
         $this->email = $email;
         $this->username = $username;
         $this->dateOfBirth = $dateOfBirth;
-        $this->profileImgBlob = $profileImgBlob;
+        if ($this->profileImgBlob !== null) {
+            $this->profileImgBlob = $profileImgBlob;
+        }
         $this->bioDescription = $bioDescription;
         $this->countryCode = $countryCode;
         $this->roleId = $roleId;

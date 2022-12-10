@@ -16,11 +16,11 @@ $filter = $sessionController->getExploreFilter();
 switch ($filter) {
     case 'trending':
         console_log('trending');
-        $posts = $postController->fetchAll();
+        $posts = $postController->fetchAllByStatus();
         break;
     default:
         console_log('all');
-        $posts = $postController->fetchAll();
+        $posts = $postController->fetchAllByStatus();
         break;
 }
 

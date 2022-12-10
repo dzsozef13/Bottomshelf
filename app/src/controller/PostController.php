@@ -43,10 +43,16 @@ class PostController
         }
     }
 
-    public function fetchAll(int $statusId = 1, bool $isPublic = true)
+    public function fetchAll()
     {
         $postModel = new PostModel;
-        return $postModel->getAll($statusId, $isPublic);
+        return $postModel->getAll();
+    }
+
+    public function fetchAllByStatus(int $statusId = 1, bool $isPublic = true)
+    {
+        $postModel = new PostModel;
+        return $postModel->getAllByStatus($statusId, $isPublic);
     }
 
     public function fetchById(int $id): Post

@@ -19,6 +19,7 @@ Router::add(new Route("Home", "page/load", array("view" => "Home")));
 Router::add(new Route("Login", "page/load", array("view" => "Login")));
 Router::add(new Route("Signup", "page/load", array("view" => "Signup")));
 Router::add(new Route("About", "page/load", array("view" => "About")));
+
 // AUTH
 Router::add(new Route("Explore", "page/load", array("view" => "Explore", "auth" => true)));
 Router::add(new Route("Profile", "page/load", array("view" => "Profile", "auth" => true)));
@@ -27,7 +28,7 @@ Router::add(new Route("Settings", "page/load", array("view" => "Settings", "auth
 Router::add(new Route("Upload", "page/load", array("view" => "Upload", "auth" => true)));
 Router::add(new Route("Create", "page/load", array("view" => "Create", "auth" => true)));
 Router::add(new Route("EditPost", "page/load", array("view" => "EditPost", "auth" => true)));
-
+Router::add(new Route("Overview", "page/load", array("view" => "Overview", "auth" => true)));
 
 // USER
 Router::add(new Route("UserLogin", "user/tryLogInUser"));

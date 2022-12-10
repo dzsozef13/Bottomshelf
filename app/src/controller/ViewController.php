@@ -17,9 +17,16 @@ class ViewController
 
         if ($isAuthPage === true) {
             $currentSession = new SessionController();
+            if ($currentSession->getUser()['roleId'] == 2) {
+                $linkToAdminView = '<a href="/Overview">
+                                        <li class="mb-4 ' . ($_SERVER['REQUEST_URI'] === '/Overview' ? 'text-highlight-green-900' : "") . '">Overview</li>
+                                    </a>';
+            } else {
+                $linkToAdminView = '';
+            }
 
-            $toBeReplaced = array('{{content}}', '{{username}}');
-            $replacements = array($viewContent, $currentSession->getUser()['username']);
+            $toBeReplaced = array('{{adminView}}', '{{content}}');
+            $replacements = array($linkToAdminView, $viewContent);
             echo str_replace($toBeReplaced, $replacements, $layoutContent);
         } else {
             echo str_replace('{{content}}', $viewContent, $layoutContent);

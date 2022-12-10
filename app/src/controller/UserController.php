@@ -66,6 +66,12 @@ class UserController
         }
     }
 
+    public function fetchAll()
+    {
+        $userModel = new UserModel();
+        return $userModel->getAll();
+    }
+
     public function fetchById($userId)
     {
         if (isset($userId)) {

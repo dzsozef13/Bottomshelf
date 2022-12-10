@@ -102,7 +102,7 @@ class PostModel extends CoreModel
 	/**
 	 * @return Post[]  (if none then empty array [])
 	 */
-	public function getAll(int $statusId, bool $isPublic)
+	public function getAllByStatus(int $statusId, bool $isPublic)
 	{
 		// might improve the get all functions to avoid fetching too much
 		try {
@@ -118,6 +118,49 @@ class PostModel extends CoreModel
 			$handle = $conn->prepare($query);
 			$handle->bindParam(':statusId', $statusId);
 			$handle->bindParam(':isPublic', $isPublic);
+			$handle->execute();
+
+			$result = array();
+			while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+				$post = new Post(
+					$row->PostId,
+					$row->Title,
+					$row->PostDescription,
+					$row->ReactionCount,
+					$row->IsPublic,
+					$row->IsSticky,
+					$row->CreatedAt,
+					$row->UserId,
+					$row->Username,
+					$row->LatestCommentId,
+					$row->ChildPostId,
+					$row->StatusId
+				);
+
+				$result[] = $post;
+			}
+			return $result;
+		} catch (PDOException $e) {
+			print($e->getMessage());
+		}
+	}
+
+	/**
+	 * @return Post[]  (if none then empty array [])
+	 */
+	public function getAll()
+	{
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$query =
+				"SELECT Post.*, User.Username, Comment.Content
+				FROM Post
+				LEFT JOIN `User` ON User.UserId=Post.UserId
+				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
+				WHERE  User.StatusId = 1
+				ORDER BY Post.Title DESC";
+
+			$handle = $conn->prepare($query);
 			$handle->execute();
 
 			$result = array();
