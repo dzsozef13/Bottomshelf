@@ -35,6 +35,10 @@ Router::add(new Route("UserLogout", "user/tryLogOutUser"));
 Router::add(new Route("UserRegist", "user/tryRegistUser"));
 Router::add(new Route("UpdateUser", "user/updateUser"));
 Router::add(new Route("ChangeProfilePicture", "user/addProfilePicture"));
+Router::add(new Route("ChangeProfilePicture", "user/addProfilePicture"));
+Router::add(new Route("BanUser", "user/markAsBanned"));
+Router::add(new Route("UnbanUser", "user/markAsActive"));
+Router::add(new Route("DeleteUser", "user/markAsDeleted"));
 
 // SYSTEM
 Router::add(new Route("UpdateContact", "system/UpdateContact"));

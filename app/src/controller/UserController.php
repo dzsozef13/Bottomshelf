@@ -20,7 +20,7 @@ class UserController
             $userModel = new UserModel();
             if ($user = $userModel->validateUser($email, $password)) {
                 $session = new SessionController();
-                $session->setUser($user->UserId, $user->Username);
+                $session->setUser($user->UserId, $user->Username, $user->RoleId);
                 new Router("Explore");
             } else {
                 new Router("Login");
@@ -103,6 +103,56 @@ class UserController
         new Router('Settings');
     }
 
+    /**
+     * Admin only
+     */
+    public function markAsBanned()
+    {
+        $sessionController = new SessionController();
+        $roleId = $sessionController->getUser()['roleId'];
+        if (isset($roleId) && $roleId == 2) {
+
+            $userModel = new UserModel();
+            $userId = $sessionController->getUserProfileId();
+            if (isset($userId)) {
+                $userModel->updateUserStatus($userId, 2);
+            }
+        }
+        new Router('Profile?selectedUser=' . $userId);
+    }
+
+    /**
+     * Admin only
+     */
+    public function markAsActive()
+    {
+
+        $sessionController = new SessionController();
+        $roleId = $sessionController->getUser()['roleId'];
+
+        if (isset($roleId) && $roleId == 2) {
+            $userModel = new UserModel();
+            $userId = $sessionController->getUserProfileId();
+
+            if (isset($userId)) {
+                $userModel->updateUserStatus($userId, 1);
+            }
+        }
+        new Router('Profile?selectedUser=' . $userId);
+    }
+
+    public function markAsDeleted()
+    {
+        $userModel = new UserModel();
+        $sessionController = new SessionController();
+        $userId = $sessionController->getUserProfileId();
+
+        if (isset($userId)) {
+            $userModel->updateUserStatus($userId, 4);
+        }
+
+        new Router('Profile?selectedUser=' . $userId);
+    }
 
     public function addProfilePicture()
     {

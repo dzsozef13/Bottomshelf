@@ -221,7 +221,6 @@ class PostModel extends CoreModel
 	 * @param int postId
 	 * @param int statusId
 	 */
-	// in the controller the logic will be split into markAsBanned, markAsActive, markAsReported
 	public function updatePostStatus(int $id, $statusId)
 	{
 		try {
@@ -241,7 +240,7 @@ class PostModel extends CoreModel
 
 
 	/**
-	 * Hard delete post
+	 * Hard delete post (not used)
 	 */
 	public function deletePost($id)
 	{

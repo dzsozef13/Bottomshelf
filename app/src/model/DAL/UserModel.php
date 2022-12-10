@@ -257,4 +257,25 @@ class UserModel extends CoreModel
             print($e->getMessage());
         }
     }
+
+    /**
+     * @param int postId
+     * @param int statusId
+     */
+    public function updateUserStatus($userId, $statusId)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+            $query = "UPDATE `User` SET StatusId = :StatusId WHERE UserId = :UserId";
+
+            $handle = $conn->prepare($query);
+
+            $handle->bindParam(':StatusId', $statusId);
+            $handle->bindParam(':UserId', $userId);
+
+            $handle->execute();
+        } catch (PDOException $e) {
+            print($e->getMessage());
+        }
+    }
 }

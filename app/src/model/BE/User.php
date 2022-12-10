@@ -43,6 +43,24 @@ class User extends Entity
         return $this->username;
     }
 
+    public function getStatus()
+    {
+        if ($this->statusId == 1) {
+            return 'Active';
+        } else if ($this->statusId == 2) {
+            return 'Banned';
+        } else if ($this->statusId == 3) {
+            return 'Reported';
+        } else {
+            return 'Deleted';
+        }
+    }
+
+    public function getStatusId()
+    {
+        return $this->statusId;
+    }
+
     public function getCountryCode()
     {
         return $this->countryCode;

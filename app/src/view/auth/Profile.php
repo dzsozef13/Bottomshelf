@@ -21,11 +21,54 @@ if (isset($loggedInUserId)) {
     }
 }
 
+if ($profile->getStatusId() !== null  && $sessionsCtrl->getUser()['roleId'] == 2) {
+    if ($profile->getStatusId() == 1) {
+        $buttons =   '<a href="/BanUser">
+                    <button class="btn-outlined mr-4">BAN USER</button>
+                </a>
+                <a href="/DeleteUser">
+                    <button class="btn-outlined  mr-4">DELETE USER</button>
+                </a>';
+    } else if ($profile->getStatusId() == 2) {
+        $buttons =  '<a href="/UnbanUser">
+                    <button class="btn-outlined  mr-4 w-52">MAKE USER ACTIVE</button>
+                </a>
+                <a href="/DeleteUser">
+                    <button class="btn-outlined  mr-4">DELETE USER</button>
+                </a>';
+    } else if ($profile->getStatusId() == 3) {
+        $buttons =   '<a href="/BanUser">
+                    <button class="btn-outlined mr-4">BAN USER</button>
+                </a>
+                <a href="/UnbanUser">
+                    <button class="btn-outlined  mr-4 w-52">MAKE USER ACTIVE</button>
+                </a>
+                <a href="/DeleteUser">
+                    <button class="btn-outlined  mr-4">DELETE USER</button>
+                </a>';
+    } else {
+        $buttons =  '
+                <a href="/UnbanUser">
+                    <button class="btn-outlined  mr-4 w-52">MAKE USER ACTIVE</button>
+                </a>
+                  ';
+    }
+}
 ?>
 <div class="grid grid-cols-6 gap-4 px-8 w-full">
     <div class="col-span-6 2xl:h-[15vh] h-[25vh] "></div>
     <div class="2xl:mx-20 mx-0 col-span-6 mb-4">
+
         <div class="profile-card">
+            <?php
+            if ($sessionsCtrl->getUser()['roleId'] == 2) {
+                echo '
+                <div class="absolute -top-[4rem] left-56 w-max h-auto flex items-center">
+                ' . $buttons  . '
+                </div>
+                ';
+            }
+            ?>
             <div class="profile-picture">
                 <img class="img" src="<?php if ($profile->getProfileImage() !== null) {
                                             echo 'data:image/*;charset=utf8;base64,' . base64_encode($profile->getProfileImage());
@@ -35,7 +78,8 @@ if (isset($loggedInUserId)) {
             </div>
             <div class="profile-username-container">
                 <h3 class="text-4xl font-mono ">
-                    <span class="text-highlight-green-900">@</span><?php echo $profile->username ?>
+                    <span class="text-highlight-green-900">@</span><?php echo $profile->username ?><br>
+                    <span class="text-xs">User status: <?php echo $profile->getStatus() ?></span>
                 </h3>
                 <div class="badges-container">
                     <div class="badges-wrapper">

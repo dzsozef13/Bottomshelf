@@ -28,10 +28,11 @@ class SessionController
     /**
      * Sets user data in session
      */
-    public function setUser($userId, $username)
+    public function setUser($userId, $username, $roleId)
     {
         $_SESSION['userId'] = $userId;
         $_SESSION['username'] = $username;
+        $_SESSION['roleId'] = $roleId;
     }
 
     /**
@@ -41,11 +42,13 @@ class SessionController
     {
         $userId = $_SESSION['userId'];
         $username = $_SESSION['username'];
+        $roleId = $_SESSION['roleId'];
 
         if (isset($userId, $username)) {
             return  array(
                 'userId' => $userId,
-                'username' => $username
+                'username' => $username,
+                'roleId' => $roleId
             );
         } else {
             return null;
