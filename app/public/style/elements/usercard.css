@@ -1,0 +1,55 @@
+@layer components {
+  /* Post Card */
+  .user-card-container {
+    @apply bg-background-secondary-900
+        w-full
+        h-80
+        2xl:h-64
+        overflow-hidden
+        flex
+        flex-col
+        items-center
+        justify-center
+        rounded-lg;
+  }
+
+  .user-card-img-container {
+    @apply w-full
+    h-3/5
+    w-full
+    flex
+    items-center
+    justify-center;
+  }
+
+  .user-card-img {
+    @apply w-full
+    rounded-full
+    overflow-hidden
+    aspect-square
+    w-3/4;
+  }
+
+  .user-card-body {
+    @apply w-full
+        h-2/5
+        p-2
+        flex
+        flex-col
+        justify-between;
+  }
+
+  .user-card-name {
+    @apply font-mono
+        text-lg;
+  }
+
+  .user-card-header {
+    @apply w-full
+        h-auto;
+  }
+
+  .user-card-email {
+    @apply text-sm;
+  }
+}

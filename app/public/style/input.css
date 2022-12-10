@@ -6,6 +6,7 @@
 @import url("./elements/button.css");
 @import url("./elements/postcard.css");
 @import url("./elements/profile.css");
+@import url("./elements/usercard.css");
 @import url("./elements/navigation.css");
 
 @tailwind base;

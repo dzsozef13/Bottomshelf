@@ -26,9 +26,7 @@ class User extends Entity
         $this->email = $email;
         $this->username = $username;
         $this->dateOfBirth = $dateOfBirth;
-        if ($this->profileImgBlob !== null) {
-            $this->profileImgBlob = $profileImgBlob;
-        }
+        $this->profileImgBlob = $profileImgBlob;
         $this->bioDescription = $bioDescription;
         $this->countryCode = $countryCode;
         $this->roleId = $roleId;
@@ -43,6 +41,11 @@ class User extends Entity
     public function getUsername()
     {
         return $this->username;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     public function getStatus()
