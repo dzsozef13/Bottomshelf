@@ -239,6 +239,23 @@ class PostModel extends CoreModel
 	}
 
 
+	public function markAsSticky(int $id)
+	{
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$query = "UPDATE Post SET IsSticky = 1 WHERE PostId = :PostId";
+
+			$handle = $conn->prepare($query);
+
+			$handle->bindParam(':PostId', $id);
+
+			$handle->execute();
+		} catch (PDOException $e) {
+			print($e->getMessage());
+		}
+	}
+
+
 	/**
 	 * Hard delete post (not used)
 	 */

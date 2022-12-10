@@ -11,11 +11,11 @@ class PostController
     public function create()
     {
         $postModel = new PostModel;
+        $sessionController = new SessionController();
         $title = $_POST['title'];
         $description = $_POST['description'];
         $isPublic = isset($_POST['isPublic']) ? 1 : 0;
-        $isSticky = 1;
-        $sessionController = new SessionController();
+        $isSticky = 0;
         $userId = $sessionController->getUser()['userId'];
         $statusId = 1;
         var_dump($_POST);
