@@ -193,11 +193,11 @@ INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Banned');
 INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Reported');
 INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Deleted');
 
-INSERT INTO `User` (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgBlob, BioDescription, CountryCode, RoleId, StatusId) 
-VALUES (NULL,'test@lol.com', 'something123', 'ProudTester', '1999-11-11', NULL, 'I existed only to test', 'POL', 1, 1);
+INSERT INTO `User` (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgBlob, BioDescription, PostCount, CountryCode, RoleId, StatusId) 
+VALUES (NULL,'test@lol.com', 'something123', 'ProudTester', '1999-11-11', NULL,'I existed only to test',  0,  'POL', 1, 1);
 
-INSERT INTO `User` (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgBlob, BioDescription, CountryCode, RoleId, StatusId) 
-VALUES (NULL,'monkey@lol.com', 'monkeyPass', 'MonkeyFromATree', '200-01-12', NULL, 'Test Or Not To Test', 'DNK', 1, 1);
+INSERT INTO `User` (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgBlob, BioDescription, PostCount, CountryCode, RoleId, StatusId) 
+VALUES (NULL,'monkey@lol.com', 'monkeyPass', 'MonkeyFromATree', '200-01-12', NULL,'Test Or Not To Test',  0,  'DNK', 1, 1);
 
 
 INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, ReactionCount, LatestCommentId, UserId, ChildPostId, StatusId)

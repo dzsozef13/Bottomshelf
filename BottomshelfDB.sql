@@ -39,6 +39,7 @@ CREATE TABLE `User` (
     DateOfBirth date NOT NULL,
     ProfileImgBlob longblob,
     BioDescription varchar(256),
+    PostCount int,
     CountryCode varchar(3) NOT NULL,
     RoleId int NOT NULL,
     StatusId int NOT NULL,
@@ -127,3 +128,13 @@ CREATE TABLE PostHasTag (
     FOREIGN KEY (PostId) REFERENCES Post (PostId),
     FOREIGN KEY (TagId) REFERENCES Tag (TagId)
 );
+
+DELIMITER //
+Create Trigger AfterInsertOnPost AFTER INSERT ON Post FOR EACH ROW
+BEGIN
+UPDATE User
+SET User.PostCount = User.PostCount + 1
+WHERE User.UserId = NEW.UserId;
+END //
+
+DELIMITER ;

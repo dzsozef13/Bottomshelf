@@ -22,6 +22,7 @@ class UserModel extends CoreModel
                     Username, 
                     UserPassword, 
                     DateOfBirth, 
+                    PostCount, 
                     CountryCode, 
                     RoleId, 
                     StatusId) 
@@ -30,6 +31,7 @@ class UserModel extends CoreModel
                     :username, 
                     :userPassword, 
                     :dateOfBirth, 
+                    :postCount, 
                     :countryCode,
                     :roleId,
                     :statusId)";
@@ -49,8 +51,9 @@ class UserModel extends CoreModel
             /**
              * Hardcoded for now :)
              */
-            $handle->bindValue(':countryCode', "DNK");
             $handle->bindValue(':roleId', 1);
+            $handle->bindValue(':countryCode', "DNK");
+            $handle->bindValue(':postCount', 0);
             $handle->bindValue(':statusId', 1);
 
             $handle->execute();
