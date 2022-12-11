@@ -12,3 +12,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  ul,
+  ol {
+    list-style: disc;
+    margin-left: 1rem;
+  }
+}

@@ -176,9 +176,10 @@ $(document).ready(function(e) {
         ],
         
     });
+    editor.setDefaultStyle('font-family: lato;')
     // Get the editor text value and asign it to the textarea dom element so it could be in post
     $(window).click(function() {
-        document.getElementById('sample').value = editor.getContents()
+        editor.save();
     })
 });
 

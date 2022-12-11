@@ -88,9 +88,9 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                     by @<span class="text-highlight-green-900"><?php echo $post->getAuthorName() ?></span> </a>
                 <span class="text-dim-white-900/60"><?php echo $post->getCreatedAt() ?></span>
             </p>
-            <h4 class="mt-4 ">
-                <?php echo $post->getDescription() ?>
-            </h4>
+            <div class="mt-4">
+                <?php echo htmlspecialchars_decode($post->getDescription())  ?>
+            </div>
             <?php
             if ($userId == $post->getAuthorId() || $sessionController->getUser()['roleId'] == 2) {
                 echo '

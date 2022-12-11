@@ -420,6 +420,12 @@ video {
   display: none;
 }
 
+ul,
+  ol {
+  list-style: disc;
+  margin-left: 1rem;
+}
+
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
