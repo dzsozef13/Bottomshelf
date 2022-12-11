@@ -91,37 +91,30 @@ $comments = $commentController->fetchAllByPostId($post->getId());
             <div class="mt-4">
                 <?php echo htmlspecialchars_decode($post->getDescription())  ?>
             </div>
-            <?php
-            if ($userId == $post->getAuthorId() || $sessionController->getUser()['roleId'] == 2) {
-                echo '
+            <?php if ($userId == $post->getAuthorId() || $sessionController->getUser()['roleId'] == 2) { ?>
                 <div class="w-full flex justify-end flex-wrap">
-                            <a class="w-full md:w-2/4 md:pr-3" href="/EditPost?selectedPost=' . $post->getId() . '">
-                                <button class="w-full btn-white-no-shadow mt-4 mr-4 ">EDIT POST</button>
-                            </a>
-                        <a class="w-full md:w-2/4 md:pl-2" href="/DeletePost">
-                             <button class="w-full btn-outlined mt-4">DELETE POST</button>
-                        </a>
-                        ' .
-                    ($sessionController->getUser()['roleId'] == 2 && $post->getIsSticky() == false ? '
-                        <a class="w-full" href="/MakeSticky">
-                             <button class="w-full btn-green-no-shadow mt-4">MAKE STICKY</button>
-                         </a>'
-                        : '')
-                    .
-                    '
-                    '
-                    .
-                    ($sessionController->getUser()['roleId'] == 2 && $post->getIsSticky() == true ? '
-                        <a class="w-full" href="/MakeNotSticky">
-                             <button class="w-full btn-outlined mt-4">MAKE NOT STICKY</button>
-                         </a>'
-                        : '')
+                    <a class="w-full md:w-2/4 md:pr-3" href="/EditPost?selectedPost=<?php echo $post->getId() ?>">
+                        <button class="w-full btn-white-no-shadow mt-4 mr-4 ">EDIT POST</button>
+                    </a>
+                    <a class="w-full md:w-2/4 md:pl-2" href="/DeletePost">
+                        <button class="w-full btn-outlined mt-4">DELETE POST</button>
+                    </a>
+                    <?php if ($sessionController->getUser()['roleId'] == 2) { ?>
 
-                    . '
+                        <?php if ($post->getIsSticky() == false) { ?>
+                            <a class="w-full" href="/MakeSticky">
+                                <button class="w-full btn-green-no-shadow mt-4">MAKE STICKY</button>
+                            </a>
+                        <?php } else { ?>
+                            <a class="w-full" href="/MakeNotSticky">
+                                <button class="w-full btn-outlined mt-4">MAKE NOT STICKY</button>
+                            </a>
+                        <?php } ?>
+
+                    <?php }  ?>
+
                 </div>
-                ';
-            }
-            ?>
+            <?php } ?>
         </div>
         <!-- Comment Section -->
         <div class="post-preview-content">
