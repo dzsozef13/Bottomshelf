@@ -61,6 +61,7 @@ CREATE TABLE Post (
     IsSticky boolean,
     CreatedAt timestamp,
     ReactionCount int,
+    CommentCount int,
     LatestCommentId int,
     UserId int NOT NULL,
     ChildPostId int,
@@ -135,6 +136,16 @@ BEGIN
 UPDATE `User`
 SET `User`.PostCount = `User`.PostCount + 1
 WHERE `User`.UserId = NEW.UserId;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+Create Trigger AfterInsertOnComment AFTER INSERT ON Comment FOR EACH ROW
+BEGIN
+UPDATE Post
+SET Post.CommentCount = Post.CommentCount + 1
+WHERE Post.UserId = NEW.UserId;
 END //
 
 DELIMITER ;

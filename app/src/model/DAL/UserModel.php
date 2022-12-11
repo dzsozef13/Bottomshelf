@@ -127,14 +127,7 @@ class UserModel extends CoreModel
             // Open database connection and prepare statement
             $conn = $this->openDbConnetion();
             $query = "SELECT 
-                User.UserId,
-                User.Email, 
-                User.Username,
-                User.DateOfBirth, 
-                User.profileImgBlob, 
-                User.BioDescription, 
-                User.RoleId, 
-                User.StatusId, 
+                User.*,
                 Country.*, 
                 Role.*, 
                 EntityStatus.*
@@ -149,7 +142,7 @@ class UserModel extends CoreModel
             $handle->execute();
             // Get result
             $result = $handle->fetch(PDO::FETCH_OBJ);
-            $entity = new User($result->UserId, $result->Email, $result->Username, $result->DateOfBirth, $result->profileImgBlob, $result->BioDescription, $result->CountryCode, $result->RoleId,  $result->StatusId);
+            $entity = new User($result->UserId, $result->Email, $result->Username, $result->DateOfBirth, $result->ProfileImgBlob, $result->BioDescription, $result->PostCount, $result->CountryCode, $result->RoleId,  $result->StatusId);
             // Close database connection
             $this->closeDbConnection();
             // Return result
@@ -197,6 +190,7 @@ class UserModel extends CoreModel
                     $row->DateOfBirth,
                     $row->ProfileImgBlob,
                     $row->BioDescription,
+                    $row->PostCount,
                     $row->CountryCode,
                     $row->RoleId,
                     $row->StatusId

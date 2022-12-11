@@ -18,7 +18,7 @@ class PostModel extends CoreModel
 		try {
 			$conn = CoreModel::openDbConnetion();
 
-			$query = "INSERT INTO Post (Title, PostDescription, IsPublic, IsSticky, UserId, StatusId) VALUES (:title, :postDescription, :isPublic, :isSticky, :userId, :statusId)";
+			$query = "INSERT INTO Post (Title, PostDescription, IsPublic, IsSticky, ReactionCount , CommentCount, UserId, StatusId) VALUES (:title, :postDescription, :isPublic, :isSticky, :reactionCount, :commentCount, :userId, :statusId)";
 
 			$handle = $conn->prepare($query);
 
@@ -29,6 +29,8 @@ class PostModel extends CoreModel
 			$handle->bindParam(':postDescription', $sanitizedDescription);
 			$handle->bindValue(':isPublic', $data['isPublic']);
 			$handle->bindValue(':isSticky', $data['isSticky']);
+			$handle->bindValue(':reactionCount', 0);
+			$handle->bindValue(':commentCount', 0);
 			$handle->bindValue(':userId', $data['userId']);
 			$handle->bindValue(':statusId', $data['statusId']);
 
@@ -84,6 +86,7 @@ class PostModel extends CoreModel
 				$row->Title,
 				$row->PostDescription,
 				$row->ReactionCount,
+				$row->CommentCount,
 				$row->IsPublic,
 				$row->IsSticky,
 				$row->CreatedAt,
@@ -127,6 +130,7 @@ class PostModel extends CoreModel
 					$row->Title,
 					$row->PostDescription,
 					$row->ReactionCount,
+					$row->CommentCount,
 					$row->IsPublic,
 					$row->IsSticky,
 					$row->CreatedAt,
@@ -170,6 +174,7 @@ class PostModel extends CoreModel
 					$row->Title,
 					$row->PostDescription,
 					$row->ReactionCount,
+					$row->CommentCount,
 					$row->IsPublic,
 					$row->IsSticky,
 					$row->CreatedAt,
@@ -214,6 +219,7 @@ class PostModel extends CoreModel
 					$row->Title,
 					$row->PostDescription,
 					$row->ReactionCount,
+					$row->CommentCount,
 					$row->IsPublic,
 					$row->IsSticky,
 					$row->CreatedAt,

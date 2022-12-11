@@ -14,6 +14,7 @@ class Post
     private $childPostId;
     private $statusId;
     private $reactionCount;
+    private $commentCount;
     private $media;
 
     function __construct(
@@ -21,6 +22,7 @@ class Post
         $title,
         $description,
         $reactionCount,
+        $commentCount,
         $isPublic,
         $isSticky,
         $createdAt,
@@ -34,6 +36,7 @@ class Post
         $this->title = $title;
         $this->description = $description;
         $this->reactionCount = $reactionCount;
+        $this->commentCount = $commentCount;
         $this->isPublic = $isPublic;
         $this->isSticky = $isSticky;
         $this->createdAt = $createdAt;
@@ -83,6 +86,15 @@ class Post
         return $this->isPublic;
     }
 
+    public function getReactionCount()
+    {
+        return $this->reactionCount;
+    }
+
+    public function getCommentCount()
+    {
+        return $this->commentCount;
+    }
 
     public function getLatestComment()
     {

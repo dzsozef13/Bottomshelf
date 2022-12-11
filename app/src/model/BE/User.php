@@ -15,12 +15,13 @@ class User extends Entity
     public string $dateOfBirth;
     public $profileImgBlob;
     public ?string $bioDescription;
+    public int $postCount;
     public ?string $countryCode;
     public int $roleId;
     public int $statusId;
 
 
-    public function __construct(int $id, string $email, string $username, string $dateOfBirth, ?string $profileImgBlob, ?string $bioDescription, string $countryCode, int $roleId, int $statusId)
+    public function __construct(int $id, string $email, string $username, string $dateOfBirth, $profileImgBlob, ?string $bioDescription, int $postCount, string $countryCode, int $roleId, int $statusId)
     {
         $this->id = $id;
         $this->email = $email;
@@ -28,6 +29,7 @@ class User extends Entity
         $this->dateOfBirth = $dateOfBirth;
         $this->profileImgBlob = $profileImgBlob;
         $this->bioDescription = $bioDescription;
+        $this->postCount = $postCount;
         $this->countryCode = $countryCode;
         $this->roleId = $roleId;
         $this->statusId = $statusId;

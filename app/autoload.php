@@ -45,6 +45,7 @@ function include_files($files)
             case "UserController":
             case "TagsController":
             case "ViewController":
+            case "BadgeController":
             case "SystemController":
             case "CountryController":
             case "PageController":

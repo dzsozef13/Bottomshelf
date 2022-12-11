@@ -4,12 +4,14 @@ $sessionsCtrl = new SessionController();
 $postController = new PostController();
 $viewController = new ViewController();
 $mediaController = new MediaController();
+$badgeController = new BadgeController();
 
 $userIdParam = $sessionsCtrl->getUserProfileId();
 $loggedInUserId = $sessionsCtrl->getUser()['userId'];
 
 $profile = null;
 $posts = null;
+$badges = null;
 
 if (isset($loggedInUserId)) {
     if (isset($userIdParam) && isset($_GET['selectedUser'])) {
@@ -19,6 +21,10 @@ if (isset($loggedInUserId)) {
         $profile = $userCtrl->fetchById($loggedInUserId);
         $posts = $postController->fetchByUserId($loggedInUserId);
     }
+}
+
+if (isset($profile)) {
+    $badges = $badgeController->fetchAllByUserId($profile->getId());
 }
 
 if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 && isset($_GET['selectedUser'])) {
@@ -83,19 +89,21 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                         echo '<span class="text-xs">User status: ' .  $profile->getStatus() . '</span>';
                     } ?>
                 </h3>
-                <div class="badges-container">
-                    <div class="badges-wrapper">
-                        <div class="fake-badge">
-                            <i class="las la-certificate text-background-black-900 text-2xl"></i>
-                        </div>
-                        <div class="fake-badge">
-                            <i class="las la-certificate text-background-black-900 text-2xl"></i>
-                        </div>
-                        <div class="fake-badge">
-                            <i class="las la-certificate text-background-black-900 text-2xl"></i>
+                <?php if (isset($badges)) { ?>
+                    <div class="badges-container">
+                        <div class="badges-wrapper">
+                            <div class="fake-badge">
+                                <i class="las la-certificate text-background-black-900 text-2xl"></i>
+                            </div>
+                            <div class="fake-badge">
+                                <i class="las la-certificate text-background-black-900 text-2xl"></i>
+                            </div>
+                            <div class="fake-badge">
+                                <i class="las la-certificate text-background-black-900 text-2xl"></i>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php }  ?>
             </div>
             <div class="h-auto w-full">
                 <div class="profile-description-container">
