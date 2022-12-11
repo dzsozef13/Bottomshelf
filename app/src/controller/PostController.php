@@ -12,13 +12,14 @@ class PostController
     {
         $postModel = new PostModel;
         $sessionController = new SessionController();
+
         $title = $_POST['title'];
         $description = $_POST['description'];
         $isPublic = isset($_POST['isPublic']) ? 1 : 0;
         $isSticky = 0;
         $userId = $sessionController->getUser()['userId'];
         $statusId = 1;
-        var_dump($_POST);
+
         if (isset($title) && isset($description) && isset($isPublic) && isset($isSticky)  && isset($userId)  && isset($statusId)) {
             $data = array(
                 'title' => $title,

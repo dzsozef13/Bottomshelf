@@ -132,9 +132,20 @@ CREATE TABLE PostHasTag (
 DELIMITER //
 Create Trigger AfterInsertOnPost AFTER INSERT ON Post FOR EACH ROW
 BEGIN
-UPDATE User
-SET User.PostCount = User.PostCount + 1
-WHERE User.UserId = NEW.UserId;
+UPDATE `User`
+SET `User`.PostCount = `User`.PostCount + 1
+WHERE `User`.UserId = NEW.UserId;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+Create Trigger AfterUpdateOnUser AFTER UPDATE ON User FOR EACH ROW
+BEGIN
+ IF NEW.PostCount = 5
+  THEN
+    INSERT INTO UserHasBadge(BadgeId, UserId) VALUES (1, NEW.UserId);
+  END IF;
 END //
 
 DELIMITER ;
