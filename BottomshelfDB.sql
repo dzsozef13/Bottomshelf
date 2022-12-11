@@ -146,6 +146,12 @@ BEGIN
   THEN
     INSERT INTO UserHasBadge(BadgeId, UserId) VALUES (1, NEW.UserId);
   END IF;
+  IF NEW.PostCount = 7
+  THEN
+    INSERT INTO UserHasBadge(BadgeId, UserId) VALUES (3, NEW.UserId);
+  END IF;
 END //
 
 DELIMITER ;
+
+
