@@ -1,4 +1,8 @@
+
+
 $(document).ready(function(e) {
+
+   
     $('#dropdown').hide();
     $("#all").addClass("option-chip-checked")
     
@@ -150,5 +154,23 @@ $(document).ready(function(e) {
    $('#input-btn-3').change(function(event) {
         $('#input-text-3').text(event.currentTarget.files[0].name)
    });
+
+   window.SUNEDITOR.create((document.getElementById('sample') || 'sample'),{
+    font: [
+        'Lato',
+        'Space Mono',
+    ],
+    buttonList: [
+        [   'font',
+            'list',
+            'fontSize', 
+            'bold',
+            'underline',
+            'italic',
+            'fontColor'
+        ]
+        ],
+    });
+
 });
 

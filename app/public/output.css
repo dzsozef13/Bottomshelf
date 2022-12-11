@@ -1702,6 +1702,10 @@ video {
   margin-right: 1rem;
 }
 
+.mt-4{
+  margin-top: 1rem;
+}
+
 .mt-12{
   margin-top: 3rem;
 }
@@ -1724,10 +1728,6 @@ video {
 
 .ml-2{
   margin-left: 0.5rem;
-}
-
-.mt-4{
-  margin-top: 1rem;
 }
 
 .mt-0{
@@ -1782,12 +1782,16 @@ video {
   height: calc(100vh - 5rem);
 }
 
-.h-full{
-  height: 100%;
+.h-\[calc\(100\%-5rem\)\]{
+  height: calc(100% - 5rem);
 }
 
 .h-screen{
   height: 100vh;
+}
+
+.h-full{
+  height: 100%;
 }
 
 .h-auto{
@@ -1810,10 +1814,6 @@ video {
 
 .h-\[5vh\]{
   height: 5vh;
-}
-
-.h-\[calc\(100\%-5rem\)\]{
-  height: calc(100% - 5rem);
 }
 
 .min-h-\[4rem\]{
@@ -1926,20 +1926,16 @@ video {
   background-color: transparent;
 }
 
+.bg-\[radial-gradient\(circle_at_100\%_150\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
+  background-image: radial-gradient(circle at 100% 150%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 58%);
+}
+
 .bg-\[radial-gradient\(circle_at_100\%_100\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
   background-image: radial-gradient(circle at 100% 100%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 58%);
 }
 
 .bg-\[linear-gradient\(180deg\2c _rgba\(26\2c 30\2c 29\2c 1\)_0\%\2c _rgba\(24\2c 26\2c 26\2c 1\)_10\%\2c _rgba\(21\2c 22\2c 23\2c 1\)_20\%\)\]{
   background-image: linear-gradient(180deg, rgba(26,30,29,1) 0%, rgba(24,26,26,1) 10%, rgba(21,22,23,1) 20%);
-}
-
-.bg-\[radial-gradient\(circle_at_100\%_120\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
-  background-image: radial-gradient(circle at 100% 120%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 58%);
-}
-
-.bg-\[radial-gradient\(circle_at_100\%_150\%\2c _rgba\(144\2c 202\2c 156\2c 0\.111\)_0\%\2c _rgba\(144\2c 202\2c 156\2c 0\.0\)_58\%\)\]{
-  background-image: radial-gradient(circle at 100% 150%, rgba(144,202,156,0.111) 0%, rgba(144,202,156,0.0) 58%);
 }
 
 .p-0{
@@ -2024,6 +2020,10 @@ video {
   text-transform: uppercase;
 }
 
+.italic{
+  font-style: italic;
+}
+
 .text-highlight-green-900{
   --tw-text-opacity: 1;
   color: rgb(144 202 156 / var(--tw-text-opacity));
@@ -2045,6 +2045,10 @@ video {
 
 .text-dim-white-900\/40{
   color: rgb(216 216 216 / 0.4);
+}
+
+.underline{
+  text-decoration-line: underline;
 }
 
 .opacity-0{

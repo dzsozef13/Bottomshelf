@@ -35,7 +35,7 @@ foreach ($uploadedMediaIdArray as $imageId) {
                     <div class="icon-wrapper-text-area">
                         <i class="las la-comment"></i>
                     </div>
-                    <textarea required placeholder="Description.." name="description" maxlength="256" class="input-field  min-h-[4rem]"></textarea>
+                    <textarea required id="sample" placeholder="Description.." name="description" maxlength="256" class="input-field  min-h-[4rem]"></textarea>
                 </div>
                 <div class="input-field-wrapper items-center px-2">
                     <div class="icon-wrapper">
