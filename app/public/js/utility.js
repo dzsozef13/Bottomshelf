@@ -1,7 +1,6 @@
 
 
 $(document).ready(function(e) {
-
    
     $('#dropdown').hide();
     $("#all").addClass("option-chip-checked")
@@ -155,11 +154,16 @@ $(document).ready(function(e) {
         $('#input-text-3').text(event.currentTarget.files[0].name)
    });
 
-   window.SUNEDITOR.create((document.getElementById('sample') || 'sample'),{
+    // Create sun editor for Description input in Create Post
+  var editor = window.SUNEDITOR.create((document.getElementById('sample') || 'sample'),{
     font: [
         'Lato',
         'Space Mono',
     ],
+    width:'100%',
+    maxCharCount: '1024',
+    toolbarContainer : '#toolbar_container',
+    minHeight: '4rem',
     buttonList: [
         [   'font',
             'list',
@@ -170,7 +174,11 @@ $(document).ready(function(e) {
             'fontColor'
         ]
         ],
+        
     });
-
+    // Get the editor text value and asign it to the textarea dom element so it could be in post
+    $(window).click(function() {
+        document.getElementById('sample').value = editor.getContents()
+    })
 });
 

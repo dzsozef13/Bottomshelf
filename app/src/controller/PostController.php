@@ -28,6 +28,7 @@ class PostController
                 'userId' =>  $userId,
                 'statusId' =>  $statusId
             );
+
             $postId = $postModel->createPost($data);
 
             $uploadedMediaIdArray = $sessionController->getUploadedMediaIdArray();
