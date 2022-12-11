@@ -27,15 +27,18 @@ if ($filter != null) {
 // Check for applied search key
 $searchPhrase = $sessionController->getSearchPhrase();
 if ($searchPhrase != null) {
-    $posts = $postController->fetchByPhrase($searchPhrase);
+    // $posts = $postController->fetchAllWithOptions($searchPhrase, $searchTag, $filter);
     $sessionController->setSearchPhrase(null);
 }
 // Check for applied search tag
 $searchTag = $sessionController->getSearchTag();
 if ($searchTag != null) {
-    $posts = $postController->fetchByTag($searchTag);
+    // $posts = $postController->fetchByTag($searchTag);
     $sessionController->setSearchTag(null);
 }
+
+$posts = $postController->fetchAllWithOptions($searchPhrase, $searchTag, $filter);
+
 // Fetch all posts
 if ($filter == null && $searchPhrase == null && $searchTag == null) {
     $posts = $postController->fetchAll();

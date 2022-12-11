@@ -67,11 +67,10 @@ class PostController
         }
     }
 
-    public function fetchByPhrase($phrase)
+    public function fetchAllWithOptions($phrase, $tag, $sorting)
     {
-        if (isset($phrase)) {
-            return $this->postModel->getAllByPhrase($phrase);
-        }
+        // TODO: No need to check for nll for now, test all possible configurations!
+        return $this->postModel->getAllWithOptions($phrase, $tag, $sorting);
     }
 
     public function fetchByTag($tag) {

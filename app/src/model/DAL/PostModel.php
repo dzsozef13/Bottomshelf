@@ -192,23 +192,56 @@ class PostModel extends CoreModel
 	/**
 	 * @return Post[] (if none then empty array [])
 	 */
-	public function getAllByPhrase(string $phrase)
+	public function getAllWithOptions($phrase, $tag, $sorting)
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();
-			$query = "SELECT Post.*, User.Username, Comment.content
-			FROM Post 
-			INNER JOIN `User` ON User.UserId=Post.UserId
-			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-			WHERE Post.Title LIKE :TitlePhrase 
-			OR Post.PostDescription LIKE :DescriptionPhrase
-			ORDER BY Post.CreatedAt DESC";
+
+			$query = 
+				"SELECT Post.*, User.Username, Comment.content
+				FROM Post 
+				INNER JOIN `User` ON User.UserId=Post.UserId
+				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
+				INNER JOIN PostHasTag ON PostHasTag.PostId=Post.PostId
+				WHERE 1=1";
+
+			// Where phrase
+			$phraseQuery = 
+				"AND Post.Title LIKE :TitlePhrase 
+				OR Post.PostDescription LIKE :DescriptionPhrase ";
+			if ($phrase != null) {
+				$query = "$query $phraseQuery";
+			}
+
+			// Where tag
+			$tagQuery = 
+				$phrase ? "AND PostHasTag.TagId= :Tag" : "PostHasTag.TagId= :Tag ";
+			if ($tag != null) {
+				$query = "$query $tagQuery";
+			}
+
+			// Order
+			if ($sorting == null) {
+				$orderQuery = 
+					"ORDER BY Post.CreatedAt DESC";
+			} else if ($sorting == "trending") {
+				$orderQuery = 
+					"ORDER BY Post.ReactionCount DESC";
+			}
+			$query = "$query $orderQuery";
 
 			$sanitizedPhrase = '%' . htmlspecialchars($phrase) . '%';
+			$sanitizedTag = htmlspecialchars($tag);
 
 			$handle = $conn->prepare($query);
-			$handle->bindParam(':TitlePhrase', $sanitizedPhrase);
-			$handle->bindParam(':DescriptionPhrase', $sanitizedPhrase);
+			if ($phrase != null) {
+				$handle->bindParam(':TitlePhrase', $sanitizedPhrase);
+				$handle->bindParam(':DescriptionPhrase', $sanitizedPhrase);
+			}
+			if ($tag != null) {
+				$handle->bindParam(':Tag', $sanitizedTag);
+			}
+
 			$handle->execute();
 
 			$result = array();
