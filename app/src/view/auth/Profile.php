@@ -92,15 +92,17 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                 <?php if (isset($badges)) { ?>
                     <div class="badges-container">
                         <div class="badges-wrapper">
-                            <div class="fake-badge">
-                                <i class="las la-certificate text-background-black-900 text-2xl"></i>
-                            </div>
-                            <div class="fake-badge">
-                                <i class="las la-certificate text-background-black-900 text-2xl"></i>
-                            </div>
-                            <div class="fake-badge">
-                                <i class="las la-certificate text-background-black-900 text-2xl"></i>
-                            </div>
+                            <?php foreach ($badges as $badge) {
+                                echo '  
+                                    <div class="badge">
+                                         <div class="badge-icon mb-2">
+                                          ' . $badge->getBadgeIcon() . '
+                                         </div>
+                                         <p class="text-highlight-green-900 font-mono text-xs"> ' . $badge->getName() . ' </p>
+                                    </div>
+                                ';
+                            } ?>
+
                         </div>
                     </div>
                 <?php }  ?>

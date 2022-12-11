@@ -153,11 +153,11 @@ DELIMITER ;
 DELIMITER //
 Create Trigger AfterUpdateOnUser AFTER UPDATE ON User FOR EACH ROW
 BEGIN
- IF NEW.PostCount = 5
+ IF NEW.PostCount = 5 AND NOT EXISTS (SELECT * FROM UserHasBadge WHERE UserHasBadge.BadgeId = 1 AND UserHasBadge.UserId = NEW.UserId)
   THEN
     INSERT INTO UserHasBadge(BadgeId, UserId) VALUES (1, NEW.UserId);
   END IF;
-  IF NEW.PostCount = 7
+  IF NEW.PostCount = 10  AND NOT EXISTS (SELECT * FROM UserHasBadge WHERE UserHasBadge.BadgeId = 3 AND UserHasBadge.UserId = NEW.UserId)
   THEN
     INSERT INTO UserHasBadge(BadgeId, UserId) VALUES (3, NEW.UserId);
   END IF;

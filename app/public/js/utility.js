@@ -186,60 +186,62 @@ $(document).ready(function(e) {
  
 
  // Create sun editor for Description input in Settings
- var editorDescription = window.SUNEDITOR.create((document.getElementById('settings-description') || 'settings-description'),{
-    font: [
-        'Lato',
-        'Space Mono',
-    ],
-    width:'100%',
-    maxCharCount: '10000',
-    toolbarContainer : '#toolbar_container',
-    minHeight: '4rem',
-    buttonList: [
-        [   'font',
-            'list',
-            'fontSize', 
-            'bold',
-            'underline',
-            'italic',
-            'fontColor'
-        ]
+ try {   
+    var editorDescription = window.SUNEDITOR.create((document.getElementById('settings-description') || 'settings-description'),{
+        font: [
+            'Lato',
+            'Space Mono',
         ],
-        
-    });
-    editorDescription.setDefaultStyle('font-family: lato;')
-    // Get the editor text value and asign it to the textarea dom element so it could be in post
-    $(window).click(function() {
-        editorDescription.save();
-    })
-
+        width:'100%',
+        maxCharCount: '10000',
+        toolbarContainer : '#toolbar_container',
+        minHeight: '4rem',
+        buttonList: [
+            [   'font',
+                'list',
+                'fontSize', 
+                'bold',
+                'underline',
+                'italic',
+                'fontColor'
+            ]
+            ],
+            
+        });
+        editorDescription.setDefaultStyle('font-family: lato;')
+        // Get the editor text value and asign it to the textarea dom element so it could be in post
+        $(window).click(function() {
+            editorDescription.save();
+        })
+    } catch{}
      // Create sun editor for Rules input in Settings
-var editorRules = window.SUNEDITOR.create((document.getElementById('settings-rules') || 'settings-rules'),{
-    font: [
-        'Lato',
-        'Space Mono',
-    ],
-    width:'100%',
-    maxCharCount: '10000',
-    toolbarContainer : '#toolbar_container',
-    minHeight: '4rem',
-    buttonList: [
-        [   'font',
-            'list',
-            'fontSize', 
-            'bold',
-            'underline',
-            'italic',
-            'fontColor'
-        ]
-        ],
-        
-    });
-    editorRules.setDefaultStyle('font-family: lato;')
-    // Get the editor text value and asign it to the textarea dom element so it could be in post
-    $(window).click(function() {
-        editorRules.save();
-    })
-   
+     try {   
+        var editorRules = window.SUNEDITOR.create((document.getElementById('settings-rules') || 'settings-rules'),{
+            font: [
+                'Lato',
+                'Space Mono',
+            ],
+            width:'100%',
+            maxCharCount: '10000',
+            toolbarContainer : '#toolbar_container',
+            minHeight: '4rem',
+            buttonList: [
+                [   'font',
+                    'list',
+                    'fontSize', 
+                    'bold',
+                    'underline',
+                    'italic',
+                    'fontColor'
+                ]
+                ],
+                
+            });
+            editorRules.setDefaultStyle('font-family: lato;')
+            // Get the editor text value and asign it to the textarea dom element so it could be in post
+            $(window).click(function() {
+                editorRules.save();
+            })
+        } catch{}
 });
 

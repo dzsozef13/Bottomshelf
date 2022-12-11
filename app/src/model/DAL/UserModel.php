@@ -245,11 +245,11 @@ class UserModel extends CoreModel
     {
         try {
             $conn = CoreModel::openDbConnetion();
-            $query = "UPDATE `User` SET profileImgBlob = :profileImgBlob WHERE UserId = :UserId";
+            $query = "UPDATE `User` SET ProfileImgBlob = :ProfileImgBlob WHERE UserId = :UserId";
 
             $handle = $conn->prepare($query);
 
-            $handle->bindParam(':profileImgBlob', $data['media']);
+            $handle->bindParam(':ProfileImgBlob', $data['media']);
             $handle->bindValue(':UserId', $data['userId']);
 
             $handle->execute();

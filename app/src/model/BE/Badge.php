@@ -28,11 +28,11 @@ class Badge
     {
         $id = $this->badgeId;
         if ($id == 1) {
-            return '<i class="las la-glass-cheers"></i>';
+            return '<i class="las la-glass-cheers text-background-black-900 text-2xl"></i>';
         } else if ($id == 2) {
-            return '<i class="las la-users"></i>';
+            return '<i class="las la-users text-background-black-900 text-2xl"></i>';
         } else if ($id == 3) {
-            return '<i class="las la-certificate"></i>';
+            return '<i class="las la-certificate text-background-black-900 text-2xl"></i>';
         }
     }
 }

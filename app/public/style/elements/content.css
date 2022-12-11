@@ -83,11 +83,11 @@
     mr-2;
   }
 
-  .fake-badge {
+  .badge-icon {
     @apply bg-highlight-green-900
     flex 
-    shadow-background-black-900
-    shadow-xl	
+    shadow-highlight-green-900/20
+    shadow-lg	
     h-8
     w-8
     flex
@@ -192,15 +192,24 @@
     absolute
     -top-4
     right-8
-    w-32
+    w-max
     flex-col;
   }
 
   .badges-wrapper {
     @apply h-auto 
-    w-full
+    w-max
     flex
-    justify-between;
+    justify-between
+    gap-4;
+  }
+
+  .badge {
+    @apply h-auto 
+    w-max
+    flex
+    flex-col
+    items-center;
   }
 
   /* Tag */
