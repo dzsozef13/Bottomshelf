@@ -15,6 +15,7 @@ function include_files($files)
             case "Entity":
             case "Post":
             case "Media":
+            case "Badge":
             case "Route":
             case "System":
             case "Country":

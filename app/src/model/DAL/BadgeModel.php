@@ -4,7 +4,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/autoload.php";
 include_files(array(
   "Console",
   "DbConnectionController",
-  "CoreModel"
+  "CoreModel",
+  "Badge"
 ));
 
 class BadgeModel extends CoreModel
@@ -29,11 +30,17 @@ class BadgeModel extends CoreModel
 
       $result = $handle->fetch(PDO::FETCH_OBJ);
 
+      $row = $handle->fetch(PDO::FETCH_OBJ);
+      $badge = new Badge(
+        $row->BadgeId,
+        $row->BadgeName
+      );
+
       //close the connection
       CoreModel::closeDbConnection();
       $conn = null;
 
-      return $result;
+      return $badge;
     } catch (PDOException $e) {
       print($e->getMessage());
     }
@@ -52,7 +59,15 @@ class BadgeModel extends CoreModel
       $handle = $conn->prepare($query);
       $handle->execute();
 
-      $result = $handle->fetchAll(PDO::FETCH_OBJ);
+      $result = array();
+      while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+        $badge = new Badge(
+          $row->BadgeId,
+          $row->BadgeName
+        );
+
+        $result[] = $badge;
+      }
 
       //close the connection
       CoreModel::closeDbConnection();
@@ -82,7 +97,15 @@ class BadgeModel extends CoreModel
       $handle->bindParam(':UserId', $userId);
       $handle->execute();
 
-      $result = $handle->fetchAll(PDO::FETCH_OBJ);
+      $result = array();
+      while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+        $badge = new Badge(
+          $row->BadgeId,
+          $row->BadgeName
+        );
+
+        $result[] = $badge;
+      }
 
       //close the connection
       CoreModel::closeDbConnection();
