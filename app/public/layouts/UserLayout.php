@@ -7,7 +7,7 @@
         </div>
         <div class="col-span-6 sm:col-span-1 user-sidebar">
             <div class="h-auto w-full">
-                <ul class="mt-14 uppercase text-xs md:text-base">
+                <ul class="mt-14 uppercase text-xs md:text-base list-none ml-0">
                     {{adminView}}
                     <a href="/Explore">
                         <li class="mb-4 <?php if ($_SERVER['REQUEST_URI'] === '/Explore') {

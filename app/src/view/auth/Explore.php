@@ -62,20 +62,12 @@ $system = $systemController->fetchById(1);
                 SEARCH
             </button>
         </form>
-
-        <?php if (empty($posts)) {
-            echo '
-                <div class="no-post-banner">
-                    <h3 class="headline text-lg ">No posts found...</h3>
-                </div>
-        ';
-        } else {
-            /**
-             * Loop through the posts
-             * Replace placeholders with data from each post
-             * Echo out the complete template
-             */
-            $postTemplatesArray = array();
+        <?php if (empty($posts)) { ?>
+            <div class="no-post-banner">
+                <h3 class="headline text-lg ">No posts found...</h3>
+            </div>
+        <?php } else { ?>
+            <?php $postTemplatesArray = array();
             foreach ($posts as $post) {
                 $media = $mediaController->fetchMediaForPost($post->getId());
                 $indexedMediaArray = array_values($media);
@@ -83,52 +75,52 @@ $system = $systemController->fetchById(1);
                     $post->setMedia($indexedMediaArray);
                 }
                 $postTemplatesArray[] =  '
-                                    <a href="/SelectedPost?selectedPost=' .  $post->getId() . '">
-                                        <div class="post-card-container ' . ($post->getIsSticky() ? "sticky" : "") . ' ">
-                                            ' . ($post->getIsSticky() ? '<div class="post-card-sticky"><i class="las la-fire"></i></div>' : '') . '
-                                            <!-- Post Image -->
-                                            ' . ($post->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
-                                                    <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($post->getCoverImageForPost()) . '" />
-                                                </div>') . '
-                                            <!-- Post Body -->
-                                            <div class="post-card-body">
-                                                <!-- Post Header -->
-                                                <div class="post-card-header">
-                                                    <h3 class="post-card-title">' . $post->getTitle() . '</h3>
-                                                    <p class="post-card-user">by @<span class="text-highlight-green-900">' . $post->getAuthorName() . '</span></p>
-                                                </div>
-                                                <!-- Post Comment -->
-                                                    ' . ($post->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
-                                                    <div class="small-logo">
-                                                        <i class="las la-smile text-background-black-900 text-xl"></i>
-                                                    </div>
-                                                    <div class="post-card-comment">
-                                                    ' . $post->getLatestComment() . '
-                                                    </div>
-                                                </div>') . '
-                                                <!-- Post Reactions -->
-                                                <div class="post-card-reactions-wrapper">
-                                                    🌸 ✅ 👀
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>';
+                <a href="/SelectedPost?selectedPost=' .  $post->getId() . '">
+                    <div class="post-card-container ' . ($post->getIsSticky() ? "sticky" : "") . ' ">
+                        ' . ($post->getIsSticky() ? '<div class="post-card-sticky"><i class="las la-fire"></i></div>' : '') . '
+                        <!-- Post Image -->
+                        ' . ($post->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
+                                <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($post->getCoverImageForPost()) . '" />
+                            </div>') . '
+                        <!-- Post Body -->
+                        <div class="post-card-body">
+                            <!-- Post Header -->
+                            <div class="post-card-header">
+                                <h3 class="post-card-title">' . $post->getTitle() . '</h3>
+                                <p class="post-card-user">by @<span class="text-highlight-green-900">' . $post->getAuthorName() . '</span></p>
+                            </div>
+                            <!-- Post Comment -->
+                                ' . ($post->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
+                                <div class="small-logo">
+                                    <i class="las la-smile text-background-black-900 text-xl"></i>
+                                </div>
+                                <div class="post-card-comment">
+                                ' . $post->getLatestComment() . '
+                                </div>
+                            </div>') . '
+                            <!-- Post Reactions -->
+                            <div class="post-card-reactions-wrapper">
+                                🌸 ✅ 👀
+                            </div>
+                        </div>
+                    </div>
+                </a>';
             }
             echo '
-            <div class="grid 2xl:grid-cols-5 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"> 
+                <div class="grid 2xl:grid-cols-5 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"> 
                 ' . implode($postTemplatesArray) . '
-            </div> 
-            ';
-        } ?>
+                </div> 
+                    '; ?>
+        <?php } ?>
     </div>
     <div class="col-span-2">
         <div class="side-bar-container">
             <div class="banner">
-                <?php echo $system->getDescription() ?>
+                <?php echo htmlspecialchars_decode($system->getDescription()) ?>
             </div>
             <div class="banner mt-4">
                 <p class="headline mb-2">Guidelines</p>
-                <?php echo $system->getRules() ?>
+                <?php echo htmlspecialchars_decode($system->getRules()) ?>
             </div>
         </div>
 

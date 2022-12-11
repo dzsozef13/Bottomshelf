@@ -46,4 +46,12 @@
       rounded
       border-highlight-green-900;
   }
+
+  .sun-editor-wrapper {
+    @apply w-full
+    bg-transparent
+    flex
+    flex-col
+    relative;
+  }
 }

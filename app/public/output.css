@@ -1044,6 +1044,14 @@ ul,
   background-color: transparent;
 }
 
+.sun-editor-wrapper{
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-color: transparent;
+}
+
 /* Buttons */
 
 .btn-green{
@@ -1772,6 +1780,10 @@ ul,
   margin-top: 3.5rem;
 }
 
+.ml-0{
+  margin-left: 0px;
+}
+
 .flex{
   display: flex;
 }
@@ -1922,6 +1934,10 @@ ul,
 
 .border{
   border-width: 1px;
+}
+
+.border-none{
+  border-style: none;
 }
 
 .border-highlight-green-900\/60{

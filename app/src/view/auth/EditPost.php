@@ -31,11 +31,9 @@ $indexedMediaArray = array_values($media);
                     </div>
                     <input required placeholder="Title" class="input-field" value="<?php echo $post->getTitle() ?>" type="text" name="title">
                 </div>
-                <div class="text-area-wrapper mb-4">
-                    <div class="icon-wrapper-text-area">
-                        <i class="las la-comment"></i>
-                    </div>
-                    <textarea required placeholder="Description.." name="description" maxlength="1024" class="input-field  min-h-[4rem]"><?php echo $post->getDescription() ?></textarea>
+                <div class="sun-editor-wrapper mb-4">
+                    <p class="mb-2 healine text-highlight-green-900">Description</p>
+                    <textarea required id="sample" name="description"><?php echo $post->getDescription() ?></textarea>
                 </div>
                 <div class="input-field-wrapper items-center px-2">
                     <div class="icon-wrapper">

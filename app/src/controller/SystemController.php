@@ -67,7 +67,6 @@ class SystemController
                 "systemDescription" =>  $_POST['systemDescription'],
                 "rules" =>  $_POST['rules'],
             );
-
             if (!empty($data)) {
                 // system id hardcoded to 1 for now
                 $systemModel->updateSystemDescriptionAndRules(1, $data);

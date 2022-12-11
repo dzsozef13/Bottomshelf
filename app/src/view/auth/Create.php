@@ -31,7 +31,8 @@ foreach ($uploadedMediaIdArray as $imageId) {
                     </div>
                     <input required placeholder="Title" class="input-field " type="text" name="title">
                 </div>
-                <div class="text-area-wrapper mb-4">
+                <div class="sun-editor-wrapper mb-4">
+                    <p class="mb-2 healine text-highlight-green-900">Description</p>
                     <textarea required id="sample" name="description">Description</textarea>
                 </div>
                 <div class="input-field-wrapper items-center px-2">
