@@ -57,4 +57,25 @@
     flex-col
     relative;
   }
+
+  .radio-input-wrapper {
+    @apply w-1/3
+    flex
+    items-center;
+  }
+
+  .label-radio-input {
+    @apply peer-checked:bg-highlight-color-900
+    peer-checked:text-background-primary-900
+    hover:bg-background-ternary-900
+     w-full
+     transition
+     border
+     border-highlight-color-900
+     p-2
+     rounded
+     text-center
+     font-mono
+     text-lg;
+  }
 }

@@ -4,6 +4,7 @@ class ColorScheme
 {
 
     private $colorSchemeId;
+    private $colorSchemeName;
     private $highlightColor;
     private $backgroundPrimary;
     private $backgroundSecondary;
@@ -12,6 +13,7 @@ class ColorScheme
 
     function __construct(
         $colorSchemeId,
+        $colorSchemeName,
         $highlightColor,
         $backgroundPrimary,
         $backgroundSecondary,
@@ -19,6 +21,7 @@ class ColorScheme
         $light
     ) {
         $this->colorSchemeId = $colorSchemeId;
+        $this->colorSchemeName = $colorSchemeName;
         $this->highlightColor = $highlightColor;
         $this->backgroundPrimary = $backgroundPrimary;
         $this->backgroundSecondary = $backgroundSecondary;
@@ -29,6 +32,10 @@ class ColorScheme
     public function getId()
     {
         return $this->colorSchemeId;
+    }
+    public function getColorSchemeName()
+    {
+        return $this->colorSchemeName;
     }
 
     public function getHighlight()

@@ -32,7 +32,7 @@ class SystemController
     /**
      * Admin only
      */
-    function UpdateContact()
+    function updateContact()
     {
         $sessionController = new SessionController();
         $roleId = $sessionController->getUser()['roleId'];
@@ -44,7 +44,6 @@ class SystemController
                 "email" =>  $_POST['email'],
                 "address" =>  $_POST['address']
             );
-
             if (!empty($data)) {
                 // system id hardcoded to 1 for now
                 $systemModel->updateSystemContact(1, $data);
@@ -56,7 +55,7 @@ class SystemController
     /**
      * Admin only
      */
-    function UpdateDescriptionRules()
+    function updateDescriptionRules()
     {
         $sessionController = new SessionController();
         $roleId = $sessionController->getUser()['roleId'];
@@ -70,6 +69,26 @@ class SystemController
             if (!empty($data)) {
                 // system id hardcoded to 1 for now
                 $systemModel->updateSystemDescriptionAndRules(1, $data);
+            }
+        }
+        new Router('Settings');
+    }
+
+
+    /**
+     * Admin only
+     */
+    function updateSystemColorScheme()
+    {
+        $sessionController = new SessionController();
+        $roleId = $sessionController->getUser()['roleId'];
+        if (isset($roleId) && $roleId == 2) {
+            $systemModel = new SystemModel();
+
+            $colorSchemeId = $_POST['colorSchemeId'];
+            if (isset($colorSchemeId)) {
+                // system id hardcoded to 1 for now
+                $systemModel->updateSystemColorScheme(1, $colorSchemeId);
             }
         }
         new Router('Settings');

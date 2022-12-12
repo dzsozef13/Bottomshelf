@@ -4,6 +4,7 @@ USE BottomshelfDB;
 
 CREATE TABLE ColorScheme (
     ColorSchemeId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    ColorSchemeName varchar(256) NOT NULL,
     HighlightColor varchar(8) NOT NULL,
     BackgroundPrimary varchar(8) NOT NULL,
     BackgroundSecondary varchar(8) NOT NULL,

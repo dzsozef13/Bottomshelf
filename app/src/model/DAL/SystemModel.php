@@ -30,6 +30,7 @@ class SystemModel extends CoreModel
                 $result->Address,
                 $result->ColorSchemeId,
             );
+
             //close the connection
             CoreModel::closeDbConnection();
             $conn = null;
@@ -148,6 +149,26 @@ class SystemModel extends CoreModel
             $handle->bindParam(':Id', $systemId);
             $handle->bindParam(':ServiceDescription', $sanitizedDescription);
             $handle->bindParam(':Rules', $sanitizedRules);
+
+            $handle->execute();
+            $lastInsertedPostId = $conn->lastInsertId();
+            return $lastInsertedPostId;
+        } catch (PDOException $e) {
+            echo  $e->getMessage();
+        }
+    }
+
+    public function updateSystemColorScheme(int $systemId, int $colorSchemeId)
+    {
+        try {
+            $conn = CoreModel::openDbConnetion();
+
+            $query = "UPDATE `System` SET ColorSchemeId = :ColorSchemeId WHERE Id = :Id";
+
+            $handle = $conn->prepare($query);
+
+            $handle->bindParam(':Id', $systemId);
+            $handle->bindParam(':ColorSchemeId', $colorSchemeId);
 
             $handle->execute();
             $lastInsertedPostId = $conn->lastInsertId();

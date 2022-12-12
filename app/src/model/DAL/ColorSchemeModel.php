@@ -30,6 +30,7 @@ class ColorSchemeModel extends CoreModel
             $row = $handle->fetch(PDO::FETCH_OBJ);
             $scheme = new ColorScheme(
                 $row->ColorSchemeId,
+                $row->ColorSchemeName,
                 $row->HighlightColor,
                 $row->BackgroundPrimary,
                 $row->BackgroundSecondary,
@@ -64,6 +65,7 @@ class ColorSchemeModel extends CoreModel
             while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
                 $scheme = new ColorScheme(
                     $row->ColorSchemeId,
+                    $row->ColorSchemeName,
                     $row->HighlightColor,
                     $row->BackgroundPrimary,
                     $row->BackgroundSecondary,

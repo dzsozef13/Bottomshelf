@@ -16,6 +16,10 @@ $countryController = new CountryController();
  * System controller
  */
 $systemController = new SystemController();
+/**
+ * Color Scheme controller
+ */
+$colorSchemeController = new ColorSchemeController();
 
 $userId = $sessionController->getUser()['userId'];
 $profile = $userController->fetchById($userId);
@@ -23,13 +27,12 @@ $countries = $countryController->fetchAll();
 $isAdmin = $profile->isAdmin();
 $system = $systemController->fetchById(1);
 $preselectedCountry = null;
-
+$colorSchemes = $colorSchemeController->fetchAll();
 foreach ($countries as $country) {
     if ($country->getCountryCode() === $profile->getCountryCode()) {
         $preselectedCountry = $country->getCountryName();
     }
 }
-
 ?>
 <div class="grid grid-cols-6 gap-8 px-8 w-full">
     <div class="col-span-6 2xl:h-[5vh] h-[5vh] ">
@@ -135,7 +138,7 @@ foreach ($countries as $country) {
                             <div class="icon-wrapper">
                                 <i class="las la-phone-volume"></i>
                             </div>
-                            <input required placeholder="Phone Number.." name="phoneNumber" class="input-field" value="><?php echo  $system->getPhoneNumber() ?>" type="text">
+                            <input required placeholder="Phone Number.." name="phoneNumber" class="input-field" value="<?php echo $system->getPhoneNumber() ?>" type="text">
                         </div>
                         <!-- Address -->
                         <div class="text-area-wrapper">
@@ -150,6 +153,26 @@ foreach ($countries as $country) {
             </div>
         <?php }  ?>
     </div>
+    <?php if ($isAdmin && !empty($colorSchemes)) { ?>
+        <div class="2xl:mx-20 mx-0 col-span-6 mb-4 flex flex-col gap-8">
+            <div class="banner-settings w-full">
+                <h3 class="medium-headline w-full mb-4">Change The Global Color Scheme</h3>
+                <form action="UpdateColorScheme" method="post" class="w-full h-auto flex flex-col mb-0">
+                    <div class="w-full h-auto flex items-between gap-4 mb-4">
+                        <?php foreach ($colorSchemes as $scheme) {
+                            echo '
+                        <div class="radio-input-wrapper"> 
+                             <input type="radio" class="peer opacity-0 absolute" ' . ($scheme->getId() == $system->getColorSchemeId() ? 'checked' : "") . '  name="colorSchemeId" id="' . $scheme->getId() . '" value="' . $scheme->getId() . '">
+                             <label class="label-radio-input" for="' . $scheme->getId() . '">' . $scheme->getColorSchemeName() . '</label>
+                         </div>
+                        ';
+                        } ?>
+                    </div>
+                    <button class="btn-green-no-shadow  w-full mt-2" name="submit" type="submit">UPDATE SYSTEM COLOR SCHEME</button>
+                </form>
+            </div>
+        </div>
+    <?php } ?>
     <?php if ($isAdmin) { ?>
         <div class="2xl:mx-20 mx-0 col-span-6 mb-4 flex flex-col gap-8">
             <div class="banner-settings w-full">
