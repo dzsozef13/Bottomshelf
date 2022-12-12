@@ -6,14 +6,15 @@
     flex 
     justify-center 
     items-center 
-    bg-highlight-green-900 
+    bg-highlight-color-900 
     rounded 
     shadow-btn
-    shadow-highlight-green-900/20
+    /* fix opacity*/
+    shadow-highlight-color-900
     border-0 
     font-mono
     uppercase 
-    text-background-black-900 
+    text-background-primary-900 
     transition
     hover:-translate-y-1 
     hover:scale-100
@@ -29,14 +30,15 @@
     flex 
     justify-center 
     items-center 
-    bg-dim-white-900 
+    bg-light-color-900 
     rounded 
     shadow-btn
-    shadow-highlight-green-900/20
+        /* fix opacity*/
+    shadow-highlight-color-900
     border-0 
     font-mono 
     uppercase 
-    text-background-black-900 
+    text-background-primary-900 
     transition
     hover:-translate-y-1 
     hover:scale-100
@@ -51,12 +53,12 @@
     flex 
     justify-center 
     items-center 
-    bg-dim-white-900 
+    bg-light-color-900 
     rounded 
     border-0 
     font-mono 
     uppercase 
-    text-background-black-900 
+    text-background-primary-900 
     transition
     hover:-translate-y-1 
     hover:scale-100
@@ -70,12 +72,12 @@
     flex 
     justify-center 
     items-center 
-    bg-highlight-green-900 
+    bg-highlight-color-900 
     rounded 
     border-0 
     font-mono 
     uppercase 
-    text-background-black-900 
+    text-background-primary-900 
     font-bold 
     cursor-pointer
     transition
@@ -91,11 +93,11 @@
     justify-center 
     items-center 
     border
-    border-highlight-green-900 
+    border-highlight-color-900 
     rounded 
     font-mono 
     uppercase 
-    text-highlight-green-900  
+    text-highlight-color-900  
     font-bold 
     cursor-pointer
     transition

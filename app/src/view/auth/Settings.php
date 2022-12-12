@@ -37,7 +37,7 @@ foreach ($countries as $country) {
     <div class="2xl:mx-20 mx-0 col-span-6 md:col-span-3 flex flex-col gap-4">
         <div class="banner-settings w-full">
             <h3 class="medium-headline w-full mb-4"><?php if ($isAdmin) {
-                                                        echo '<span class="text-highlight-green-900">Admin </span>';
+                                                        echo '<span class="text-highlight-color-900">Admin </span>';
                                                     } ?>User Information</h3>
             <!-- Form for profile picture -->
             <form action="ChangeProfilePicture" enctype="multipart/form-data" method="post" class="w-full h-auto flex-wrap flex  mb-0" id="profile-img-upload">
@@ -104,17 +104,17 @@ foreach ($countries as $country) {
             <h3 class="medium-headline w-full mb-2">Bottomshelf</h3>
             <div class="w-full flex flex-wrap mb-2">
                 <p class="headline mr-2">We are based in:</p>
-                <p class="text-highlight-green-900"><?php echo $system->getAddress() ?></p>
+                <p class="text-highlight-color-900"><?php echo $system->getAddress() ?></p>
             </div>
             <div class="w-full flex flex-wrap">
                 <p class="headline mr-2 mb-2 w-full">Feel free to contact us through:</p>
                 <div class="flex w-full mb-4 items-center">
                     <i class="las la-at mr-2  text-2xl"></i>
-                    <p class="text-highlight-green-900"><?php echo $system->getEmail() ?></p>
+                    <p class="text-highlight-color-900"><?php echo $system->getEmail() ?></p>
                 </div>
                 <div class="flex w-full items-center">
                     <i class="las la-phone-volume mr-2 text-2xl"></i>
-                    <p class="text-highlight-green-900"><?php echo $system->getPhoneNumber() ?></p>
+                    <p class="text-highlight-color-900"><?php echo $system->getPhoneNumber() ?></p>
                 </div>
             </div>
         </div>
@@ -157,12 +157,12 @@ foreach ($countries as $country) {
                 <form action="UpdateDescriptionRules" method="post" class="w-full h-auto flex flex-col mb-0">
                     <!-- Site description -->
                     <div class="sun-editor-wrapper mb-8 ">
-                        <p class="mb-2 healine text-highlight-green-900">Description</p>
+                        <p class="mb-2 healine text-highlight-color-900">Description</p>
                         <textarea required id="settings-description" name="systemDescription"> <?php echo $system->getDescription() ?></textarea>
                     </div>
                     <!-- Rules -->
                     <div class="sun-editor-wrapper mb-4">
-                        <p class="mb-2 healine text-highlight-green-900">Rules</p>
+                        <p class="mb-2 healine text-highlight-color-900">Rules</p>
                         <textarea required id="settings-rules" name="rules"><?php echo $system->getRules() ?></textarea>
                     </div>
                     <button class="btn-green-no-shadow  w-full mt-2" name="submit" type="submit">UPDATE DESCRIPTION AND RULES</button>

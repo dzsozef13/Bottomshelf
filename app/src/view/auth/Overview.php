@@ -62,12 +62,12 @@ $users = $userController->fetchAll();
                                                 <!-- Post Header -->
                                                 <div class="post-card-header">
                                                     <h3 class="post-card-title">' . $post->getTitle() . '</h3>
-                                                    <p class="post-card-user">by @<span class="text-highlight-green-900">' . $post->getAuthorName() . '</span></p>
+                                                    <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
                                                 </div>
                                                 <!-- Post Comment -->
                                                     ' . ($post->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
                                                     <div class="small-logo">
-                                                        <i class="las la-smile text-background-black-900 text-xl"></i>
+                                                        <i class="las la-smile text-background-primary-900 text-xl"></i>
                                                     </div>
                                                     <div class="post-card-comment">
                                                     ' . $post->getLatestComment() . '
@@ -115,10 +115,10 @@ $users = $userController->fetchAll();
                                                 <!-- User Card Header -->
                                                 <div class="post-card-header">
                                                     <h3 class="user-card-name">' . $user->getUsername() . '</h3>
-                                                    <p class="user-card-email text-highlight-green-900">' . $user->getEmail() . '</p>
+                                                    <p class="user-card-email text-highlight-color-900">' . $user->getEmail() . '</p>
                                                 </div>
                                                 <div class="user-card-status">
-                                                    <p class="font-mono text-xs text-highlight-green-900">STATUS: <span class="text-dim-white-900"> ' . $user->getStatus() . '</span></p>
+                                                    <p class="font-mono text-xs text-highlight-color-900">STATUS: <span class="text-light-color-900"> ' . $user->getStatus() . '</span></p>
                                                 </div>
                                             </div>
                                         </div>

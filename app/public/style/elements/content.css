@@ -1,8 +1,8 @@
 @layer components {
   /* Body */
   .bodyStyle {
-    @apply bg-background-black-900
-    text-dim-white-900 
+    @apply bg-background-primary-900
+    text-light-color-900 
     font-sans;
   }
 
@@ -61,21 +61,21 @@
     text-sm
     tracking-wide
     font-medium
-    text-highlight-green-900;
+    text-highlight-color-900;
   }
 
   /* Miscelanous */
   .logo {
     @apply w-[38px]
     h-[38px]
-    bg-dim-white-900 
+    bg-light-color-900 
     rounded-full;
   }
 
   .small-logo {
     @apply w-[23px]
     h-[23px]
-    bg-dim-white-900 
+    bg-light-color-900 
     rounded-full
     flex
     items-center
@@ -84,9 +84,10 @@
   }
 
   .badge-icon {
-    @apply bg-highlight-green-900
+    @apply bg-highlight-color-900
     flex 
-    shadow-highlight-green-900/20
+        /* fix opacity*/
+    shadow-highlight-color-900
     shadow-lg	
     h-8
     w-8
@@ -112,7 +113,7 @@
   }
 
   .option-chip-checked {
-    @apply bg-highlight-green-900
+    @apply bg-highlight-color-900
     w-auto
     h-full
     rounded
@@ -120,7 +121,7 @@
     flex
     items-center
     text-sm
-    text-background-black-900
+    text-background-primary-900
     font-mono
     transition
     mr-4
@@ -144,7 +145,7 @@
     items-center
     justify-center
     text-2xl
-    text-highlight-green-900
+    text-highlight-color-900
     h-full;
   }
 
@@ -155,9 +156,9 @@
     items-center
     justify-center
     text-lg
-    text-dim-white-900
+    text-light-color-900
     transition
-    hover:text-highlight-green-900;
+    hover:text-highlight-color-900;
   }
 
   .icon-wrapper-text-area {
@@ -169,7 +170,7 @@
     items-center
     justify-center
     text-2xl
-    text-highlight-green-900
+    text-highlight-color-900
     h-12;
   }
 
@@ -226,16 +227,16 @@
     @apply rounded
     w-max
     border
-    border-highlight-green-900
+    border-highlight-color-900
     h-8
     px-8
-    hover:bg-highlight-green-900
-    hover:text-background-black-900
+    hover:bg-highlight-color-900
+    hover:text-background-primary-900
     flex
     font-bold
     transition
     items-center
-    text-dim-white-900
+    text-light-color-900
     text-xs
     font-mono
     uppercase;
@@ -267,7 +268,7 @@
     bg-red-900
     aspect-square     
     shadow-btn
-    shadow-background-black-900
+    shadow-background-primary-900
     overflow-hidden
     rounded;
   }

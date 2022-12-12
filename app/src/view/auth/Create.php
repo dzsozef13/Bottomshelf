@@ -32,7 +32,7 @@ foreach ($uploadedMediaIdArray as $imageId) {
                     <input required placeholder="Title" class="input-field " type="text" name="title">
                 </div>
                 <div class="sun-editor-wrapper mb-4">
-                    <p class="mb-2 healine text-highlight-green-900">Description</p>
+                    <p class="mb-2 healine text-highlight-color-900">Description</p>
                     <textarea required id="sample" name="description">Description</textarea>
                 </div>
                 <div class="input-field-wrapper items-center px-2">
@@ -40,8 +40,8 @@ foreach ($uploadedMediaIdArray as $imageId) {
                         <i class="las la-unlock-alt"></i>
                     </div>
                     <input placeholder="Public" checked="true" class="cursor-pointer peer opacity-0 absolute h-full w-full" type="checkbox" name="isPublic">
-                    <div class="checkbox peer-checked:after:content-['✓'] peer-checked:text-highlight-green-900 flex items-center justify-center"></div>
-                    <p class="text-xs ml-2 text-highlight-green-900">Is Public</p>
+                    <div class="checkbox peer-checked:after:content-['✓'] peer-checked:text-highlight-color-900 flex items-center justify-center"></div>
+                    <p class="text-xs ml-2 text-highlight-color-900">Is Public</p>
                 </div>
                 <button class="btn-white w-full mt-6 " type="submit">SHARE</button>
             </form>

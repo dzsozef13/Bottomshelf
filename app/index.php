@@ -32,7 +32,11 @@ $pageController = new PageController();
     <title><?php echo $router->currentRoute ?></title>
     <style>
         :root {
-            --red: "<?php echo 'red' ?>";
+            --highlight: #90CA9C;
+            --background-primary: #151617;
+            --background-secondary: #1E2021;
+            --background-ternary: #2F3233;
+            --light: #D8D8D8;
         }
     </style>
 </head>

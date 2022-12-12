@@ -13,11 +13,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.root,
-#root,
-#docs-root {
-  --red: #fff;
-}
 @layer base {
   ul,
   ol {

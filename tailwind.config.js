@@ -10,25 +10,9 @@ module.exports = {
   './app/public/layouts/*.{html,js,php}',
   './app/public/templates/*.{html,js,php}',
   './app/src/model/BE/*.{html,js,php}',
-  './app/public/js/*.{html,js,php}'
+  './app/public/js/*.{html,js,php}',
+  './app/*.{html,js,php}'
 ],
-  plugins: [
-    plugin(function({ matchVariant }) {
-      matchVariant(
-        'mode',
-        (value) => {
-          return `&:mode(${value})`;
-        },
-        {
-          values: {
-            green: 'green',
-            blue: 'blue',
-            red: 'red',
-          }
-        }
-      );
-    })
-  ],
   theme: {
     fontFamily: {
       sans: "'Lato'",
@@ -39,23 +23,23 @@ module.exports = {
     },
     extend: {
       colors: {
-        'highlight-green': {
-          900: '#90CA9C',
-        },
-        'background-black': {
-          900: '#151617',
+        'highlight-color': {
+          900: 'var(--highlight)',
         },
         'background-primary': {
-          900: '#151617',
+          900: 'var(--red)',
+        },
+        'background-primary': {
+          900: 'var(--background-primary)',
         },
         'background-secondary': {
-          900: '#1E2021',
+          900: 'var(--background-secondary)',
         },
         'background-ternary': {
-          900: '#2F3233',
+          900: 'var(--background-ternary)',
         },
-        'dim-white': {
-          900: 'var(--red)',
+        'light-color': {
+          900: 'var(--light)',
         },
       },
       boxShadow: {

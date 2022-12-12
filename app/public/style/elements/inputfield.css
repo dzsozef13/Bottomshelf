@@ -4,7 +4,8 @@
     @apply w-full
     rounded-lg
     border
-    border-highlight-green-900/60
+           /* fix opacity*/
+    border-highlight-color-900
     bg-transparent
     flex
     relative
@@ -15,7 +16,8 @@
     @apply w-full
     rounded-lg
     border
-    border-highlight-green-900/60
+           /* fix opacity*/
+    border-highlight-color-900
     bg-transparent
     flex
     relative
@@ -27,7 +29,8 @@
     border-2
     border-none
     bg-transparent
-    placeholder-highlight-green-900/60
+           /* fix opacity*/
+    placeholder-highlight-color-900
     placeholder-opacity-100
     p-4
     text-sm
@@ -44,7 +47,7 @@
       bg-transparent
       border
       rounded
-      border-highlight-green-900;
+      border-highlight-color-900;
   }
 
   .sun-editor-wrapper {

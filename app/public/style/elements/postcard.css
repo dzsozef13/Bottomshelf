@@ -12,17 +12,17 @@
 
   .sticky {
     @apply border
-     border-highlight-green-900;
+     border-highlight-color-900;
   }
   .post-card-sticky {
     @apply absolute
     top-2
     left-2
     rounded
-    bg-highlight-green-900
+    bg-highlight-color-900
     w-6
     aspect-square
-    text-background-black-900
+    text-background-primary-900
     flex 
     items-center
     justify-center
@@ -69,7 +69,7 @@
     h-max
     aspect-square     
     shadow-btn
-    shadow-background-black-900
+    shadow-background-primary-900
     overflow-hidden
     transition
     hover:-translate-y-1 
@@ -92,7 +92,7 @@
     h-max
     aspect-square     
     shadow-btn
-    shadow-background-black-900
+    shadow-background-primary-900
     overflow-hidden
     mr-8
     rounded;

@@ -4,7 +4,7 @@
        </div>
        <div class="col-span-6 h-[calc(100%-5rem)] flex-col sm:flex-row flex items-center justify-center ">
            <a href="/Login">
-               <div class="text-highlight-green-900 mr-4 text-[10rem] drop-shadow-md ">
+               <div class="text-highlight-color-900 mr-4 text-[10rem] drop-shadow-md ">
                    <i class="las la-glass-martini"></i>
                </div>
            </a>

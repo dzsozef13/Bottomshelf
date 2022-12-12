@@ -19,7 +19,7 @@ class ViewController
             $currentSession = new SessionController();
             if ($currentSession->getUser()['roleId'] == 2) {
                 $linkToAdminView = '<a href="/Overview">
-                                        <li class="mb-4 ' . ($_SERVER['REQUEST_URI'] === '/Overview' ? 'text-highlight-green-900' : "") . '">Overview</li>
+                                        <li class="mb-4 ' . ($_SERVER['REQUEST_URI'] === '/Overview' ? 'text-highlight-color-900' : "") . '">Overview</li>
                                     </a>';
             } else {
                 $linkToAdminView = '';

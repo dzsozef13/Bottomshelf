@@ -44,7 +44,6 @@ $system = $systemController->fetchById(1);
 <!-- Explore View -->
 <div class="grid grid-cols-6 gap-4 px-8 my-8 w-full">
     <div class="col-span-4">
-        <button id="aaa">click</button>
         <form action="FilterPost" method="post" class="flex justify-between h-auto flex-wrap">
             <div class="banner mb-4">
                 <h3 class="small-headline mb-4">Select tags to improve the search!</h3>
@@ -53,7 +52,8 @@ $system = $systemController->fetchById(1);
                     ?>
                 </div>
             </div>
-            <div class="rounded-lg border border-highlight-green-900/60 bg-transparent flex relative h-10 w-[73%]">
+            <!-- fix opacity -->
+            <div class="rounded-lg border border-highlight-color-900 bg-transparent flex relative h-10 w-[73%]">
                 <div class="icon-wrapper">
                     <i class="las la-search"></i>
                 </div>
@@ -89,12 +89,12 @@ $system = $systemController->fetchById(1);
                             <!-- Post Header -->
                             <div class="post-card-header">
                                 <h3 class="post-card-title">' . $post->getTitle() . '</h3>
-                                <p class="post-card-user">by @<span class="text-highlight-green-900">' . $post->getAuthorName() . '</span></p>
+                                <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
                             </div>
                             <!-- Post Comment -->
                                 ' . ($post->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
                                 <div class="small-logo">
-                                    <i class="las la-smile text-background-black-900 text-xl"></i>
+                                    <i class="las la-smile text-background-primary-900 text-xl"></i>
                                 </div>
                                 <div class="post-card-comment">
                                 ' . $post->getLatestComment() . '
