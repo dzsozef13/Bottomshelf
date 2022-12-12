@@ -83,13 +83,13 @@ class SessionController
     /**
      * Set - Get explore filter
      * 
-     * Use to fetch a specific collection posts in explore view
+     * Use to fetch a specific collection posts
      */
-    public function setExploreFilter($filter)
+    public function setFilter($filter)
     {
         $_SESSION['filter'] = $filter;
     }
-    public function getExploreFilter()
+    public function getFilter()
     {
         return $_SESSION['filter'] ?? null;
     }
@@ -97,27 +97,27 @@ class SessionController
     /**
      * Set - Get explore search key
      * 
-     * Use to fetch posts containing the key in explore view
+     * Use to fetch posts containing the key
      */
-    public function setExploreSearchKey($key)
+    public function setSearchPhrase($phrase)
     {
-        $_SESSION['searchKey'] = $key;
+        $_SESSION['searchPhrase'] = $phrase;
     }
-    public function getExploreSearchKey()
+    public function getSearchPhrase()
     {
-        return $_SESSION['searchKey'] ?? null;
+        return $_SESSION['searchPhrase'] ?? null;
     }
 
     /**
      * Set - Get explore search tag
      * 
-     * Use to fetch a collection of tagged posts in explore view
+     * Use to fetch a collection of tagged posts
      */
-    public function setExploreSearchTag($tag)
+    public function setSearchTag($tag)
     {
         $_SESSION['searchTag'] = $tag;
     }
-    public function getExploreSearchTag()
+    public function getSearchTag()
     {
         return $_SESSION['searchTag'] ?? null;
     }

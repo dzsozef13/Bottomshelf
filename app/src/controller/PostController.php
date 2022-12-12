@@ -90,6 +90,21 @@ class PostController
         new Router('SelectedPost?selectedPost=' . $postId);
     }
 
+    public function fetchByPhrase($phrase)
+    {
+        if (isset($phrase)) {
+            $postModel = new PostModel;
+            return $postModel->getAllByPhrase($phrase);
+        }
+    }
+
+    public function fetchByTag($tag) {
+        if (isset($tag)) {
+            $postModel = new PostModel;
+            return $postModel->getAllByTag($tag);
+        }
+    }
+
     public function markAsSticky()
     {
         $postModel = new PostModel;

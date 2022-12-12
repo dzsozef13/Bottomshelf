@@ -9,19 +9,33 @@ $mediaController = new MediaController();
 $tagsController = new TagsController();
 $systemController = new SystemController();
 
-/**
- * Fetch posts
- */
-$filter = $sessionController->getExploreFilter();
-switch ($filter) {
-    case 'trending':
-        console_log('trending');
-        $posts = $postController->fetchAllByStatus();
-        break;
-    default:
-        console_log('all');
-        $posts = $postController->fetchAllByStatus();
-        break;
+// Check for applied filter
+$filter = $sessionController->getFilter();
+$sessionController->setFilter(null);
+if ($filter != null) {
+    switch ($filter) {
+        case 'trending':
+            console_log('trending');
+            $posts = $postController->fetchAll();
+            break;
+    }
+}
+
+// Check for applied search key
+$searchPhrase = $sessionController->getSearchPhrase();
+if ($searchPhrase != null) {
+    $posts = $postController->fetchByPhrase($searchPhrase);
+    $sessionController->setSearchPhrase(null);
+}
+// Check for applied search tag
+$searchTag = $sessionController->getSearchTag();
+if ($searchTag != null) {
+    $posts = $postController->fetchByTag($searchTag);
+    $sessionController->setSearchTag(null);
+}
+// Fetch all posts
+if ($filter == null && $searchPhrase == null && $searchTag == null) {
+    $posts = $postController->fetchAll();
 }
 
 /**
@@ -44,7 +58,10 @@ $system = $systemController->fetchById(1);
 <!-- Explore View -->
 <div class="grid grid-cols-6 gap-4 px-8 my-8 w-full">
     <div class="col-span-4">
-        <form action="FilterPost" method="post" class="flex justify-between h-auto flex-wrap">
+
+        <!-- Search Field -->
+
+        <form action="Explore" method="get" class="flex justify-between h-auto flex-wrap">
             <div class="banner mb-4">
                 <h3 class="small-headline mb-4">Select tags to improve the search!</h3>
                 <div class="tags-container">
@@ -56,18 +73,28 @@ $system = $systemController->fetchById(1);
                 <div class="icon-wrapper">
                     <i class="las la-search"></i>
                 </div>
-                <input type="text" name="phrase" placeholder="Search posts by a phrase..." class="input-field">
+                <input type="text" name="searchPhrase" placeholder="Search posts by a phrase..." class="input-field">
             </div>
             <button type="submit" class="btn-green-no-shadow w-[25%]">
                 SEARCH
             </button>
         </form>
-        <?php if (empty($posts)) { ?>
-            <div class="no-post-banner">
-                <h3 class="headline text-lg ">No posts found...</h3>
-            </div>
-        <?php } else { ?>
-            <?php $postTemplatesArray = array();
+
+        <!-- Posts section -->
+
+        <?php if (empty($posts)) {
+            echo '
+                <div class="no-post-banner">
+                    <h3 class="headline text-lg ">No posts found...</h3>
+                </div>
+        ';
+        } else {
+            /**
+             * Loop through the posts
+             * Replace placeholders with data from each post
+             * Echo out the complete template
+             */
+            $postTemplatesArray = array();
             foreach ($posts as $post) {
                 $media = $mediaController->fetchMediaForPost($post->getId());
                 $indexedMediaArray = array_values($media);
@@ -123,6 +150,5 @@ $system = $systemController->fetchById(1);
                 <?php echo htmlspecialchars_decode($system->getRules()) ?>
             </div>
         </div>
-
     </div>
 </div>
