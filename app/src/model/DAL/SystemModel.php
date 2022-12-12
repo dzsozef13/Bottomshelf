@@ -28,7 +28,7 @@ class SystemModel extends CoreModel
                 $result->PhoneNumber,
                 $result->SystemEmail,
                 $result->Address,
-                $result->UsersCount,
+                $result->ColorSchemeId,
             );
             //close the connection
             CoreModel::closeDbConnection();
@@ -59,7 +59,7 @@ class SystemModel extends CoreModel
                     $row->PhoneNumber,
                     $row->SystemEmail,
                     $row->Address,
-                    $row->UsersCount,
+                    $row->ColorSchemeId,
                 );
 
                 $result[] = $system;

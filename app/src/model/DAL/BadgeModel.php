@@ -28,8 +28,6 @@ class BadgeModel extends CoreModel
       $handle->bindParam(':BadgeId', $badgeId);
       $handle->execute();
 
-      $result = $handle->fetch(PDO::FETCH_OBJ);
-
       $row = $handle->fetch(PDO::FETCH_OBJ);
       $badge = new Badge(
         $row->BadgeId,

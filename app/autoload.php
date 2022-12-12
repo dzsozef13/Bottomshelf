@@ -16,6 +16,7 @@ function include_files($files)
             case "Post":
             case "Media":
             case "Badge":
+            case "ColorScheme":
             case "Route":
             case "System":
             case "Country":
@@ -26,6 +27,7 @@ function include_files($files)
                 // DAL
             case "PostModel":
             case "CountryModel":
+            case "ColorSchemeModel":
             case "CommentModel":
             case "ReactionModel":
             case "SystemModel":
@@ -43,6 +45,7 @@ function include_files($files)
             case "DbConnectionController":
             case "PostController":
             case "UserController":
+            case "ColorSchemeController":
             case "TagsController":
             case "ViewController":
             case "BadgeController":

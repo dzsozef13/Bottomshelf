@@ -2,6 +2,15 @@ DROP DATABASE IF EXISTS BottomshelfDB;
 CREATE DATABASE BottomshelfDB;
 USE BottomshelfDB;
 
+CREATE TABLE ColorScheme (
+    ColorSchemeId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    HighlightColor varchar(8) NOT NULL,
+    BackgroundPrimary varchar(8) NOT NULL,
+    BackgroundSecondary varchar(8) NOT NULL,
+    BackgroundTernary varchar(8) NOT NULL,
+    Light varchar(8) NOT NULL
+);
+
 CREATE TABLE `System` (
     Id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     ServiceDescription varchar(10000),
@@ -9,8 +18,10 @@ CREATE TABLE `System` (
     PhoneNumber varchar(32) NOT NULL,
     SystemEmail varchar(128) NOT NULL,
     `Address` varchar(512) NOT NULL,
-    UsersCount int
+    ColorSchemeId int,
+    FOREIGN KEY (ColorSchemeId) REFERENCES ColorScheme (ColorSchemeId)
 );
+
 CREATE TABLE Country (
     CountryCode varchar(3) NOT NULL PRIMARY KEY,
     CountryName varchar(64)

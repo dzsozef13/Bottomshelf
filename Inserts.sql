@@ -176,7 +176,12 @@ INSERT INTO Country (CountryCode, CountryName) VALUES
 ('ZMB','Zambia'),
 ('ZWE','Zimbabwe');
 
-INSERT INTO `System` (ServiceDescription, Rules, PhoneNumber, SystemEmail, `Address`) VALUES ('Welcome to Bottom Shelf! Explore new recipe ideas by browsing the communitys submissions. Through tags and our search system, you can find exactly the drink you had in mind. If you dont feel inspired, go to Explore page… ', '1.Dont lie, dont steal, 2.be a good neighbor, 3.live laugh live', '00 00 00 00', 'bottomshelf@dummyEmail.com', 'Denmark Esbjerh 6700' );
+INSERT INTO ColorScheme (HighlightColor, BackgroundPrimary, BackgroundSecondary, BackgroundTernary, Light) VALUES ('#90CA9C', '#151617', '#1E2021', '#2F3233', '#D8D8D8' );
+INSERT INTO ColorScheme (HighlightColor, BackgroundPrimary, BackgroundSecondary, BackgroundTernary, Light) VALUES ('#C98F92', '#171715', '#21211E', '#32332F', '#D9D9D9' );
+INSERT INTO ColorScheme (HighlightColor, BackgroundPrimary, BackgroundSecondary, BackgroundTernary, Light) VALUES ('#8FA4C9', '#171517', '#201E21', '#322F33', '#D9D9D9' );
+
+
+INSERT INTO `System` (ServiceDescription, Rules, PhoneNumber, SystemEmail, `Address`, ColorSchemeId) VALUES ('Welcome to Bottom Shelf! Explore new recipe ideas by browsing the communitys submissions. Through tags and our search system, you can find exactly the drink you had in mind. If you dont feel inspired, go to Explore page… ', '1.Dont lie, dont steal, 2.be a good neighbor, 3.live laugh live', '00 00 00 00', 'bottomshelf@dummyEmail.com', 'Denmark Esbjerh 6700', 1);
 
 INSERT INTO `Role` (RoleId, RoleName) VALUES (NULL,'User');
 INSERT INTO `Role` (RoleId, RoleName) VALUES (NULL,'Admin');
