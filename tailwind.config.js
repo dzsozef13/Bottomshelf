@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin')
 module.exports = {
   content: [
   './app/src/view/*.{html,js,php}',
@@ -9,6 +9,23 @@ module.exports = {
   './app/src/model/BE/*.{html,js,php}',
   './app/public/js/*.{html,js,php}'
 ],
+  plugins: [
+    plugin(function({ matchVariant }) {
+      matchVariant(
+        'mode',
+        (value) => {
+          return `&:mode(${value})`;
+        },
+        {
+          values: {
+            green: 'green',
+            blue: 'blue',
+            red: 'red',
+          }
+        }
+      );
+    })
+  ],
   theme: {
     
     fontFamily: {
@@ -22,6 +39,9 @@ module.exports = {
       colors: {
         'highlight-green': {
           900: '#90CA9C',
+        },
+        'highlight-red': {
+          900: '#ff0000',
         },
         'background-black': {
           900: '#151617',
