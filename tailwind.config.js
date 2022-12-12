@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin')
+
+
+
 module.exports = {
   content: [
   './app/src/view/*.{html,js,php}',
@@ -27,7 +30,6 @@ module.exports = {
     })
   ],
   theme: {
-    
     fontFamily: {
       sans: "'Lato'",
       mono: "'Space Mono'",
@@ -39,9 +41,6 @@ module.exports = {
       colors: {
         'highlight-green': {
           900: '#90CA9C',
-        },
-        'highlight-red': {
-          900: '#ff0000',
         },
         'background-black': {
           900: '#151617',
@@ -56,7 +55,7 @@ module.exports = {
           900: '#2F3233',
         },
         'dim-white': {
-          900: '#D8D8D8',
+          900: 'var(--red)',
         },
       },
       boxShadow: {

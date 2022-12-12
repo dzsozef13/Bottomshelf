@@ -44,6 +44,7 @@ $system = $systemController->fetchById(1);
 <!-- Explore View -->
 <div class="grid grid-cols-6 gap-4 px-8 my-8 w-full">
     <div class="col-span-4">
+        <button id="aaa">click</button>
         <form action="FilterPost" method="post" class="flex justify-between h-auto flex-wrap">
             <div class="banner mb-4">
                 <h3 class="small-headline mb-4">Select tags to improve the search!</h3>
@@ -61,6 +62,7 @@ $system = $systemController->fetchById(1);
             <button type="submit" class="btn-green-no-shadow w-[25%]">
                 SEARCH
             </button>
+
         </form>
         <?php if (empty($posts)) { ?>
             <div class="no-post-banner">

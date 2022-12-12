@@ -30,5 +30,9 @@ $pageController = new PageController();
     <script type="application/x-javascript" src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css" rel="stylesheet">
     <title><?php echo $router->currentRoute ?></title>
-
+    <style>
+        :root {
+            --red: "<?php echo 'red' ?>";
+        }
+    </style>
 </head>
