@@ -5,11 +5,11 @@ USE BottomshelfDB;
 CREATE TABLE ColorScheme (
     ColorSchemeId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     ColorSchemeName varchar(256) NOT NULL,
-    HighlightColor varchar(8) NOT NULL,
-    BackgroundPrimary varchar(8) NOT NULL,
-    BackgroundSecondary varchar(8) NOT NULL,
-    BackgroundTernary varchar(8) NOT NULL,
-    Light varchar(8) NOT NULL
+    HighlightColor varchar(24) NOT NULL,
+    BackgroundPrimary varchar(24) NOT NULL,
+    BackgroundSecondary varchar(24) NOT NULL,
+    BackgroundTernary varchar(24) NOT NULL,
+    Light varchar(24) NOT NULL
 );
 
 CREATE TABLE `System` (

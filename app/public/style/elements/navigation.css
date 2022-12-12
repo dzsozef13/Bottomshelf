@@ -20,8 +20,7 @@
     @apply w-full
     rounded-lg
     border
-    /* fix opacity */
-    border-highlight-color-900
+    border-highlight-color-900/60
     bg-background-secondary-900
     flex
     relative
@@ -90,8 +89,7 @@
     top-0
     fixed
     sm:h-full
-    /* fix opacity */
-    sm:bg-highlight-color-900
+    sm:bg-highlight-color-900/10
     sm:p-8 
     sm:relative
     sm:flex

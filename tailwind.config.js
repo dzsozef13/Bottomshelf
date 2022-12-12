@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin')
 
-
-
 module.exports = {
   content: [
   './app/src/view/*.{html,js,php}',
@@ -19,31 +17,28 @@ module.exports = {
       mono: "'Space Mono'",
     },
     dropShadow: {
-      'md': '0px 0px 20px rgba(144, 202, 156, 0.5)',
+      'md': '0px 0px 20px rgba(var(--highlight), 0.6)',
     },
     extend: {
       colors: {
         'highlight-color': {
-          900: 'var(--highlight)',
+          900: 'rgba(var(--highlight), <alpha-value>)',
         },
         'background-primary': {
-          900: 'var(--red)',
-        },
-        'background-primary': {
-          900: 'var(--background-primary)',
+          900: 'rgba(var(--background-primary), <alpha-value>)',
         },
         'background-secondary': {
-          900: 'var(--background-secondary)',
+          900: 'rgba(var(--background-secondary), <alpha-value>)',
         },
         'background-ternary': {
-          900: 'var(--background-ternary)',
+          900: 'rgba(var(--background-ternary), <alpha-value>)',
         },
         'light-color': {
-          900: 'var(--light)',
+          900: 'rgba(var(--light), <alpha-value>)',
         },
       },
       boxShadow: {
-        'btn': '0px 16px 60px  rgba(60, 96, 94, 0.4)',
+        'btn': '0px 16px 60px rgba(var(--highlight), 0.4)',
       }
     },
   },

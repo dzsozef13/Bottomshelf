@@ -176,9 +176,9 @@ INSERT INTO Country (CountryCode, CountryName) VALUES
 ('ZMB','Zambia'),
 ('ZWE','Zimbabwe');
 
-INSERT INTO ColorScheme (ColorSchemeName, HighlightColor, BackgroundPrimary, BackgroundSecondary, BackgroundTernary, Light) VALUES ("Green", '#90CA9C', '#151617', '#1E2021', '#2F3233', '#D8D8D8' );
-INSERT INTO ColorScheme (ColorSchemeName, HighlightColor, BackgroundPrimary, BackgroundSecondary, BackgroundTernary, Light) VALUES ("Red", '#C98F92', '#171715', '#21211E', '#32332F', '#D9D9D9' );
-INSERT INTO ColorScheme (ColorSchemeName, HighlightColor, BackgroundPrimary, BackgroundSecondary, BackgroundTernary, Light) VALUES ("Blue", '#8FA4C9', '#171517', '#201E21', '#322F33', '#D9D9D9' );
+INSERT INTO ColorScheme (ColorSchemeName, HighlightColor, BackgroundPrimary, BackgroundSecondary, BackgroundTernary, Light) VALUES ("Green", '144,202,156', '21,22,23', '30,32,33', '47,50,51', '216,216,216' );
+INSERT INTO ColorScheme (ColorSchemeName, HighlightColor, BackgroundPrimary, BackgroundSecondary, BackgroundTernary, Light) VALUES ("Red", '201,143,146', '23,23,21', '33,33,30', '50,51,47', '217,217,217' );
+INSERT INTO ColorScheme (ColorSchemeName, HighlightColor, BackgroundPrimary, BackgroundSecondary, BackgroundTernary, Light) VALUES ("Blue", '143,164,201', '23,21,23', '32,30,33', '50,47,51', '217,217,217' );
 
 INSERT INTO `System` (ServiceDescription, Rules, PhoneNumber, SystemEmail, `Address`, ColorSchemeId) VALUES ('Welcome to Bottom Shelf! Explore new recipe ideas by browsing the communitys submissions. Through tags and our search system, you can find exactly the drink you had in mind. If you dont feel inspired, go to Explore page… ', '1.Dont lie, dont steal, 2.be a good neighbor, 3.live laugh live', '00 00 00 00', 'bottomshelf@dummyEmail.com', 'Denmark Esbjerh 6700', 1);
 
