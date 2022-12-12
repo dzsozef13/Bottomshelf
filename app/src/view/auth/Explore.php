@@ -28,13 +28,13 @@ if ($filter != null) {
 $searchPhrase = $sessionController->getSearchPhrase();
 if ($searchPhrase != null) {
     // $posts = $postController->fetchAllWithOptions($searchPhrase, $searchTag, $filter);
-    $sessionController->setSearchPhrase(null);
+    // $sessionController->setSearchPhrase(null);
 }
 // Check for applied search tag
 $searchTag = $sessionController->getSearchTag();
 if ($searchTag != null) {
     // $posts = $postController->fetchByTag($searchTag);
-    $sessionController->setSearchTag(null);
+    // $sessionController->setSearchTag(null);
 }
 
 $posts = $postController->fetchAllWithOptions($searchPhrase, $searchTag, $filter);

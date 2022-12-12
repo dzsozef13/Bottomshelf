@@ -203,12 +203,12 @@ class PostModel extends CoreModel
 				INNER JOIN `User` ON User.UserId=Post.UserId
 				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
 				INNER JOIN PostHasTag ON PostHasTag.PostId=Post.PostId
-				WHERE 1=1";
+				WHERE Post.StatusId=1 AND Post.IsPublic=1";
 
 			// Where phrase
 			$phraseQuery = 
-				"AND Post.Title LIKE :TitlePhrase 
-				OR Post.PostDescription LIKE :DescriptionPhrase ";
+				"AND (Post.Title LIKE :TitlePhrase 
+				OR Post.PostDescription LIKE :DescriptionPhrase) ";
 			if ($phrase != null) {
 				$query = "$query $phraseQuery";
 			}
@@ -232,6 +232,8 @@ class PostModel extends CoreModel
 
 			$sanitizedPhrase = '%' . htmlspecialchars($phrase) . '%';
 			$sanitizedTag = htmlspecialchars($tag);
+
+			echo $query;
 
 			$handle = $conn->prepare($query);
 			if ($phrase != null) {

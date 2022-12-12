@@ -25,7 +25,11 @@ class Tag
 
     public function getTagTemplate(): string
     {
-        $template = '<a class="tag-chip" href="Explore?searchTag=' . $this->getId() . '">
+        $sessionController = new SessionController();
+        $searchPhrase = $sessionController->getSearchPhrase();
+        $tagUrl = $searchPhrase ? 'Explore?searchPhrase=' . $searchPhrase . '&searchTag=' . $this->getId() : 'Explore?searchTag=' . $this->getId();
+
+        $template = '<a class="tag-chip" href="' . $tagUrl . '">
                             ' . $this->getTagName() . '
                         </a>';
         return $template;
