@@ -105,7 +105,9 @@ class SessionController
     }
     public function getSearchPhrase()
     {
-        return $_SESSION['searchPhrase'] ?? null;
+        if (isset($_SESSION['searchPhrase'])) {
+            return $_SESSION['searchPhrase'];
+        }
     }
 
     /**
@@ -119,7 +121,9 @@ class SessionController
     }
     public function getSearchTag()
     {
-        return $_SESSION['searchTag'] ?? null;
+        if (isset($_SESSION['searchTag'])) {
+            return $_SESSION['searchTag'];
+        }
     }
 
     public function setUploadedMediaIdArray($mediaIds)
@@ -128,7 +132,9 @@ class SessionController
     }
     public function getUploadedMediaIdArray()
     {
-        return $_SESSION['uploadedMediaIdArray'];
+        if (isset($_SESSION['uploadedMediaIdArray'])) {
+            return $_SESSION['uploadedMediaIdArray'];
+        }
     }
 
     public function setAssignedTagIdArray($tagIds)
@@ -137,7 +143,9 @@ class SessionController
     }
     public function getAssignedTagIdArray()
     {
-        return $_SESSION['assignedTagIdArray'];
+        if (isset($_SESSION['assignedTagIdArray'])) {
+            return $_SESSION['assignedTagIdArray'];
+        }
     }
 
     /**
@@ -151,7 +159,9 @@ class SessionController
     }
     public function getUserProfileId()
     {
-        return $_SESSION['selectedUser'] ?? null;
+        if (isset($_SESSION['selectedUser'])) {
+            return $_SESSION['selectedUser'];
+        }
     }
 
     /**
@@ -165,6 +175,8 @@ class SessionController
     }
     public function getSystemMessage()
     {
-        return $_SESSION['systemMessage'] ?? null;
+        if (isset($_SESSION['systemMessage'])) {
+            return $_SESSION['systemMessage'] ?? null;
+        }
     }
 }

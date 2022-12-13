@@ -17,7 +17,7 @@ $tagTemplates = array();
 /**
  * Fetch assigned tags
  */
-$assignedTagIdArray = $sessionController->getAssignedTagIdArray();
+$assignedTagIdArray = $sessionController->getAssignedTagIdArray() ?? array();
 
 ?>
 
