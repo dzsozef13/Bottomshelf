@@ -14,12 +14,12 @@ class ReactionModel extends CoreModel
     {
         try {
             $conn = CoreModel::openDbConnetion();
-
-            $query = "INSERT INTO Reaction (ReactionType, UserId, PostId) VALUES (:ReactionType, :UserId, :PostId)";
+            $query = "INSERT INTO Reaction (ReactionType, UserId, PostId) VALUES (:ReactionType, :UserId, :PostId) ON DUPLICATE KEY UPDATE ReactionType = :ReactionTypeDuplicate";
 
             $handle = $conn->prepare($query);
 
             $handle->bindValue(':ReactionType', $data['reactionType']);
+            $handle->bindValue(':ReactionTypeDuplicate', $data['reactionType']);
             $handle->bindValue(':UserId', $data['userId']);
             $handle->bindValue(':PostId', $data['postId']);
 

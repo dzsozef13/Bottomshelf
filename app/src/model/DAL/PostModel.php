@@ -29,8 +29,8 @@ class PostModel extends CoreModel
 			$handle->bindParam(':postDescription', $sanitizedDescription);
 			$handle->bindValue(':isPublic', $data['isPublic']);
 			$handle->bindValue(':isSticky', $data['isSticky']);
-			$handle->bindValue(':reactionCount', 0);
-			$handle->bindValue(':commentCount', 0);
+			$handle->bindValue(':reactionCount', $data['reactionCount']);
+			$handle->bindValue(':commentCount', $data['commentCount']);
 			$handle->bindValue(':userId', $data['userId']);
 			$handle->bindValue(':statusId', $data['statusId']);
 

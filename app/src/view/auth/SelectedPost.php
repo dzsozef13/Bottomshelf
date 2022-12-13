@@ -76,10 +76,11 @@ $currentUserReaction = null;
 if (isset($reactions)) {
     foreach ($reactions as $reaction) {
         if ($userId == $reaction->getAuthorId()) {
-            return $reaction;
+            $currentUserReaction = $reaction;
         }
     }
 }
+
 ?>
 
 <div class="grid grid-cols-6 px-2 my-4 sm:px-8 sm:my-8 w-full gap-4">
@@ -139,18 +140,22 @@ if (isset($reactions)) {
             <?php } ?>
         </div>
         <div class="reactions-preview-content ">
-            <form action="<?php isset($currentUserReaction) ? "AddReaction" : "DeleteReaction" ?>" class="w-2/4 mb-0 min-h-[2.5rem] h-auto flex items-start justify-end">
-                <div class="reactions-wrapper gap-4" id="#select-reactions">
-                    <div class="reaction-input-wrapper">
-                        <input type="checkbox" class="peer opacity-0 absolute" <?php (isset($currentUserReaction) && $currentUserReaction->getReactionName() == "Heart" ? 'checked' : "") ?> name="reactionType" id="heart-reaction" value="Heart">
-                        <label class="label-reaction-input" for="heart-reaction"><i class="las la-heart"></i></label>
-                    </div>
-                    <div class="reaction-input-wrapper">
-                        <input type="checkbox" class="peer opacity-0 absolute" <?php (isset($currentUserReaction) && $currentUserReaction->getReactionName() == "ThumbsDown" ? 'checked' : "") ?> name="reactionType" id="thmbs-down-reaction" value="ThumbsDown">
-                        <label class="label-reaction-input" for="thmbs-down-reaction"><i class="las la-thumbs-down"></i></label>
-                    </div>
+            <div class="reactions-wrapper gap-4" id="#select-reactions">
+                <div class="reaction-input-wrapper">
+                    <a href="/ReactToPost?selectedPost=<?php echo $post->getId() ?>&reactionType=Heart<?php echo isset($currentUserReaction) && $currentUserReaction->getReactionName() == 'Heart' ? "&reactionId=" . $currentUserReaction->getId() : "" ?>">
+                        <button class="label-reaction-input <?php echo isset($currentUserReaction) && $currentUserReaction->getReactionName() === 'Heart' ? 'bg-highlight-color-900' : '' ?>">
+                            <i class="las la-heart"></i>
+                        </button>
+                    </a>
                 </div>
-            </form>
+                <div class="reaction-input-wrapper">
+                    <a href="/ReactToPost?selectedPost=<?php echo $post->getId() ?>&reactionType=ThumbsDown<?php echo isset($currentUserReaction) && $currentUserReaction->getReactionName() == 'ThumbsDown' ? "&reactionId=" . $currentUserReaction->getId() : "" ?>">
+                        <button class="label-reaction-input <?php echo isset($currentUserReaction) && $currentUserReaction->getReactionName() === 'ThumbsDown' ? 'bg-highlight-color-900' : '' ?>">
+                            <i class="las la-thumbs-down"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
             <div class="w-2/4 min-h-[2.5rem] h-auto flex flex-wrap items-center justify-end gap-4 ">
                 <div class="h-8 w-auto flex items-center text-xl"><i class="las la-heart"></i>
                     <p class="ml-2">0</p>

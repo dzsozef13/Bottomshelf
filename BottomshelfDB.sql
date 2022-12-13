@@ -89,7 +89,9 @@ CREATE TABLE Reaction (
     PostId int NOT NULL,
     CreatedAt timestamp,
     FOREIGN KEY (UserId) REFERENCES User (UserId),
-    FOREIGN KEY (PostId) REFERENCES Post (PostId)
+    FOREIGN KEY (PostId) REFERENCES Post (PostId),
+    CONSTRAINT Reaction UNIQUE (UserId,PostId)
+    
 );
 CREATE TABLE Comment (
     CommentId int NOT NULL AUTO_INCREMENT PRIMARY KEY,

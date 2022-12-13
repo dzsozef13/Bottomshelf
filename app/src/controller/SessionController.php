@@ -145,6 +145,7 @@ class SessionController
         return $_SESSION['selectedUser'] ?? null;
     }
 
+
     /**
      * Set - Get system message
      * 

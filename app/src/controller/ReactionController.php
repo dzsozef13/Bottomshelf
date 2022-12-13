@@ -8,23 +8,54 @@ include_files(array(
 class ReactionController
 {
 
-    public function create()
+    public function react()
+    {
+
+        $reactionType = $_GET['reactionType'];
+        $reactionId = isset($_GET['reactionId']) ? $_GET['reactionId'] : null;
+        $postId = isset($_GET['selectedPost']) ? $_GET['selectedPost'] : null;
+
+        if (isset($postId)) {
+            if (isset($reactionId)) {
+                $this->deleteReaction($reactionId, $postId);
+            } else {
+                if (isset($reactionType)) {
+                    $this->create($reactionType, $postId);
+                }
+            }
+        } else {
+            new Router('Explore');
+        }
+    }
+
+    public function create($reactionType, $postId)
     {
 
         $reactionModel = new ReactionModel();
         $sessionController = new SessionController();
 
-        $reactionType = $_POST['reactionType'];
         $userId = $sessionController->getUser()['userId'];
-        $postId = $sessionController->getSelectedPostId();
 
         if (isset($reactionType) && isset($postId) && isset($userId)) {
             $data = array(
-                'reactiontype' => $reactionType,
+                'reactionType' => $reactionType,
                 'userId' =>  $userId,
                 'postId' => $postId
             );
+
             $reactionModel->createReaction($data);
+        }
+        new Router('SelectedPost?selectedPost=' . $postId);
+    }
+
+    public function deleteReaction(int $reactionId, $postId)
+    {
+        $reactionModel = new ReactionModel();
+        $sessionController = new SessionController();
+        $postId = $sessionController->getSelectedPostId();
+
+        if (isset($reactionId)) {
+            $reactionModel->deleteReaction($reactionId);
         }
         new Router('SelectedPost?selectedPost=' . $postId);
     }
@@ -45,17 +76,5 @@ class ReactionController
     {
         $reactionModel = new ReactionModel();
         return $reactionModel->getAll();
-    }
-
-    public function deleteReaction(int $reactionId)
-    {
-        $reactionModel = new ReactionModel();
-        $sessionController = new SessionController();
-        $postId = $sessionController->getSelectedPostId();
-
-        if (isset($reactionId)) {
-            $reactionModel->deleteReaction($reactionId);
-        }
-        new Router('SelectedPost?selectedPost=' . $postId);
     }
 }

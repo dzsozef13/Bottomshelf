@@ -31,7 +31,7 @@ class PageController
 
         // Explore Filter
         if (isset($args['filter'])) {
-            $exploreFilter = $args['filter']; 
+            $exploreFilter = $args['filter'];
             $session->setFilter($exploreFilter);
         } else {
             $session->setFilter(null);
