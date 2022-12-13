@@ -28,6 +28,7 @@ Router::add(new Route("Upload", "page/load", array("view" => "Upload", "auth" =>
 Router::add(new Route("Create", "page/load", array("view" => "Create", "auth" => true)));
 Router::add(new Route("EditPost", "page/load", array("view" => "EditPost", "auth" => true)));
 Router::add(new Route("Overview", "page/load", array("view" => "Overview", "auth" => true)));
+Router::add(new Route("AddTag", "page/load", array("view" => "AddTag", "auth" => true)));
 
 // USER
 Router::add(new Route("UserLogin", "user/tryLogInUser"));
@@ -60,3 +61,6 @@ Router::add(new Route("UpdateComment", "comment/update"));
 
 // MEDIA
 Router::add(new Route("MediaUpload", "media/uploadMedia"));
+
+// TAG
+Router::add(new Route("TagAssign", "tag/assignTag"));

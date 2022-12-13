@@ -18,8 +18,9 @@ $postController = new PostController();
 /**
  * Comment Controller
  */
-
 $commentController = new CommentController();
+
+$tagController = new TagController();
 
 
 $userId = $sessionController->getUser()['userId'];
@@ -50,9 +51,6 @@ if (isset($indexedMediaArray)) {
     }
 }
 $selectedImage = !empty($indexedMediaArray) ? $indexedMediaArray[0] : null;
-
-
-
 
 /**
  * Fetch all comments for the post
@@ -115,6 +113,17 @@ $comments = $commentController->fetchAllByPostId($post->getId());
 
                 </div>
             <?php } ?>
+        </div>
+        <div class="tags-container mb-6">
+            <?php
+                $tags = $tagController->fetchAllForPost($post->getId());
+                foreach ($tags as $tag) {
+                    echo 
+                    '<div class="tag-chip" href="TagAssign?id=' . $tag->getId() . '">
+                        ' . $tag->getTagName() . '
+                    </div>';
+                }
+            ?>
         </div>
         <!-- Comment Section -->
         <div class="post-preview-content">

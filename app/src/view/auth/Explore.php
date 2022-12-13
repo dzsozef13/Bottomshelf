@@ -6,7 +6,7 @@
 $sessionController = new SessionController();
 $postController = new PostController();
 $mediaController = new MediaController();
-$tagsController = new TagsController();
+$tagsController = new TagController();
 $systemController = new SystemController();
 
 // Check for applied filter

@@ -62,6 +62,26 @@ class PostModel extends CoreModel
 		}
 	}
 
+	public function connectPostWithTag($postId, $tagId)
+	{
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$query =
+				"INSERT 
+				INTO PostHasTag (PostId, TagId) 
+				VALUES (:postId, :tagId)";
+
+			$handle = $conn->prepare($query);
+
+			$handle->bindParam(':postId', $postId);
+			$handle->bindValue(':tagId', $tagId);
+
+			$handle->execute();
+		} catch (PDOException $e) {
+			echo  $e->getMessage();
+		}
+	}
+
 	/**
 	 * @param int postId is the id of the post you would like to fetch
 	 * @return Post post with matching Id  (if none then false)

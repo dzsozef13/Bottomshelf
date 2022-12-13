@@ -70,4 +70,42 @@ class TagModel extends CoreModel
       print($e->getMessage());
     }
   }
+
+  /**
+   * @return Tag[]  
+   */
+  public function getAllForPost($postId)
+  {
+    // might improve the get all functions to avoid fetching too much
+    try {
+      $conn = CoreModel::openDbConnetion();
+
+      $query = 
+        "SELECT * FROM Tag 
+        INNER JOIN PostHasTag ON PostHasTag.TagId = Tag.TagId
+        WHERE PostHasTag.PostId = :PostId
+        ORDER BY TagName";
+
+        $handle = $conn->prepare($query);
+        $handle->bindParam(':PostId', $postId);
+        $handle->execute();
+
+        $result = array();
+        while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+          $post = new Tag(
+          $row->TagId,
+          $row->TagName,
+        );
+
+        $result[] = $post;
+      }
+      //close the connection
+      CoreModel::closeDbConnection();
+      $conn = null;
+
+      return $result;
+    } catch (PDOException $e) {
+      print($e->getMessage());
+    }
+  }
 }

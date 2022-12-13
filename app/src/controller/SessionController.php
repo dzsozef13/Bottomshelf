@@ -122,13 +122,22 @@ class SessionController
         return $_SESSION['searchTag'] ?? null;
     }
 
-    public function setUploadedMediaIdArray($mediaIDs)
+    public function setUploadedMediaIdArray($mediaIds)
     {
-        $_SESSION['uploadedMediaIdArray'] = $mediaIDs;
+        $_SESSION['uploadedMediaIdArray'] = $mediaIds;
     }
     public function getUploadedMediaIdArray()
     {
         return $_SESSION['uploadedMediaIdArray'];
+    }
+
+    public function setAssignedTagIdArray($tagIds)
+    {
+        $_SESSION['assignedTagIdArray'] = $tagIds;
+    }
+    public function getAssignedTagIdArray()
+    {
+        return $_SESSION['assignedTagIdArray'];
     }
 
     /**

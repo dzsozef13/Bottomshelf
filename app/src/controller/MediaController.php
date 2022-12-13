@@ -99,7 +99,7 @@ class MediaController
             // Set uploaded media IDs in the session
             $sessionController = new SessionController();
             $sessionController->setUploadedMediaIdArray($uploadedMediaIdArray);
-            $redirect = new Router("Create");
+            $redirect = new Router("AddTag");
         } else {
             // Redirect to Upload with message "Wrong format"
             $errorMessage = "Oops, something went wrong. Please log in and try again.";

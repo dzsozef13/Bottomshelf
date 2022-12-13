@@ -46,7 +46,7 @@ function include_files($files)
             case "PostController":
             case "UserController":
             case "ColorSchemeController":
-            case "TagsController":
+            case "TagController":
             case "ViewController":
             case "BadgeController":
             case "SystemController":
@@ -74,6 +74,7 @@ function include_files($files)
             case "Overview":
             case "Upload":
             case "Create":
+            case "AddTag":
                 include_once $_SERVER['DOCUMENT_ROOT'] . '/src/view/auth/' . "$filename" . '.php';
                 break;
                 // LAYOUT
