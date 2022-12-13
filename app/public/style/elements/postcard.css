@@ -110,4 +110,18 @@
     flex
     flex-col;
   }
+
+  .reactions-preview-content {
+    @apply w-full
+    h-max
+    sm:p-6
+    p-4
+    bg-background-secondary-900 
+    rounded
+    sm:mb-6
+    mb-4
+    flex
+    flex-row 
+    flex-wrap;
+  }
 }

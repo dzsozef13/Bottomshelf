@@ -86,6 +86,9 @@
 
   .reaction-input-wrapper {
     @apply w-16
+    transition
+    hover:-translate-y-1 
+    hover:scale-100
     h-10;
   }
 
@@ -102,6 +105,7 @@
     text-highlight-color-900
     peer-checked:text-background-primary-900
     peer-checked:bg-highlight-color-900
+    transition
     text-xl;
   }
 }

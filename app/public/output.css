@@ -1120,6 +1120,18 @@ ul,
 .reaction-input-wrapper{
   height: 2.5rem;
   width: 4rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.reaction-input-wrapper:hover{
+  --tw-translate-y: -0.25rem;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .label-reaction-input{
@@ -1137,6 +1149,11 @@ ul,
   line-height: 1.75rem;
   --tw-text-opacity: 1;
   color: rgba(var(--highlight), var(--tw-text-opacity));
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .peer:checked ~ .label-reaction-input{
@@ -1470,6 +1487,28 @@ ul,
   }
 }
 
+.reactions-preview-content{
+  margin-bottom: 1rem;
+  display: flex;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgba(var(--background-secondary), var(--tw-bg-opacity));
+  padding: 1rem;
+}
+
+@media (min-width: 640px){
+  .reactions-preview-content{
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+  }
+}
+
 /* Profile Card */
 
 .profile-card{
@@ -1749,6 +1788,10 @@ ul,
   left: 1rem;
 }
 
+.top-20{
+  top: 5rem;
+}
+
 .z-0{
   z-index: 0;
 }
@@ -1928,12 +1971,32 @@ ul,
   height: 5vh;
 }
 
+.h-4{
+  height: 1rem;
+}
+
+.h-8{
+  height: 2rem;
+}
+
+.h-24{
+  height: 6rem;
+}
+
+.h-16{
+  height: 4rem;
+}
+
 .min-h-\[4rem\]{
   min-height: 4rem;
 }
 
 .min-h-screen{
   min-height: 100vh;
+}
+
+.min-h-\[2\.5rem\]{
+  min-height: 2.5rem;
 }
 
 .w-screen{
@@ -1962,8 +2025,16 @@ ul,
   width: max-content;
 }
 
+.w-2\/4{
+  width: 50%;
+}
+
 .w-4\/5{
   width: 80%;
+}
+
+.w-auto{
+  width: auto;
 }
 
 .flex-none{
@@ -1990,12 +2061,20 @@ ul,
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
+.flex-row{
+  flex-direction: row;
+}
+
 .flex-col{
   flex-direction: column;
 }
 
 .flex-wrap{
   flex-wrap: wrap;
+}
+
+.items-start{
+  align-items: flex-start;
 }
 
 .items-center{
@@ -2038,6 +2117,21 @@ ul,
   background-color: transparent;
 }
 
+.bg-red-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
+}
+
+.bg-green-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 83 45 / var(--tw-bg-opacity));
+}
+
+.bg-red-800{
+  --tw-bg-opacity: 1;
+  background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+}
+
 .bg-\[radial-gradient\(circle_at_100\%_150\%\2c _rgba\(var\(--highlight\)\2c 0\.111\)_0\%\2c _rgba\(var\(--background-primary\)\2c 0\.0\)_58\%\)\]{
   background-image: radial-gradient(circle at 100% 150%, rgba(var(--highlight),0.111) 0%, rgba(var(--background-primary),0.0) 58%);
 }
@@ -2052,6 +2146,10 @@ ul,
 
 .bg-\[linear-gradient\(180deg\2c _rgba\(var\(--highlight\)\2c 0\.05\)_0\%\2c _rgba\(var\(--highlight\)\2c 0\.005\)_10\%\2c _rgba\(var\(--background-primary\)\2c 1\)_20\%\)\]{
   background-image: linear-gradient(180deg, rgba(var(--highlight),0.05) 0%, rgba(var(--highlight),0.005) 10%, rgba(var(--background-primary),1) 20%);
+}
+
+.p-4{
+  padding: 1rem;
 }
 
 .p-0{
@@ -2080,10 +2178,6 @@ ul,
 
 .pb-6{
   padding-bottom: 1.5rem;
-}
-
-.pb-0{
-  padding-bottom: 0px;
 }
 
 .pt-2{
