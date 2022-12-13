@@ -52,8 +52,7 @@ $system = $systemController->fetchById(1);
                     ?>
                 </div>
             </div>
-            <!-- fix opacity -->
-            <div class="rounded-lg border border-highlight-color-900 bg-transparent flex relative h-10 w-[73%]">
+            <div class="rounded-lg border border-highlight-color-900/60 bg-transparent flex relative h-10 w-[73%]">
                 <div class="icon-wrapper">
                     <i class="las la-search"></i>
                 </div>

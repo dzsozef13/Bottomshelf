@@ -86,8 +86,7 @@
   .badge-icon {
     @apply bg-highlight-color-900
     flex 
-        /* fix opacity*/
-    shadow-highlight-color-900
+    shadow-highlight-color-900/20
     shadow-lg	
     h-8
     w-8

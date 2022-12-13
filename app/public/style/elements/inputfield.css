@@ -4,8 +4,7 @@
     @apply w-full
     rounded-lg
     border
-           /* fix opacity*/
-    border-highlight-color-900
+    border-highlight-color-900/60
     bg-transparent
     flex
     relative
@@ -16,8 +15,7 @@
     @apply w-full
     rounded-lg
     border
-           /* fix opacity*/
-    border-highlight-color-900
+    border-highlight-color-900/60
     bg-transparent
     flex
     relative
@@ -29,8 +27,7 @@
     border-2
     border-none
     bg-transparent
-           /* fix opacity*/
-    placeholder-highlight-color-900
+    placeholder-highlight-color-900/60
     placeholder-opacity-100
     p-4
     text-sm
