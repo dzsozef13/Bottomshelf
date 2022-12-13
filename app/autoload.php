@@ -19,6 +19,7 @@ function include_files($files)
             case "ColorScheme":
             case "Route":
             case "System":
+            case "Reaction":
             case "Country":
             case "Comment":
             case "Tag":
