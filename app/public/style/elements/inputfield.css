@@ -75,4 +75,33 @@
      font-mono
      text-lg;
   }
+
+  .reactions-wrapper {
+    @apply w-full
+    flex
+    flex
+    justify-start
+    flex-wrap;
+  }
+
+  .reaction-input-wrapper {
+    @apply w-16
+    h-10;
+  }
+
+  .label-reaction-input {
+    @apply w-full
+    h-full
+    flex
+    justify-center
+    items-center
+    border
+    cursor-pointer
+    rounded
+    border-highlight-color-900
+    text-highlight-color-900
+    peer-checked:text-background-primary-900
+    peer-checked:bg-highlight-color-900
+    text-xl;
+  }
 }

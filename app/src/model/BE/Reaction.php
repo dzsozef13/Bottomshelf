@@ -39,4 +39,13 @@ class Reaction
     {
         return $this->postId;
     }
+    public function getReactionIcon()
+    {
+        $name = $this->reactionName;
+        if ($name == "Heart") {
+            return '<i class="las la-heart"></i>';
+        } else if ($name == "ThumbsDown") {
+            return '<i class="las la-thumbs-down"></i>';
+        }
+    }
 }

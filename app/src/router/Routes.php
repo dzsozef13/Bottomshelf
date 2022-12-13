@@ -60,3 +60,7 @@ Router::add(new Route("UpdateComment", "comment/update"));
 
 // MEDIA
 Router::add(new Route("MediaUpload", "media/uploadMedia"));
+
+// REACTION
+Router::add(new Route("AddReaction", "reaction/create"));
+Router::add(new Route("DeleteReaction", "reaction/deleteReaction"));

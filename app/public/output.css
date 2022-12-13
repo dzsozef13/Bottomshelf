@@ -1110,6 +1110,42 @@ ul,
   color: rgba(var(--background-primary), var(--tw-text-opacity));
 }
 
+.reactions-wrapper{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.reaction-input-wrapper{
+  height: 2.5rem;
+  width: 4rem;
+}
+
+.label-reaction-input{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgba(var(--highlight), var(--tw-border-opacity));
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgba(var(--highlight), var(--tw-text-opacity));
+}
+
+.peer:checked ~ .label-reaction-input{
+  --tw-bg-opacity: 1;
+  background-color: rgba(var(--highlight), var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(var(--background-primary), var(--tw-text-opacity));
+}
+
 /* Buttons */
 
 .btn-green{
@@ -2044,6 +2080,10 @@ ul,
 
 .pb-6{
   padding-bottom: 1.5rem;
+}
+
+.pb-0{
+  padding-bottom: 0px;
 }
 
 .pt-2{

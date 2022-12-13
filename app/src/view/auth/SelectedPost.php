@@ -21,6 +21,12 @@ $postController = new PostController();
 
 $commentController = new CommentController();
 
+/**
+ * Reaction Controller
+ */
+
+$reactionController = new ReactionController();
+
 
 $userId = $sessionController->getUser()['userId'];
 /**
@@ -34,6 +40,7 @@ $post = $postController->fetchById($postId);
 if ($post->getId() == null) {
     new Router('Explore');
 }
+
 /**
  * Fetch all media for the post
  */
@@ -51,14 +58,28 @@ if (isset($indexedMediaArray)) {
 }
 $selectedImage = !empty($indexedMediaArray) ? $indexedMediaArray[0] : null;
 
-
-
-
 /**
  * Fetch all comments for the post
  */
-
 $comments = $commentController->fetchAllByPostId($post->getId());
+
+/**
+ * Fetch all reactions for the post
+ */
+$reactions = $reactionController->fetchAllByPostId($post->getId());
+
+/**
+ * Looping through reactions to find if currently logged in user
+ * has reacted to his post before. If found, save the reactions to which type it was
+ */
+$currentUserReaction = null;
+if (isset($reactions)) {
+    foreach ($reactions as $reaction) {
+        if ($userId == $reaction->getAuthorId()) {
+            return $reaction;
+        }
+    }
+}
 ?>
 
 <div class="grid grid-cols-6 px-2 my-4 sm:px-8 sm:my-8 w-full gap-4">
@@ -91,6 +112,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
             <div class="mt-4">
                 <?php echo htmlspecialchars_decode($post->getDescription())  ?>
             </div>
+
             <?php if ($userId == $post->getAuthorId() || $sessionController->getUser()['roleId'] == 2) { ?>
                 <div class="w-full flex justify-end flex-wrap">
                     <a class="w-full md:w-2/4 md:pr-3" href="/EditPost?selectedPost=<?php echo $post->getId() ?>">
@@ -115,6 +137,20 @@ $comments = $commentController->fetchAllByPostId($post->getId());
 
                 </div>
             <?php } ?>
+        </div>
+        <div class="post-preview-content pb-0" id="#select-reactions">
+            <form action="<?php isset($currentUserReaction) ? "AddReaction" : "DeleteReaction" ?>" class="w-full h-auto">
+                <div class="reactions-wrapper gap-4">
+                    <div class="reaction-input-wrapper">
+                        <input type="radio" class="peer " <?php (isset($currentUserReaction) && $currentUserReaction->getReactionName() == "Heart" ? 'checked' : "") ?> name="reactionType" id="heart-reaction" value="Heart">
+                        <label class="label-reaction-input" for="heart-reaction"><i class="las la-heart"></i></label>
+                    </div>
+                    <div class="reaction-input-wrapper">
+                        <input type="radio" class="peer " <?php (isset($currentUserReaction) && $currentUserReaction->getReactionName() == "ThumbsDown" ? 'checked' : "") ?> name="reactionType" id="thmbs-down-reaction" value="ThumbsDown">
+                        <label class="label-reaction-input" for="thmbs-down-reaction"><i class="las la-thumbs-down"></i></label>
+                    </div>
+                </div>
+            </form>
         </div>
         <!-- Comment Section -->
         <div class="post-preview-content">

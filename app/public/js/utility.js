@@ -244,5 +244,14 @@ $(document).ready(function(e) {
             })
         } catch{}
       
+
+    // Create page 2 - When uploading a picture, it will display the files name
+  
+    $("#heart-reaction").click(function(event) {
+        console.log($("#heart-reaction").prop( "checked" ));
+        if($("#heart-reaction").prop( "checked" )) {
+            $("#heart-reaction").prop( "checked", false ).change()
+        } 
+    }); 
 });
 

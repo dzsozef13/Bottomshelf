@@ -11,6 +11,7 @@ include_files(array(
     "SystemController",
     "BadgeController",
     "ColorSchemeController",
+    "ReactionController",
 ));
 
 $router = new Router();
