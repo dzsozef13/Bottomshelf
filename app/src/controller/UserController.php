@@ -183,14 +183,14 @@ class UserController
                 } else {
                     // Redirect to Upload with message "Wrong format"
                     $errorMessage = "Failed to upload file becase of unsupported format.";
-                    // $redirect = new Router("Settings?systemMessage=" . $errorMessage);
+                    $redirect = new Router("Settings?systemMessage=" . $errorMessage);
                     return;
                 }
             }
         } else {
             // Redirect to Upload with message "Wrong format"
             $errorMessage = "Failed to upload file, it might be damaged or too large.";
-            // $redirect = new Router("Settings?systemMessage=" . $errorMessage);
+            $redirect = new Router("Settings?systemMessage=" . $errorMessage);
             return;
         }
 
@@ -200,11 +200,11 @@ class UserController
                 "media" => $profilePicture
             );
             $userModel->uploadProfilePicture($data);
-            // $redirect = new Router("Settings");
+            $redirect = new Router("Settings");
         } else {
             // Redirect to Upload with message "Wrong format"
             $errorMessage = "Oops, something went wrong. Please log in and try again.";
-            // $redirect = new Router("Settings?systemMessage=" . $errorMessage);
+            $redirect = new Router("Settings?systemMessage=" . $errorMessage);
             return;
         }
     }

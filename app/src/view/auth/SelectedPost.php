@@ -85,8 +85,8 @@ $comments = $commentController->fetchAllByPostId($post->getId());
             <h2 class="medium-headline"><?php echo $post->getTitle() ?></h2>
             <p class="text-sm font-mono">
                 <a href="Profile?selectedUser=<?php echo $post->getAuthorId() ?>">
-                    by @<span class="text-highlight-green-900"><?php echo $post->getAuthorName() ?></span> </a>
-                <span class="text-dim-white-900/60"><?php echo $post->getCreatedAt() ?></span>
+                    by @<span class="text-highlight-color-900"><?php echo $post->getAuthorName() ?></span> </a>
+                <span class="text-light-color-900/60"><?php echo $post->getCreatedAt() ?></span>
             </p>
             <div class="mt-4">
                 <?php echo htmlspecialchars_decode($post->getDescription())  ?>
@@ -140,7 +140,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                         <div class="comment-headline">
                             <div class="comment-username">
                                 <a href="Profile?selectedUser=' . $comment->getUserId() . '">
-                                    <h6 class="headline text-highlight-green-900">' . $comment->getUsername() . '</h6>
+                                    <h6 class="headline text-highlight-color-900">' . $comment->getUsername() . '</h6>
                                 </a>
                                 ' . ($comment->getUserId() == $sessionController->getUser()['userId'] ? '
                                             <button class="editCommentBtn ml-2"> 
@@ -157,7 +157,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                                         </a>' : "") .
                         '
                             </div>
-                            <p class="text-xs text-dim-white-900/40">' . $comment->getCreatedAt() . '</p>
+                            <p class="text-xs text-light-color-900/40">' . $comment->getCreatedAt() . '</p>
                         </div>
                         <form action="UpdateComment?commentId= ' . $comment->getId() . '" method="post" class="edit-comment pt-2 pr-4">
                             <div class="text-area-wrapper">

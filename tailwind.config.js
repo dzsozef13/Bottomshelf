@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   content: [
   './app/src/view/*.{html,js,php}',
@@ -7,40 +8,37 @@ module.exports = {
   './app/public/layouts/*.{html,js,php}',
   './app/public/templates/*.{html,js,php}',
   './app/src/model/BE/*.{html,js,php}',
-  './app/public/js/*.{html,js,php}'
+  './app/public/js/*.{html,js,php}',
+  './app/*.{html,js,php}'
 ],
   theme: {
-    
     fontFamily: {
       sans: "'Lato'",
       mono: "'Space Mono'",
     },
     dropShadow: {
-      'md': '0px 0px 20px rgba(144, 202, 156, 0.5)',
+      'md': '0px 0px 20px rgba(var(--highlight), 0.6)',
     },
     extend: {
       colors: {
-        'highlight-green': {
-          900: '#90CA9C',
-        },
-        'background-black': {
-          900: '#151617',
+        'highlight-color': {
+          900: 'rgba(var(--highlight), <alpha-value>)',
         },
         'background-primary': {
-          900: '#151617',
+          900: 'rgba(var(--background-primary), <alpha-value>)',
         },
         'background-secondary': {
-          900: '#1E2021',
+          900: 'rgba(var(--background-secondary), <alpha-value>)',
         },
         'background-ternary': {
-          900: '#2F3233',
+          900: 'rgba(var(--background-ternary), <alpha-value>)',
         },
-        'dim-white': {
-          900: '#D8D8D8',
+        'light-color': {
+          900: 'rgba(var(--light), <alpha-value>)',
         },
       },
       boxShadow: {
-        'btn': '0px 16px 60px  rgba(60, 96, 94, 0.4)',
+        'btn': '0px 16px 60px rgba(var(--highlight), 0.4)',
       }
     },
   },

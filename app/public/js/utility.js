@@ -1,7 +1,7 @@
 
 
 $(document).ready(function(e) {
-   
+
     $('#dropdown').hide();
     $("#all").addClass("option-chip-checked")
     
@@ -243,5 +243,6 @@ $(document).ready(function(e) {
                 editorRules.save();
             })
         } catch{}
+      
 });
 

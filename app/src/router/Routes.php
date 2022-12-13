@@ -41,8 +41,9 @@ Router::add(new Route("UnbanUser", "user/markAsActive"));
 Router::add(new Route("DeleteUser", "user/markAsDeleted"));
 
 // SYSTEM
-Router::add(new Route("UpdateContact", "system/UpdateContact"));
-Router::add(new Route("UpdateDescriptionRules", "system/UpdateDescriptionRules"));
+Router::add(new Route("UpdateContact", "system/updateContact"));
+Router::add(new Route("UpdateDescriptionRules", "system/updateDescriptionRules"));
+Router::add(new Route("UpdateColorScheme", "system/updateSystemColorScheme"));
 
 // POST
 Router::add(new Route("CreatePost", "post/create"));

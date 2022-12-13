@@ -1,19 +1,15 @@
 @layer components {
-
-/* Profile Card */
-.profile-card {
-  @apply 
-    bg-background-secondary-900
+  /* Profile Card */
+  .profile-card {
+    @apply bg-background-secondary-900
     w-full
     h-auto
     rounded 
-    relative
-  ;
-}
+    relative;
+  }
 
-.profile-picture {
-  @apply 
-    w-40 
+  .profile-picture {
+    @apply w-40 
     h-40 
     bg-red-900 
     rounded 
@@ -21,14 +17,12 @@
     -top-20     
     overflow-hidden 
     shadow-btn
-    shadow-background-black-900
-    left-8
-  ;
-}
+    shadow-background-primary-900
+    left-8;
+  }
 
-.profile-username-container {
-  @apply 
-    w-full
+  .profile-username-container {
+    @apply w-full
     h-20 
     pl-56
     pr-8
@@ -36,25 +30,19 @@
     justify-between 
     flex
     relative
-    items-center
-  ;
-}
+    items-center;
+  }
 
-.profile-description-container {
-  @apply 
-    lg:w-3/4
+  .profile-description-container {
+    @apply lg:w-3/4
     w-full
     h-auto 
-    p-8
-  ;
-}
+    p-8;
+  }
 
-.profile-post-options-container {
-  @apply 
-    w-full
+  .profile-post-options-container {
+    @apply w-full
     h-10
-    flex
-  ;
-}
-
+    flex;
+  }
 }

@@ -8,7 +8,7 @@ class System
     private $phoneNumber;
     private $systemEmail;
     private $address;
-    private $usersCount;
+    private $colorSchemeId;
 
     function __construct(
         $id,
@@ -17,7 +17,7 @@ class System
         $phoneNumber,
         $systemEmail,
         $address,
-        $usersCount
+        $colorSchemeId
     ) {
         $this->id = $id;
         $this->serviceDescription = $serviceDescription;
@@ -25,7 +25,7 @@ class System
         $this->phoneNumber = $phoneNumber;
         $this->systemEmail = $systemEmail;
         $this->address = $address;
-        $this->usersCount = $usersCount;
+        $this->ColorSchemeId = $colorSchemeId;
     }
 
     public function getDescription()
@@ -48,5 +48,9 @@ class System
     public function getAddress()
     {
         return $this->address;
+    }
+    public function getColorSchemeId()
+    {
+        return $this->ColorSchemeId;
     }
 }

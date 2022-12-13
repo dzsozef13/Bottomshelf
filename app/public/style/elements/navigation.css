@@ -20,7 +20,7 @@
     @apply w-full
     rounded-lg
     border
-    border-highlight-green-900/60
+    border-highlight-color-900/60
     bg-background-secondary-900
     flex
     relative
@@ -36,7 +36,7 @@
     flex-col
     bg-background-secondary-900
     border
-    border-highlight-green-900/60
+    border-highlight-color-900/60
     top-12
     h-max
     max-h-[20rem]
@@ -79,7 +79,7 @@
   }
 
   .user-sidebar {
-    @apply bg-background-black-900
+    @apply bg-background-primary-900
     p-4
     hidden
     w-full
@@ -88,7 +88,7 @@
     top-0
     fixed
     sm:h-full
-    sm:bg-highlight-green-900/10 
+    sm:bg-highlight-color-900/10
     sm:p-8 
     sm:relative
     sm:flex

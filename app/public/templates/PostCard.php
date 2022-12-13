@@ -15,7 +15,7 @@
 
         <div class="post-card-comment-wrapper">
             <div class="small-logo">
-                <i class="las la-smile text-background-black-900 text-xl"></i>
+                <i class="las la-smile text-background-primary-900 text-xl"></i>
             </div>
             <div class="post-card-comment">
                 {{latestComment}}

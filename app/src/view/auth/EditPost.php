@@ -22,7 +22,7 @@ $indexedMediaArray = array_values($media);
     <div class="col-span-6 lg:col-span-3 flex flex-col justify-between sm:pr-8 relative z-1 mb-4">
         <div class="mt-12">
             <div class="pb-6">
-                <h3 class="medium-headline">Edit The Post: <span class="text-highlight-green-900"><?php echo $post->getTitle() ?></span></h3>
+                <h3 class="medium-headline">Edit The Post: <span class="text-highlight-color-900"><?php echo $post->getTitle() ?></span></h3>
             </div>
             <form action="EditPostInformation" method="post">
                 <div class="input-field-wrapper mb-4">
@@ -32,7 +32,7 @@ $indexedMediaArray = array_values($media);
                     <input required placeholder="Title" class="input-field" value="<?php echo $post->getTitle() ?>" type="text" name="title">
                 </div>
                 <div class="sun-editor-wrapper mb-4">
-                    <p class="mb-2 healine text-highlight-green-900">Description</p>
+                    <p class="mb-2 healine text-highlight-color-900">Description</p>
                     <textarea required id="sample" name="description"><?php echo $post->getDescription() ?></textarea>
                 </div>
                 <div class="input-field-wrapper items-center px-2">
@@ -42,8 +42,8 @@ $indexedMediaArray = array_values($media);
                     <input placeholder="Public" <?php if ($post->getIsPublic() == 1) {
                                                     echo 'checked';
                                                 }  ?> class="cursor-pointer peer opacity-0 absolute h-full w-full" type="checkbox" name="isPublic">
-                    <div class="checkbox peer-checked:after:content-['✓'] peer-checked:text-highlight-green-900 flex items-center justify-center"></div>
-                    <p class="text-xs ml-2 text-highlight-green-900">Is Public</p>
+                    <div class="checkbox peer-checked:after:content-['✓'] peer-checked:text-highlight-color-900 flex items-center justify-center"></div>
+                    <p class="text-xs ml-2 text-highlight-color-900">Is Public</p>
                 </div>
                 <button class="btn-white w-full mt-6 " type="submit">UPDATE</button>
             </form>

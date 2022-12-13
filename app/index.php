@@ -10,12 +10,21 @@ include_files(array(
     "CountryController",
     "SystemController",
     "BadgeController",
+    "ColorSchemeController",
 ));
 
 $router = new Router();
 $session = new SessionController();
 $pageController = new PageController();
+$systemController = new SystemController();
+$colorSchemeController = new ColorSchemeController();
 
+$system = $systemController->fetchById(1);
+$colorScheme = null;
+
+if (isset($system) && $system->getColorSchemeId() !== null) {
+    $colorScheme = $colorSchemeController->fetchById($system->getColorSchemeId());
+}
 ?>
 
 
@@ -30,5 +39,13 @@ $pageController = new PageController();
     <script type="application/x-javascript" src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css" rel="stylesheet">
     <title><?php echo $router->currentRoute ?></title>
-
+    <style>
+        :root {
+            --highlight: <?php echo $colorScheme->getHighlight() ?>;
+            --background-primary: <?php echo $colorScheme->getBackgroundPrimary() ?>;
+            --background-secondary: <?php echo $colorScheme->getBackgroundSecondary() ?>;
+            --background-ternary: <?php echo $colorScheme->getBackgroundTernary() ?>;
+            --light: <?php echo $colorScheme->getLightColor() ?>;
+        }
+    </style>
 </head>

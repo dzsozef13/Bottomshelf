@@ -84,7 +84,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
             </div>
             <div class="profile-username-container">
                 <h3 class="text-4xl font-mono ">
-                    <span class="text-highlight-green-900">@</span><?php echo $profile->username ?><br>
+                    <span class="text-highlight-color-900">@</span><?php echo $profile->username ?><br>
                     <?php if ($sessionsCtrl->getUser()['roleId'] == 2 && isset($_GET['selectedUser'])) {
                         echo '<span class="text-xs">User status: ' .  $profile->getStatus() . '</span>';
                     } ?>
@@ -98,7 +98,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                                          <div class="badge-icon mb-2">
                                           ' . $badge->getBadgeIcon() . '
                                          </div>
-                                         <p class="text-highlight-green-900 font-mono text-xs"> ' . $badge->getName() . ' </p>
+                                         <p class="text-highlight-color-900 font-mono text-xs"> ' . $badge->getName() . ' </p>
                                     </div>
                                 ';
                             } ?>
@@ -109,7 +109,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
             </div>
             <div class="h-auto w-full">
                 <div class="profile-description-container">
-                    <h4 class="text-xl uppercase mb-2 text-highlight-green-900 font-mono"> About me</h4>
+                    <h4 class="text-xl uppercase mb-2 text-highlight-color-900 font-mono"> About me</h4>
                     <p><?php echo $profile->bioDescription ?></p>
                 </div>
             </div>
@@ -161,12 +161,12 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                                     <!-- Post Header -->
                                     <div class="post-card-header">
                                         <h3 class="post-card-title">' . $post->getTitle() . '</h3>
-                                        <p class="post-card-user">by @<span class="text-highlight-green-900">' . $post->getAuthorName() . '</span></p>
+                                        <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
                                     </div>
                                     <!-- Post Comment -->
                                         ' . ($post->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
                                         <div class="small-logo">
-                                            <i class="las la-smile text-background-black-900 text-xl"></i>
+                                            <i class="las la-smile text-background-primary-900 text-xl"></i>
                                         </div>
                                         <div class="post-card-comment">
                                         ' . $post->getLatestComment() . '

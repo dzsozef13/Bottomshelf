@@ -4,7 +4,7 @@
     @apply w-full
     rounded-lg
     border
-    border-highlight-green-900/60
+    border-highlight-color-900/60
     bg-transparent
     flex
     relative
@@ -15,7 +15,7 @@
     @apply w-full
     rounded-lg
     border
-    border-highlight-green-900/60
+    border-highlight-color-900/60
     bg-transparent
     flex
     relative
@@ -27,7 +27,7 @@
     border-2
     border-none
     bg-transparent
-    placeholder-highlight-green-900/60
+    placeholder-highlight-color-900/60
     placeholder-opacity-100
     p-4
     text-sm
@@ -44,7 +44,7 @@
       bg-transparent
       border
       rounded
-      border-highlight-green-900;
+      border-highlight-color-900;
   }
 
   .sun-editor-wrapper {
@@ -53,5 +53,26 @@
     flex
     flex-col
     relative;
+  }
+
+  .radio-input-wrapper {
+    @apply w-1/3
+    flex
+    items-center;
+  }
+
+  .label-radio-input {
+    @apply peer-checked:bg-highlight-color-900
+    peer-checked:text-background-primary-900
+    hover:bg-background-ternary-900
+     w-full
+     transition
+     border
+     border-highlight-color-900
+     p-2
+     rounded
+     text-center
+     font-mono
+     text-lg;
   }
 }
