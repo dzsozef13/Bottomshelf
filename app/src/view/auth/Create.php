@@ -6,13 +6,23 @@
 $sessionController = new SessionController();
 $postController = new PostController();
 $mediaController = new MediaController();
-$tagsController = new TagsController();
+$tagsController = new TagController();
 
+/**
+ * Fetch uploaded media
+ */
 $uploadedMediaIdArray = $sessionController->getUploadedMediaIdArray();
 $indexedMediaArray = array();
 foreach ($uploadedMediaIdArray as $imageId) {
     $indexedMediaArray[] = $mediaController->fetchMediaById($imageId);
 }
+
+/**
+ * Fetch tags
+ */
+$tags = $tagsController->fetchAll();
+$assignedTags = $sessionController->getAssignedTagIdArray();
+
 ?>
 
 <div class="grid grid-cols-6 px-8">
@@ -60,6 +70,25 @@ foreach ($uploadedMediaIdArray as $imageId) {
                     <img class="img small-img" src="data:image/*;charset=utf8;base64,' . base64_encode($image->getImage()) . '" alt="">
                 </div>';
             }
+            if (empty($indexedMediaArray)) {
+                echo 'No pictures uploaded :(';
+            }
+            ?>
+        </div>
+        <h3 class="medium-headline mb-2 mt-0 lg:mt-12">Assigned tags</h3>
+        <div class="tags-container">
+            <?php
+                foreach ($tags as $tag) {
+                    if (in_array($tag->getId(), $assignedTags)) {
+                        echo 
+                        '<div class="tag-chip" href="TagAssign?id=' . $tag->getId() . '">
+                            ' . $tag->getTagName() . '
+                        </div>';
+                    }
+                }
+                if (empty($assignedTags)) {
+                    echo 'No tags assigned :(';
+                }
             ?>
         </div>
     </div>

@@ -30,12 +30,19 @@ class PostController
                 'statusId' =>  $statusId
             );
 
+            // Create post
             $postId = $postModel->createPost($data);
 
+            // Connect post with uploaded media
             $uploadedMediaIdArray = $sessionController->getUploadedMediaIdArray();
-
             foreach ($uploadedMediaIdArray as $uploadedMediaId) {
                 $postModel->connectPostWithMedia($postId, $uploadedMediaId);
+            }
+
+            // Connect post with assigned tags
+            $assignedTagsIdArray = $sessionController->getAssignedTagIdArray();
+            foreach ($assignedTagsIdArray as $assignedTagId) {
+                $postModel->connectPostWithTag($postId, $assignedTagId);
             }
 
             // Redirect to profile
