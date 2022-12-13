@@ -2,14 +2,15 @@
 include_files(array(
     "Console",
     "DbConnectionController",
-    "CoreModel"
+    "CoreModel",
+    "Reaction"
 ));
 
 class ReactionModel extends CoreModel
 {
 
 
-    public function createPost($data)
+    public function createReaction($data)
     {
         try {
             $conn = CoreModel::openDbConnetion();
