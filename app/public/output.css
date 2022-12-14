@@ -1112,7 +1112,7 @@ ul,
 
 .reaction-input-wrapper{
   height: 2.5rem;
-  width: 4rem;
+  width: 50%;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
@@ -1130,7 +1130,7 @@ ul,
 .label-reaction-input{
   display: flex;
   height: 100%;
-  width: 100%;
+  width: 4rem;
   cursor: pointer;
   align-items: center;
   justify-content: center;

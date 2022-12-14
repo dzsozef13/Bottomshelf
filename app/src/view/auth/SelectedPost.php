@@ -147,8 +147,11 @@ if (isset($reactions)) {
                 </a>
             </div>
             <div class="w-2/4 min-h-[2.5rem] h-auto flex flex-wrap items-center justify-end gap-4 ">
-                <div class="h-8 w-auto flex items-center text-xl"><i class="las la-heart"></i>
+                <div class="h-8 w-auto flex items-center text-xl "><i class="las la-heart"></i>
                     <p class="ml-2"><?php echo (isset($reactions) ? count($reactions) : 0) ?></p>
+                </div>
+                <div class="h-8 w-auto flex items-center text-xl"><i class="las la-comment"></i>
+                    <p class="ml-2"><?php echo (isset($comments) ? count($comments) : 0) ?></p>
                 </div>
             </div>
         </div>

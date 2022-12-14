@@ -85,7 +85,7 @@
   }
 
   .reaction-input-wrapper {
-    @apply w-16
+    @apply w-2/4
     transition
     hover:-translate-y-1 
     hover:scale-100
@@ -93,7 +93,7 @@
   }
 
   .label-reaction-input {
-    @apply w-full
+    @apply w-16
     h-full
     flex
     justify-center
