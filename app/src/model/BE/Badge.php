@@ -16,12 +16,12 @@ class Badge
 
     public function getId()
     {
-        return $this->badgeId;
+        return htmlspecialchars($this->badgeId);
     }
 
     public function getName()
     {
-        return $this->badgeName;
+        return htmlspecialchars($this->badgeName);
     }
 
     public function getBadgeIcon()

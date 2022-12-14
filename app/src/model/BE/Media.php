@@ -10,8 +10,8 @@ class Media
     function __construct(
         $id,
         $imageBlob,
-        $userId) 
-    {
+        $userId
+    ) {
         $this->id = $id;
         $this->imageBlob = $imageBlob;
         $this->ownerId = $userId;
@@ -19,17 +19,16 @@ class Media
 
     public function getId()
     {
-        return $this->id;
+        return htmlspecialchars($this->id);
     }
 
     public function getImage()
     {
-        return $this->imageBlob;
+        return  $this->imageBlob;
     }
 
     public function getOwner()
     {
-        return $this->ownerId;
+        return htmlspecialchars($this->ownerId);
     }
-
 }

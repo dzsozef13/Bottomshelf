@@ -31,35 +31,35 @@ class ColorScheme
 
     public function getId()
     {
-        return $this->colorSchemeId;
+        return htmlspecialchars($this->colorSchemeId);
     }
     public function getColorSchemeName()
     {
-        return $this->colorSchemeName;
+        return htmlspecialchars($this->colorSchemeName);
     }
 
     public function getHighlight()
     {
-        return $this->highlightColor;
+        return htmlspecialchars($this->highlightColor);
     }
 
     public function getBackgroundPrimary()
     {
-        return $this->backgroundPrimary;
+        return htmlspecialchars($this->backgroundPrimary);
     }
 
     public function getBackgroundSecondary()
     {
-        return $this->backgroundSecondary;
+        return htmlspecialchars($this->backgroundSecondary);
     }
 
     public function getBackgroundTernary()
     {
-        return $this->backgroundTernary;
+        return htmlspecialchars($this->backgroundTernary);
     }
 
     public function getLightColor()
     {
-        return $this->light;
+        return htmlspecialchars($this->light);
     }
 }

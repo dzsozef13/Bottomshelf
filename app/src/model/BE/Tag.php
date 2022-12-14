@@ -15,18 +15,18 @@ class Tag
 
     public function getId(): int
     {
-        return $this->id;
+        return htmlspecialchars($this->id);
     }
 
     public function getTagName(): string
     {
-        return $this->tagName;
+        return htmlspecialchars($this->tagName);
     }
 
     public function getTagTemplate(): string
     {
-        $template = '<a class="tag-chip" href="Explore?searchTag=' . $this->getId() . '">
-                            ' . $this->getTagName() . '
+        $template = '<a class="tag-chip" href="Explore?searchTag=' . htmlspecialchars($this->getId())  . '">
+                            ' . htmlspecialchars($this->getTagName())  . '
                         </a>';
         return $template;
     }

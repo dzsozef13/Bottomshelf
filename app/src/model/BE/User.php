@@ -37,17 +37,17 @@ class User extends Entity
 
     public function getId()
     {
-        return $this->id;
+        return htmlspecialchars($this->id);
     }
 
     public function getUsername()
     {
-        return $this->username;
+        return htmlspecialchars($this->username);
     }
 
     public function getEmail()
     {
-        return $this->email;
+        return htmlspecialchars($this->email);
     }
 
     public function getStatus()
@@ -65,17 +65,17 @@ class User extends Entity
 
     public function getStatusId()
     {
-        return $this->statusId;
+        return htmlspecialchars($this->statusId);
     }
 
     public function getCountryCode()
     {
-        return $this->countryCode;
+        return htmlspecialchars($this->countryCode);
     }
 
     public function getDescription()
     {
-        return $this->bioDescription;
+        return htmlspecialchars($this->bioDescription);
     }
 
     public function isAdmin()

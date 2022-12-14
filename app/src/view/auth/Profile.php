@@ -85,7 +85,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
             </div>
             <div class="profile-username-container">
                 <h3 class="text-4xl font-mono ">
-                    <span class="text-highlight-color-900">@</span><?php echo $profile->username ?><br>
+                    <span class="text-highlight-color-900">@</span><?php echo $profile->getUsername() ?><br>
                     <?php if ($sessionsCtrl->getUser()['roleId'] == 2 && isset($userIdParam)) {
                         echo '<span class="text-xs">User status: ' .  $profile->getStatus() . '</span>';
                     } ?>
@@ -111,7 +111,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
             <div class="h-auto w-full">
                 <div class="profile-description-container">
                     <h4 class="text-xl uppercase mb-2 text-highlight-color-900 font-mono"> About me</h4>
-                    <p><?php echo $profile->bioDescription ?></p>
+                    <p><?php echo $profile->getDescription() ?></p>
                 </div>
             </div>
 

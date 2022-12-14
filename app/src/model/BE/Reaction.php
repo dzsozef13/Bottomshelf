@@ -21,16 +21,16 @@ class Reaction
 
     public function getId()
     {
-        return $this->reactionId;
+        return htmlspecialchars($this->reactionId);
     }
 
     public function getAuthorId()
     {
-        return $this->userId;
+        return  htmlspecialchars($this->userId);
     }
     public function getPostId()
     {
-        return $this->postId;
+        return htmlspecialchars($this->postId);
     }
     public function getReactionIcon()
     {

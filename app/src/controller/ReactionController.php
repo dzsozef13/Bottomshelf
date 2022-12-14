@@ -8,7 +8,6 @@ include_files(array(
 class ReactionController
 {
 
-
     public function create()
     {
         $reactionModel = new ReactionModel();

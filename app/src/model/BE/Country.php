@@ -16,11 +16,11 @@ class Country
 
     public function getCountryCode()
     {
-        return $this->countryCode;
+        return htmlspecialchars($this->countryCode);
     }
 
     public function getCountryName()
     {
-        return $this->countryName;
+        return htmlspecialchars($this->countryName);
     }
 }

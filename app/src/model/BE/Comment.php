@@ -31,22 +31,22 @@ class Comment
 
     public function getId()
     {
-        return $this->id;
+        return htmlspecialchars($this->id);
     }
 
     public function getContent()
     {
-        return $this->content;
+        return htmlspecialchars($this->content);
     }
 
     public function getUserId()
     {
-        return $this->authorId;
+        return htmlspecialchars($this->authorId);
     }
 
     public function getUsername()
     {
-        return $this->authorName;
+        return  htmlspecialchars($this->authorName);
     }
 
     public function getUserPicture()
@@ -57,6 +57,6 @@ class Comment
     public function getCreatedAt()
     {
         $createdAtDate = DateTime::createFromFormat('Y-m-d H:i:s', $this->createdAt);
-        return $createdAtDate->format('d/m/Y');
+        return htmlspecialchars($createdAtDate->format('d/m/Y'));
     }
 }

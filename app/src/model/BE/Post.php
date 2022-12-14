@@ -49,12 +49,12 @@ class Post
 
     public function getId()
     {
-        return $this->id;
+        return htmlspecialchars($this->id);
     }
 
     public function getTitle()
     {
-        return $this->title;
+        return htmlspecialchars($this->title);
     }
 
     public function getDescription()
@@ -73,27 +73,27 @@ class Post
 
     public function getAuthorName()
     {
-        return $this->authorName;
+        return htmlspecialchars($this->authorName);
     }
 
     public function getAuthorId()
     {
-        return $this->authorId;
+        return htmlspecialchars($this->authorId);
     }
 
     public function getIsPublic()
     {
-        return $this->isPublic;
+        return htmlspecialchars($this->isPublic);
     }
 
     public function getReactionCount()
     {
-        return $this->reactionCount;
+        return htmlspecialchars($this->reactionCount);
     }
 
     public function getCommentCount()
     {
-        return $this->commentCount;
+        return htmlspecialchars($this->commentCount);
     }
 
     public function getLatestComment()
@@ -104,7 +104,7 @@ class Post
     public function getCreatedAt()
     {
         $createdAtDate = DateTime::createFromFormat('Y-m-d H:i:s', $this->createdAt);
-        return $createdAtDate->format('d/m/Y');
+        return htmlspecialchars($createdAtDate->format('d/m/Y'));
     }
 
     public function getAllMedia()

@@ -39,18 +39,18 @@ class System
     }
     public function getPhoneNumber()
     {
-        return $this->phoneNumber;
+        return htmlspecialchars($this->phoneNumber);
     }
     public function getEmail()
     {
-        return $this->systemEmail;
+        return htmlspecialchars($this->systemEmail);
     }
     public function getAddress()
     {
-        return $this->address;
+        return htmlspecialchars($this->address);
     }
     public function getColorSchemeId()
     {
-        return $this->ColorSchemeId;
+        return htmlspecialchars($this->ColorSchemeId);
     }
 }
