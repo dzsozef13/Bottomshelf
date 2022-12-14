@@ -310,7 +310,7 @@ class PostModel extends CoreModel
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();
-			$query = "SELECT Post.*, User.Username, Comment.content
+			$query = "SELECT Post.*, User.Username, Comment.Content
 			FROM Post 
 			INNER JOIN `User` ON User.UserId=Post.UserId
 			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
@@ -358,7 +358,7 @@ class PostModel extends CoreModel
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();
-			$query = "SELECT Post.*, User.Username, Comment.content
+			$query = "SELECT Post.*, User.Username, Comment.Content
 			FROM Post 
 			INNER JOIN `User` ON User.UserId=Post.UserId
 			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId

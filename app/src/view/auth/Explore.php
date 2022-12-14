@@ -57,10 +57,8 @@ $system = $systemController->fetchById(1);
 
 <!-- Explore View -->
 <div class="grid grid-cols-6 gap-4 px-8 my-8 w-full">
-    <div class="col-span-4">
-
+    <div class="col-span-6 sm:col-span-4">
         <!-- Search Field -->
-
         <form action="Explore" method="get" class="flex justify-between h-auto flex-wrap">
             <div class="banner mb-4">
                 <h3 class="small-headline mb-4">Select tags to improve the search!</h3>
@@ -69,15 +67,20 @@ $system = $systemController->fetchById(1);
                     ?>
                 </div>
             </div>
-            <div class="rounded-lg border border-highlight-color-900/60 bg-transparent flex relative h-10 w-[73%]">
+            <div class="rounded-lg border border-highlight-color-900/60 bg-transparent flex relative h-10 w-full sm:w-[48%] mb-2 sm:mb-0">
                 <div class="icon-wrapper">
                     <i class="las la-search"></i>
                 </div>
                 <input type="text" name="searchPhrase" placeholder="Search posts by a phrase..." class="input-field">
             </div>
-            <button type="submit" class="btn-green-no-shadow w-[25%]">
+            <button type="submit" class="btn-green-no-shadow w-full mb-2 sm:mb-0 sm:w-[25%]">
                 SEARCH
             </button>
+            <a href="/Explore" class="w-full sm:w-[25%]">
+                <button type="submit" class="btn-white-no-shadow w-full">
+                    RESET FILTERS
+                </button>
+            </a>
 
         </form>
 
@@ -153,7 +156,7 @@ $system = $systemController->fetchById(1);
                     '; ?>
         <?php } ?>
     </div>
-    <div class="col-span-2">
+    <div class="col-span-6 sm:col-span-2">
         <div class="side-bar-container">
             <div class="banner">
                 <?php echo htmlspecialchars_decode($system->getDescription()) ?>
