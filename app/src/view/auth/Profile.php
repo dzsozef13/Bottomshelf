@@ -27,7 +27,8 @@ if (isset($profile)) {
     $badges = $badgeController->fetchAllByUserId($profile->getId());
 }
 
-if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 && isset($_GET['selectedUser'])) {
+
+if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 && isset($userIdParam)) {
     if ($profile->getStatusId() == 1) {
         $buttons =   '<a href="/BanUser">
                     <button class="btn-outlined mr-4">BAN USER</button>
@@ -67,7 +68,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
 
         <div class="profile-card">
             <?php
-            if ($sessionsCtrl->getUser()['roleId'] == 2 & isset($_GET['selectedUser'])) {
+            if ($sessionsCtrl->getUser()['roleId'] == 2 & isset($userIdParam)) {
                 echo '
                 <div class="absolute -top-[4rem] left-56 w-max h-auto flex items-center">
                 ' . $buttons  . '
@@ -85,7 +86,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
             <div class="profile-username-container">
                 <h3 class="text-4xl font-mono ">
                     <span class="text-highlight-color-900">@</span><?php echo $profile->username ?><br>
-                    <?php if ($sessionsCtrl->getUser()['roleId'] == 2 && isset($_GET['selectedUser'])) {
+                    <?php if ($sessionsCtrl->getUser()['roleId'] == 2 && isset($userIdParam)) {
                         echo '<span class="text-xs">User status: ' .  $profile->getStatus() . '</span>';
                     } ?>
                 </h3>
@@ -116,7 +117,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
 
         </div>
     </div>
-    <?php if (!isset($_GET['selectedUser']) || $userIdParam == $loggedInUserId || $sessionsCtrl->getUser()['roleId'] == 2) { ?>
+    <?php if (!isset($userIdParam) || $userIdParam == $loggedInUserId || $sessionsCtrl->getUser()['roleId'] == 2) { ?>
         <div class="2xl:mx-20 mx-0 col-span-6 profile-post-options-container">
             <div class="option-chip" id="all">
                 All
@@ -150,7 +151,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                 if (isset($indexedMediaArray)) {
                     $post->setMedia($indexedMediaArray);
                 }
-                if (!isset($_GET['selectedUser']) || $userIdParam == $loggedInUserId || $sessionsCtrl->getUser()['roleId'] == 2) {
+                if (!isset($userIdParam) || $userIdParam == $loggedInUserId || $sessionsCtrl->getUser()['roleId'] == 2) {
                     $postTemplatesArray[] =  '
                     <a class="' . ($post->getIsPublic() ? "public" : "private") .  '" href="/SelectedPost?selectedPost=' .  $post->getId() . '">
                         <div class="post-card-container">
