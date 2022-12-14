@@ -58,26 +58,38 @@ $users = $userController->fetchAll();
                                                     <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($post->getCoverImageForPost()) . '" />
                                                 </div>') . '
                                             <!-- Post Body -->
-                                            <div class="post-card-body">
-                                                <!-- Post Header -->
-                                                <div class="post-card-header">
-                                                    <h3 class="post-card-title">' . $post->getTitle() . '</h3>
-                                                    <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
+                                            <div class="' . ($post->getCoverImageForPost() === null ? 'post-card-no-img-body' : 'post-card-body') . ' ">
+                                            <!-- Post Header -->
+                                            <div class="post-card-header mb-4">
+                                                <h3 class="post-card-title">' . $post->getTitle() . '</h3>
+                                                <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
+                                                ' . ($post->getCoverImageForPost() === null ? '
+                                                <div class="h-44 w-full mt-2 overflow-hidden border-dashed">
+                                                    ' . htmlspecialchars_decode($post->getDescription())  . '
                                                 </div>
-                                                <!-- Post Comment -->
-                                                    ' . ($post->getLatestComment() === null ? '' : '<div class="post-card-comment-wrapper">
+                                                 ' : '') . '
+                                            </div>
+                                           
+                                            <!-- Post Comment -->
+                                                ' . ($post->getLatestComment() === null ? '' : '
+                                                <div class="post-card-comment-wrapper">
                                                     <div class="small-logo">
                                                         <i class="las la-smile text-background-primary-900 text-xl"></i>
                                                     </div>
-                                                    <div class="post-card-comment">
-                                                    ' . $post->getLatestComment() . '
-                                                    </div>
-                                                </div>') . '
-                                                <!-- Post Reactions -->
-                                                <div class="post-card-reactions-wrapper">
-                                                    🌸 ✅ 👀
+                                                <div class="text-sm text-light-color-900/60">
+                                                  „ ' . $post->getLatestComment() . ' “
+                                                </div>
+                                            </div>') . '
+                                            <!-- Post Reactions -->
+                                            <div class="w-full h-auto flex gap-4 justify-between">
+                                                <div class="h-4 w-auto flex items-center text-sm "><i class="las la-heart"></i>
+                                                    <p class="ml-2">' . ($post->getReactionCount() ? $post->getReactionCount() : 0) . '</p>
+                                                </div>
+                                                <div class="h-4 w-auto flex items-center text-sm"><i class="las la-comment"></i>
+                                                    <p class="ml-2">' . ($post->getCommentCount() ? $post->getCommentCount() : 0) . '</p>
                                                 </div>
                                             </div>
+                                        </div>
                                         </div>
                                     </a>';
                 }
