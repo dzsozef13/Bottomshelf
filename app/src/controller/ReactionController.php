@@ -8,37 +8,17 @@ include_files(array(
 class ReactionController
 {
 
-    public function react()
+
+    public function create()
     {
-
-        $reactionType = $_GET['reactionType'];
-        $reactionId = isset($_GET['reactionId']) ? $_GET['reactionId'] : null;
-        $postId = isset($_GET['selectedPost']) ? $_GET['selectedPost'] : null;
-
-        if (isset($postId)) {
-            if (isset($reactionId)) {
-                $this->deleteReaction($reactionId, $postId);
-            } else {
-                if (isset($reactionType)) {
-                    $this->create($reactionType, $postId);
-                }
-            }
-        } else {
-            new Router('Explore');
-        }
-    }
-
-    public function create($reactionType, $postId)
-    {
-
         $reactionModel = new ReactionModel();
         $sessionController = new SessionController();
 
+        $postId = $sessionController->getSelectedPostId();
         $userId = $sessionController->getUser()['userId'];
 
-        if (isset($reactionType) && isset($postId) && isset($userId)) {
+        if (isset($postId) && isset($userId)) {
             $data = array(
-                'reactionType' => $reactionType,
                 'userId' =>  $userId,
                 'postId' => $postId
             );
@@ -48,14 +28,16 @@ class ReactionController
         new Router('SelectedPost?selectedPost=' . $postId);
     }
 
-    public function deleteReaction(int $reactionId, $postId)
+    public function deleteReaction()
     {
         $reactionModel = new ReactionModel();
         $sessionController = new SessionController();
-        $postId = $sessionController->getSelectedPostId();
 
-        if (isset($reactionId)) {
-            $reactionModel->deleteReaction($reactionId);
+        $postId = $sessionController->getSelectedPostId();
+        $userId = $sessionController->getUser()['userId'];
+
+        if (isset($postId) && $userId) {
+            $reactionModel->deleteReaction($postId, $userId);
         }
         new Router('SelectedPost?selectedPost=' . $postId);
     }

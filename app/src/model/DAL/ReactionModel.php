@@ -14,12 +14,10 @@ class ReactionModel extends CoreModel
     {
         try {
             $conn = CoreModel::openDbConnetion();
-            $query = "INSERT INTO Reaction (ReactionType, UserId, PostId) VALUES (:ReactionType, :UserId, :PostId) ON DUPLICATE KEY UPDATE ReactionType = :ReactionTypeDuplicate";
+            $query = "INSERT INTO Reaction (UserId, PostId) VALUES (:UserId, :PostId)";
 
             $handle = $conn->prepare($query);
 
-            $handle->bindValue(':ReactionType', $data['reactionType']);
-            $handle->bindValue(':ReactionTypeDuplicate', $data['reactionType']);
             $handle->bindValue(':UserId', $data['userId']);
             $handle->bindValue(':PostId', $data['postId']);
 
@@ -55,7 +53,6 @@ class ReactionModel extends CoreModel
             $result = $handle->fetch(PDO::FETCH_OBJ);
             $reaction = new Reaction(
                 $result->ReactionId,
-                $result->ReactionType,
                 $result->UserId,
                 $result->PostId,
                 $result->CreatedAt,
@@ -94,7 +91,6 @@ class ReactionModel extends CoreModel
             while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
                 $reaction = new Reaction(
                     $row->ReactionId,
-                    $row->ReactionType,
                     $row->UserId,
                     $row->PostId,
                     $row->CreatedAt,
@@ -137,7 +133,6 @@ class ReactionModel extends CoreModel
             while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
                 $reaction = new Reaction(
                     $row->ReactionId,
-                    $row->ReactionType,
                     $row->UserId,
                     $row->PostId,
                     $row->CreatedAt,
@@ -159,15 +154,16 @@ class ReactionModel extends CoreModel
     /**
      * @param int reactionId
      */
-    public function deleteReaction(int $reactionId)
+    public function deleteReaction(int $postId, int $userId)
     {
         try {
             $conn = CoreModel::openDbConnetion();
-            $query = "DELETE FROM Reaction WHERE ReactionId = :ReactionId";
+            $query = "DELETE FROM Reaction WHERE UserId = :UserId AND PostId = :PostId ";
 
             $handle = $conn->prepare($query);
 
-            $handle->bindParam(':ReactionId', $reactionId);
+            $handle->bindParam(':UserId', $userId);
+            $handle->bindParam(':PostId', $postId);
 
             $handle->execute();
 

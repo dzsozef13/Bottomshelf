@@ -62,4 +62,5 @@ Router::add(new Route("UpdateComment", "comment/update"));
 Router::add(new Route("MediaUpload", "media/uploadMedia"));
 
 // REACTION
-Router::add(new Route("ReactToPost", "reaction/react"));
+Router::add(new Route("CreateReaction", "reaction/create"));
+Router::add(new Route("DeleteReaction", "reaction/deleteReaction"));

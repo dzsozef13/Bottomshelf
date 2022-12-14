@@ -1110,13 +1110,6 @@ ul,
   color: rgba(var(--background-primary), var(--tw-text-opacity));
 }
 
-.reactions-wrapper{
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
 .reaction-input-wrapper{
   height: 2.5rem;
   width: 4rem;
@@ -1156,7 +1149,7 @@ ul,
   transition-duration: 150ms;
 }
 
-.peer:checked ~ .label-reaction-input{
+.selectedReaction{
   --tw-bg-opacity: 1;
   background-color: rgba(var(--highlight), var(--tw-bg-opacity));
   --tw-text-opacity: 1;
@@ -2091,11 +2084,6 @@ ul,
 
 .bg-transparent{
   background-color: transparent;
-}
-
-.bg-highlight-color-900{
-  --tw-bg-opacity: 1;
-  background-color: rgba(var(--highlight), var(--tw-bg-opacity));
 }
 
 .bg-\[radial-gradient\(circle_at_100\%_150\%\2c _rgba\(var\(--highlight\)\2c 0\.111\)_0\%\2c _rgba\(var\(--background-primary\)\2c 0\.0\)_58\%\)\]{

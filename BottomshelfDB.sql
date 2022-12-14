@@ -84,13 +84,11 @@ CREATE TABLE Post (
 );
 CREATE TABLE Reaction (
     ReactionId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    ReactionType varchar(32),
     UserId int NOT NULL,
     PostId int NOT NULL,
     CreatedAt timestamp,
     FOREIGN KEY (UserId) REFERENCES User (UserId),
     FOREIGN KEY (PostId) REFERENCES Post (PostId),
-    CONSTRAINT Reaction UNIQUE (UserId,PostId)
     
 );
 CREATE TABLE Comment (

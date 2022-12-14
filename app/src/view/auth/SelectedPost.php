@@ -80,7 +80,6 @@ if (isset($reactions)) {
         }
     }
 }
-
 ?>
 
 <div class="grid grid-cols-6 px-2 my-4 sm:px-8 sm:my-8 w-full gap-4">
@@ -140,30 +139,17 @@ if (isset($reactions)) {
             <?php } ?>
         </div>
         <div class="reactions-preview-content ">
-            <div class="reactions-wrapper gap-4" id="#select-reactions">
-                <div class="reaction-input-wrapper">
-                    <a href="/ReactToPost?selectedPost=<?php echo $post->getId() ?>&reactionType=Heart<?php echo isset($currentUserReaction) && $currentUserReaction->getReactionName() == 'Heart' ? "&reactionId=" . $currentUserReaction->getId() : "" ?>">
-                        <button class="label-reaction-input <?php echo isset($currentUserReaction) && $currentUserReaction->getReactionName() === 'Heart' ? 'bg-highlight-color-900' : '' ?>">
-                            <i class="las la-heart"></i>
-                        </button>
-                    </a>
-                </div>
-                <div class="reaction-input-wrapper">
-                    <a href="/ReactToPost?selectedPost=<?php echo $post->getId() ?>&reactionType=ThumbsDown<?php echo isset($currentUserReaction) && $currentUserReaction->getReactionName() == 'ThumbsDown' ? "&reactionId=" . $currentUserReaction->getId() : "" ?>">
-                        <button class="label-reaction-input <?php echo isset($currentUserReaction) && $currentUserReaction->getReactionName() === 'ThumbsDown' ? 'bg-highlight-color-900' : '' ?>">
-                            <i class="las la-thumbs-down"></i>
-                        </button>
-                    </a>
-                </div>
+            <div class="reaction-input-wrapper">
+                <a href="<?php echo isset($currentUserReaction) ? '/DeleteReaction' : '/CreateReaction' ?> ">
+                    <button class="label-reaction-input <?php echo isset($currentUserReaction) ? 'selectedReaction' : '' ?>">
+                        <i class="las la-heart"></i>
+                    </button>
+                </a>
             </div>
             <div class="w-2/4 min-h-[2.5rem] h-auto flex flex-wrap items-center justify-end gap-4 ">
                 <div class="h-8 w-auto flex items-center text-xl"><i class="las la-heart"></i>
-                    <p class="ml-2">0</p>
+                    <p class="ml-2"><?php echo (isset($reactions) ? count($reactions) : 0) ?></p>
                 </div>
-                <div class="h-8 w-auto flex items-center text-xl"><i class="las la-thumbs-down"></i>
-                    <p class="ml-2">0</p>
-                </div>
-
             </div>
         </div>
         <!-- Comment Section -->

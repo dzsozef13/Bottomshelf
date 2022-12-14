@@ -103,9 +103,12 @@
     rounded
     border-highlight-color-900
     text-highlight-color-900
-    peer-checked:text-background-primary-900
-    peer-checked:bg-highlight-color-900
     transition
     text-xl;
+  }
+
+  .selectedReaction {
+    @apply text-background-primary-900
+    bg-highlight-color-900;
   }
 }
