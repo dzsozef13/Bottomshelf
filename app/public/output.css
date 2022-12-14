@@ -1839,6 +1839,10 @@ ul,
   margin-right: auto;
 }
 
+.mb-4{
+  margin-bottom: 1rem;
+}
+
 .mr-4{
   margin-right: 1rem;
 }
@@ -1861,10 +1865,6 @@ ul,
 
 .mb-8{
   margin-bottom: 2rem;
-}
-
-.mb-4{
-  margin-bottom: 1rem;
 }
 
 .ml-2{
@@ -1973,10 +1973,6 @@ ul,
   height: 5vh;
 }
 
-.h-\[100vh-5rem\]{
-  height: 100vh-5rem;
-}
-
 .min-h-\[2\.5rem\]{
   min-height: 2.5rem;
 }
@@ -1989,12 +1985,12 @@ ul,
   min-height: 100vh;
 }
 
-.w-screen{
-  width: 100vw;
-}
-
 .w-full{
   width: 100%;
+}
+
+.w-screen{
+  width: 100vw;
 }
 
 .w-auto{
@@ -2159,6 +2155,11 @@ ul,
   font-family: 'Space Mono';
 }
 
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .text-\[10rem\]{
   font-size: 10rem;
 }
@@ -2186,11 +2187,6 @@ ul,
 .text-4xl{
   font-size: 2.25rem;
   line-height: 2.5rem;
-}
-
-.text-2xl{
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .uppercase{

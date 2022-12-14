@@ -116,18 +116,19 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
 
         </div>
     </div>
-    <div class="2xl:mx-20 mx-0 col-span-6 profile-post-options-container">
-        <div class="option-chip" id="all">
-            All
+    <?php if (!isset($_GET['selectedUser']) || $userIdParam == $loggedInUserId || $sessionsCtrl->getUser()['roleId'] == 2) { ?>
+        <div class="2xl:mx-20 mx-0 col-span-6 profile-post-options-container">
+            <div class="option-chip" id="all">
+                All
+            </div>
+            <div class="option-chip" id="public">
+                Public
+            </div>
+            <div class="option-chip" id="private">
+                Private
+            </div>
         </div>
-        <div class="option-chip" id="public">
-            Public
-        </div>
-        <div class="option-chip" id="private">
-            Private
-        </div>
-    </div>
-
+    <?php }  ?>
     <div class="2xl:mx-20 mx-0 col-span-6 mb-8">
         <?php
         if (empty($posts)) {
@@ -149,7 +150,52 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                 if (isset($indexedMediaArray)) {
                     $post->setMedia($indexedMediaArray);
                 }
-                $postTemplatesArray[] =  '
+                if (!isset($_GET['selectedUser']) || $userIdParam == $loggedInUserId || $sessionsCtrl->getUser()['roleId'] == 2) {
+                    $postTemplatesArray[] =  '
+                    <a class="' . ($post->getIsPublic() ? "public" : "private") .  '" href="/SelectedPost?selectedPost=' .  $post->getId() . '">
+                        <div class="post-card-container">
+                            <!-- Post Image -->
+                            ' . ($post->getCoverImageForPost() === null ? '' : '<div class="post-card-img">
+                                    <img class="img" src="data:image/*;charset=utf8;base64,' . base64_encode($post->getCoverImageForPost()) . '" />
+                                </div>') . '
+                            <!-- Post Body -->
+                                <div class="' . ($post->getCoverImageForPost() === null ? 'post-card-no-img-body' : 'post-card-body') . ' ">
+                                <!-- Post Header -->
+                                <div class="post-card-header mb-4">
+                                    <h3 class="post-card-title">' . $post->getTitle() . '</h3>
+                                    <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
+                                    ' . ($post->getCoverImageForPost() === null ? '
+                                    <div class="h-44 w-full mt-2 overflow-hidden border-dashed">
+                                        ' . htmlspecialchars_decode($post->getDescription())  . '
+                                    </div>
+                                    ' : '') . '
+                                </div>
+                            
+                                <!-- Post Comment -->
+                                    ' . ($post->getLatestComment() === null ? '' : '
+                                    <div class="post-card-comment-wrapper">
+                                        <div class="small-logo">
+                                            <i class="las la-smile text-background-primary-900 text-xl"></i>
+                                        </div>
+                                    <div class="text-sm text-light-color-900/60">
+                                    „ ' . $post->getLatestComment() . ' “
+                                    </div>
+                                </div>') . '
+                                <!-- Post Reactions -->
+                                <div class="w-full h-auto flex gap-4 justify-between">
+                                    <div class="h-4 w-auto flex items-center text-sm "><i class="las la-heart"></i>
+                                        <p class="ml-2">' . ($post->getReactionCount() ? $post->getReactionCount() : 0) . '</p>
+                                    </div>
+                                    <div class="h-4 w-auto flex items-center text-sm"><i class="las la-comment"></i>
+                                        <p class="ml-2">' . ($post->getCommentCount() ? $post->getCommentCount() : 0) . '</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>';
+                } else {
+                    if ($post->getIsPublic() == true) {
+                        $postTemplatesArray[] =  '
                         <a class="' . ($post->getIsPublic() ? "public" : "private") .  '" href="/SelectedPost?selectedPost=' .  $post->getId() . '">
                             <div class="post-card-container">
                                 <!-- Post Image -->
@@ -191,6 +237,8 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                                 </div>
                             </div>
                         </a>';
+                    }
+                }
             }
             echo '
             <div class="grid 2xl:grid-cols-5 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"> 
