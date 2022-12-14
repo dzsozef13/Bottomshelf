@@ -20,3 +20,8 @@
     margin-left: 1rem;
   }
 }
+@layer utilities {
+  .border-dashed {
+    border-bottom: 2px dotted rgba(var(--highlight), 0.3);
+  }
+}

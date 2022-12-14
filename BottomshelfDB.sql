@@ -84,12 +84,12 @@ CREATE TABLE Post (
 );
 CREATE TABLE Reaction (
     ReactionId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    ReactionType varchar(32),
     UserId int NOT NULL,
     PostId int NOT NULL,
     CreatedAt timestamp,
     FOREIGN KEY (UserId) REFERENCES User (UserId),
     FOREIGN KEY (PostId) REFERENCES Post (PostId)
+    
 );
 CREATE TABLE Comment (
     CommentId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -156,8 +156,38 @@ DELIMITER //
 Create Trigger AfterInsertOnComment AFTER INSERT ON Comment FOR EACH ROW
 BEGIN
 UPDATE Post
-SET Post.CommentCount = Post.CommentCount + 1
-WHERE Post.UserId = NEW.UserId;
+SET Post.CommentCount = Post.CommentCount + 1, Post.LatestCommentId = NEW.CommentId
+WHERE Post.PostId = NEW.PostId;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+Create Trigger AfterDeleteOnComment AFTER DELETE ON Comment FOR EACH ROW
+BEGIN
+UPDATE Post
+SET Post.CommentCount = Post.CommentCount - 1
+WHERE Post.PostId = OLD.PostId;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+Create Trigger AfterInsertOnReaction AFTER INSERT ON Reaction FOR EACH ROW
+BEGIN
+UPDATE Post
+SET Post.ReactionCount = Post.ReactionCount + 1
+WHERE Post.PostId = NEW.PostId;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+Create Trigger AfterDeleteOnReaction AFTER DELETE ON Reaction FOR EACH ROW
+BEGIN
+UPDATE Post
+SET Post.ReactionCount = Post.ReactionCount - 1
+WHERE Post.PostId = OLD.PostId;
 END //
 
 DELIMITER ;

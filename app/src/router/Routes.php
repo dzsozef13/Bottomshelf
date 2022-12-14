@@ -64,3 +64,6 @@ Router::add(new Route("MediaUpload", "media/uploadMedia"));
 
 // TAG
 Router::add(new Route("TagAssign", "tag/assignTag"));
+// REACTION
+Router::add(new Route("CreateReaction", "reaction/create"));
+Router::add(new Route("DeleteReaction", "reaction/deleteReaction"));

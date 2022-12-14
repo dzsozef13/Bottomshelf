@@ -43,6 +43,15 @@
     justify-between;
   }
 
+  .post-card-no-img-body {
+    @apply w-full
+    h-full
+    p-2
+    flex
+    flex-col
+    justify-between;
+  }
+
   .post-card-title {
     @apply font-mono
     text-lg;
@@ -54,14 +63,14 @@
   }
 
   .post-card-user {
-    @apply text-sm;
+    @apply text-xs;
   }
 
   .post-card-comment-wrapper {
     @apply w-full
     h-auto
-    mt-2
-    flex;
+    flex
+    items-center;
   }
 
   .post-small-images {
@@ -109,5 +118,19 @@
     mb-4
     flex
     flex-col;
+  }
+
+  .reactions-preview-content {
+    @apply w-full
+    h-max
+    sm:p-6
+    p-4
+    bg-background-secondary-900 
+    rounded
+    sm:mb-6
+    mb-4
+    flex
+    flex-row 
+    flex-wrap;
   }
 }

@@ -75,4 +75,40 @@
      font-mono
      text-lg;
   }
+
+  .reactions-wrapper {
+    @apply w-full
+    flex
+    flex
+    justify-start
+    flex-wrap;
+  }
+
+  .reaction-input-wrapper {
+    @apply w-2/4
+    transition
+    hover:-translate-y-1 
+    hover:scale-100
+    h-10;
+  }
+
+  .label-reaction-input {
+    @apply w-16
+    h-full
+    flex
+    justify-center
+    items-center
+    border
+    cursor-pointer
+    rounded
+    border-highlight-color-900
+    text-highlight-color-900
+    transition
+    text-xl;
+  }
+
+  .selectedReaction {
+    @apply text-background-primary-900
+    bg-highlight-color-900;
+  }
 }

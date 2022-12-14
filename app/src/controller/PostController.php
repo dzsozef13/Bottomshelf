@@ -19,6 +19,8 @@ class PostController
         $isSticky = 0;
         $userId = $sessionController->getUser()['userId'];
         $statusId = 1;
+        $reactionCount = 0;
+        $commentCount = 0;
 
         if (isset($title) && isset($description) && isset($isPublic) && isset($isSticky)  && isset($userId)  && isset($statusId)) {
             $data = array(
@@ -27,6 +29,8 @@ class PostController
                 'isPublic' => $isPublic,
                 'isSticky' => $isSticky,
                 'userId' =>  $userId,
+                'reactionCount' =>  $reactionCount,
+                'commentCount' =>  $commentCount,
                 'statusId' =>  $statusId
             );
 
@@ -55,7 +59,13 @@ class PostController
     public function fetchAll()
     {
         $postModel = new PostModel;
-        return $postModel->getAll();
+        return $postModel->getAllActiveAndPublic();
+    }
+
+    public function fetchAllActive()
+    {
+        $postModel = new PostModel;
+        return $postModel->getAllActive();
     }
 
     public function fetchAllByStatus(int $statusId = 1, bool $isPublic = true)
@@ -105,7 +115,8 @@ class PostController
         }
     }
 
-    public function fetchByTag($tag) {
+    public function fetchByTag($tag)
+    {
         if (isset($tag)) {
             $postModel = new PostModel;
             return $postModel->getAllByTag($tag);

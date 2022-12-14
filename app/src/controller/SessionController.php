@@ -164,6 +164,7 @@ class SessionController
         }
     }
 
+
     /**
      * Set - Get system message
      * 

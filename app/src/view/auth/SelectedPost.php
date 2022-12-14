@@ -21,6 +21,11 @@ $postController = new PostController();
 $commentController = new CommentController();
 
 $tagController = new TagController();
+/**
+ * Reaction Controller
+ */
+
+$reactionController = new ReactionController();
 
 
 $userId = $sessionController->getUser()['userId'];
@@ -35,6 +40,7 @@ $post = $postController->fetchById($postId);
 if ($post->getId() == null) {
     new Router('Explore');
 }
+
 /**
  * Fetch all media for the post
  */
@@ -55,8 +61,26 @@ $selectedImage = !empty($indexedMediaArray) ? $indexedMediaArray[0] : null;
 /**
  * Fetch all comments for the post
  */
-
 $comments = $commentController->fetchAllByPostId($post->getId());
+
+/**
+ * Fetch all reactions for the post
+ */
+$reactions = $reactionController->fetchAllByPostId($post->getId());
+
+/**
+ * Looping through reactions to find if currently logged in user
+ * has reacted to his post before. If found, save the reactions to which type it was
+ */
+$currentUserReaction = null;
+if (isset($reactions)) {
+    foreach ($reactions as $reaction) {
+        if ($userId == $reaction->getAuthorId()) {
+            $currentUserReaction = $reaction;
+        }
+    }
+}
+
 ?>
 
 <div class="grid grid-cols-6 px-2 my-4 sm:px-8 sm:my-8 w-full gap-4">
@@ -89,6 +113,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
             <div class="mt-4">
                 <?php echo htmlspecialchars_decode($post->getDescription())  ?>
             </div>
+
             <?php if ($userId == $post->getAuthorId() || $sessionController->getUser()['roleId'] == 2) { ?>
                 <div class="w-full flex justify-end flex-wrap">
                     <a class="w-full md:w-2/4 md:pr-3" href="/EditPost?selectedPost=<?php echo $post->getId() ?>">
@@ -114,34 +139,52 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                 </div>
             <?php } ?>
         </div>
-        <div class="tags-container mb-6">
+        <<<<<<< HEAD <div class="tags-container mb-6">
             <?php
-                $tags = $tagController->fetchAllForPost($post->getId());
-                foreach ($tags as $tag) {
-                    echo 
-                    '<div class="tag-chip" href="TagAssign?id=' . $tag->getId() . '">
+            $tags = $tagController->fetchAllForPost($post->getId());
+            foreach ($tags as $tag) {
+                echo
+                '<div class="tag-chip" href="TagAssign?id=' . $tag->getId() . '">
                         ' . $tag->getTagName() . '
                     </div>';
-                }
+            }
             ?>
-        </div>
-        <!-- Comment Section -->
-        <div class="post-preview-content">
-            <!-- Comment Creation -->
-            <form action="AddComment" method="post">
-                <div class="text-area-wrapper">
-                    <div class="icon-wrapper-text-area">
-                        <i class="las la-comment"></i>
-                    </div>
-                    <textarea placeholder="Comment here.." name="comment" maxlength="1024" class="input-field  min-h-[4rem]"></textarea>
+            =======
+            <div class="reactions-preview-content ">
+                <div class="reaction-input-wrapper">
+                    <a href="<?php echo isset($currentUserReaction) ? '/DeleteReaction' : '/CreateReaction' ?> ">
+                        <button class="label-reaction-input <?php echo isset($currentUserReaction) ? 'selectedReaction' : '' ?>">
+                            <i class="las la-heart"></i>
+                        </button>
+                    </a>
                 </div>
-                <button class="btn-white-no-shadow w-full mt-4 mb-4" type="submit">Add Comment</button>
-            </form>
-            <!-- Comment display + deletion, editing logic -->
-            <div id="allComments">
-                <?php
-                foreach ($comments as $comment) {
-                    echo ' <div class="comment-container last:mb-0"" >
+                <div class="w-2/4 min-h-[2.5rem] h-auto flex flex-wrap items-center justify-end gap-4 ">
+                    <div class="h-8 w-auto flex items-center text-xl "><i class="las la-heart"></i>
+                        <p class="ml-2"><?php echo (isset($reactions) ? count($reactions) : 0) ?></p>
+                    </div>
+                    <div class="h-8 w-auto flex items-center text-xl"><i class="las la-comment"></i>
+                        <p class="ml-2"><?php echo (isset($comments) ? count($comments) : 0) ?></p>
+                    </div>
+                </div>
+                >>>>>>> reactions
+            </div>
+            <!-- Comment Section -->
+            <div class="post-preview-content">
+                <!-- Comment Creation -->
+                <form action="AddComment" method="post">
+                    <div class="text-area-wrapper">
+                        <div class="icon-wrapper-text-area">
+                            <i class="las la-comment"></i>
+                        </div>
+                        <textarea placeholder="Comment here.." name="comment" maxlength="1024" class="input-field  min-h-[4rem]"></textarea>
+                    </div>
+                    <button class="btn-white-no-shadow w-full mt-4 mb-4" type="submit">Add Comment</button>
+                </form>
+                <!-- Comment display + deletion, editing logic -->
+                <div id="allComments">
+                    <?php
+                    foreach ($comments as $comment) {
+                        echo ' <div class="comment-container last:mb-0"" >
                     <div class="comment-picture-container">
                         <img class="img" src="' . ($comment->getUserPicture() !== null ? 'data:image/*;charset=utf8;base64,' . base64_encode($comment->getUserPicture()) : 'public/asset/images/PlaceholderProfilePicture.png') . '" alt="">
                     </div>
@@ -164,7 +207,7 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                                                 </div> 
                                             </button>
                                         </a>' : "") .
-                        '
+                            '
                             </div>
                             <p class="text-xs text-light-color-900/40">' . $comment->getCreatedAt() . '</p>
                         </div>
@@ -180,8 +223,8 @@ $comments = $commentController->fetchAllByPostId($post->getId());
                         <p class="text-xs comment-content">' . $comment->getContent() . '</p>
                     </div>
                 </div>';
-                }
-                ?></div>
-        </div>
+                    }
+                    ?></div>
+            </div>
     </div>
 </div>

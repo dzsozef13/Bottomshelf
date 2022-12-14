@@ -244,5 +244,29 @@ $(document).ready(function(e) {
             })
         } catch{}
       
+
+    
+    $("#heart-reaction").click(function(event) {
+        if($("#heart-reaction").prop( "checked" )) {
+            $("#thmbs-down-reaction").prop( "checked", false )
+        } 
+    }); 
+
+    $("#heart-reaction").change(function(event) {
+        $("#reaction-submit").trigger('click')
+    }); 
+
+
+    $("#thmbs-down-reaction").click(function(event) {
+        $("#reaction-submit").trigger('click')
+        if($("#thmbs-down-reaction").prop( "checked" )) {
+            $("#heart-reaction").prop( "checked", false )
+        } 
+    }); 
+
+    $("#thmbs-down-reaction").change(function(event) {
+        $("#reaction-submit").trigger('click')
+    }); 
+
 });
 
