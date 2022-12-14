@@ -28,7 +28,7 @@ class Post
         $createdAt,
         $authorId,
         $authorName,
-        $latestComment,
+        $content,
         $childPostId,
         $statusId
     ) {
@@ -42,7 +42,7 @@ class Post
         $this->createdAt = $createdAt;
         $this->authorId = $authorId;
         $this->authorName = $authorName;
-        $this->latestComment = $latestComment;
+        $this->latestComment = $content;
         $this->childPostId = $childPostId;
         $this->statusId = $statusId;
     }

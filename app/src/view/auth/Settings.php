@@ -28,11 +28,14 @@ $isAdmin = $profile->isAdmin();
 $system = $systemController->fetchById(1);
 $preselectedCountry = null;
 $colorSchemes = $colorSchemeController->fetchAll();
+
 foreach ($countries as $country) {
     if ($country->getCountryCode() === $profile->getCountryCode()) {
         $preselectedCountry = $country->getCountryName();
     }
 }
+
+
 ?>
 <div class="grid grid-cols-6 gap-8 px-8 w-full">
     <div class="col-span-6 2xl:h-[5vh] h-[5vh] ">

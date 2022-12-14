@@ -136,7 +136,7 @@ class PostModel extends CoreModel
 					$row->CreatedAt,
 					$row->UserId,
 					$row->Username,
-					$row->LatestCommentId,
+					$row->Content,
 					$row->ChildPostId,
 					$row->StatusId
 				);
@@ -152,7 +152,7 @@ class PostModel extends CoreModel
 	/**
 	 * @return Post[]  (if none then empty array [])
 	 */
-	public function getAll()
+	public function getAllActiveAndPublic()
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();
@@ -161,7 +161,7 @@ class PostModel extends CoreModel
 				FROM Post
 				LEFT JOIN `User` ON User.UserId=Post.UserId
 				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-				WHERE User.StatusId = 1 AND Post.StatusId = 1
+				WHERE User.StatusId = 1 AND Post.StatusId = 1 AND Post.isPublic = 1
 				ORDER BY Post.Title DESC";
 
 			$handle = $conn->prepare($query);
@@ -180,7 +180,52 @@ class PostModel extends CoreModel
 					$row->CreatedAt,
 					$row->UserId,
 					$row->Username,
-					$row->LatestCommentId,
+					$row->Content,
+					$row->ChildPostId,
+					$row->StatusId
+				);
+
+				$result[] = $post;
+			}
+			return $result;
+		} catch (PDOException $e) {
+			print($e->getMessage());
+		}
+	}
+
+	/**
+	 * @return Post[]  (if none then empty array [])
+	 */
+	public function getAllActive()
+	{
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$query =
+				"SELECT Post.*, User.Username, Comment.Content
+				FROM Post
+				LEFT JOIN `User` ON User.UserId=Post.UserId
+				LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
+				WHERE User.StatusId = 1 AND Post.StatusId = 1
+				ORDER BY Post.Title DESC";
+
+			$handle = $conn->prepare($query);
+			$handle->execute();
+
+			$result = array();
+			while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+
+				$post = new Post(
+					$row->PostId,
+					$row->Title,
+					$row->PostDescription,
+					$row->ReactionCount,
+					$row->CommentCount,
+					$row->IsPublic,
+					$row->IsSticky,
+					$row->CreatedAt,
+					$row->UserId,
+					$row->Username,
+					$row->Content,
 					$row->ChildPostId,
 					$row->StatusId
 				);
@@ -273,7 +318,7 @@ class PostModel extends CoreModel
 					$row->CreatedAt,
 					$row->UserId,
 					$row->Username,
-					$row->LatestCommentId,
+					$row->Content,
 					$row->ChildPostId,
 					$row->StatusId
 				);
@@ -320,7 +365,7 @@ class PostModel extends CoreModel
 					$row->CreatedAt,
 					$row->UserId,
 					$row->Username,
-					$row->LatestCommentId,
+					$row->Content,
 					$row->ChildPostId,
 					$row->StatusId
 				);

@@ -60,6 +60,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                   ';
     }
 }
+var_dump($profile);
 ?>
 <div class="grid grid-cols-6 gap-4 px-8 w-full">
     <div class="col-span-6 2xl:h-[15vh] h-[25vh] "></div>

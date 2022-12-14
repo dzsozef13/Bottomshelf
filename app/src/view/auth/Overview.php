@@ -16,7 +16,7 @@ if ($sessionController->getUser()['roleId'] !== 2) {
 /**
  * Fetch posts
  */
-$posts = $postController->fetchAll();
+$posts = $postController->fetchAllActive();
 
 /**
  * Fetch System information

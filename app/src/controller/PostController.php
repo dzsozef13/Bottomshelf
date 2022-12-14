@@ -52,7 +52,13 @@ class PostController
     public function fetchAll()
     {
         $postModel = new PostModel;
-        return $postModel->getAll();
+        return $postModel->getAllActiveAndPublic();
+    }
+
+    public function fetchAllActive()
+    {
+        $postModel = new PostModel;
+        return $postModel->getAllActive();
     }
 
     public function fetchAllByStatus(int $statusId = 1, bool $isPublic = true)
