@@ -68,7 +68,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
 
         <div class="profile-card">
             <?php
-            if ($sessionsCtrl->getUser()['roleId'] == 2 & isset($userIdParam)) {
+            if ($sessionsCtrl->getUser()['roleId'] == 2 && isset($userIdParam) && $userIdParam != $loggedInUserId) {
                 echo '
                 <div class="absolute -top-[4rem] left-56 w-max h-auto flex items-center">
                 ' . $buttons  . '
@@ -117,7 +117,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
 
         </div>
     </div>
-    <?php if (!isset($userIdParam) || $userIdParam == $loggedInUserId || $sessionsCtrl->getUser()['roleId'] == 2) { ?>
+    <?php if ((!isset($userIdParam)  || $userIdParam == $loggedInUserId || $sessionsCtrl->getUser()['roleId'] == 2) && !empty($posts)) { ?>
         <div class="2xl:mx-20 mx-0 col-span-6 profile-post-options-container">
             <div class="option-chip" id="all">
                 All
@@ -133,7 +133,8 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
     <div class="2xl:mx-20 mx-0 col-span-6 mb-8">
         <?php
         if (empty($posts)) {
-            echo '
+            if (!isset($userIdParam) || $userIdParam == $loggedInUserId) {
+                echo '
                 <div class="no-post-banner">
                     <h3 class="headline text-lg mb-6">You have not created any posts yet...</h3>
                     <div class="btn-green">
@@ -143,6 +144,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                     </div>
                 </div>
         ';
+            }
         } else {
             $postTemplatesArray = array();
             foreach ($posts as $post) {
