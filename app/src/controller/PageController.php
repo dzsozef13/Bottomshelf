@@ -31,8 +31,8 @@ class PageController
         $session = new SessionController();
 
         // Explore Filter
-        if (isset($args['filter'])) {
-            $exploreFilter = $args['filter'];
+        if (isset($args['sorting'])) {
+            $exploreFilter = $args['sorting'];
             $session->setFilter($exploreFilter);
         } else {
             $session->setFilter(null);
