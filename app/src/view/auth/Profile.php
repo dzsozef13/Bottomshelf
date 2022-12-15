@@ -167,7 +167,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                                     <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
                                     ' . ($post->getCoverImageForPost() === null ? '
                                     <div class="h-44 w-full mt-2 overflow-hidden border-dashed">
-                                        ' . htmlspecialchars_decode($post->getDescription(), ENT_NOQUOTES)  . '
+                                        ' . htmlspecialchars_decode($post->getDescription())  . '
                                     </div>
                                     ' : '') . '
                                 </div>
@@ -211,7 +211,7 @@ if ($profile->getStatusId() !== null && $sessionsCtrl->getUser()['roleId'] == 2 
                                         <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
                                         ' . ($post->getCoverImageForPost() === null ? '
                                         <div class="h-44 w-full mt-2 overflow-hidden border-dashed">
-                                            ' . htmlspecialchars_decode($post->getDescription(), ENT_NOQUOTES)  . '
+                                            ' . htmlspecialchars_decode($post->getDescription())  . '
                                         </div>
                                         ' : '') . '
                                     </div>

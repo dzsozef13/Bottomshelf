@@ -122,7 +122,7 @@ if (isset($reactions)) {
                 ?>
             </div>
             <div class="mt-4">
-                <?php echo htmlspecialchars_decode($post->getDescription(), ENT_NOQUOTES)  ?>
+                <?php echo htmlspecialchars_decode($post->getDescription())  ?>
             </div>
             <?php if ($userId == $post->getAuthorId() || $sessionController->getUser()['roleId'] == 2) { ?>
                 <div class="w-full flex justify-end flex-wrap">

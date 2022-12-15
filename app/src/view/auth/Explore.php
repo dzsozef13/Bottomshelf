@@ -89,16 +89,16 @@ $system = $systemController->fetchById(1);
         <div class="flex mb-4 mt-4">
             <h3 class="small-headline mr-4">Sort by</h3>
             <?php
-                $sortingQuery = "Explore?sorting=";
+            $sortingQuery = "Explore?sorting=";
             ?>
             <a class="option-chip" href="<?php echo $sortingQuery . "latest" ?>">
                 Newest first
             </a>
             <a class="option-chip" href="<?php echo $sortingQuery . "trending" ?>">
                 Hot first
-            </a> 
+            </a>
         </div>
-        
+
 
         <!-- Posts section -->
 
@@ -137,7 +137,7 @@ $system = $systemController->fetchById(1);
                                 <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
                                 ' . ($post->getCoverImageForPost() === null ? '
                                 <div class="h-44 w-full mt-2 overflow-hidden border-dashed">
-                                    ' . htmlspecialchars_decode($post->getDescription(), ENT_NOQUOTES)  . '
+                                    ' . htmlspecialchars_decode($post->getDescription())  . '
                                 </div>
                                  ' : '') . '
                             </div>
@@ -175,11 +175,11 @@ $system = $systemController->fetchById(1);
     <div class="col-span-6 sm:col-span-2">
         <div class="side-bar-container">
             <div class="banner">
-                <?php echo htmlspecialchars_decode($system->getDescription(), ENT_NOQUOTES) ?>
+                <?php echo htmlspecialchars_decode($system->getDescription()) ?>
             </div>
             <div class="banner mt-4">
                 <p class="headline mb-2">Guidelines</p>
-                <?php echo htmlspecialchars_decode($system->getRules(), ENT_NOQUOTES) ?>
+                <?php echo htmlspecialchars_decode($system->getRules()) ?>
             </div>
         </div>
     </div>
