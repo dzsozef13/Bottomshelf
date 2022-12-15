@@ -154,7 +154,7 @@ WHERE Post.IsSticky = 1;
 CREATE VIEW DanishUser AS
 SELECT *
 FROM User
-WHERE User.CountryCode = 'DNK'
+WHERE User.CountryCode = 'DNK';
 
 DELIMITER //
 Create Trigger AfterInsertOnPost AFTER INSERT ON Post FOR EACH ROW
@@ -214,9 +214,9 @@ BEGIN
   THEN
     INSERT INTO UserHasBadge(BadgeId, UserId) VALUES (1, NEW.UserId);
   END IF;
-  IF NEW.PostCount = 10  AND NOT EXISTS (SELECT * FROM UserHasBadge WHERE UserHasBadge.BadgeId = 3 AND UserHasBadge.UserId = NEW.UserId)
+  IF NEW.PostCount = 10  AND NOT EXISTS (SELECT * FROM UserHasBadge WHERE UserHasBadge.BadgeId = 2 AND UserHasBadge.UserId = NEW.UserId)
   THEN
-    INSERT INTO UserHasBadge(BadgeId, UserId) VALUES (3, NEW.UserId);
+    INSERT INTO UserHasBadge(BadgeId, UserId) VALUES (2, NEW.UserId);
   END IF;
 END //
 

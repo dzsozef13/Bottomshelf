@@ -186,7 +186,6 @@ INSERT INTO `Role` (RoleId, RoleName) VALUES (NULL,'User');
 INSERT INTO `Role` (RoleId, RoleName) VALUES (NULL,'Admin');
 
 INSERT INTO Badge (BadgeId, BadgeName) VALUES (NULL,'Recipe Enthusiast');
-INSERT INTO Badge (BadgeId, BadgeName) VALUES (NULL,'Beloved By The People');
 INSERT INTO Badge (BadgeId, BadgeName) VALUES (NULL,'Recipe Specialist');
 
 INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Easy');
