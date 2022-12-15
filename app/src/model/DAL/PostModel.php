@@ -122,6 +122,11 @@ class PostModel extends CoreModel
 		}
 	}
 
+	/**
+	 * @param array is a key-value array of optional query parameters
+	 * The method constructs a singe SQL query that will fetch posts matching the proided criteria
+	 * @return Post array
+	 */
 	public function getAll($args)
 	{
 		$query = 

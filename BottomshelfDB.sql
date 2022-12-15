@@ -142,6 +142,19 @@ CREATE TABLE PostHasTag (
     FOREIGN KEY (TagId) REFERENCES Tag (TagId)
 );
 
+CREATE VIEW StickyPost AS
+SELECT Post.*, User.Username, Comment.Content
+FROM Post
+LEFT JOIN User ON User.UserId=Post.UserId
+LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
+LEFT JOIN PostHasTag ON PostHasTag.PostId=Post.PostId
+WHERE Post.IsSticky = 1;
+
+CREATE VIEW DanishUser AS
+SELECT *
+FROM User
+WHERE User.CountryCode = 'DNK'
+
 DELIMITER //
 Create Trigger AfterInsertOnPost AFTER INSERT ON Post FOR EACH ROW
 BEGIN
