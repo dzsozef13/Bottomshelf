@@ -3,8 +3,8 @@
 class Badge
 {
 
-    private $badgeId;
-    private $badgeName;
+    private int $badgeId;
+    private string $badgeName;
 
     function __construct(
         $badgeId,
@@ -14,17 +14,17 @@ class Badge
         $this->badgeName = $badgeName;
     }
 
-    public function getId()
+    public function getId(): int
     {
-        return htmlspecialchars($this->badgeId);
+        return $this->badgeId;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return htmlspecialchars($this->badgeName);
     }
 
-    public function getBadgeIcon()
+    public function getBadgeIcon(): string
     {
         $id = $this->badgeId;
         if ($id == 1) {

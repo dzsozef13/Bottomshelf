@@ -8,7 +8,7 @@ include_files(array(
 class ViewController
 {
 
-    protected $sessionCtrl;
+    protected \SessionController $sessionCtrl;
 
     public function renderView(string $viewName, bool $isAuthPage)
     {

@@ -13,7 +13,7 @@ class User extends Entity
     public string $email;
     public string $username;
     public string $dateOfBirth;
-    public $profileImgBlob;
+    public mixed $profileImgBlob;
     public ?string $bioDescription;
     public int $postCount;
     public ?string $countryCode;
@@ -21,7 +21,7 @@ class User extends Entity
     public int $statusId;
 
 
-    public function __construct(int $id, string $email, string $username, string $dateOfBirth, $profileImgBlob, ?string $bioDescription, int $postCount, string $countryCode, int $roleId, int $statusId)
+    public function __construct(int $id, string $email, string $username, string $dateOfBirth, mixed $profileImgBlob, ?string $bioDescription, int $postCount, string $countryCode, int $roleId, int $statusId)
     {
         $this->id = $id;
         $this->email = $email;
@@ -35,22 +35,22 @@ class User extends Entity
         $this->statusId = $statusId;
     }
 
-    public function getId()
+    public function getId(): int
     {
-        return htmlspecialchars($this->id);
+        return $this->id;
     }
 
-    public function getUsername()
+    public function getUsername(): string
     {
         return htmlspecialchars($this->username);
     }
 
-    public function getEmail()
+    public function getEmail(): string
     {
         return htmlspecialchars($this->email);
     }
 
-    public function getStatus()
+    public function getStatus(): string
     {
         if ($this->statusId == 1) {
             return 'Active';
@@ -63,22 +63,22 @@ class User extends Entity
         }
     }
 
-    public function getStatusId()
+    public function getStatusId(): int
     {
-        return htmlspecialchars($this->statusId);
+        return $this->statusId;
     }
 
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
-        return htmlspecialchars($this->countryCode);
+        return $this->countryCode;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return htmlspecialchars($this->bioDescription);
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         if ($this->roleId == 2) {
             return true;
@@ -87,7 +87,7 @@ class User extends Entity
         }
     }
 
-    public function getProfileImage()
+    public function getProfileImage(): mixed
     {
         return $this->profileImgBlob;
     }

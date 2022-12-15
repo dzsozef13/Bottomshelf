@@ -10,14 +10,14 @@ include_files(array(
 class PageController
 
 {
-    protected $viewCtrl;
+    protected \ViewController $viewCtrl;
     public function __construct()
     {
         $this->viewCtrl = new ViewController();
     }
 
 
-    public function load($args)
+    public function load(array $args): void
     {
         /**
          * If the route is for logged in users only, redirect unauthorised user to login

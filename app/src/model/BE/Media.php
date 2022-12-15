@@ -3,9 +3,9 @@
 class Media
 {
 
-    private $id;
-    private $imageBlob;
-    private $ownerId;
+    private int $id;
+    private string $imageBlob;
+    private int $ownerId;
 
     function __construct(
         $id,
@@ -17,18 +17,18 @@ class Media
         $this->ownerId = $userId;
     }
 
-    public function getId()
+    public function getId(): int
     {
-        return htmlspecialchars($this->id);
+        return $this->id;
     }
 
-    public function getImage()
+    public function getImage(): string
     {
-        return  $this->imageBlob;
+        return $this->imageBlob;
     }
 
-    public function getOwner()
+    public function getOwner(): int
     {
-        return htmlspecialchars($this->ownerId);
+        return $this->ownerId;
     }
 }

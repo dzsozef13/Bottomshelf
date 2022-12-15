@@ -13,7 +13,7 @@ class PostModel extends CoreModel
 	/**
 	 * @param array data all values needed to create a post
 	 */
-	public function createPost($data)
+	public function createPost(array $data)
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();

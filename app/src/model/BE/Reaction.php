@@ -2,10 +2,10 @@
 
 class Reaction
 {
-    private $reactionId;
-    private $userId;
-    private $postId;
-    private $createdAt;
+    private int $reactionId;
+    private int $userId;
+    private int $postId;
+    private string $createdAt;
 
     function __construct(
         $reactionId,
@@ -19,20 +19,20 @@ class Reaction
         $this->createdAt = $createdAt;
     }
 
-    public function getId()
+    public function getId(): int
     {
-        return htmlspecialchars($this->reactionId);
+        return $this->reactionId;
     }
 
-    public function getAuthorId()
+    public function getAuthorId(): int
     {
-        return  htmlspecialchars($this->userId);
+        return $this->userId;
     }
-    public function getPostId()
+    public function getPostId(): int
     {
-        return htmlspecialchars($this->postId);
+        return $this->postId;
     }
-    public function getReactionIcon()
+    public function getReactionIcon(): string
     {
         return  '<i class="las la-heart"></i>';
     }

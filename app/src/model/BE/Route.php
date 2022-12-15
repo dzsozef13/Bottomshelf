@@ -1,27 +1,31 @@
-<?php 
+<?php
 
-class Route {
+class Route
+{
 
-    private $routeName;
-    private $path;
-    private $params;
+    private string $routeName;
+    private string $path;
+    private array $params;
 
-    public function __construct(string $name, string $path, array $params = []) {
+    public function __construct(string $name, string $path, array $params = [])
+    {
         $this->routeName = $name;
         $this->path = $path;
         $this->params = $params;
     }
 
-    public function getName() {
+    public function getName(): string
+    {
         return $this->routeName;
     }
 
-    public function getPath() {
+    public function getPath(): string
+    {
         return $this->path;
     }
 
-    public function getParams() {
+    public function getParams(): array
+    {
         return $this->params;
     }
-
 }

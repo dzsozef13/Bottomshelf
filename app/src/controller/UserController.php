@@ -11,7 +11,7 @@ include_files(array(
 class UserController
 {
 
-    public function tryLogInUser()
+    public function tryLogInUser(): void
     {
         if (isset($_POST['email'], $_POST['password'])) {
             $email = $_POST['email'];
@@ -28,7 +28,7 @@ class UserController
         }
     }
 
-    public function tryLogOutUser()
+    public function tryLogOutUser(): void
     {
         $session = new SessionController();
         if (isset($session->getUser()['userId'])) {
@@ -39,7 +39,7 @@ class UserController
         }
     }
 
-    public function tryRegistUser()
+    public function tryRegistUser(): void
     {
         if (isset(
             $_POST['email'],
@@ -66,13 +66,13 @@ class UserController
         }
     }
 
-    public function fetchAll()
+    public function fetchAll(): array
     {
         $userModel = new UserModel();
         return $userModel->getAll();
     }
 
-    public function fetchById($userId)
+    public function fetchById(int $userId): \User
     {
         if (isset($userId)) {
             $userModel = new UserModel();
@@ -82,7 +82,7 @@ class UserController
         }
     }
 
-    public function updateUser()
+    public function updateUser(): void
     {
         $userModel = new UserModel();
         $sessionController = new SessionController();
@@ -112,7 +112,7 @@ class UserController
     /**
      * Admin only
      */
-    public function markAsBanned()
+    public function markAsBanned(): void
     {
         $sessionController = new SessionController();
         $roleId = $sessionController->getUser()['roleId'];
@@ -130,7 +130,7 @@ class UserController
     /**
      * Admin only
      */
-    public function markAsActive()
+    public function markAsActive(): void
     {
 
         $sessionController = new SessionController();
@@ -147,7 +147,7 @@ class UserController
         new Router('Profile?selectedUser=' . $userId);
     }
 
-    public function markAsDeleted()
+    public function markAsDeleted(): void
     {
         $userModel = new UserModel();
         $sessionController = new SessionController();
@@ -160,7 +160,7 @@ class UserController
         new Router('Profile?selectedUser=' . $userId);
     }
 
-    public function addProfilePicture()
+    public function addProfilePicture(): void
     {
         $userModel = new UserModel();
         $sessionController = new SessionController();

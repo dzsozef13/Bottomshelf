@@ -913,6 +913,13 @@ ul,
   color: rgba(var(--background-primary), var(--tw-text-opacity));
 }
 
+.tag-selected{
+  --tw-bg-opacity: 1;
+  background-color: rgba(var(--highlight), var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(var(--background-primary), var(--tw-text-opacity));
+}
+
 .banner{
   display: flex;
   height: auto;
@@ -2398,24 +2405,16 @@ ul,
     margin-right: 5rem;
   }
 
+  .\32xl\:h-28{
+    height: 7rem;
+  }
+
   .\32xl\:h-\[15vh\]{
     height: 15vh;
   }
 
   .\32xl\:h-\[5vh\]{
     height: 5vh;
-  }
-
-  .\32xl\:h-32{
-    height: 8rem;
-  }
-
-  .\32xl\:h-24{
-    height: 6rem;
-  }
-
-  .\32xl\:h-28{
-    height: 7rem;
   }
 
   .\32xl\:grid-cols-5{

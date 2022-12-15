@@ -28,7 +28,7 @@ class SessionController
     /**
      * Sets user data in session
      */
-    public function setUser($userId, $username, $roleId)
+    public function setUser(mixed $userId, mixed $username, mixed $roleId): void
     {
         $_SESSION['userId'] = $userId;
         $_SESSION['username'] = $username;
@@ -38,7 +38,7 @@ class SessionController
     /**
      * Returns array of user data
      */
-    public function getUser()
+    public function getUser(): mixed
     {
         if (isset($_SESSION['userId']) && isset($_SESSION['username']) && isset($_SESSION['roleId'])) {
             $userId = $_SESSION['userId'];
@@ -71,7 +71,7 @@ class SessionController
      * 
      * Use to fetch a single post in selected post view
      */
-    public function setSelectedPostId($postId)
+    public function setSelectedPostId(mixed $postId): void
     {
         $_SESSION['selectedPost'] = $postId;
     }
@@ -85,7 +85,7 @@ class SessionController
      * 
      * Use to fetch a specific collection posts
      */
-    public function setFilter($filter)
+    public function setFilter(mixed $filter): void
     {
         $_SESSION['filter'] = $filter;
     }
@@ -99,7 +99,7 @@ class SessionController
      * 
      * Use to fetch posts containing the key
      */
-    public function setSearchPhrase($phrase)
+    public function setSearchPhrase(mixed $phrase)
     {
         $_SESSION['searchPhrase'] = $phrase;
     }
@@ -115,7 +115,7 @@ class SessionController
      * 
      * Use to fetch a collection of tagged posts
      */
-    public function setSearchTag($tag)
+    public function setSearchTag(mixed $tag): void
     {
         $_SESSION['searchTag'] = $tag;
     }
@@ -126,7 +126,7 @@ class SessionController
         }
     }
 
-    public function setUploadedMediaIdArray($mediaIds)
+    public function setUploadedMediaIdArray(array $mediaIds)
     {
         $_SESSION['uploadedMediaIdArray'] = $mediaIds;
     }
@@ -137,11 +137,11 @@ class SessionController
         }
     }
 
-    public function setAssignedTagIdArray($tagIds)
+    public function setAssignedTagIdArray(array $tagIds)
     {
         $_SESSION['assignedTagIdArray'] = $tagIds;
     }
-    public function getAssignedTagIdArray()
+    public function getAssignedTagIdArray(): mixed
     {
         if (isset($_SESSION['assignedTagIdArray'])) {
             return $_SESSION['assignedTagIdArray'];
@@ -153,7 +153,7 @@ class SessionController
      * 
      * Use to fetch information to use other user's profile
      */
-    public function setUserProfileId($userId)
+    public function setUserProfileId(mixed $userId): void
     {
         $_SESSION['selectedUser'] = $userId;
     }
@@ -170,7 +170,7 @@ class SessionController
      * 
      * Use to display error or other messages from the system in view
      */
-    public function setSystemMessage($message)
+    public function setSystemMessage(mixed $message): void
     {
         $_SESSION['systemMessage'] = $message;
     }

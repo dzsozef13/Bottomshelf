@@ -9,7 +9,7 @@ include_files(array(
 class SystemModel extends CoreModel
 {
 
-    public function getById($systemId)
+    public function getById($systemId): \System
     {
         try {
             $conn = CoreModel::openDbConnetion();

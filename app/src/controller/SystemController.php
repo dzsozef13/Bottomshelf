@@ -12,7 +12,7 @@ class SystemController
     /**
      * Admin only
      */
-    function fetchAll()
+    function fetchAll(): array
     {
         $sessionController = new SessionController();
         $roleId = $sessionController->getUser()['roleId'];
@@ -22,7 +22,7 @@ class SystemController
         }
     }
 
-    function fetchById(int $id)
+    function fetchById(int $id): \System
     {
 
         $systemModel = new SystemModel();
@@ -32,7 +32,7 @@ class SystemController
     /**
      * Admin only
      */
-    function updateContact()
+    function updateContact(): void
     {
         $sessionController = new SessionController();
         $roleId = $sessionController->getUser()['roleId'];
@@ -55,7 +55,7 @@ class SystemController
     /**
      * Admin only
      */
-    function updateDescriptionRules()
+    function updateDescriptionRules(): void
     {
         $sessionController = new SessionController();
         $roleId = $sessionController->getUser()['roleId'];
@@ -78,7 +78,7 @@ class SystemController
     /**
      * Admin only
      */
-    function updateSystemColorScheme()
+    function updateSystemColorScheme(): void
     {
         $sessionController = new SessionController();
         $roleId = $sessionController->getUser()['roleId'];

@@ -8,7 +8,7 @@ include_files(array(
 class PostController
 {
 
-    public function create()
+    public function create(): void
     {
         $postModel = new PostModel;
         $sessionController = new SessionController();
@@ -33,7 +33,6 @@ class PostController
                 'commentCount' =>  $commentCount,
                 'statusId' =>  $statusId
             );
-
             // Create post
             $postId = $postModel->createPost($data);
 
@@ -49,8 +48,8 @@ class PostController
                 $postModel->connectPostWithTag($postId, $assignedTagId);
             }
 
-            // Redirect to profile
-            $redirect = new Router("Profile");
+            // // Redirect to profile
+            // $redirect = new Router("Profile");
         } else {
             // thow an error error
         }

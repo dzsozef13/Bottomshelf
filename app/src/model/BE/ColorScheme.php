@@ -3,13 +3,13 @@
 class ColorScheme
 {
 
-    private $colorSchemeId;
-    private $colorSchemeName;
-    private $highlightColor;
-    private $backgroundPrimary;
-    private $backgroundSecondary;
-    private $backgroundTernary;
-    private $light;
+    private int $colorSchemeId;
+    private string $colorSchemeName;
+    private string $highlightColor;
+    private string $backgroundPrimary;
+    private string $backgroundSecondary;
+    private string $backgroundTernary;
+    private string $light;
 
     function __construct(
         $colorSchemeId,
@@ -29,36 +29,36 @@ class ColorScheme
         $this->light = $light;
     }
 
-    public function getId()
+    public function getId(): int
     {
-        return htmlspecialchars($this->colorSchemeId);
+        return $this->colorSchemeId;
     }
-    public function getColorSchemeName()
+    public function getColorSchemeName(): string
     {
         return htmlspecialchars($this->colorSchemeName);
     }
 
-    public function getHighlight()
+    public function getHighlight(): string
     {
         return htmlspecialchars($this->highlightColor);
     }
 
-    public function getBackgroundPrimary()
+    public function getBackgroundPrimary(): string
     {
         return htmlspecialchars($this->backgroundPrimary);
     }
 
-    public function getBackgroundSecondary()
+    public function getBackgroundSecondary(): string
     {
         return htmlspecialchars($this->backgroundSecondary);
     }
 
-    public function getBackgroundTernary()
+    public function getBackgroundTernary(): string
     {
         return htmlspecialchars($this->backgroundTernary);
     }
 
-    public function getLightColor()
+    public function getLightColor(): string
     {
         return htmlspecialchars($this->light);
     }

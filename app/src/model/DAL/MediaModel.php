@@ -39,7 +39,7 @@ class MediaModel extends CoreModel
 	/**
 	 * Returns with an array of Media connected to passed post ID
 	 */
-	public function getMediaForPost(int $postId)
+	public function getMediaForPost(int $postId): array
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();
@@ -69,7 +69,7 @@ class MediaModel extends CoreModel
 		}
 	}
 
-	public function getMediaById(int $imageId)
+	public function getMediaById(int $imageId): \Media
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();
