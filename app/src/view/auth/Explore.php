@@ -15,8 +15,12 @@ $sessionController->setFilter(null);
 if ($filter != null) {
     switch ($filter) {
         case 'trending':
-            console_log('trending');
-            $posts = $postController->fetchAll();
+            console_log('showing trending');
+            $posts = $postController->fetchInOrder($filter);
+            break;
+        case 'latest':
+            console_log('showing newest');
+            $posts = $postController->fetchInOrder($filter);
             break;
     }
 }
@@ -82,6 +86,19 @@ $system = $systemController->fetchById(1);
                 </div>
             </a>
         </form>
+        <div class="flex mb-4 mt-4">
+            <h3 class="small-headline mr-4">Sort by</h3>
+            <?php
+                $sortingQuery = "Explore?sorting=";
+            ?>
+            <a class="option-chip" href="<?php echo $sortingQuery . "latest" ?>">
+                Newest first
+            </a>
+            <a class="option-chip" href="<?php echo $sortingQuery . "trending" ?>">
+                Hot first
+            </a> 
+        </div>
+        
 
         <!-- Posts section -->
 

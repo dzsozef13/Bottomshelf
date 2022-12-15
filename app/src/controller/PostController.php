@@ -59,34 +59,41 @@ class PostController
     public function fetchAll()
     {
         $postModel = new PostModel;
-        return $postModel->getAllActiveAndPublic();
+        $args = array();
+        return $postModel->getAll($args);
     }
 
     public function fetchAllActive()
     {
         $postModel = new PostModel;
-        return $postModel->getAllActive();
+        $args = array('statusId' => 1);
+        return $postModel->getAll($args);
     }
 
     public function fetchAllByStatus(int $statusId = 1, bool $isPublic = true)
     {
         $postModel = new PostModel;
-        return $postModel->getAllByStatus($statusId, $isPublic);
+        $args = array(
+            'statusId' => $statusId,
+            'isPublic' => $isPublic
+        );
+        return $postModel->getAll($args);
     }
 
     public function fetchById(int $id): Post
     {
-        $postModel = new PostModel;
         if (isset($id)) {
+            $postModel = new PostModel;
             return $postModel->getById($id);
         }
     }
 
     public function fetchByUserId(int $userId)
     {
-        $postModel = new PostModel;
         if (isset($userId)) {
-            return $postModel->getAllByUserId($userId);
+            $postModel = new PostModel;
+            $args = array('authorId' => $userId);
+            return $postModel->getAll($args);
         }
     }
 
@@ -111,7 +118,8 @@ class PostController
     {
         if (isset($phrase)) {
             $postModel = new PostModel;
-            return $postModel->getAllByPhrase($phrase);
+            $args = array('phrase' => $phrase);
+            return $postModel->getAll($args);
         }
     }
 
@@ -119,7 +127,17 @@ class PostController
     {
         if (isset($tag)) {
             $postModel = new PostModel;
-            return $postModel->getAllByTag($tag);
+            $args = array('tagId' => $tag);
+            return $postModel->getAll($args);
+        }
+    }
+
+    public function fetchInOrder($sorting)
+    {
+        if (isset($sorting)) {
+            $postModel = new PostModel;
+            $args = array('sorting' => $sorting);
+            return $postModel->getAll($args);
         }
     }
 
@@ -184,14 +202,4 @@ class PostController
             $redirect = new Router("Profile");
         }
     }
-
-    // public function searchPosts()
-    // {
-    //     $phrase = $_POST['phrase'];
-
-    //     if (isset($phrase)) {
-    //         return $this->postModel->searchPosts($phrase);
-    //     }
-    //     new Router('Explore');
-    // }
 }
