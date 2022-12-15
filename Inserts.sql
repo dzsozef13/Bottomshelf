@@ -192,6 +192,11 @@ INSERT INTO Badge (BadgeId, BadgeName) VALUES (NULL,'Recipe Specialist');
 INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Easy');
 INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Intermediate');
 INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Hard');
+INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Gin');
+INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Rum');
+INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Vodka');
+INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Whiskey');
+INSERT INTO Tag (TagId, TagName) VALUES (NULL,'Beer');
 
 INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Active');
 INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Banned');
@@ -199,13 +204,16 @@ INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Reported');
 INSERT INTO EntityStatus (StatusId, StatusName) VALUES (NULL,'Deleted');
 
 INSERT INTO `User` (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgBlob, BioDescription, PostCount, CountryCode, RoleId, StatusId) 
-VALUES (NULL,'test@lol.com', 'something123', 'ProudTester', '1999-11-11', NULL,'I existed only to test',  0,  'POL', 1, 1);
+VALUES (NULL,'test@mockEmail.com', '$2y$10$IZN1AyZ3kp.h1S2.qTppbu32zJzCiG4B/vihQ/z9IZm7xvUy0HsuW', 'ProudTester', '1999-11-11', NULL,'I existed only to test',  0,  'DNK', 1, 1);
 
 INSERT INTO `User` (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgBlob, BioDescription, PostCount, CountryCode, RoleId, StatusId) 
-VALUES (NULL,'monkey@lol.com', 'monkeyPass', 'MonkeyFromATree', '200-01-12', NULL,'Test Or Not To Test',  0,  'DNK', 1, 1);
+VALUES (NULL,'dummy@email.com', '$2y$10$O7h0vJd4jBXDCzteObBd2eUHyIuAsoG259R8lMKWOEqceOUCfyN4m', 'RecipeMaster', '2000-01-12', NULL,'Test Or Not To Test',  0,  'DNK', 1, 1);
+
+INSERT INTO `User` (UserId, Email,UserPassword, Username, DateOfBirth, ProfileImgBlob, BioDescription, PostCount, CountryCode, RoleId, StatusId) 
+VALUES (NULL,'admin@email.com', '$2y$10$Aza1BXoCDbPnFnqK8S8gAeqtVukqTzRY4IES10N/0NSgMzBxw3r0m', 'MightyAdmin', '1998-02-16', NULL,'I manage content',  0,  'DNK', 2, 1);
 
 
 INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, ReactionCount, CommentCount, LatestCommentId, UserId, ChildPostId, StatusId)
-VALUES (NULL,'First Post', 'Describing the post always', TRUE, FALSE, 0, 0, NULL, 1, NULL, 1);
+VALUES (NULL,'Mojito', 'Fresh mint, White rum, Fresh lime juice, simple syrup, Club soda or sparkling water', TRUE, FALSE, 0, 0, NULL, 1, NULL, 1);
 INSERT INTO Post (PostId, Title, PostDescription, IsPublic, IsSticky, ReactionCount, CommentCount, LatestCommentId, UserId, ChildPostId, StatusId)
-VALUES (NULL,'Another Post', 'Just a beer', TRUE, FALSE, 0, 0, NULL, 1, NULL, 1);
+VALUES (NULL,'Gin Hass', 'Cut the lime over and cut a few thin slices of one half. Put gin, mango syrup and the juice from half a lime in a glass and stir well. Add ice cubes and top with lemon soda and garnish with lime slices and possibly a sprig of mint leaves. Non-alcoholic version, Just do not add gin.', TRUE, FALSE, 0, 0, NULL, 1, NULL, 1);

@@ -2406,6 +2406,18 @@ ul,
     height: 5vh;
   }
 
+  .\32xl\:h-32{
+    height: 8rem;
+  }
+
+  .\32xl\:h-24{
+    height: 6rem;
+  }
+
+  .\32xl\:h-28{
+    height: 7rem;
+  }
+
   .\32xl\:grid-cols-5{
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }

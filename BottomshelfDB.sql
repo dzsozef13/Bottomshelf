@@ -69,8 +69,8 @@ CREATE TABLE Post (
     PostId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Title varchar(128),
     PostDescription varchar(1024),
-    IsPublic boolean,
-    IsSticky boolean,
+    IsPublic tinyint(1),
+    IsSticky tinyint(1),
     CreatedAt timestamp,
     ReactionCount int,
     CommentCount int,
@@ -81,6 +81,7 @@ CREATE TABLE Post (
     FOREIGN KEY (UserId) REFERENCES `User` (UserId), 
     FOREIGN KEY (ChildPostId) REFERENCES Post (PostId),  
     FOREIGN KEY (StatusId) REFERENCES EntityStatus (StatusId)
+  
 );
 CREATE TABLE Reaction (
     ReactionId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -181,6 +182,7 @@ BEGIN
 UPDATE Post
 SET Post.CommentCount = Post.CommentCount - 1
 WHERE Post.PostId = OLD.PostId;
+
 END //
 
 DELIMITER ;
