@@ -137,7 +137,7 @@ $system = $systemController->fetchById(1);
                                 <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
                                 ' . ($post->getCoverImageForPost() === null ? '
                                 <div class="h-44 w-full mt-2 overflow-hidden border-dashed">
-                                    ' . htmlspecialchars_decode($post->getDescription())  . '
+                                    ' . htmlspecialchars_decode($post->getDescription(), ENT_NOQUOTES)  . '
                                 </div>
                                  ' : '') . '
                             </div>
@@ -175,11 +175,11 @@ $system = $systemController->fetchById(1);
     <div class="col-span-6 sm:col-span-2">
         <div class="side-bar-container">
             <div class="banner">
-                <?php echo htmlspecialchars_decode($system->getDescription()) ?>
+                <?php echo htmlspecialchars_decode($system->getDescription(), ENT_NOQUOTES) ?>
             </div>
             <div class="banner mt-4">
                 <p class="headline mb-2">Guidelines</p>
-                <?php echo htmlspecialchars_decode($system->getRules()) ?>
+                <?php echo htmlspecialchars_decode($system->getRules(), ENT_NOQUOTES) ?>
             </div>
         </div>
     </div>

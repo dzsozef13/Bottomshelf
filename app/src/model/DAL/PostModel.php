@@ -8,7 +8,7 @@ include_files(array(
 
 class PostModel extends CoreModel
 {
-	// Try to implement filter_var for more protection
+
 
 	/**
 	 * @param array data all values needed to create a post
@@ -88,7 +88,6 @@ class PostModel extends CoreModel
 	 */
 	public function getById(int $postId)
 	{
-		//Sanitize this and make sure is safe
 		try {
 			$conn = CoreModel::openDbConnetion();
 
@@ -129,7 +128,7 @@ class PostModel extends CoreModel
 	 */
 	public function getAll($args)
 	{
-		$query = 
+		$query =
 			"SELECT Post.*, User.Username, Comment.Content
 			FROM Post
 			LEFT JOIN User ON User.UserId=Post.UserId
@@ -175,13 +174,13 @@ class PostModel extends CoreModel
 		}
 
 		// echo $query;
-		
+
 		try {
 			$conn = CoreModel::openDbConnetion();
 			$handle = $conn->prepare($query);
 
 			if (isset($statusId)) {
-				$handle->bindParam(':statusId', $postatusIdstId);
+				$handle->bindParam(':statusId', $statusId);
 			}
 			if (isset($isPublic)) {
 				$handle->bindParam(':isPublic', $isPublic);
@@ -230,7 +229,6 @@ class PostModel extends CoreModel
 	 */
 	public function getAllByStatus(int $statusId, bool $isPublic)
 	{
-		// might improve the get all functions to avoid fetching too much
 		try {
 			$conn = CoreModel::openDbConnetion();
 			$query =

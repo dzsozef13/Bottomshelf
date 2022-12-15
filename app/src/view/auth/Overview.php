@@ -65,7 +65,7 @@ $users = $userController->fetchAll();
                                                 <p class="post-card-user">by @<span class="text-highlight-color-900">' . $post->getAuthorName() . '</span></p>
                                                 ' . ($post->getCoverImageForPost() === null ? '
                                                 <div class="h-44 w-full mt-2 overflow-hidden border-dashed">
-                                                    ' . htmlspecialchars_decode($post->getDescription())  . '
+                                                    ' . htmlspecialchars_decode($post->getDescription(), ENT_NOQUOTES)  . '
                                                 </div>
                                                  ' : '') . '
                                             </div>
