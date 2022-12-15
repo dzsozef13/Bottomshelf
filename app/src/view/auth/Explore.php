@@ -76,12 +76,11 @@ $system = $systemController->fetchById(1);
             <button type="submit" class="btn-green-no-shadow w-full mb-2 sm:mb-0 sm:w-[25%]">
                 SEARCH
             </button>
-            <a href="/Explore" class="w-full sm:w-[25%]">
-                <button type="submit" class="btn-white-no-shadow w-full">
+            <a href="Explore" class="w-full sm:w-[25%]">
+                <div class="btn-white-no-shadow w-full">
                     RESET FILTERS
-                </button>
+                </div>
             </a>
-
         </form>
 
         <!-- Posts section -->
