@@ -122,6 +122,104 @@ class PostModel extends CoreModel
 		}
 	}
 
+	public function getAll($args)
+	{
+		$query = 
+			"SELECT Post.*, User.Username, Comment.Content
+			FROM Post
+			LEFT JOIN User ON User.UserId=Post.UserId
+			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
+			LEFT JOIN PostHasTag ON PostHasTag.PostId=Post.PostId
+			WHERE User.StatusId = 1 ";
+
+		if (isset($args['statusId'])) {
+			$statusId = htmlspecialchars($args['statusId']);
+			$query = $query . "AND Post.StatusId = :statusId ";
+		}
+		if (isset($args['isPublic'])) {
+			$isPublic = htmlspecialchars($args['isPublic']);
+			$query = $query . "AND Post.IsOublic = :isPublic ";
+		}
+		if (isset($args['authorId'])) {
+			$authorId = htmlspecialchars($args['authorId']);
+			$query = $query . "AND User.UserId = :authorId ";
+		}
+		if (isset($args['phrase'])) {
+			$phrase = '%' . htmlspecialchars($args['phrase']) . '%';
+			$query = $query . "AND (Post.Title LIKE :titlePhrase OR Post.PostDescription LIKE :descriptionPhrase) ";
+		}
+		if (isset($args['tagId'])) {
+			$tagId = htmlspecialchars($args['tagId']);
+			$query = $query . "AND PostHasTag.TagId=:tagId ";
+		}
+		if (isset($args['sorting'])) {
+			$sorting = $args['sorting'];
+			switch ($sorting) {
+				case "latest":
+					$query = $query . "ORDER BY Post.CreatedAt DESC";
+					break;
+				case "trending":
+					$query = $query . "ORDER BY Post.ReactionCount DESC";
+					break;
+				default:
+					$query = $query . "ORDER BY Post.IsSticky DESC, BY Post.CreatedAt DESC";
+					break;
+			}
+		} else {
+			$query = $query . "ORDER BY Post.IsSticky DESC, Post.CreatedAt ASC";
+		}
+
+		// echo $query;
+		
+		try {
+			$conn = CoreModel::openDbConnetion();
+			$handle = $conn->prepare($query);
+
+			if (isset($statusId)) {
+				$handle->bindParam(':statusId', $postatusIdstId);
+			}
+			if (isset($isPublic)) {
+				$handle->bindParam(':isPublic', $isPublic);
+			}
+			if (isset($authorId)) {
+				$handle->bindParam(':authorId', $authorId);
+			}
+			if (isset($phrase)) {
+				$handle->bindParam(':titlePhrase', $phrase);
+				$handle->bindParam(':descriptionPhrase', $phrase);
+			}
+			if (isset($tagId)) {
+				$handle->bindParam(':tagId', $tagId);
+			}
+
+			$handle->execute();
+
+			$result = array();
+			while ($row = $handle->fetch(PDO::FETCH_OBJ)) {
+				$post = new Post(
+					$row->PostId,
+					$row->Title,
+					$row->PostDescription,
+					$row->ReactionCount,
+					$row->CommentCount,
+					$row->IsPublic,
+					$row->IsSticky,
+					$row->CreatedAt,
+					$row->UserId,
+					$row->Username,
+					$row->Content,
+					$row->ChildPostId,
+					$row->StatusId
+				);
+
+				$result[] = $post;
+			}
+			return $result;
+		} catch (PDOException $e) {
+			print($e->getMessage());
+		}
+	}
+
 	/**
 	 * @return Post[]  (if none then empty array [])
 	 */
