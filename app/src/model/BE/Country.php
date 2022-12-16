@@ -3,8 +3,8 @@
 class Country
 {
 
-    private $countryCode;
-    private $countryName;
+    private string $countryCode;
+    private string $countryName;
 
     function __construct(
         $countryCode,
@@ -14,12 +14,12 @@ class Country
         $this->countryName = $countryName;
     }
 
-    public function getCountryCode()
+    public function getCountryCode(): string
     {
         return htmlspecialchars($this->countryCode);
     }
 
-    public function getCountryName()
+    public function getCountryName(): string
     {
         return htmlspecialchars($this->countryName);
     }

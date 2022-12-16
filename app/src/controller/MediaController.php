@@ -12,7 +12,7 @@ class MediaController
     /**
      * Fetches all media for post with passed ID
      */
-    public function fetchMediaForPost($postId)
+    public function fetchMediaForPost($postId): array
     {
         $mediaModel = new MediaModel();
         return $mediaModel->getMediaForPost($postId);
@@ -21,7 +21,7 @@ class MediaController
     /**
      * Fetches all media by ID
      */
-    public function fetchMediaById(int $imageId)
+    public function fetchMediaById(int $imageId): \Media
     {
         $mediaModel = new MediaModel();
         if (isset($imageId)) {

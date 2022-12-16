@@ -80,7 +80,6 @@ if (isset($reactions)) {
         }
     }
 }
-
 ?>
 
 <div class="grid grid-cols-6 px-2 my-4 sm:px-8 sm:my-8 w-full gap-4">

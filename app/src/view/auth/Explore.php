@@ -39,7 +39,7 @@ if ($searchTag != null) {
 }
 // Fetch all posts
 if ($filter == null && $searchPhrase == null && $searchTag == null) {
-    $posts = $postController->fetchAll();
+    $posts = $postController->fetchAllActive();
 }
 
 /**
@@ -56,7 +56,6 @@ foreach ($tags as $tag) {
  */
 
 $system = $systemController->fetchById(1);
-
 ?>
 
 <!-- Explore View -->
@@ -116,11 +115,12 @@ $system = $systemController->fetchById(1);
              */
             $postTemplatesArray = array();
             foreach ($posts as $post) {
-                $media = $mediaController->fetchMediaForPost($post->getId());
+                $media  = $mediaController->fetchMediaForPost($post->getId());
                 $indexedMediaArray = array_values($media);
                 if (isset($indexedMediaArray)) {
                     $post->setMedia($indexedMediaArray);
                 }
+
                 $postTemplatesArray[] =  '
                 <a href="/SelectedPost?selectedPost=' .  $post->getId() . '">
                     <div class="post-card-container ' . ($post->getIsSticky() ? "sticky" : "") . ' ">

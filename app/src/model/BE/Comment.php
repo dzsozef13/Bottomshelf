@@ -3,13 +3,13 @@
 class Comment
 {
 
-    private $id;
-    private $content;
-    private $authorId;
-    private $authorName;
-    private $authorPicture;
-    private $postId;
-    private $createdAt;
+    private int $id;
+    private string $content;
+    private int $authorId;
+    private string $authorName;
+    private ?string $authorPicture;
+    private int $postId;
+    private string $createdAt;
 
     function __construct(
         $id,
@@ -29,32 +29,32 @@ class Comment
         $this->authorPicture = $userPicture;
     }
 
-    public function getId()
+    public function getId(): int
     {
-        return htmlspecialchars($this->id);
+        return $this->id;
     }
 
-    public function getContent()
+    public function getContent(): string
     {
         return htmlspecialchars($this->content);
     }
 
-    public function getUserId()
+    public function getUserId(): int
     {
-        return htmlspecialchars($this->authorId);
+        return $this->authorId;
     }
 
-    public function getUsername()
+    public function getUsername(): string
     {
         return  htmlspecialchars($this->authorName);
     }
 
-    public function getUserPicture()
+    public function getUserPicture(): ?string
     {
         return $this->authorPicture;
     }
 
-    public function getCreatedAt()
+    public function getCreatedAt(): string
     {
         $createdAtDate = DateTime::createFromFormat('Y-m-d H:i:s', $this->createdAt);
         return htmlspecialchars($createdAtDate->format('d/m/Y'));

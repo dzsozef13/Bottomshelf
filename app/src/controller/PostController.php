@@ -8,7 +8,7 @@ include_files(array(
 class PostController
 {
 
-    public function create()
+    public function create(): void
     {
         $postModel = new PostModel;
         $sessionController = new SessionController();
@@ -33,7 +33,6 @@ class PostController
                 'commentCount' =>  $commentCount,
                 'statusId' =>  $statusId
             );
-
             // Create post
             $postId = $postModel->createPost($data);
 
@@ -92,7 +91,10 @@ class PostController
     {
         if (isset($userId)) {
             $postModel = new PostModel;
-            $args = array('authorId' => $userId);
+            $args = array(
+                'authorId' => $userId,
+                'statusId' => 1
+            );
             return $postModel->getAll($args);
         }
     }

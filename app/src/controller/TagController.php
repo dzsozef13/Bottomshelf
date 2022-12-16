@@ -7,23 +7,23 @@ include_files(array(
 
 class TagController
 {
-    function fetchAll()
+    function fetchAll(): array
     {
         $tagModel = new TagModel();
         return $tagModel->getAll();
     }
 
-    function fetchAllForPost($postId)
+    function fetchAllForPost(int $postId): array
     {
         $tagModel = new TagModel();
         return $tagModel->getAllForPost($postId);
     }
 
-    function assignTag($tag) {
+    function assignTag($tag)
+    {
         $sessionController = new SessionController();
         $assignedTagIdArray = $sessionController->getAssignedTagIdArray();
-
-        if (!in_array($tag['id'], $assignedTagIdArray)) {   
+        if (!in_array($tag['id'], $assignedTagIdArray)) {
             $assignedTagIdArray[] = $tag['id'];
         } else {
             $assignedTagIdArray = array();

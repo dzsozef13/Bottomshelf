@@ -18,7 +18,6 @@ $tagTemplates = array();
  * Fetch assigned tags
  */
 $assignedTagIdArray = $sessionController->getAssignedTagIdArray() ?? array();
-
 ?>
 
 <div class="grid grid-cols-6 px-8">
@@ -34,19 +33,19 @@ $assignedTagIdArray = $sessionController->getAssignedTagIdArray() ?? array();
                 <h3 class="small-headline mb-4">Select tags that best describe your cocktail!</h3>
                 <div class="tags-container">
                     <?php
-                        foreach ($tags as $tag) {
-                            if (in_array($tag->getId(), $assignedTagIdArray)) {
-                                echo 
-                                '<a class="tag-chip" href="TagAssign?id=' . $tag->getId() . '">
-                                    X ' . $tag->getTagName() . '
-                                </a>';
-                            } else {
-                                echo 
-                                '<a class="tag-chip" href="TagAssign?id=' . $tag->getId() . '">
+                    foreach ($tags as $tag) {
+                        if (in_array($tag->getId(), $assignedTagIdArray)) {
+                            echo
+                            '<a class="tag-chip tag-selected" href="TagAssign?id=' . $tag->getId() . '">
                                     ' . $tag->getTagName() . '
                                 </a>';
-                            }
+                        } else {
+                            echo
+                            '<a class="tag-chip" href="TagAssign?id=' . $tag->getId() . '">
+                                    ' . $tag->getTagName() . '
+                                </a>';
                         }
+                    }
                     ?>
                 </div>
             </div>

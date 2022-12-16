@@ -2,13 +2,13 @@
 
 class System
 {
-    private $id;
-    private $serviceDescription;
-    private $rules;
-    private $phoneNumber;
-    private $systemEmail;
-    private $address;
-    private $colorSchemeId;
+    private int $id;
+    private string $serviceDescription;
+    private string $rules;
+    private string $phoneNumber;
+    private string $systemEmail;
+    private string $address;
+    private string $colorSchemeId;
 
     function __construct(
         $id,
@@ -28,29 +28,29 @@ class System
         $this->ColorSchemeId = $colorSchemeId;
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->serviceDescription;
     }
 
-    public function getRules()
+    public function getRules(): string
     {
         return $this->rules;
     }
-    public function getPhoneNumber()
+    public function getPhoneNumber(): string
     {
         return htmlspecialchars($this->phoneNumber);
     }
-    public function getEmail()
+    public function getEmail(): string
     {
         return htmlspecialchars($this->systemEmail);
     }
-    public function getAddress()
+    public function getAddress(): string
     {
         return htmlspecialchars($this->address);
     }
-    public function getColorSchemeId()
+    public function getColorSchemeId(): int
     {
-        return htmlspecialchars($this->ColorSchemeId);
+        return $this->ColorSchemeId;
     }
 }

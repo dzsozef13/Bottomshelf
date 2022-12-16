@@ -2,20 +2,20 @@
 
 class Post
 {
-    private $id;
-    private $title;
-    private $description;
-    private $isPublic;
-    private $isSticky;
-    private $createdAt;
-    private $authorId;
-    private $authorName;
-    private $latestComment;
-    private $childPostId;
-    private $statusId;
-    private $reactionCount;
-    private $commentCount;
-    private $media;
+    private int $id;
+    private string $title;
+    private string $description;
+    private bool $isPublic;
+    private bool $isSticky;
+    private string $createdAt;
+    private int $authorId;
+    private string $authorName;
+    private ?string $latestComment;
+    private ?int $childPostId;
+    private int $statusId;
+    private int $reactionCount;
+    private int $commentCount;
+    private ?array $media;
 
     function __construct(
         $id,
@@ -47,72 +47,68 @@ class Post
         $this->statusId = $statusId;
     }
 
-    public function getId()
+    public function getId(): int
     {
-        return htmlspecialchars($this->id);
+        return $this->id;
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return htmlspecialchars($this->title);
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    public function getIsSticky()
+    public function getIsSticky(): bool
     {
-        if ($this->isSticky == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->isSticky;
     }
 
-    public function getAuthorName()
+    public function getAuthorName(): string
     {
         return htmlspecialchars($this->authorName);
     }
 
-    public function getAuthorId()
+    public function getAuthorId(): int
     {
-        return htmlspecialchars($this->authorId);
+        return $this->authorId;
     }
 
-    public function getIsPublic()
+    public function getIsPublic(): bool
     {
-        return htmlspecialchars($this->isPublic);
+        return $this->isPublic;
     }
 
-    public function getReactionCount()
+    public function getReactionCount(): int
     {
-        return htmlspecialchars($this->reactionCount);
+        return $this->reactionCount;
     }
 
-    public function getCommentCount()
+    public function getCommentCount(): int
     {
-        return htmlspecialchars($this->commentCount);
+        return $this->commentCount;
     }
 
-    public function getLatestComment()
+    public function getLatestComment(): ?string
     {
         return $this->latestComment;
     }
 
-    public function getCreatedAt()
+    public function getCreatedAt(): string
     {
         $createdAtDate = DateTime::createFromFormat('Y-m-d H:i:s', $this->createdAt);
         return htmlspecialchars($createdAtDate->format('d/m/Y'));
     }
 
-    public function getAllMedia()
+    public function getAllMedia(): array
     {
         return $this->media;
     }
 
-    public function getCoverImageForPost()
+    public function getCoverImageForPost(): mixed
     {
         if (isset($this->getAllMedia()[0])) {
             $firstImage = $this->getAllMedia()[0];
@@ -122,13 +118,15 @@ class Post
                 $firstImgBlob = null;
             }
             return $firstImgBlob;
+        } else {
+            return null;
         }
     }
 
     /** 
      * @param Media[]
      */
-    public function setMedia($mediaArray)
+    public function setMedia(array $mediaArray)
     {
         $this->media = $mediaArray;
     }

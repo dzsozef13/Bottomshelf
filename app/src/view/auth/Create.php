@@ -78,17 +78,17 @@ $assignedTags = $sessionController->getAssignedTagIdArray();
         <h3 class="medium-headline mb-2 mt-0 lg:mt-12">Assigned tags</h3>
         <div class="tags-container">
             <?php
-                foreach ($tags as $tag) {
-                    if (in_array($tag->getId(), $assignedTags)) {
-                        echo 
-                        '<div class="tag-chip" href="TagAssign?id=' . $tag->getId() . '">
+            foreach ($tags as $tag) {
+                if (in_array($tag->getId(), $assignedTags)) {
+                    echo
+                    '<div class="tag-chip" href="TagAssign?id=' . $tag->getId() . '">
                             ' . $tag->getTagName() . '
                         </div>';
-                    }
                 }
-                if (empty($assignedTags)) {
-                    echo 'No tags assigned :(';
-                }
+            }
+            if (empty($assignedTags)) {
+                echo 'No tags assigned :(';
+            }
             ?>
         </div>
     </div>

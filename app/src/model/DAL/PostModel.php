@@ -13,7 +13,7 @@ class PostModel extends CoreModel
 	/**
 	 * @param array data all values needed to create a post
 	 */
-	public function createPost($data)
+	public function createPost(array $data)
 	{
 		try {
 			$conn = CoreModel::openDbConnetion();
@@ -132,9 +132,9 @@ class PostModel extends CoreModel
 			"SELECT Post.*, User.Username, Comment.Content
 			FROM Post
 			LEFT JOIN User ON User.UserId=Post.UserId
-			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId
-			LEFT JOIN PostHasTag ON PostHasTag.PostId=Post.PostId
-			WHERE User.StatusId = 1 ";
+			LEFT JOIN Comment ON Comment.CommentId=Post.LatestCommentId "
+			. (isset($args['tagId']) ? "LEFT JOIN PostHasTag ON PostHasTag.PostId=Post.PostId " : "") .
+			"WHERE User.StatusId = 1 ";
 
 		if (isset($args['statusId'])) {
 			$statusId = htmlspecialchars($args['statusId']);

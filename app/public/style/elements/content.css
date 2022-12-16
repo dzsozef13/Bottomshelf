@@ -241,6 +241,11 @@
     uppercase;
   }
 
+  .tag-selected {
+    @apply bg-highlight-color-900
+    text-background-primary-900;
+  }
+
   .banner {
     @apply w-full
     h-auto

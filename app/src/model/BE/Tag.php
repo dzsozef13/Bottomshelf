@@ -15,7 +15,7 @@ class Tag
 
     public function getId(): int
     {
-        return htmlspecialchars($this->id);
+        return $this->id;
     }
 
     public function getTagName(): string
