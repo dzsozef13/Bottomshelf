@@ -48,8 +48,8 @@ class PostController
                 $postModel->connectPostWithTag($postId, $assignedTagId);
             }
 
-            // // Redirect to profile
-            // $redirect = new Router("Profile");
+            // Redirect to profile
+            $redirect = new Router("Profile");
         } else {
             // thow an error error
         }
@@ -91,7 +91,10 @@ class PostController
     {
         if (isset($userId)) {
             $postModel = new PostModel;
-            $args = array('authorId' => $userId);
+            $args = array(
+                'authorId' => $userId,
+                'statusId' => 1
+            );
             return $postModel->getAll($args);
         }
     }

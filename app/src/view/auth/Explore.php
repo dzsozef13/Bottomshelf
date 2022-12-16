@@ -39,7 +39,7 @@ if ($searchTag != null) {
 }
 // Fetch all posts
 if ($filter == null && $searchPhrase == null && $searchTag == null) {
-    $posts = $postController->fetchAll();
+    $posts = $postController->fetchAllActive();
 }
 
 /**
